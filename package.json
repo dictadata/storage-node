@@ -1,0 +1,41 @@
+{
+  "name": "@dicta.io/storage-node",
+  "version": "0.2.1",
+  "description": "Node.js based http server library.",
+  "author": "Drew O. Letcher",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "gitlab:dicta.io/storage-node",
+  "scripts": {
+    "debug": "set NODE_ENV=development& node --inspect --preserve-symlinks test/main.js",
+    "lint": "eslint lib/*.js",
+    "lint-fix": "eslint --fix lib/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "formidable": "^1.2.1",
+    "memorystore": "^1.6.1",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
