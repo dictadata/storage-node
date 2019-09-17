@@ -1,0 +1,18 @@
+### no user
+GET http://localhost:8089/test/echo HTTP/1.1
+
+### invalid Authorization: defaults to Public role
+GET http://localhost:8089/test/echo HTTP/1.1
+Authorization: Basic Aladdin opensesame
+
+### Public guest:guest
+GET http://localhost:8089/test/echo HTTP/1.1
+Authorization: Basic guest guest
+
+### User admin:admin
+GET http://localhost:8089/test/echo?a=1&b=2 HTTP/1.1
+Authorization: Basic admin admin
+
+### User admin:admin
+GET http://localhost:8089/test/echo/userparam HTTP/1.1
+Authorization: Basic admin admin
