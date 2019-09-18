@@ -1,3 +1,3 @@
 # storage-node
 
-Node.js based http server using the Express framework.  
+Node.js HTTP server using Express.js, Passport,js and @dicta-io/storage-junctions with all the fixin's.  

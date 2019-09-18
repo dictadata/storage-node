@@ -1,11 +1,11 @@
 {
   "name": "@dicta-io/storage-node",
   "version": "0.2.1",
-  "description": "Node.js based http server library.",
+  "description": "Node.js HTTP server using Express.js, Passport,js and storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
   "main": "index.js",
-  "repository": "gitlab:dicta.io/storage-node",
+  "repository": "github:@dicta.io/storage-node",
   "scripts": {
     "debug": "set NODE_ENV=development& node --inspect --preserve-symlinks test/main.js",
     "lint": "eslint lib/*.js",
