@@ -1,5 +1,5 @@
 {
-  "name": "@dicta.io/storage-node",
+  "name": "@dicta-io/storage-node",
   "version": "0.2.1",
   "description": "Node.js based http server library.",
   "author": "Drew O. Letcher",
@@ -13,6 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@dicta-io/storage-junctions": "^0.2.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
