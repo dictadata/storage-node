@@ -1,7 +1,7 @@
 ### Install Visual Studio Code extension: REST Client  humao.rest-client
 
 ### guest:guest
-POST http://localhost:8089/account/register HTTP/1.1
+POST http://localhost:8089/node/register HTTP/1.1
 Authorization: Basic guest guest
 Content-Type: application/json
 
@@ -11,8 +11,8 @@ Content-Type: application/json
     "roles": ["Public"]
 }
 
-###
-POST http://localhost:8089/account/register HTTP/1.1
+### regular endpoint
+POST http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
 
