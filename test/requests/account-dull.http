@@ -1,0 +1,28 @@
+### Install Visual Studio Code extension: REST Client  humao.rest-client
+
+### non-user
+DELETE http://localhost:8089/node/account HTTP/1.1
+Authorization: Basic nobody@nowheresville.com gonebaby
+
+{
+    "userid": "guest",
+    "password": "guest",
+}
+
+### guest doesn't normally have User rights
+DELETE http://localhost:8089/node/account HTTP/1.1
+Authorization: Basic guest guest
+
+{
+    "userid": "guest",
+    "password": "guest",
+}
+
+### dull guest by admin
+DELETE http://localhost:8089/node/account HTTP/1.1
+Authorization: Basic admin admin
+
+{
+    "userid": "guest",
+    "password": "guest",
+}

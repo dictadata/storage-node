@@ -5,11 +5,11 @@ GET http://localhost:8089/node/login HTTP/1.1
 
 ### nobody@nowheresville.com:gonebaby
 GET http://localhost:8089/node/login HTTP/1.1
-Authorization: Basic bm9ib2R5QG5vd2hlcmVzdmlsbGUuY29tOmdvbmViYWJ5
+Authorization: Basic nobody@nowheresville.com gonebaby
 
 ### guest:guest
 GET http://localhost:8089/node/login HTTP/1.1
-Authorization: Basic Z3Vlc3Q6Z3Vlc3Q=
+Authorization: Basic guest guest
 
 ### admin:admin  regular endpoint
 GET http://localhost:8089/node/account HTTP/1.1
