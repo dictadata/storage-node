@@ -1,8 +1,19 @@
 ### Install Visual Studio Code extension: REST Client  humao.rest-client
 
-### guest:guest
+### user:user, will not get Admin rights
 POST http://localhost:8089/node/register HTTP/1.1
-Authorization: Basic guest guest
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+    "userid": "user",
+    "password": "user",
+    "roles": ["Public", "User", "Admin"]
+}
+
+### guest:guest - created by admin with Public role only
+POST http://localhost:8089/node/register HTTP/1.1
+Authorization: Basic admin admin
 Content-Type: application/json
 
 {
@@ -11,7 +22,7 @@ Content-Type: application/json
     "roles": ["Public"]
 }
 
-### regular endpoint
+### admin:admin
 POST http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json

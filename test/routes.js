@@ -15,6 +15,8 @@ const roles = require('../lib/roles');
 var router = express.Router();
 router.get('/echo', authorize([roles.User]), echo);
 router.get('/echo/:param', authorize([roles.Admin]), echo);
+router.post('/echo', authorize([roles.User]), echo);
+router.post('/echo/:param', authorize([roles.Admin]), echo);
 router.get('/flasher', authorize([roles.Public]), flasher);
 module.exports = router;
 
@@ -33,7 +35,7 @@ function echo(req, res) {
 
   res.write('\r\n----- url -----\r\n');
   var port = req.app.settings.port || 80;
-  var requestUrl = req.protocol + '://' + req.host + (port == 80 || port == 443 ? '' : ':' + port) + req.originalUrl;
+  var requestUrl = req.protocol + '://' + req.hostname + (port == 80 || port == 443 ? '' : ':' + port) + req.originalUrl;
 
   let Url = new url.URL(requestUrl);
   for (let u in Url) {
