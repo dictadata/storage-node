@@ -5,7 +5,7 @@
   "author": "Drew O. Letcher",
   "license": "MIT",
   "main": "index.js",
-  "repository": "github:dicta.io/storage-node",
+  "repository": "github:dicta-io/storage-node",
   "scripts": {
     "debug": "set NODE_ENV=development& node --inspect --preserve-symlinks test/main.js",
     "lint": "eslint lib/*.js",
