@@ -25,7 +25,7 @@ module.exports = router;
  * /echo
  */
 function echo(req, res) {
-  logger.info('URI \'echo\' was called.');
+  logger.verbose('/echo');
 
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.write(req.method + ' ' + req.url + ' HTTP/' + req.httpVersion + '\r\n');
@@ -75,7 +75,7 @@ function echo(req, res) {
  * /flasher
  */
 function flasher(req, res) {
-  logger.info('URI \'flash\' was called.');
+  logger.verbose('/flash');
 
   if (config.useSessions) {
     req.flash('info', 'Flash is back!');

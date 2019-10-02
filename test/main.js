@@ -5,11 +5,12 @@
 
 const StorageNode = require('../index');
 const routes = require('./routes');
+const logger = require('../lib/logger');
 
-console.log('starting');
-console.log('Adding route: /test');
+logger.verbose('starting');
+logger.verbose('Adding route: /test');
 StorageNode.start({
   routerPath: '/test',
   router: routes
 });
-console.log('started');
+logger.verbose('started');

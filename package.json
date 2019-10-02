@@ -7,7 +7,7 @@
   "main": "index.js",
   "repository": "github:dicta-io/storage-node",
   "scripts": {
-    "debug": "set NODE_ENV=development& node --inspect --preserve-symlinks test/main.js",
+    "debug": "set NODE_ENV=development& set LOG_LEVEL=verbose& node --inspect --preserve-symlinks test/main.js",
     "lint": "eslint lib/*.js",
     "lint-fix": "eslint --fix lib/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
