@@ -1,0 +1,91 @@
+[
+  {
+    "id": 5678,
+    "content": "Gather queries and send to Co per their user agreement",
+    "completed": false,
+    "created_at": "2019-08-01T11:17:22.000-05:00",
+    "updated_at": "2019-08-01T11:17:22.000-05:00",
+    "creator": {
+      "id": 499,
+      "name": "Kristin R."
+    },
+    "assignee": {
+      "id": 499,
+      "name": "Kristin R."
+    },
+    "todolist": {
+      "id": 506,
+      "name": "SQL Queiries for data extraction",
+      "creator": {
+        "id": 954,
+        "name": "Eric M."
+      },
+      "project": {
+        "id": 683,
+        "name": "Fiscal: Co Revenue Cycle Analytics (RCA)"
+      }
+    }
+  },
+  {
+    "id": 5978,
+    "content": "Give David M. access to Device for Active Directory link",
+    "completed": true,
+    "created_at": "2019-08-01T11:00:01.000-05:00",
+    "updated_at": "2019-08-01T11:18:11.000-05:00",
+    "completed_at": "2019-08-01T11:18:11.000-05:00",
+    "creator": {
+      "id": 715,
+      "name": "Kelli H."
+    },
+    "assignee": {
+      "id": 499,
+      "name": "Kristin R."
+    },
+    "completer": {
+      "id": 499,
+      "name": "Kristin R."
+    },
+    "todolist": {
+      "id": 756,
+      "name": "SLR Revisions/Additions/Removal",
+      "description": null,
+      "creator": {
+        "id": 715,
+        "name": "Kelli H."
+      },
+      "project": {
+        "id": 547,
+        "name": "IS Access Request Updates"
+      }
+    }
+  },
+  {
+    "id": 6013,
+    "content": "Verify reboots are working / 3rd wednesday",
+    "completed": false,
+    "created_at": "2019-08-01T09:15:11.000-05:00",
+    "updated_at": "2019-08-01T09:15:11.000-05:00",
+    "creator": {
+      "id": 631,
+      "name": "Conner H."
+    },
+    "assignee": {
+      "id": 631,
+      "name": "Conner H."
+    },
+    "todolist": {
+      "id": 68,
+      "name": "Server Stuff",
+      "description": null,
+      "creator": {
+        "id": 631,
+        "name": "Conner H."
+      },
+      "project": {
+        "type": "Project",
+        "id": 301,
+        "name": "IT Whiteboard"
+      }
+    }
+  }
+]

@@ -1,8 +1,8 @@
 {
-  "_storagePath": "elasticsearch|http://localhost:9200|api_accounts|*",
+  "_storagePath": "elasticsearch|http://localhost:9200|node_accounts|*",
   "model": "elasticsearch",
   "location": "http://localhost:9200",
-  "schema": "api_accounts",
+  "schema": "node_accounts",
   "key": "*",
   "fields": {
     "dateCreated": {
