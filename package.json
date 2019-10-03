@@ -29,7 +29,8 @@
     "passport-local": "^1.0.0",
     "rotating-file-stream": "^1.4.4",
     "serve-favicon": "^2.5.0",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.2.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
