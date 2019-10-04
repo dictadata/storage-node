@@ -14,9 +14,9 @@ GET http://localhost:8089/test/echo?a=1&b=2 HTTP/1.1
 Authorization: Basic admin admin
 
 ### User admin:admin
-GET http://localhost:8089/test/echo/x HTTP/1.1
+POST http://localhost:8089/test/echo/xyzparam HTTP/1.1
 Authorization: Basic admin admin
-Content-Length: application/json
+Content-Type: application/json
 
 {
   "field1": "value1",

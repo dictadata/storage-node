@@ -4,7 +4,7 @@
 "use strict";
 
 const StorageNode = require('../index');
-const routes = require('./routes');
+const routes = require('./myroutes');
 
 StorageNode.start({
   routerPath: '/test',
