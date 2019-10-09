@@ -19,11 +19,24 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch test/main.js",
+      "program": "${workspaceFolder}/test/main.js",
+      "port": 9229,
+      "runtimeArgs": ["--inspect-brk", "--preserve-symlinks"],
+      "env": {
+        "NODE_ENV": "development",
+        "LOG_LEVEL": "verbose"
+      },
+      "outputCapture": "std"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "nodemon",
       "runtimeExecutable": "nodemon",
       "runtimeArgs": [
         "--preserve-symlinks",
-        "--inspect"
+        "--inspect-brk"
       ],
       "env": {
         "DEBUG": "express:*"
