@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@dicta-io/storage-junctions": "^0.3.4",
+    "@dicta-io/storage-junctions": "^0.3.5",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
