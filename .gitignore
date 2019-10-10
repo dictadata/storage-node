@@ -11,6 +11,7 @@ npm-debug.log*
 selenium-debug.log
 
 # Editor directories and files
+.vs/
 *.suo
 *.ntvs*
 *.njsproj
