@@ -7,11 +7,17 @@ Content-Type: application/json
 }
 
 ### elasticsearch|http://localhost:9200|test_schema|*
-POST http://localhost:8089/node/retrieve/elasticsearch%7Chttp%3A%2F%2Flocalhost%3A9200%7Ctest_schema%7C* HTTP/1.1
+POST http://localhost:8089/node/retrieve HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
 {
+  "smt": {
+    "model": "elasticsearch",
+    "locus": "http://localhost:9200",
+    "schema": "test_schema",
+    "key": "*"
+  },
   "pattern": {
     "filter": {
       "Foo": "first"

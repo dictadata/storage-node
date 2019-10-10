@@ -4,26 +4,36 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "Foo": "first",
-  "Bar": "row",
-  "Baz": 321,
-  "Fobe": 1,
-  "Dt Test": "2018-10-07T00:00:00.000Z",
-  "enabled": true
+  "data": {
+    "Foo": "first",
+    "Bar": "row",
+    "Baz": 321,
+    "Fobe": 1,
+    "Dt Test": "2018-10-07T00:00:00.000Z",
+    "enabled": true
+  }
 }
 
 ### elasticsearch|http://localhost:9200|test_schema|=Foo
-PUT http://localhost:8089/node/store/elasticsearch%7Chttp%3A%2F%2Flocalhost%3A9200%7Ctest_schema%7C%3DFoo HTTP/1.1
+PUT http://localhost:8089/node/store HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "Foo": "eleventy",
-  "Bar": "row",
-  "Baz": 831,
-  "Fobe": 129,
-  "Dt Test": "2019-10-07T08:00:00",
-  "enabled": true
+  "smt": {
+    "model": "elasticsearch",
+    "locus": "http://localhost:9200",
+    "schema": "test_schema",
+    "key": "=Foo"
+  },
+  "data": {
+    "Foo": "eleventy",
+    "Bar": "row",
+    "Baz": 831,
+    "Fobe": 129,
+    "Dt Test": "2019-10-07T08:00:00",
+    "enabled": true
+  }
 }
 
 
@@ -33,12 +43,14 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "Foo": "first",
-  "Bar": "row",
-  "Baz": 123,
-  "Fobe": 1,
-  "Dt Test": "2018-10-07T00:00:00.000Z",
-  "enabled": true
+  "data": {
+    "Foo": "first",
+    "Bar": "row",
+    "Baz": 123,
+    "Fobe": 1,
+    "Dt Test": "2018-10-07T00:00:00.000Z",
+    "enabled": true
+  }
 }
 
 ### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo
@@ -47,12 +59,14 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "Foo": "first",
-  "Bar": "row",
-  "Baz": 13,
-  "Fobe": 1,
-  "Dt Test": "2018-10-07T00:00:00.000Z",
-  "enabled": true
+  "data": {
+    "Foo": "first",
+    "Bar": "row",
+    "Baz": 13,
+    "Fobe": 1,
+    "Dt Test": "2018-10-07T00:00:00.000Z",
+    "enabled": true
+  }
 }
 
 ### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo
@@ -61,10 +75,12 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "Foo": "eleventy",
-  "Bar": "row",
-  "Baz": 321,
-  "Fobe": 199,
-  "Dt Test": "2020-11-04T08:00:00",
-  "enabled": true
+  "data": {
+    "Foo": "eleventy",
+    "Bar": "row",
+    "Baz": 321,
+    "Fobe": 199,
+    "Dt Test": "2020-11-04T08:00:00",
+    "enabled": true
+  }
 }

@@ -13,7 +13,12 @@ Content-Type: application/json
       "options": {}
     },
     "destination": {
-      "smt": "elasticsearch|http://localhost:9200|test_transfer2|=Foo",
+      "smt": {
+        "model": "elasticsearch",
+        "locus": "http://localhost:9200",
+        "schema": "test_transfer2",
+        "key": "=Foo"
+      },
       "options": {}
     }
 }

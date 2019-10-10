@@ -8,16 +8,26 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "key": "first"
+  "keys": {
+    "key": "first"
+  }
 }
 
 ### elasticsearch|http://localhost:9200|test_schema|=Foo
-DELETE http://localhost:8089/node/dull/elasticsearch%7Chttp%3A%2F%2Flocalhost%3A9200%7Ctest_schema%7C%3DFoo HTTP/1.1
+DELETE http://localhost:8089/node/dull HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "Foo": "first"
+  "smt": {
+    "model": "elasticsearch",
+    "locus": "http://localhost:9200",
+    "schema": "test_schema",
+    "key": "=Foo"
+  },
+  "keys": {
+    "Foo": "first"
+  }
 }
 
 
@@ -27,5 +37,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
+  "keys": {
     "Foo": "eleventy"
+  }
 }
