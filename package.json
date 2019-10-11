@@ -1,6 +1,6 @@
 {
   "name": "@dicta-io/storage-node",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Node.js HTTP server using Express.js, Passport,js and @dicta-io/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@dicta-io/storage-junctions": "^0.3.6",
+    "@dicta-io/storage-junctions": "^0.3.7",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
