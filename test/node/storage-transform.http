@@ -8,19 +8,19 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-    "source": {
-      "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo",
-      "options": {}
+  "source": {
+    "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo",
+    "options": {}
+  },
+  "destination": {
+    "smt": {
+      "model": "elasticsearch",
+      "locus": "http://localhost:9200",
+      "schema": "test_transfer2",
+      "key": "=Foo"
     },
-    "destination": {
-      "smt": {
-        "model": "elasticsearch",
-        "locus": "http://localhost:9200",
-        "schema": "test_transfer2",
-        "key": "=Foo"
-      },
-      "options": {}
-    }
+    "options": {}
+  }
 }
 
 ### transfer with transforms
@@ -29,36 +29,36 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-    "source": {
-      "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo",
-      "options": {}
+  "source": {
+    "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo",
+    "options": {}
+  },
+  "destination": {
+    "smt": "elasticsearch|http://localhost:9200|test_transform3|=Foo",
+    "options": {}
+  },
+  "transforms": {
+    "inject": {
+      "Fie": "where's fum?"
     },
-    "destination": {
-      "smt": "elasticsearch|http://localhost:9200|test_transform3|=Foo",
-      "options": {}
-    },
-    "transforms": {
-      "inject": {
-        "Fie": "where's fum?"
-      },
-      "match": {
-        "Bar": {
-          "op": "eq",
-          "value": "row"
-        }
-      },
-      "drop": {
-        "Baz": {
-          "op": "eq",
-          "value": 5678
-        }
-      },
-      "mapping": {
-        "Foo": "Foo",
-        "Bar": "Bar",
-        "Baz": "Bazzy"
+    "match": {
+      "Bar": {
+        "op": "eq",
+        "value": "row"
       }
+    },
+    "drop": {
+      "Baz": {
+        "op": "eq",
+        "value": 5678
+      }
+    },
+    "mapping": {
+      "Foo": "Foo",
+      "Bar": "Bar",
+      "Baz": "Bazzy"
     }
+  }
 }
 
 ### transfer with transforms
@@ -67,34 +67,34 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-    "source": {
-      "smt": "elasticsearch|http://localhost:9200|test_transfer|=Foo",
-      "options": {}
+  "source": {
+    "smt": "elasticsearch|http://localhost:9200|test_transfer|=Foo",
+    "options": {}
+  },
+  "destination": {
+    "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_transfer2|=Foo",
+    "options": {}
+  },
+  "transforms": {
+    "inject": {
+      "Fie": "where's fum?"
     },
-    "destination": {
-      "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_transfer2|=Foo",
-      "options": {}
-    },
-    "transforms": {
-      "inject": {
-        "Fie": "where's fum?"
-      },
-      "match": {
-        "Bar": {
-          "op": "eq",
-          "value": "row"
-        }
-      },
-      "drop": {
-        "Baz": {
-          "op": "eq",
-          "value": 5678
-        }
-      },
-      "mapping": {
-        "Foo": "Foo",
-        "Bar": "Bar",
-        "Baz": "Bazzy"
+    "match": {
+      "Bar": {
+        "op": "eq",
+        "value": "row"
       }
+    },
+    "drop": {
+      "Baz": {
+        "op": "eq",
+        "value": 5678
+      }
+    },
+    "mapping": {
+      "Foo": "Foo",
+      "Bar": "Bar",
+      "Baz": "Bazzy"
     }
+  }
 }
