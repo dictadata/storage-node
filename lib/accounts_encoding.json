@@ -1,14 +1,8 @@
-/**
- * accounts/encoding
- */
-"use strict";
-
-module.exports = {
-  "_storagePath": "*|*|node_accounts|*",
+{
   "model": "*",
   "locus": "*",
   "schema": "node_accounts",
-  "key": "*",
+  "key": "=userid",
   "fields": {
     "userid": {
       "type": "keyword",
@@ -16,7 +10,7 @@ module.exports = {
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elastic_property": {
+      "elasticsearch_property": {
         "type": "keyword",
         "ignore_above": 256
       }
@@ -27,7 +21,7 @@ module.exports = {
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elastic_property": {
+      "elasticsearch_property": {
         "type": "keyword",
         "ignore_above": 256
       }
@@ -38,7 +32,7 @@ module.exports = {
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elastic_property": {
+      "elasticsearch_property": {
         "type": "keyword",
         "ignore_above": 32
       }
@@ -49,7 +43,7 @@ module.exports = {
       "default": null,
       "isNullable": false,
       "isKey": false,
-      "elastic_property": {
+      "elasticsearch_property": {
         "type": "date"
       }
     },
@@ -59,7 +53,7 @@ module.exports = {
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elastic_property": {
+      "elasticsearch_property": {
         "type": "date"
       }
     },
@@ -69,9 +63,9 @@ module.exports = {
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elastic_property": {
+      "elasticsearch_property": {
         "type": "date"
       }
     }
   }
-};
+}
