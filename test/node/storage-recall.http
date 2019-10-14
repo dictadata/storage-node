@@ -8,7 +8,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "keys": {
+  "match": {
     "key": "first"
   }
 }
@@ -25,7 +25,7 @@ Content-Type: application/json
     "schema": "test_schema",
     "key": "=Foo"
   },
-  "keys": {
+  "match": {
     "Foo": "first"
   }
 }
@@ -37,7 +37,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "keys": {
+  "match": {
     "key": "first"
   }
 }
@@ -48,7 +48,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "keys": {
+  "match": {
     "Foo": "first"
   }
 }
