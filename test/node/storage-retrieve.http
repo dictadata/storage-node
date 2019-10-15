@@ -19,7 +19,7 @@ Content-Type: application/json
     "key": "*"
   },
   "pattern": {
-    "filter": {
+    "match": {
       "Foo": "first"
     }
   }
@@ -32,7 +32,7 @@ Content-Type: application/json
 
 {
   "pattern": {
-    "filter": {
+    "match": {
       "Bar": "row",
       "Baz": { "gte": 100, "lte": 500 }
     },
@@ -58,7 +58,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "filter": {
+  "match": {
     "Foo": "first"
   }
 }
@@ -70,7 +70,7 @@ Content-Type: application/json
 
 {
   "pattern": {
-    "filter": {
+    "match": {
       "Bar": "row",
       "Baz": { "gte": 100, "lte": 500 }
     },

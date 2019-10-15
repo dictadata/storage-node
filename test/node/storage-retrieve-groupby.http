@@ -5,7 +5,7 @@ Content-Type: application/json
 
 {
   "pattern": {
-    "filter": {
+    "match": {
       "dealer": "City ForkLift",
       "invoice_date": { "gte": "2016-01-01", "lte": "2016-12-31" }
     },
