@@ -4,6 +4,12 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
+  "pattern": {
+    "cues": {
+      "order": {"Foo": "asc"},
+      "count": 100
+    }
+  }
 }
 
 ### elasticsearch|http://localhost:9200|test_schema|*
@@ -38,7 +44,7 @@ Content-Type: application/json
     },
     "cues": {
       "count": 3,
-      "order": {"Dt Test": "desc"}
+      "order": {"Foo": "asc"}
     }
   }
 }
