@@ -10,7 +10,7 @@
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elasticsearch_property": {
+      "_model_elasticsearch": {
         "type": "keyword",
         "ignore_above": 256
       }
@@ -21,7 +21,7 @@
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elasticsearch_property": {
+      "_model_elasticsearch": {
         "type": "keyword",
         "ignore_above": 256
       }
@@ -32,7 +32,7 @@
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elasticsearch_property": {
+      "_model_elasticsearch": {
         "type": "keyword",
         "ignore_above": 32
       }
@@ -43,7 +43,7 @@
       "default": null,
       "isNullable": false,
       "isKey": false,
-      "elasticsearch_property": {
+      "_model_elasticsearch": {
         "type": "date"
       }
     },
@@ -53,7 +53,7 @@
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elasticsearch_property": {
+      "_model_elasticsearch": {
         "type": "date"
       }
     },
@@ -63,7 +63,7 @@
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "elasticsearch_property": {
+      "_model_elasticsearch": {
         "type": "date"
       }
     }
