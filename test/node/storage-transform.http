@@ -1,9 +1,9 @@
-### transform test
-GET http://localhost:8089/node/transform/test HTTP/1.1
+### transfer test
+GET http://localhost:8089/node/transfer/test HTTP/1.1
 Authorization: Basic admin admin
 
 ### transfer
-POST http://localhost:8089/node/transform HTTP/1.1
+POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### transfer with transforms
-POST http://localhost:8089/node/transform HTTP/1.1
+POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
@@ -62,7 +62,7 @@ Content-Type: application/json
 }
 
 ### transfer with transforms
-POST http://localhost:8089/node/transform HTTP/1.1
+POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
