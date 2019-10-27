@@ -3,8 +3,8 @@
 Build Node.js HTTP server using Express.js, Passport,js and @dictadata/storage-junctions.  
 
 <ul>
-  <li>Services built on Node.js, Express,js and @dicta.io/storage-junctions library.</li>
-  <li>API handler's use @dicta.io/storage-junctions to access distributed data sources.</li>
+  <li>Services built on Node.js, Express,js and @dictadata.org/storage-junctions library.</li>
+  <li>API handler's use @dictadata.org/storage-junctions to access distributed data sources.</li>
   <li>Passport.js authentication can verify users against a database, LDAP or Microsoft Active Directory.</li>
   <li>Implements a role base authorization system for controlling access to API endpoints. </li>
 </ul>
