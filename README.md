@@ -1,6 +1,6 @@
-# @dicta-io/storage-node
+# @dictadata/storage-node
 
-Build Node.js HTTP server using Express.js, Passport,js and @dicta-io/storage-junctions.  
+Build Node.js HTTP server using Express.js, Passport,js and @dictadata/storage-junctions.  
 
 <ul>
   <li>Services built on Node.js, Express,js and @dicta.io/storage-junctions library.</li>
@@ -9,5 +9,5 @@ Build Node.js HTTP server using Express.js, Passport,js and @dicta-io/storage-ju
   <li>Implements a role base authorization system for controlling access to API endpoints. </li>
 </ul>
 
-See the @dicta-io/storage-api project for an example of building an API server using the @dicta-io/storage-node library.  https://github.com/dicta-io/storage-api
+See the @dictadata/storage-api project for an example of building an API server using the @dictadata/storage-node library.  https://github.com/dictadata/storage-api
 

@@ -1,5 +1,5 @@
 /**
- * @dicta-io/storage-node
+ * @dictadata/storage-node
  */
 "use strict";
 
