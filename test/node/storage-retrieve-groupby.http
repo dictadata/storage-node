@@ -1,5 +1,5 @@
 ### drew@drewletcher.net
-POST http://localhost:8089/node/retrieve/elasticsearch%7Chttp%3A%2F%2Flocalhost%3A9200%7Ctest_schema%7C* HTTP/1.1
+POST http://localhost:8089/node/retrieve/es_test_schema_0 HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 

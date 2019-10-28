@@ -9,16 +9,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo",
+    "smt": "mysql_test_schema_2",
     "options": {}
   },
   "destination": {
-    "smt": {
-      "model": "elasticsearch",
-      "locus": "http://localhost:9200",
-      "schema": "test_transfer2",
-      "key": "=Foo"
-    },
+    "smt": "es_test_transfer_2",
     "options": {}
   }
 }
@@ -30,11 +25,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo",
+    "smt": "mysql_test_schema_2",
     "options": {}
   },
   "destination": {
-    "smt": "elasticsearch|http://localhost:9200|test_transform3|=Foo",
+    "smt": "es_test_transfer_3",
     "options": {}
   },
   "transforms": {
@@ -68,11 +63,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "elasticsearch|http://localhost:9200|test_transfer|=Foo",
+    "smt": "es_test_transfer_3",
     "options": {}
   },
   "destination": {
-    "smt": "mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_transfer2|=Foo",
+    "smt": "mysql_test_transfer_2",
     "options": {}
   },
   "transforms": {
