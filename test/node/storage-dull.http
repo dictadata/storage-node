@@ -1,9 +1,9 @@
 ### elasticsearch|http://localhost:9200|foo_schema|uid
-DELETE http://localhost:8089/node/dull/es_test_schema_u HTTP/1.1
+DELETE http://localhost:8089/node/dull/es_foo_schema_id HTTP/1.1
 Authorization: Basic user user
 
 ### elasticsearch|http://localhost:9200|foo_schema|!Foo
-DELETE http://localhost:8089/node/dull/es_test_schema_1 HTTP/1.1
+DELETE http://localhost:8089/node/dull/es_foo_schema_ks HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
@@ -19,7 +19,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "smt": "es_test_schema_2",
+  "smt": "es_foo_schema_pk",
   "match": {
     "Foo": "first"
   }
@@ -27,7 +27,7 @@ Content-Type: application/json
 
 
 ### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|=Foo
-DELETE http://localhost:8089/node/dull/mysql_test_schema_2 HTTP/1.1
+DELETE http://localhost:8089/node/dull/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 

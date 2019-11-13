@@ -9,11 +9,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "mysql_test_schema_2",
+    "smt": "mysql_foo_schema_pk",
     "options": {}
   },
   "destination": {
-    "smt": "es_test_transfer_2",
+    "smt": "es_foo_transfer_2",
     "options": {}
   }
 }
@@ -25,11 +25,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "mysql_test_schema_2",
+    "smt": "mysql_foo_schema_pk",
     "options": {}
   },
   "destination": {
-    "smt": "es_test_transfer_3",
+    "smt": "es_foo_transfer_3",
     "options": {}
   },
   "transforms": {
@@ -63,11 +63,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "es_test_transfer_3",
+    "smt": "es_foo_transfer_3",
     "options": {}
   },
   "destination": {
-    "smt": "mysql_test_transfer_2",
+    "smt": "mysql_foo_transfer",
     "options": {}
   },
   "transforms": {

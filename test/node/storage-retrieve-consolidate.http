@@ -1,5 +1,5 @@
 ### drew@drewletcher.net
-POST http://localhost:8089/node/retrieve/es_test_schema_0 HTTP/1.1
+POST http://localhost:8089/node/retrieve/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 

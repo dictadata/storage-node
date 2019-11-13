@@ -1,5 +1,5 @@
 ### elasticsearch|http://localhost:9200|foo_schema|!Foo
-PUT http://localhost:8089/node/store/es_test_schema_1 HTTP/1.1
+PUT http://localhost:8089/node/store/es_foo_schema_ks HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
@@ -20,7 +20,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "smt": "es_test_schema_2",
+  "smt": "es_foo_schema_pk",
   "data": {
     "Foo": "eleventy",
     "Bar": "row",
@@ -32,24 +32,8 @@ Content-Type: application/json
 }
 
 
-### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|!Foo
-PUT http://localhost:8089/node/store/mysql_test_schema_1 HTTP/1.1
-Authorization: Basic user user
-Content-Type: application/json
-
-{
-  "data": {
-    "Foo": "first",
-    "Bar": "row",
-    "Baz": 123,
-    "Fobe": 1,
-    "Dt Test": "2018-10-07T00:00:00.000Z",
-    "enabled": true
-  }
-}
-
 ### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|=Foo
-PUT http://localhost:8089/node/store/mysql_test_schema_2 HTTP/1.1
+PUT http://localhost:8089/node/store/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
@@ -65,7 +49,7 @@ Content-Type: application/json
 }
 
 ### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|=Foo
-PUT http://localhost:8089/node/store/mysql_test_schema_2 HTTP/1.1
+PUT http://localhost:8089/node/store/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
