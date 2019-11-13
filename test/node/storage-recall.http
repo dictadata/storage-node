@@ -1,8 +1,8 @@
-### elasticsearch|http://localhost:9200|test_schema|uid
+### elasticsearch|http://localhost:9200|foo_schema|uid
 GET http://localhost:8089/node/recall/es_test_schema_u HTTP/1.1
 Authorization: Basic user user
 
-### elasticsearch|http://localhost:9200|test_schema|!Foo
+### elasticsearch|http://localhost:9200|foo_schema|!Foo
 GET http://localhost:8089/node/recall/es_test_schema_1 HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -13,7 +13,7 @@ Content-Type: application/json
   }
 }
 
-### elasticsearch|http://localhost:9200|test_schema|=Foo
+### elasticsearch|http://localhost:9200|foo_schema|=Foo
 GET http://localhost:8089/node/recall HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -26,7 +26,7 @@ Content-Type: application/json
 }
 
 
-### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|!Foo
+### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|!Foo
 GET http://localhost:8089/node/recall/mysql_test_schema_1 HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -37,7 +37,7 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo
+### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|=Foo
 GET http://localhost:8089/node/recall/mysql_test_schema_2 HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json

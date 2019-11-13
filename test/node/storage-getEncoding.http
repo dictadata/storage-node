@@ -11,6 +11,6 @@ Content-Type: application/json
   "smt": "es_test_schema_2"
 }
 
-### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo
+### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|=Foo
 GET http://localhost:8089/node/encoding/mysql_test_schema_2 HTTP/1.1
 Authorization: Basic admin admin

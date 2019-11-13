@@ -1,4 +1,4 @@
-### elasticsearch|http://localhost:9200|test_schema|=Foo
+### elasticsearch|http://localhost:9200|foo_schema|=Foo
 PUT http://localhost:8089/node/encoding/es_test_schema_2 HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -7,7 +7,7 @@ Content-Type: application/json
   "smt": {
     "model": "elasticsearch",
     "locus": "http://localhost:9200",
-    "schema": "test_schema",
+    "schema": "foo_schema",
     "key": "=Foo"
   },
   "fields": {
@@ -68,7 +68,7 @@ Content-Type: application/json
   }
 }
 
-### elasticsearch test_schema
+### elasticsearch foo_schema
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -133,7 +133,7 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_schema|=Foo
+### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_schema|=Foo
 PUT http://localhost:8089/node/encoding/mysql_test_schema_2 HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -201,7 +201,7 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|test_transfer2|=Foo
+### mysql|host=localhost;user=dicta;password=dicta;database=storage_node|foo_transfer2|=Foo
 PUT http://localhost:8089/node/encoding/mysql_test_schema_2 HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
