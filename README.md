@@ -10,4 +10,3 @@ Build Node.js HTTP server using Express.js, Passport,js and @dictadata/storage-j
 </ul>
 
 See the @dictadata/storage-api project for an example of building an API server using the @dictadata/storage-node library.  https://github.com/dictadata/storage-api
-
