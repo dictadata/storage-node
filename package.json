@@ -1,6 +1,6 @@
 {
   "name": "@dictadata/storage-node",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Node.js HTTP server using Express.js, Passport,js and @dictadata/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
