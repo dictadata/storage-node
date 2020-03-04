@@ -8,9 +8,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "match": {
     "key": "first"
-  }
 }
 
 ### elasticsearch|http://localhost:9200|foo_schema|=Foo

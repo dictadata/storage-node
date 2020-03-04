@@ -18,7 +18,7 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "smt": "es_foo_schema",
+  "smt": "es_foo_schema_ks",
   "pattern": {
     "match": {
       "Foo": "first"
@@ -73,7 +73,7 @@ Content-Type: application/json
   "pattern": {
     "match": {
       "Bar": "row",
-      "Baz": { "gte": 100, "lte": 500 }
+      "Baz": { "gte": 10, "lte": 500 }
     },
     "cues": {
       "count": 3,

@@ -54,12 +54,19 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "data": {
+  "data": [{
     "Foo": "eleventy",
     "Bar": "row",
     "Baz": 321,
     "Fobe": 199,
     "Dt Test": "2020-11-04T08:00:00",
     "enabled": true
-  }
+  },{
+    "Foo": "twelvety",
+    "Bar": "row",
+    "Baz": 18,
+    "Fobe": 212,
+    "Dt Test": "2020-03-03T08:00:00",
+    "enabled": true
+  }]
 }
