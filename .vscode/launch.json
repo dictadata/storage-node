@@ -13,6 +13,7 @@
         "run-script",
         "debug"
       ],
+      "envFile": "${workspaceFolder}/.env.development",
       "port": 9229,
       "outputCapture": "std"
     },
