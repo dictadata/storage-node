@@ -1,6 +1,7 @@
 # @dictadata/storage-node
 
-Build Node.js HTTP server using Express.js, Passport,js and @dictadata/storage-junctions.  
+REST API services built on Node.js, Express.js, Passport.js and @dictadata/storage-junctions.
+Intended to be the base project for a web services server.  See the @dictadata/storage-api for an example server that is extended from this project.
 
 <ul>
   <li>Services built on Node.js, Express,js and @dictadata.org/storage-junctions library.</li>
