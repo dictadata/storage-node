@@ -1,3 +1,8 @@
+- version 1.0.4
+  - update dependency for @dictadata/storage-junctions 1.0.3
+  - consistent field ordering for .csv and .json output
+  - insert default values for .csv and .json output
+  - a fix for error handling around junction.activate()
 - version 1.0.3
   - added error handling around junction.activate()
 - version 1.0.2
