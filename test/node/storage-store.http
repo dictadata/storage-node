@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
   "data": {
-    "second": {
+    "first": {
       "Foo": "first",
       "Bar": "row",
       "Baz": 831,
