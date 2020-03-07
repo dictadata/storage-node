@@ -1,6 +1,6 @@
 {
   "name": "@dictadata/storage-node",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "REST API services built on Node.js, Express.js, Passport.js and @dictadata/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
@@ -13,28 +13,28 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^1.0.0",
+    "@dictadata/storage-junctions": "^1.0.2",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-session": "^1.16.2",
-    "formidable": "^1.2.1",
-    "memorystore": "^1.6.1",
+    "express-session": "^1.17.0",
+    "formidable": "^1.2.2",
+    "memorystore": "^1.6.2",
     "morgan": "^1.9.1",
-    "passport": "^0.4.0",
+    "passport": "^0.4.1",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
-    "rotating-file-stream": "^1.4.4",
+    "rotating-file-stream": "^2.0.2",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.2.1"
+    "winston-daily-rotate-file": "^4.4.2"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1"
   },
   "engines": {

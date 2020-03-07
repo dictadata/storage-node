@@ -1,4 +1,11 @@
-* version 1.0.0
-  * Update dependency on @dictadata/storage-junctions v1.0.0.
-  * Changes related to supporting new StorageResults specification of returning lists (arrays) and dictionary maps (objects).
-  * Elasticsearch junction now returns data results as dictionary maps of key/value pairs. This applies to both application or Elasticsearch generated _id keys.
+- version 1.0.2
+  - update dependency for @dictadata/storage-junctions 1.0.2
+  - correct issue with foo_schema encoding for testing
+- version 1.0.1
+  - update dependency for @dictadata/storage-junctions 1.0.1
+  - fix an issue with accessing encoding paramater for elasticsearch putEncoding()
+  - fix an issue with undefined results.data from mysqlJunction
+- version 1.0.0
+  - Update dependency on @dictadata/storage-junctions v1.0.0
+  - Changes related to supporting new StorageResults specification of returning lists (arrays) and dictionary maps (objects).
+  - Elasticsearch junction now returns data results as dictionary maps of key/value pairs. This applies to both application or Elasticsearch generated _id keys.
