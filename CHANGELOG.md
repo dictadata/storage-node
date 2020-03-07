@@ -1,3 +1,5 @@
+- version 1.0.3
+  - added error handling around junction.activate()
 - version 1.0.2
   - update dependency for @dictadata/storage-junctions 1.0.2
   - correct issue with foo_schema encoding for testing
