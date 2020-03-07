@@ -14,7 +14,7 @@ Content-Type: application/json
     "Foo": {
       "name": "Foo",
       "type": "keyword",
-      "size": 0,
+      "size": 64,
       "default": null,
       "isNullable": false,
       "isKey": true,
@@ -22,8 +22,8 @@ Content-Type: application/json
     },
     "Bar": {
       "name": "Bar",
-      "type": "text",
-      "size": 0,
+      "type": "keyword",
+      "size": 64,
       "default": null,
       "isNullable": true,
       "isKey": false,
@@ -48,13 +48,13 @@ Content-Type: application/json
       "label": "Fobe, ain't no Foo"
     },
     "Dt Test": {
-      "name": "Date Test",
+      "name": "Dt Test",
       "type": "date",
       "size": 0,
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "label": "Date"
+      "label": "Dt Test"
     },
     "enabled": {
       "name": "enabled",
@@ -79,7 +79,7 @@ Content-Type: application/json
     "Foo": {
       "name": "Foo",
       "type": "keyword",
-      "size": 0,
+      "size": 64,
       "default": null,
       "isNullable": false,
       "isKey": true,
@@ -87,8 +87,8 @@ Content-Type: application/json
     },
     "Bar": {
       "name": "Bar",
-      "type": "text",
-      "size": 0,
+      "type": "keyword",
+      "size": 64,
       "default": null,
       "isNullable": true,
       "isKey": false,
@@ -113,13 +113,13 @@ Content-Type: application/json
       "label": "Fobe, ain't no Foo"
     },
     "Dt Test": {
-      "name": "Date Test",
+      "name": "Dt Test",
       "type": "date",
       "size": 0,
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "label": "Date"
+      "label": "Dt Test"
     },
     "enabled": {
       "name": "enabled",
@@ -147,7 +147,7 @@ Content-Type: application/json
     "Foo": {
       "name": "Foo",
       "type": "keyword",
-      "size": 0,
+      "size": 64,
       "default": null,
       "isNullable": false,
       "isKey": true,
@@ -155,8 +155,8 @@ Content-Type: application/json
     },
     "Bar": {
       "name": "Bar",
-      "type": "text",
-      "size": 0,
+      "type": "keyword",
+      "size": 64,
       "default": null,
       "isNullable": true,
       "isKey": false,
@@ -181,13 +181,13 @@ Content-Type: application/json
       "label": "Fobe, ain't no Foo"
     },
     "Dt Test": {
-      "name": "Date Test",
+      "name": "Dt Test",
       "type": "date",
       "size": 0,
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "label": "Date"
+      "label": "Dt Test"
     },
     "enabled": {
       "name": "enabled",
@@ -215,7 +215,7 @@ Content-Type: application/json
     "Foo": {
       "name": "Foo",
       "type": "keyword",
-      "size": 0,
+      "size": 64,
       "default": null,
       "isNullable": false,
       "isKey": true,
@@ -223,15 +223,15 @@ Content-Type: application/json
     },
     "Bar": {
       "name": "Bar",
-      "type": "text",
-      "size": 0,
+      "type": "keyword",
+      "size": 64,
       "default": null,
       "isNullable": true,
       "isKey": false,
       "label": "Bar"
     },
-    "Bazzy": {
-      "name": "Bazzy",
+    "Baz": {
+      "name": "Baz",
       "type": "integer",
       "size": 0,
       "default": null,
@@ -239,14 +239,23 @@ Content-Type: application/json
       "isKey": false,
       "label": "Baz"
     },
-    "Fie": {
-      "name": "Fie",
-      "type": "text",
+    "Fobe": {
+      "name": "Fobe",
+      "type": "float",
       "size": 0,
       "default": null,
       "isNullable": true,
       "isKey": false,
-      "label": "Fie fi fo fum"
+      "label": "Fobe, ain't no Foo"
+    },
+    "Dt Test": {
+      "name": "Dt Test",
+      "type": "date",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Dt Test"
     },
     "enabled": {
       "name": "enabled",
