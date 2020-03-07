@@ -50,3 +50,20 @@ Content-Type: application/json
     }
   }
 }
+
+### user - changed by admin
+PUT http://localhost:8089/node/account HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json
+
+{
+  "account": {
+    "userid": "user",
+    "password": "user",
+    "roles": ["Public","User","ETL"],
+    "settings": {
+      "homepage": "/home",
+      "theme": "dark"
+    }
+  }
+}

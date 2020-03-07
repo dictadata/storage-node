@@ -1,4 +1,4 @@
-### elasticsearch|http://localhost:9200|foo_schema|uid
+### elasticsearch|http://localhost:9200|foo_schema|first
 DELETE http://localhost:8089/node/dull/es_foo_schema_id HTTP/1.1
 Authorization: Basic user user
 
