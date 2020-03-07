@@ -1,5 +1,22 @@
 ### Install Visual Studio Code extension: REST Client  humao.rest-client
 
+### dullboy, updates settings but will not get Admin rights
+PUT http://localhost:8089/node/account HTTP/1.1
+Authorization: Basic dullboy dullboy
+Content-Type: application/json
+
+{
+  "account": {
+    "userid": "dullboy",
+    "password": "dullboy",
+    "roles": ["Public","User","Admin"],
+    "settings": {
+      "homepage": "/home",
+      "theme": "vue"
+    }
+  }
+}
+
 ### guest:guest - guest does not have User rights
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic guest guest
@@ -30,23 +47,6 @@ Content-Type: application/json
     "settings": {
       "homepage": "/guest/myhomepage",
       "theme": "dark"
-    }
-  }
-}
-
-### dullboy, updates settings but will not get Admin rights
-PUT http://localhost:8089/node/account HTTP/1.1
-Authorization: Basic dullboy dullboy
-Content-Type: application/json
-
-{
-  "account": {
-    "userid": "dullboy",
-    "password": "dullboy",
-    "roles": ["Public","User","Admin"],
-    "settings": {
-      "homepage": "/home",
-      "theme": "vue"
     }
   }
 }
