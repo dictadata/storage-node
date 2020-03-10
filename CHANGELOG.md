@@ -1,3 +1,5 @@
+- version 1.0.5
+  - update dependency for @dictadata/storage-junctions 1.0.4
 - version 1.0.4
   - update dependency for @dictadata/storage-junctions 1.0.3
   - consistent field ordering for .csv and .json output
