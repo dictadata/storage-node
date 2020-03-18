@@ -1,17 +1,19 @@
+- version 1.0.6
+  - update dependency fo @dictadata/storage-junctions v1.0.5
 - version 1.0.5
-  - update dependency for @dictadata/storage-junctions 1.0.4
+  - update dependency for @dictadata/storage-junctions v1.0.4
 - version 1.0.4
-  - update dependency for @dictadata/storage-junctions 1.0.3
+  - update dependency for @dictadata/storage-junctions v1.0.3
   - consistent field ordering for .csv and .json output
   - insert default values for .csv and .json output
   - a fix for error handling around junction.activate()
 - version 1.0.3
   - added error handling around junction.activate()
 - version 1.0.2
-  - update dependency for @dictadata/storage-junctions 1.0.2
+  - update dependency for @dictadata/storage-junctions v1.0.2
   - correct issue with foo_schema encoding for testing
 - version 1.0.1
-  - update dependency for @dictadata/storage-junctions 1.0.1
+  - update dependency for @dictadata/storage-junctions v1.0.1
   - fix an issue with accessing encoding paramater for elasticsearch putEncoding()
   - fix an issue with undefined results.data from mysqlJunction
 - version 1.0.0
