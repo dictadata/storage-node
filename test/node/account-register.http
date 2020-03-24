@@ -1,6 +1,5 @@
 ### Install Visual Studio Code extension: REST Client  humao.rest-client
 
-
 ### dullboy
 POST http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic dullboy dullboy

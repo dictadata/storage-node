@@ -1,4 +1,4 @@
-### drew@drewletcher.net
+### elasticsearch consolidate w/ groupby
 POST http://localhost:8089/node/retrieve/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json

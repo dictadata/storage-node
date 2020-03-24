@@ -9,7 +9,7 @@ Content-Type: application/json
   "account": {
     "userid": "dullboy",
     "password": "dullboy",
-    "roles": ["Public","User","Admin"],
+    "roles": ["Public","User","Docs"],
     "settings": {
       "homepage": "/home",
       "theme": "vue"
