@@ -1,19 +1,19 @@
 {
   "name": "@dictadata/storage-node",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "REST API services built on Node.js, Express.js, Passport.js and @dictadata/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
   "main": "index.js",
   "repository": "github:dictadata/storage-node",
   "scripts": {
-    "debug": "node --inspect-brk=9229 --preserve-symlinks test/main.js",
+    "debug": "nodemon --inspect-brk=9229 --preserve-symlinks test/main.js",
     "lint": "eslint lib/*.js",
     "lint-fix": "eslint --fix lib/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^1.0.5",
+    "@dictadata/storage-junctions": "^1.1.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
