@@ -15,21 +15,15 @@ Content-Type: application/json
   "transforms": {
     "filter": {
       "match": {
-        "Bar": {
-          "op": "eq",
-          "value": "row"
-        }
+        "Bar": "row"
       },
       "drop": {
-        "Baz": {
-          "op": "eq",
-          "value": 5678
-        }
+        "Baz": { "eq": 456 }
       }
     },
     "fields": {
-      "inject": {
-        "Fie": "where's fum?"
+      "inject_before": {
+        "Fie": "where's es fum?"
       },
       "mapping": {
         "Foo": "Foo",
@@ -51,32 +45,26 @@ Content-Type: application/json
     "options": {}
   },
   "destination": {
-    "smt": "mysql_foo_transfer",
+    "smt": "mysql_foo_transfer_3",
     "options": {}
   },
   "transforms": {
     "filter": {
       "match": {
-        "Bar": {
-          "op": "eq",
-          "value": "row"
-        }
+        "Bar": "row"
       },
       "drop": {
-        "Baz": {
-          "op": "eq",
-          "value": 5678
-        }
+        "Baz": { "eq": 456 }
       }
     },
     "fields": {
-      "inject": {
-        "Fie": "where's fum?"
+      "inject_after": {
+        "Fie": "where's my fum?"
       },
       "mapping": {
         "Foo": "Foo",
         "Bar": "Bar",
-        "Baz": "Bazzy"
+        "Bazzy": "Bazzy"
       }
     }
   }
