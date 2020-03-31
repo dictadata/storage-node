@@ -23,4 +23,4 @@ exports.roles = roles;
 exports.Account = Account;
 
 exports.startup = startup;
-exports.logger = logger;
+exports.logger = logger;  // same Winston instance as storage-junctions' logger
