@@ -13,7 +13,7 @@ Content-Type: application/json
   }
 }
 
-### user:user, will not get Admin rights
+### user:user, cannot set roles default is ["Public","User"]
 POST http://localhost:8089/node/register HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -26,7 +26,7 @@ Content-Type: application/json
   }
 }
 
-### guest:guest - created by admin with Public role only
+### guest - created by admin with Public role only
 POST http://localhost:8089/node/register HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json

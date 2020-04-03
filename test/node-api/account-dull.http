@@ -24,7 +24,7 @@ Content-Type: application/json
   }
 }
 
-### dull by owner, guest does not have User rights
+### guest, does not have User rights
 DELETE http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic guest guest
 Content-Type: application/json
@@ -36,7 +36,7 @@ Content-Type: application/json
   }
 }
 
-### guest:guest deleted by admin
+### guest deleted by admin
 DELETE http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
