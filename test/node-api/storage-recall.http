@@ -18,8 +18,10 @@ Content-Type: application/json
 
 {
   "smt": "es_foo_schema_pk",
-  "match": {
-    "Foo": "first"
+  "pattern": {
+    "match": {
+      "Foo": "first"
+    }
   }
 }
 
@@ -29,7 +31,9 @@ Authorization: Basic admin admin
 Content-Type: application/json
 
 {
-  "match": {
-    "Foo": "first"
+  "pattern": {
+    "match": {
+      "Foo": "first"
+    }
   }
 }

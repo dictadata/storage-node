@@ -59,8 +59,10 @@ Authorization: Basic user user
 Content-Type: application/json
 
 {
-  "match": {
-    "Foo": "first"
+  "pattern": {
+    "match": {
+      "Foo": "first"
+    }
   }
 }
 
