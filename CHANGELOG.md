@@ -1,3 +1,5 @@
+- version 1.1.2
+  - fix security issue that allowed user to change their own roles
 - version 1.1.1
   - add /list route to the API
   - update to @dictadata/storage-junctions v1.1.2
