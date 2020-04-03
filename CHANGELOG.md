@@ -1,3 +1,6 @@
+- version 1.1.1
+  - add /list route to the API
+  - update to @dictadata/storage-junctions v1.1.2
 - version 1.1.0
   - update to @dictadata/storage-junctions v1.1.0
     - adds support for Excel workbooks and FTP file storage
