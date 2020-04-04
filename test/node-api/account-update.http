@@ -1,5 +1,5 @@
 
-### dullboy, updates settings but cannot modify roles
+### dullboy, cannot modify own roles
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic dullboy dullboy
 Content-Type: application/json
@@ -76,15 +76,11 @@ Content-Type: application/json
   "account": {
     "userid": "user",
     "password": "user",
-    "roles": ["Public","User","ETL"],
-    "settings": {
-      "homepage": "/home",
-      "theme": "dark"
-    }
+    "roles": ["Public","User","ETL"]
   }
 }
 
-### admin - change admin password
+### admin - change password
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json

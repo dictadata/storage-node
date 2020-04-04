@@ -12,6 +12,7 @@ Content-Type: application/json
 }
 
 ### elasticsearch|http://localhost:9200|node_storage|=Foo
+### accounts is a development only SMT
 GET http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json

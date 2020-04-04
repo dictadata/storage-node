@@ -12,19 +12,6 @@ Content-Type: application/json
   }
 }
 
-### user, cannot set roles, default ["Public","User"]
-POST http://localhost:8089/node/register HTTP/1.1
-Authorization: Basic user user
-Content-Type: application/json
-
-{
-  "account": {
-    "userid": "user",
-    "password": "user",
-    "roles": ["Public", "User", "Admin"]
-  }
-}
-
 ### guest - created by admin with Public role only
 POST http://localhost:8089/node/register HTTP/1.1
 Authorization: Basic admin admin
@@ -35,5 +22,18 @@ Content-Type: application/json
     "userid": "guest",
     "password": "guest",
     "roles": ["Public"]
+  }
+}
+
+### user, cannot set roles, defaults to ["Public","User"]
+POST http://localhost:8089/node/register HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "account": {
+    "userid": "user",
+    "password": "user",
+    "roles": ["Public", "User", "Admin"]
   }
 }
