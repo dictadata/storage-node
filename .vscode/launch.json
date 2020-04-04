@@ -20,35 +20,15 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch test/main.js",
-      "program": "${workspaceFolder}/test/main.js",
+      "name": "run nodemon",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "nodemon"
+      ],
+      "envFile": "${workspaceFolder}/.env.development",
       "port": 9229,
-      "runtimeArgs": [
-        "--inspect-brk",
-        "--preserve-symlinks"
-      ],
-      "env": {
-        "NODE_ENV": "development",
-        "LOG_LEVEL": "verbose"
-      },
       "outputCapture": "std"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "nodemon",
-      "runtimeExecutable": "nodemon",
-      "runtimeArgs": [
-        "--preserve-symlinks",
-        "--inspect-brk"
-      ],
-      "env": {
-        "DEBUG": "express:*"
-      },
-      "program": "${workspaceFolder}/test/main.js",
-      "restart": true,
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
