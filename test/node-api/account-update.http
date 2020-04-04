@@ -8,7 +8,7 @@ Content-Type: application/json
   "account": {
     "userid": "dullboy",
     "password": "dullboy",
-    "roles": ["Public","User","Docs"],
+    "roles": ["Public","User","ETL"],
     "settings": {
       "homepage": "/home",
       "theme": "vue"
