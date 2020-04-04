@@ -9,11 +9,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "csv_foofile",
+    "SMT": "csv_foofile",
     "options": {}
   },
   "destination": {
-    "smt": "mysql_foo_schema_pk",
+    "SMT": "mysql_foo_schema_pk",
     "options": {}
   }
 }
@@ -25,11 +25,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "mysql_foo_schema_pk",
+    "SMT": "mysql_foo_schema_pk",
     "options": {}
   },
   "destination": {
-    "smt": "es_foo_transfer_2",
+    "SMT": "es_foo_transfer_2",
     "options": {}
   }
 }
@@ -41,7 +41,7 @@ Content-Type: application/json
 
 {
   "source": {
-    "smt": "rest_weather_forecast",
+    "SMT": "rest_weather_forecast",
     "options": {
         "headers": {
           "Accept": "application/ld+json",
@@ -56,7 +56,7 @@ Content-Type: application/json
     }
   },
   "destination": {
-    "smt": "mysql_rest_forecast",
+    "SMT": "mysql_rest_forecast",
     "options": {}
   }
 }
