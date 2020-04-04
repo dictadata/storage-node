@@ -1,8 +1,20 @@
-### transfer test
-GET http://localhost:8089/node/transfer/test HTTP/1.1
-Authorization: Basic admin admin
+### transfer foofile.json > elasticsearch
+POST http://localhost:8089/node/transfer HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
 
-### transfer
+{
+  "source": {
+    "SMT": "json_foofile",
+    "options": {}
+  },
+  "destination": {
+    "SMT": "es_foo_schema_pk",
+    "options": {}
+  }
+}
+
+### transfer foofile.csv > mysql
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -18,7 +30,7 @@ Content-Type: application/json
   }
 }
 
-### transfer
+### transfer mysql > elasticsearch
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -29,12 +41,28 @@ Content-Type: application/json
     "options": {}
   },
   "destination": {
-    "SMT": "es_foo_transfer_2",
+    "SMT": "es_foo_transfer",
     "options": {}
   }
 }
 
-### weather
+### transfer elasticsearch > mysql
+POST http://localhost:8089/node/transfer HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "source": {
+    "SMT": "es_foo_schema_pk",
+    "options": {}
+  },
+  "destination": {
+    "SMT": "mysql_foo_transfer",
+    "options": {}
+  }
+}
+
+### REST weather > elasticsearch
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -56,7 +84,34 @@ Content-Type: application/json
     }
   },
   "destination": {
-    "SMT": "mysql_rest_forecast",
+    "SMT": "es_weather_forecast",
+    "options": {}
+  }
+}
+
+### REST weather > mysql
+POST http://localhost:8089/node/transfer HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "source": {
+    "SMT": "rest_weather_forecast",
+    "options": {
+        "headers": {
+          "Accept": "application/ld+json",
+          "User-Agent": "@dictadata.org/storage-node contact:info@dictadata.org"
+        },
+        "reader": {
+          "extract": {
+            "encoding": "",
+            "data": "periods"
+          }
+        }
+    }
+  },
+  "destination": {
+    "SMT": "mysql_weather_forecast",
     "options": {}
   }
 }

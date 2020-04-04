@@ -9,7 +9,7 @@ Content-Type: application/json
     "options": {}
   },
   "destination": {
-    "SMT": "es_foo_transfer_3",
+    "SMT": "es_foo_transform",
     "options": {}
   },
   "transforms": {
@@ -41,11 +41,11 @@ Content-Type: application/json
 
 {
   "source": {
-    "SMT": "es_foo_transfer_3",
+    "SMT": "es_foo_schema_pk",
     "options": {}
   },
   "destination": {
-    "SMT": "mysql_foo_transfer_3",
+    "SMT": "mysql_foo_transform",
     "options": {}
   },
   "transforms": {
