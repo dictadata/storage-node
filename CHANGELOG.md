@@ -1,6 +1,7 @@
 - version 1.1.3
   - refactor /node/list as a POST query
   - testing and updates to user accounts and authentication processing
+  - constitent use of SMT names, validation and transfer responses
 - version 1.1.2
   - fix security issue that allowed user to change their own roles
 - version 1.1.1
