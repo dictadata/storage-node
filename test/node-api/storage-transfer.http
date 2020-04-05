@@ -59,6 +59,18 @@ Content-Type: application/json
   "destination": {
     "SMT": "mysql_foo_transfer",
     "options": {}
+  },
+  "transforms": {
+    "fields": {
+      "mapping": {
+        "Foo": "Foo",
+        "Bar": "Bar",
+        "Baz": "Baz",
+        "Fobe": "Fobe",
+        "Dt Test": "Dt Test",
+        "enabled": "enabled"
+      }
+    }
   }
 }
 
