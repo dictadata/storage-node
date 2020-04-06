@@ -29,6 +29,19 @@
       "envFile": "${workspaceFolder}/.env.development",
       "port": 9229,
       "outputCapture": "std"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "run prod",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "debug"
+      ],
+      "envFile": "${workspaceFolder}/.env.production",
+      "port": 9229,
+      "outputCapture": "std"
     }
   ]
 }
