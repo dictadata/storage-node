@@ -1,3 +1,5 @@
+- version 1.1.7
+  - process.env.NODE_ENV instead of app.get('env')
 - version 1.1.6
   - fix production console logging
 - version 1.1.5
