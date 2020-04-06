@@ -1,3 +1,6 @@
+- version 1.1.5
+  - require xlsx as local package
+  - alway check NODE_ENV against "development"
 - version 1.1.4
   - logger configuration changes
 - version 1.1.3
