@@ -1,3 +1,5 @@
+- version 1.1.6
+  - fix production console logging
 - version 1.1.5
   - require xlsx as local package
   - alway check NODE_ENV against "development"
