@@ -1,3 +1,5 @@
+- version 1.1.4
+  - logger configuration changes
 - version 1.1.3
   - refactor /node/list as a POST query
   - testing and updates to user accounts and authentication processing
