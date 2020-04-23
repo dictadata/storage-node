@@ -34,7 +34,7 @@ Content-Type: application/json
     },
     "Fobe": {
       "name": "Fobe",
-      "type": "float",
+      "type": "number",
       "size": 0,
       "default": null,
       "isNullable": true,
@@ -99,7 +99,7 @@ Content-Type: application/json
     },
     "Fobe": {
       "name": "Fobe",
-      "type": "float",
+      "type": "number",
       "size": 0,
       "default": null,
       "isNullable": true,
@@ -163,7 +163,7 @@ Content-Type: application/json
     },
     "Fobe": {
       "name": "Fobe",
-      "type": "float",
+      "type": "number",
       "size": 0,
       "default": null,
       "isNullable": true,
@@ -228,7 +228,7 @@ Content-Type: application/json
     },
     "Fobe": {
       "name": "Fobe",
-      "type": "float",
+      "type": "number",
       "size": 0,
       "default": null,
       "isNullable": true,
