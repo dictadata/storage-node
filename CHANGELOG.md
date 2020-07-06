@@ -1,3 +1,5 @@
+- version 1.1.8
+  - updated dependencies
 - version 1.1.7
   - process.env.NODE_ENV instead of app.get('env')
 - version 1.1.6
