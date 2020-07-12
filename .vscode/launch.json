@@ -5,42 +5,48 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "name": "dev",
       "request": "launch",
-      "name": "run debug",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "debug"
-      ],
+      "type": "node",
       "envFile": "${workspaceFolder}/.env.development",
-      "port": 9229,
+      "program": "${workspaceFolder}/test/main.js",
+      "runtimeArgs": [
+        "--inspect",
+        "--preserve-symlinks"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
-      "type": "node",
+      "name": "nodemon",
       "request": "launch",
-      "name": "run nodemon",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "nodemon"
-      ],
+      "type": "pwa-node",
       "envFile": "${workspaceFolder}/.env.development",
-      "port": 9229,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "program": "${workspaceFolder}/test/main.js",
+      "restart": true,
+      "runtimeExecutable": "nodemon",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
-      "type": "node",
+      "name": "prod",
       "request": "launch",
-      "name": "run prod",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "debug"
-      ],
+      "type": "node",
       "envFile": "${workspaceFolder}/.env.production",
-      "port": 9229,
+      "program": "${workspaceFolder}/test/main.js",
+      "runtimeArgs": [
+        "--inspect",
+        "--preserve-symlinks"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     }
   ]
