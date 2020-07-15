@@ -1,3 +1,5 @@
+- version 1.1.10
+  - add client event logging to account API
 - version 1.1.9
   - fix bug in updating account settings
 - version 1.1.8
