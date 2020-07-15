@@ -10,6 +10,7 @@ Content-Type: application/json
     "password": "dullboy",
     "roles": ["Public","User","ETL"],
     "settings": {
+      "prefix": "myapp",
       "homepage": "/home",
       "theme": "vue"
     }
