@@ -24,7 +24,9 @@ Content-Type: application/json
 {
   "origin": {
     "SMT": "csv_foofile",
-    "options": {}
+    "options": {
+      "csvHeader": true
+    }
   },
   "terminal": {
     "SMT": "mysql_foo_schema_pk",

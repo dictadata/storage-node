@@ -7,16 +7,11 @@
     {
       "name": "dev",
       "request": "launch",
-      "type": "node",
+      "type": "pwa-node",
       "envFile": "${workspaceFolder}/.env.development",
       "program": "${workspaceFolder}/test/main.js",
-      "runtimeArgs": [
-        "--inspect",
-        "--preserve-symlinks"
-      ],
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
+      "skipFiles": ["<node_internals>/**"],
       "outputCapture": "std"
     },
     {
@@ -29,24 +24,17 @@
       "program": "${workspaceFolder}/test/main.js",
       "restart": true,
       "runtimeExecutable": "nodemon",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "skipFiles": ["<node_internals>/**"],
       "outputCapture": "std"
     },
     {
       "name": "prod",
       "request": "launch",
-      "type": "node",
+      "type": "pwa-node",
       "envFile": "${workspaceFolder}/.env.production",
       "program": "${workspaceFolder}/test/main.js",
-      "runtimeArgs": [
-        "--inspect",
-        "--preserve-symlinks"
-      ],
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
+      "skipFiles": ["<node_internals>/**"],
       "outputCapture": "std"
     }
   ]
