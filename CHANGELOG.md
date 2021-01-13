@@ -1,3 +1,5 @@
+- version 1.2.0
+  - update dependency to @dictadata/storage-junctions 1.2.+
 - version 1.1.10
   - add client event logging to account API
 - version 1.1.9
