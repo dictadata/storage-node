@@ -105,6 +105,33 @@ Content-Type: application/json
   }
 }
 
+### REST weather > mssql
+POST http://localhost:8089/node/transfer HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "origin": {
+    "SMT": "rest_weather_forecast",
+    "options": {
+        "headers": {
+          "Accept": "application/ld+json",
+          "User-Agent": "@dictadata.org/storage-node contact:info@dictadata.org"
+        },
+        "reader": {
+          "extract": {
+            "encoding": "",
+            "data": "periods"
+          }
+        }
+    }
+  },
+  "terminal": {
+    "SMT": "mssql_weather_forecast",
+    "options": {}
+  }
+}
+
 ### REST weather > mysql
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
