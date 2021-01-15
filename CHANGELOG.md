@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.2.2
+  - add support for Microsoft SQL Server
+  - update dependency to @dictadata/storage-junctions 1.2.+
 - version 1.2.1
   - add project name and version to /status request
 - version 1.2.0
