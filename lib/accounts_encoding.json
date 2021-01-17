@@ -1,7 +1,7 @@
 {
   "model": "*",
   "locus": "*",
-  "schema": "node_accounts",
+  "schema": "api_accounts",
   "key": "=userid",
   "fields": {
     "userid": {
@@ -9,7 +9,7 @@
       "size": 0,
       "default": null,
       "isNullable": true,
-      "isKey": false,
+      "isKey": true,
       "_elasticsearch": {
         "type": "keyword",
         "ignore_above": 256
@@ -65,6 +65,26 @@
       "isKey": false,
       "_elasticsearch": {
         "type": "date"
+      }
+    },
+    "profile": {
+      "type": "text",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "_elasticsearch": {
+        "type": "object"
+      }
+    },
+    "settings": {
+      "type": "text",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "_elasticsearch": {
+        "type": "object"
       }
     }
   }
