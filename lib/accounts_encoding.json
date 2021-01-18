@@ -1,7 +1,7 @@
 {
   "model": "*",
   "locus": "*",
-  "schema": "api_accounts",
+  "schema": "node_accounts",
   "key": "=userid",
   "fields": {
     "userid": {
