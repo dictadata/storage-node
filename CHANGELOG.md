@@ -1,8 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
-- version 1.3.0
+- version 1.3.1
   - add support for Microsoft SQL Server
   - add support for API accounts in SQL storage
+  - update dependency to @dictadata/storage-junctions 1.3.0
 - version 1.2.2
   - add support for Microsoft SQL Server
   - update dependency to @dictadata/storage-junctions 1.2.+
