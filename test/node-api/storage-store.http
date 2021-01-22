@@ -52,8 +52,7 @@ Content-Type: application/json
 }
 
 ### elasticsearch|http://localhost:9200|foo_schema|=Foo
-### doc store
-### storing multiple rows
+### store multiple rows
 PUT http://localhost:8089/node/store HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json

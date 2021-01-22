@@ -6,7 +6,7 @@
   "fields": {
     "userid": {
       "type": "keyword",
-      "size": 0,
+      "size": 256,
       "default": null,
       "isNullable": true,
       "isKey": true,
@@ -17,29 +17,28 @@
     },
     "password": {
       "type": "keyword",
-      "size": 0,
+      "size": 64,
       "default": null,
       "isNullable": true,
       "isKey": false,
       "_elasticsearch": {
         "type": "keyword",
-        "ignore_above": 256
+        "ignore_above": 64
       }
     },
     "roles": {
-      "type": "keyword",
-      "size": 0,
-      "default": null,
-      "isNullable": true,
-      "isKey": false,
-      "_elasticsearch": {
+      "type": "list",
+      "_item": {
         "type": "keyword",
-        "ignore_above": 32
+        "size": 32,
+        "_elasticsearch": {
+          "type": "keyword",
+          "ignore_above": 32
+        }
       }
     },
     "dateCreated": {
       "type": "date",
-      "size": 0,
       "default": null,
       "isNullable": false,
       "isKey": false,
@@ -68,23 +67,13 @@
       }
     },
     "profile": {
-      "type": "text",
-      "size": 0,
-      "default": null,
-      "isNullable": true,
-      "isKey": false,
-      "_elasticsearch": {
-        "type": "object"
+      "type": "map",
+      "fields": {
       }
     },
     "settings": {
-      "type": "text",
-      "size": 0,
-      "default": null,
-      "isNullable": true,
-      "isKey": false,
-      "_elasticsearch": {
-        "type": "object"
+      "type": "map",
+      "fields": {
       }
     }
   }
