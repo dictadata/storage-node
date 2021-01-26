@@ -5,10 +5,8 @@ Content-Type: application/json
 
 {
   "pattern": {
-    "cues": {
-      "order": {"Foo": "asc"},
-      "count": 100
-    }
+    "order": {"Foo": "asc"},
+    "count": 100
   }
 }
 
@@ -37,10 +35,8 @@ Content-Type: application/json
       "Bar": "row",
       "Baz": { "gte": 100, "lte": 500 }
     },
-    "cues": {
-      "count": 3,
-      "order": {"Foo": "asc"}
-    }
+    "count": 3,
+    "order": {"Foo": "asc"}
   }
 }
 
@@ -77,10 +73,8 @@ Content-Type: application/json
       "Bar": "row",
       "Baz": { "gte": 10, "lte": 500 }
     },
-    "cues": {
-      "count": 3,
-      "order": {"Dt Test": "desc"}
-    }
+    "count": 3,
+    "order": {"Dt Test": "desc"}
   }
 }
 
@@ -117,9 +111,7 @@ Content-Type: application/json
       "Bar": "row",
       "Baz": { "gte": 10, "lte": 500 }
     },
-    "cues": {
-      "count": 3,
-      "order": {"Dt Test": "desc"}
-    }
+    "count": 3,
+    "order": {"Dt Test": "desc"}
   }
 }

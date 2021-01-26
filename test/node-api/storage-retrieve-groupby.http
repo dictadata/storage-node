@@ -16,10 +16,8 @@ Content-Type: application/json
       "dt_min": { "min": "Dt Test" },
       "dt_max": { "max": "Dt Test" }
     },
-    "cues": {
-      "count": 3,
-      "order": {"baz_sum": "desc"}
-    }
+    "count": 3,
+    "order": {"baz_sum": "desc"}
   }
 }
 
@@ -41,10 +39,8 @@ Content-Type: application/json
       "dt_min": { "min": "Dt Test" },
       "dt_max": { "max": "Dt Test" }
     },
-    "cues": {
-      "count": 3,
-      "order": {"baz_sum": "desc"}
-    }
+    "count": 3,
+    "order": {"baz_sum": "desc"}
   }
 }
 
@@ -66,9 +62,7 @@ Content-Type: application/json
       "dt_min": { "min": "Dt Test" },
       "dt_max": { "max": "Dt Test" }
     },
-    "cues": {
-      "count": 3,
-      "order": {"baz_sum": "desc"}
-    }
-  }
+    "count": 3,
+    "order": {"baz_sum": "desc"}
+   }
 }
