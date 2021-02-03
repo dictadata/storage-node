@@ -1,4 +1,4 @@
-### elasticsearch|http://localhost:9200|foo_schema|=Foo
+### es_foo_schema_pk
 PUT http://localhost:8089/node/encoding/es_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -62,7 +62,7 @@ Content-Type: application/json
   }
 }
 
-### elasticsearch foo_schema
+### es_foo_schema_pk
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -127,7 +127,7 @@ Content-Type: application/json
   }
 }
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 PUT http://localhost:8089/node/encoding/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -191,7 +191,7 @@ Content-Type: application/json
   }
 }
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_transfer2|=Foo
+### mssql_foo_schema_pk
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -256,7 +256,7 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 PUT http://localhost:8089/node/encoding/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -320,13 +320,143 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_transfer2|=Foo
+### mysql_foo_schema_pk
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
 
 {
   "SMT": "mysql_foo_schema_pk",
+  "fields": {
+    "Foo": {
+      "name": "Foo",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "isNullable": false,
+      "isKey": true,
+      "label": "Foo"
+    },
+    "Bar": {
+      "name": "Bar",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Bar"
+    },
+    "Baz": {
+      "name": "Baz",
+      "type": "integer",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Baz"
+    },
+    "Fobe": {
+      "name": "Fobe",
+      "type": "number",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Fobe, ain't no Foo"
+    },
+    "Dt Test": {
+      "name": "Dt Test",
+      "type": "date",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Dt Test"
+    },
+    "enabled": {
+      "name": "enabled",
+      "type": "boolean",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "enabled"
+    }
+  }
+}
+
+
+### oracle_foo_schema_pk
+PUT http://localhost:8089/node/encoding/oracle_foo_schema_pk HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json
+
+{
+  "fields": {
+    "Foo": {
+      "name": "Foo",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "isNullable": false,
+      "isKey": true,
+      "label": "Foo"
+    },
+    "Bar": {
+      "name": "Bar",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Bar"
+    },
+    "Baz": {
+      "name": "Baz",
+      "type": "integer",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Baz"
+    },
+    "Fobe": {
+      "name": "Fobe",
+      "type": "number",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Fobe, ain't no Foo"
+    },
+    "Dt Test": {
+      "name": "Dt Test",
+      "type": "date",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "Dt Test"
+    },
+    "enabled": {
+      "name": "enabled",
+      "type": "boolean",
+      "size": 0,
+      "default": null,
+      "isNullable": true,
+      "isKey": false,
+      "label": "enabled"
+    }
+  }
+}
+
+### oracle_foo_schema_pk
+PUT http://localhost:8089/node/encoding HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json
+
+{
+  "SMT": "oracle_foo_schema_pk",
   "fields": {
     "Foo": {
       "name": "Foo",

@@ -1,8 +1,8 @@
-### elasticsearch|http://localhost:9200|storage_node|=Foo
+### es_foo_schema_pk
 GET http://localhost:8089/node/encoding/es_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 
-### elasticsearch|http://localhost:9200|storage_node|=Foo
+### es_foo_schema_pk
 GET http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -11,7 +11,7 @@ Content-Type: application/json
   "SMT": "es_foo_schema_pk"
 }
 
-### elasticsearch|http://localhost:9200|storage_node|=Foo
+### accounts
 ### accounts is a development only SMT
 GET http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
@@ -21,10 +21,14 @@ Content-Type: application/json
   "SMT": "accounts"
 }
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 GET http://localhost:8089/node/encoding/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 GET http://localhost:8089/node/encoding/mysql_foo_schema_pk HTTP/1.1
+Authorization: Basic admin admin
+
+### oracle_foo_schema_pk
+GET http://localhost:8089/node/encoding/oracle_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin

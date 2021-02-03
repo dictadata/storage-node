@@ -1,4 +1,4 @@
-### elasticsearch|http://localhost:9200|foo_schema|*
+### es_foo_schema
 POST http://localhost:8089/node/retrieve/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -10,7 +10,7 @@ Content-Type: application/json
   }
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|*
+### es_foo_schema_ks
 POST http://localhost:8089/node/retrieve HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -24,7 +24,7 @@ Content-Type: application/json
   }
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|=Foo
+### es_foo_schema_pk
 POST http://localhost:8089/node/retrieve/es_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -41,7 +41,7 @@ Content-Type: application/json
 }
 
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 POST http://localhost:8089/node/retrieve/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -49,7 +49,7 @@ Content-Type: application/json
 {
 }
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 POST http://localhost:8089/node/retrieve/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -62,7 +62,7 @@ Content-Type: application/json
   }
 }
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 POST http://localhost:8089/node/retrieve/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -79,7 +79,7 @@ Content-Type: application/json
 }
 
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 POST http://localhost:8089/node/retrieve/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -87,7 +87,7 @@ Content-Type: application/json
 {
 }
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 POST http://localhost:8089/node/retrieve/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -100,8 +100,46 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 POST http://localhost:8089/node/retrieve/mysql_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "pattern": {
+    "match": {
+      "Bar": "row",
+      "Baz": { "gte": 10, "lte": 500 }
+    },
+    "count": 3,
+    "order": {"Dt Test": "desc"}
+  }
+}
+
+
+### oracle_foo_schema_pk
+POST http://localhost:8089/node/retrieve/oracle_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+}
+
+### oracle_foo_schema_pk
+POST http://localhost:8089/node/retrieve/oracle_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "pattern": {
+    "match": {
+      "Foo": "twenty"
+    }
+  }
+}
+
+### oracle_foo_schema_pk
+POST http://localhost:8089/node/retrieve/oracle_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 

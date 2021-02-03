@@ -1,8 +1,8 @@
-### elasticsearch|http://localhost:9200|foo_schema|first
+### es_foo_schema_id
 GET http://localhost:8089/node/recall/es_foo_schema_id HTTP/1.1
 Authorization: Basic admin admin
 
-### elasticsearch|http://localhost:9200|foo_schema|!
+### es_foo_schema_ks
 GET http://localhost:8089/node/recall/es_foo_schema_ks HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -11,7 +11,7 @@ Content-Type: application/json
   "key": "twenty"
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|!Foo
+### es_foo_schema_kf
 GET http://localhost:8089/node/recall/es_foo_schema_kf HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -20,7 +20,7 @@ Content-Type: application/json
   "Foo": "ten"
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|=Foo
+### es_foo_schema_pk
 GET http://localhost:8089/node/recall HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -34,7 +34,7 @@ Content-Type: application/json
   }
 }
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 GET http://localhost:8089/node/recall/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -47,7 +47,7 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 GET http://localhost:8089/node/recall/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -59,3 +59,18 @@ Content-Type: application/json
     }
   }
 }
+
+
+### oracle_foo_schema_pk
+GET http://localhost:8089/node/recall/oracle_foo_schema_pk HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json
+
+{
+  "pattern": {
+    "match": {
+      "Foo": "twenty"
+    }
+  }
+}
+

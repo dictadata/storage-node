@@ -1,4 +1,4 @@
-### elasticsearch consolidate
+### es_foo_schema
 POST http://localhost:8089/node/retrieve/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -17,7 +17,7 @@ Content-Type: application/json
   }
 }
 
-### MS SQL aggregate
+### mssql_foo_schema
 POST http://localhost:8089/node/retrieve/mssql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -35,8 +35,28 @@ Content-Type: application/json
     }
   }
 }
-### MySQL aggregate
+
+### mysql_foo_schema
 POST http://localhost:8089/node/retrieve/mysql_foo_schema HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "pattern": {
+    "match": {
+      "Bar": "row",
+      "Baz": { "gte": 100, "lte": 500 }
+    },
+    "aggregate": {
+      "baz_sum": { "sum": "Baz" },
+      "dt_min": { "min": "Dt Test" },
+      "dt_max": { "max": "Dt Test" }
+    }
+  }
+}
+
+### oracle_foo_schema
+POST http://localhost:8089/node/retrieve/oracle_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 

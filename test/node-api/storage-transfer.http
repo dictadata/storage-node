@@ -1,4 +1,4 @@
-### transfer foofile.json > elasticsearch
+### json_foofile > es_foo_schema_pk
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -16,7 +16,7 @@ Content-Type: application/json
   }
 }
 
-### transfer foofile.csv > mysql
+### csv_foofile => mysql_foo_schema_pk
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -34,7 +34,7 @@ Content-Type: application/json
   }
 }
 
-### transfer mysql > elasticsearch
+### mysql_foo_schema_pk => es_foo_transfer
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -50,7 +50,7 @@ Content-Type: application/json
   }
 }
 
-### transfer elasticsearch > mysql
+### es_foo_schema_pk => mysql_foo_transfer
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -78,7 +78,7 @@ Content-Type: application/json
   }
 }
 
-### REST weather > elasticsearch
+### rest_weather_forecast => es_weather_forecast
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -105,7 +105,7 @@ Content-Type: application/json
   }
 }
 
-### REST weather > mssql
+### rest_weather_forecast => mssql_weather_forecast
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -132,7 +132,7 @@ Content-Type: application/json
   }
 }
 
-### REST weather > mysql
+### rest_weather_forecast => mysql_weather_forecast
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -159,3 +159,30 @@ Content-Type: application/json
   }
 }
 
+
+### rest_weather_forecast => oracle_weather_forecast
+POST http://localhost:8089/node/transfer HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "origin": {
+    "SMT": "rest_weather_forecast",
+    "options": {
+        "headers": {
+          "Accept": "application/ld+json",
+          "User-Agent": "@dictadata.org/storage-node contact:info@dictadata.org"
+        },
+        "reader": {
+          "extract": {
+            "encoding": "",
+            "data": "periods"
+          }
+        }
+    }
+  },
+  "terminal": {
+    "SMT": "oracle_weather_forecast",
+    "options": {}
+  }
+}

@@ -1,8 +1,8 @@
-### elasticsearch|http://localhost:9200|foo_schema|first
+### es_foo_schema_id
 DELETE http://localhost:8089/node/dull/es_foo_schema_id HTTP/1.1
 Authorization: Basic user user
 
-### elasticsearch|http://localhost:9200|foo_schema|!
+### es_foo_schema_ks
 DELETE http://localhost:8089/node/dull/es_foo_schema_ks HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -11,7 +11,7 @@ Content-Type: application/json
     "key": "twenty"
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|!Foo
+### es_foo_schema_kf
 DELETE http://localhost:8089/node/dull/es_foo_schema_kf HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -20,7 +20,7 @@ Content-Type: application/json
     "foo": "ten"
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|=Foo
+### es_foo_schema_pk
 DELETE http://localhost:8089/node/dull HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 DELETE http://localhost:8089/node/dull/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -48,8 +48,21 @@ Content-Type: application/json
   }
 }
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 DELETE http://localhost:8089/node/dull/mysql_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "pattern": {
+    "match": {
+      "Foo": "eleventy"
+    }
+  }
+}
+
+### oracle_foo_schema_pk
+DELETE http://localhost:8089/node/dull/oracle_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 

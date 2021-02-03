@@ -1,12 +1,12 @@
-### elasticsearch junction.smt.schema
+### es_foo_schema_pk
 POST http://localhost:8089/node/list/es_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 
-### elasticsearch *
+### es_foo_schema_pk
 POST http://localhost:8089/node/list/es_foo_schema_pk?schema=* HTTP/1.1
 Authorization: Basic admin admin
 
-### elasticsearch foo*
+### es_foo_schema_pk
 POST http://localhost:8089/node/list HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -17,15 +17,15 @@ Content-Type: application/json
 }
 
 
-### mssql junction.smt.schema
+### mssql_foo_schema_pk
 POST http://localhost:8089/node/list/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 
-### mssql *
+### mssql_foo_schema_pk *
 POST http://localhost:8089/node/list/mssql_foo_schema_pk?schema=* HTTP/1.1
 Authorization: Basic admin admin
 
-### mssql foo*
+### mssql_foo_schema_pk foo*
 POST http://localhost:8089/node/list HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
@@ -36,20 +36,40 @@ Content-Type: application/json
 }
 
 
-### mysql junction.smt.schema
+### mysql_foo_schema_pk
 POST http://localhost:8089/node/list/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 
-### mysql *
+### mysql_foo_schema_pk *
 POST http://localhost:8089/node/list/mysql_foo_schema_pk?schema=* HTTP/1.1
 Authorization: Basic admin admin
 
-### mysql foo*
+### mysql_foo_schema_pk foo*
 POST http://localhost:8089/node/list HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json
 
 {
   "SMT": "mysql_foo_schema_pk",
+  "schema": "foo*"
+}
+
+
+
+### oracle_foo_schema_pk
+POST http://localhost:8089/node/list/oracle_foo_schema_pk HTTP/1.1
+Authorization: Basic admin admin
+
+### oracle_foo_schema_pk *
+POST http://localhost:8089/node/list/oracle_foo_schema_pk?schema=* HTTP/1.1
+Authorization: Basic admin admin
+
+### oracle_foo_schema_pk foo*
+POST http://localhost:8089/node/list HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json
+
+{
+  "SMT": "oracle_foo_schema_pk",
   "schema": "foo*"
 }

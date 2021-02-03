@@ -1,4 +1,4 @@
-### elasticsearch|http://localhost:9200|foo_schema|!
+### es_foo_schema_ks
 ### if array list then elasticsearch generates the key
 PUT http://localhost:8089/node/store/es_foo_schema_ks HTTP/1.1
 Authorization: Basic user user
@@ -15,7 +15,7 @@ Content-Type: application/json
   }]
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|!
+### es_foo_schema_ks
 ### if dictionary object then property names are the keys
 PUT http://localhost:8089/node/store/es_foo_schema_ks HTTP/1.1
 Authorization: Basic user user
@@ -34,7 +34,7 @@ Content-Type: application/json
   }
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|!Foo
+### es_foo_schema_kf
 ### defined key is in construct["Foo"]
 PUT http://localhost:8089/node/store/es_foo_schema_kf HTTP/1.1
 Authorization: Basic user user
@@ -51,7 +51,7 @@ Content-Type: application/json
   }]
 }
 
-### elasticsearch|http://localhost:9200|foo_schema|=Foo
+### es_foo_schema_pk
 ### store multiple rows
 PUT http://localhost:8089/node/store HTTP/1.1
 Authorization: Basic user user
@@ -77,7 +77,7 @@ Content-Type: application/json
 }
 
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 PUT http://localhost:8089/node/store/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -93,7 +93,7 @@ Content-Type: application/json
   }]
 }
 
-### mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mssql_foo_schema_pk
 ### store multiple rows
 PUT http://localhost:8089/node/store/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
@@ -118,7 +118,7 @@ Content-Type: application/json
 }
 
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 PUT http://localhost:8089/node/store/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
@@ -134,9 +134,50 @@ Content-Type: application/json
   }]
 }
 
-### mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo
+### mysql_foo_schema_pk
 ### store multiple rows
 PUT http://localhost:8089/node/store/mysql_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "data": [{
+    "Foo": "eleventy",
+    "Bar": "row",
+    "Baz": 11,
+    "Fobe": 11.11,
+    "Dt Test": "2020-11-04T08:00:00",
+    "enabled": true
+  },{
+    "Foo": "twelvety",
+    "Bar": "row",
+    "Baz": 12,
+    "Fobe": 12.12,
+    "Dt Test": "2020-12-03T08:00:00",
+    "enabled": true
+  }]
+}
+
+
+### oracle_foo_schema_pk
+PUT http://localhost:8089/node/store/oracle_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json
+
+{
+  "data": [{
+    "Foo": "twenty",
+    "Bar": "row",
+    "Baz": 20,
+    "Fobe": 20.20,
+    "Dt Test": "2020-10-07T00:00:00.000Z",
+    "enabled": true
+  }]
+}
+
+### oracle_foo_schema_pk
+### store multiple rows
+PUT http://localhost:8089/node/store/oracle_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json
 
