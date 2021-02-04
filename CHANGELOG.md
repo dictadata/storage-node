@@ -1,5 +1,10 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.4.1
+  - update dependency to @dictadata/storage-junctions 1.4.4
+- version 1.4.0
+  - support for Oracle databases
+  - update dependency to @dictadata/storage-junctions 1.4.3
 - version 1.3.3
   - enhanced support for map and list storage types
   - updated support for accounts schema on SQL
