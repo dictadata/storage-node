@@ -9,12 +9,12 @@ Content-Type: application/json
       "Baz": { "gte": 0, "lte": 5000 }
     },
     "aggregate": {
-      "Dt Test" : {
-        "baz_sum": {"sum": "Baz"}
-      },
-      "baz_sum": { "sum": "Baz" },
-      "dt_min": { "min": "Dt Test" },
-      "dt_max": { "max": "Dt Test" }
+      "Foo": {
+        "baz_sum": { "sum": "Baz" },
+        "count": { "count": "Baz" },
+        "dt_min": { "min": "Dt Test" },
+        "dt_max": { "max": "Dt Test" }
+      }
     },
     "count": 3,
     "order": {"baz_sum": "desc"}
@@ -32,12 +32,12 @@ Content-Type: application/json
       "Baz": { "gte": 0, "lte": 5000 }
     },
     "aggregate": {
-      "Dt Test" : {
-        "baz_sum": {"sum": "Baz"}
-      },
-      "baz_sum": { "sum": "Baz" },
-      "dt_min": { "min": "Dt Test" },
-      "dt_max": { "max": "Dt Test" }
+      "Foo": {
+        "baz_sum": { "sum": "Baz" },
+        "count": { "count": "Baz" },
+        "dt_min": { "min": "Dt Test" },
+        "dt_max": { "max": "Dt Test" }
+      }
     },
     "count": 3,
     "order": {"baz_sum": "desc"}
@@ -55,12 +55,12 @@ Content-Type: application/json
       "Baz": { "gte": 0, "lte": 5000 }
     },
     "aggregate": {
-      "Dt Test" : {
-        "baz_sum": {"sum": "Baz"}
-      },
-      "baz_sum": { "sum": "Baz" },
-      "dt_min": { "min": "Dt Test" },
-      "dt_max": { "max": "Dt Test" }
+      "Foo": {
+        "baz_sum": { "sum": "Baz" },
+        "count": { "count": "Baz" },
+        "dt_min": { "min": "Dt Test" },
+        "dt_max": { "max": "Dt Test" }
+      }
     },
     "count": 3,
     "order": {"baz_sum": "desc"}
@@ -78,12 +78,12 @@ Content-Type: application/json
       "Baz": { "gte": 0, "lte": 5000 }
     },
     "aggregate": {
-      "Dt Test" : {
-        "baz_sum": {"sum": "Baz"}
-      },
-      "baz_sum": { "sum": "Baz" },
-      "dt_min": { "min": "Dt Test" },
-      "dt_max": { "max": "Dt Test" }
+      "Foo": {
+        "baz_sum": { "sum": "Baz" },
+        "count": { "count": "Baz" },
+        "dt_min": { "min": "Dt Test" },
+        "dt_max": { "max": "Dt Test" }
+      }
     },
     "count": 3,
     "order": {"baz_sum": "desc"}
