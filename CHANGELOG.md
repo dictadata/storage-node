@@ -1,5 +1,10 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.4.2
+  - update dependency to @dictadata/storage-junctions 1.4.6
+  - new splitter-junction
+  - new compase and decompose (flatten) transforms
+  - new encoder transform
 - version 1.4.1
   - update dependency to @dictadata/storage-junctions 1.4.4
 - version 1.4.0
