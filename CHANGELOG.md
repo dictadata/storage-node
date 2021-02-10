@@ -1,10 +1,14 @@
 # CHANGELOG for @dictadata/storage-node
 
-- version 1.4.2
+- version 1.4.3
+  - Bulk loading for mssql, mysql, oracle
+  - support Oracle date strings "DD-MON-YY"
   - update dependency to @dictadata/storage-junctions 1.4.6
+- version 1.4.2
   - new splitter-junction
   - new compase and decompose (flatten) transforms
   - new encoder transform
+  - update dependency to @dictadata/storage-junctions 1.4.6
 - version 1.4.1
   - update dependency to @dictadata/storage-junctions 1.4.4
 - version 1.4.0
