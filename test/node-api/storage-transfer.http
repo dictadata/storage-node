@@ -25,7 +25,7 @@ Content-Type: application/json
   "origin": {
     "SMT": "csv_foofile",
     "options": {
-      "csvHeader": true
+      "header": true
     }
   },
   "terminal": {
