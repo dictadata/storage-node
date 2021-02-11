@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.4.4
+  - customizable stringBreakpoints for sizing database string types
+  - improved handling of date strings
+  - update dependency to @dictadata/storage-junctions 1.4.10
 - version 1.4.3
   - Bulk loading for mssql, mysql, oracle
   - support Oracle date strings "DD-MON-YY"
