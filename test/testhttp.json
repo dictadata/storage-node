@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "name": "",
+      "type": "HTTP/1.1",
+      "request": {
+        "method": "GET",
+        "url": "",
+        "headers": {},
+        "auth": {
+          "username": "janedoe",
+          "password": "s00pers3cret"
+        },
+        "withCredentials": true,
+        "params": {
+          "name": 12345
+        },
+        "data": {},
+        "timeout": 1000
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "headers": {},
+        "data_success": "",
+        "data_fail": ""
+      }
+    }
+  ]
+}
