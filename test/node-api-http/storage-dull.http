@@ -5,7 +5,7 @@ Authorization: Basic user user
 ### es_foo_schema_ks
 DELETE http://localhost:8089/node/dull/es_foo_schema_ks HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
     "key": "twenty"
@@ -14,7 +14,7 @@ Content-Type: application/json
 ### es_foo_schema_kf
 DELETE http://localhost:8089/node/dull/es_foo_schema_kf HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
     "key": "ten"
@@ -23,7 +23,7 @@ Content-Type: application/json
 ### es_foo_schema_pk
 DELETE http://localhost:8089/node/dull HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "es_foo_schema_pk",
@@ -38,7 +38,7 @@ Content-Type: application/json
 ### mssql_foo_schema_pk
 DELETE http://localhost:8089/node/dull/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "pattern": {
@@ -51,7 +51,7 @@ Content-Type: application/json
 ### mysql_foo_schema_pk
 DELETE http://localhost:8089/node/dull/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "pattern": {
@@ -64,7 +64,7 @@ Content-Type: application/json
 ### oracle_foo_schema_pk
 DELETE http://localhost:8089/node/dull/oracle_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "pattern": {

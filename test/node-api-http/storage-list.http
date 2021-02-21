@@ -9,7 +9,7 @@ Authorization: Basic admin admin
 ### es_foo_schema_pk
 POST http://localhost:8089/node/list HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "es_foo_schema_pk",
@@ -28,7 +28,7 @@ Authorization: Basic admin admin
 ### mssql_foo_schema_pk foo*
 POST http://localhost:8089/node/list HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "mssql_foo_schema_pk",
@@ -47,7 +47,7 @@ Authorization: Basic admin admin
 ### mysql_foo_schema_pk foo*
 POST http://localhost:8089/node/list HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "mysql_foo_schema_pk",
@@ -67,7 +67,7 @@ Authorization: Basic admin admin
 ### oracle_foo_schema_pk foo*
 POST http://localhost:8089/node/list HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "oracle_foo_schema_pk",

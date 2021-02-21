@@ -1,14 +1,18 @@
 ### no user
 GET http://localhost:8089/index.html HTTP/1.1
 
-### unregisterd user
+### unknown user
 GET http://localhost:8089/index.html HTTP/1.1
-Authorization: Basic someuser xyz
+Authorization: Basic Aladin opensesame
 
-### Public guest:guest
+### guest
 GET http://localhost:8089/index.html HTTP/1.1
 Authorization: Basic guest guest
 
-### User admin:admin
+### user
+GET http://localhost:8089/index.html HTTP/1.1
+Authorization: Basic user user
+
+### admin
 GET http://localhost:8089/index.html HTTP/1.1
 Authorization: Basic admin admin

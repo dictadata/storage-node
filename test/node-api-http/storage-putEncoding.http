@@ -1,7 +1,7 @@
 ### es_foo_schema_pk
 PUT http://localhost:8089/node/encoding/es_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "fields": {
@@ -65,7 +65,7 @@ Content-Type: application/json
 ### es_foo_schema_pk
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "es_foo_schema_pk",
@@ -130,7 +130,7 @@ Content-Type: application/json
 ### mssql_foo_schema_pk
 PUT http://localhost:8089/node/encoding/mssql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "fields": {
@@ -194,7 +194,7 @@ Content-Type: application/json
 ### mssql_foo_schema_pk
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "mssql_foo_schema_pk",
@@ -259,7 +259,7 @@ Content-Type: application/json
 ### mysql_foo_schema_pk
 PUT http://localhost:8089/node/encoding/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "fields": {
@@ -323,7 +323,7 @@ Content-Type: application/json
 ### mysql_foo_schema_pk
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "mysql_foo_schema_pk",
@@ -389,7 +389,7 @@ Content-Type: application/json
 ### oracle_foo_schema_pk
 PUT http://localhost:8089/node/encoding/oracle_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "fields": {
@@ -453,7 +453,7 @@ Content-Type: application/json
 ### oracle_foo_schema_pk
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "oracle_foo_schema_pk",

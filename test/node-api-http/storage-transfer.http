@@ -1,7 +1,7 @@
 ### json_foofile > es_foo_schema_pk
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "tract": {
@@ -19,7 +19,7 @@ Content-Type: application/json
 ### csv_foofile => mysql_foo_schema_pk
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "origin": {
@@ -37,7 +37,7 @@ Content-Type: application/json
 ### mysql_foo_schema_pk => es_foo_transfer
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "origin": {
@@ -53,7 +53,7 @@ Content-Type: application/json
 ### es_foo_schema_pk => mysql_foo_transfer
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "origin": {
@@ -81,7 +81,7 @@ Content-Type: application/json
 ### rest_weather_forecast => es_weather_forecast
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "origin": {
@@ -108,7 +108,7 @@ Content-Type: application/json
 ### rest_weather_forecast => mssql_weather_forecast
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "origin": {
@@ -135,7 +135,7 @@ Content-Type: application/json
 ### rest_weather_forecast => mysql_weather_forecast
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "origin": {
@@ -163,7 +163,7 @@ Content-Type: application/json
 ### rest_weather_forecast => oracle_weather_forecast
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "origin": {

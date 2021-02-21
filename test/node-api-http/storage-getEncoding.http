@@ -5,7 +5,7 @@ Authorization: Basic admin admin
 ### es_foo_schema_pk
 GET http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "es_foo_schema_pk"
@@ -15,7 +15,7 @@ Content-Type: application/json
 ### accounts is a development only SMT
 GET http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "SMT": "accounts"

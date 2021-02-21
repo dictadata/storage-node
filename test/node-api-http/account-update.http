@@ -2,7 +2,7 @@
 ### dullboy, cannot modify own roles
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic dullboy dullboy
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "account": {
@@ -20,7 +20,7 @@ Content-Type: application/json
 ### guest:guest - guest does not have User rights
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic guest guest
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "account": {
@@ -37,7 +37,7 @@ Content-Type: application/json
 ### guest:guest - changed by admin
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "account": {
@@ -54,7 +54,7 @@ Content-Type: application/json
 ### user - changed by user, cannot change own roles
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "account": {
@@ -71,7 +71,7 @@ Content-Type: application/json
 ### user - changed roles by admin
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "account": {
@@ -84,7 +84,7 @@ Content-Type: application/json
 ### admin - change password
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "account": {
@@ -96,7 +96,7 @@ Content-Type: application/json
 ### admin - change it back
 PUT http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic admin dictadata
-Content-Type: application/json
+Content-Type: application/json;charset=utf-8
 
 {
   "account": {

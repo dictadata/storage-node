@@ -17,6 +17,10 @@ Authorization: Basic user user
 GET http://localhost:8089/node/status/INVALID_SMT HTTP/1.1
 Authorization: Basic user user
 
+### user
+GET http://localhost:8089/node/status/mysql_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+
 ### admin  Admin
 GET http://localhost:8089/node/status/mysql_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
