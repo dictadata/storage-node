@@ -13,7 +13,7 @@
         "withCredentials": true,
         "timeout": 1000
       },
-      "response": {
+      "expected": {
         "status": 200,
         "statusText": "OK"
       }
@@ -31,7 +31,7 @@
         "withCredentials": true,
         "timeout": 1000
       },
-      "response": {
+      "expected": {
         "status": 401,
         "statusText": "Unauthorized"
       }

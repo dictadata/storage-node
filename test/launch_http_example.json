@@ -18,13 +18,25 @@
         "data": {},
         "timeout": 1000
       },
-      "response": {
+      "expected": {
         "status": 200,
         "statusText": "OK",
         "headers": {},
         "data_success": "",
         "data_fail": ""
-      }
+      },
+      "queries": [
+        {
+          "request": {
+            "params": {
+              "name": 6789
+            }
+          },
+          "expected": {
+            "status": 409
+          }
+        }
+      ]
     }
   ]
 }
