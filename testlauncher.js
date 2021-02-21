@@ -1,64 +1,78 @@
 const fs = require("fs");
-const axios = require('axios').default;
+const { spawn } = require('child_process');
 
 let testName = process.argv.length > 2 ? process.argv[2] : "";
 
 (async () => {
-  let l = fs.readFileSync("./test/launch_http.json", "utf-8");
-  // let lj = l.replace(/\/\/.*/g, "");  // remove comments, also removes url part after "http://"
-  var launch = JSON.parse(l);
+  try {
+    let l = fs.readFileSync("./.vscode/launch.json", "utf-8");
+    let lj = l.replace(/\/\/.*/g, "");  // remove comments
+    var launch = JSON.parse(lj);
 
-  for (let config of launch.configurations) {
-    if (!testName || config.name.indexOf(testName) >= 0) {
-      console.log(config.name);
-      console.log(config.request.url);
+    for (let config of launch.configurations) {
+      if (!testName || config.name.indexOf(testName) >= 0) {
+        if (config.type === "pwa-node"
+          && config.request === "launch"
+          && config.program === "${workspaceFolder}/testclient.js") {
+          
+          console.log(config.name);
+          let script = config.program.replace("${workspaceFolder}", ".");
 
-      if (config.type === "HTTP/1.1" && config.request && config.response) {
-        let exitcode = runTest(config.request, config.response);
-        if (exitcode !== 0)
-          break;
+          let args = [script];
+          if (config.args) {
+            for (let arg of config.args) {
+              arg = arg.replace("${workspaceFolder}", ".");
+              args.push(arg);
+            }
+          }
+
+          let exitcode = await runTest(args);
+          if (exitcode !== 0)
+            break;
+        }
       }
     }
   }
-})();
-
-async function runTest(request, response) {
- 
-  try {
-    // set request defaults
-    if (!request.hasOwnProperty("headers"))
-      request.headers = {};
-    if (!request.headers.hasOwnProperty("User-Agent"))
-      request.headers["User-Agent"] = "@dictadata/storage-node";
-    if (!request.hasOwnProperty("timeout"))
-      request.timerout = 10000;
-  
-    // make request
-    let results = await axios.request(request);
-
-    // validate results agains expected response
-    if (results.status !== response.status) {
-      console.log("FAILED status " + results.status + " expected " + response.status);
-      return 1;
-    }
-    if (response.statusText && results.statusText !== response.statusText) {
-      console.log("FAILED statusText " + results.statusText + " expected " + response.statusText);
-      return 1;
-    }
-    if (response.body_fail && response.data.indexOf(response.body_fail) >= 0) {
-      console.log("FAILED fail text found: " + response.body_fail);
-      return 1;
-    }
-    if (response.body_success && response.data.indexOf(response.body_success) < 0) {
-      console.log("FAILED success text NOT found: " + response.body_success);
-      return 1;
-    }
-    
-    console.log("SUCCESS")
-    return 0;
-  }
   catch (err) {
     console.log(err.message);
-    return 1;
+    process.exitCode = 1;
   }
+})();
+
+async function runTest(args) {
+  return new Promise((resolve, reject) => {
+    const program = spawn('node', args);
+
+    program.stdout.on('data', (data) => {
+      if (data[data.length - 1] === 10) // && data[data.length - 2] === 13)
+        console.log(`${data.slice(0, data.length - 1)}`);
+      else
+        console.log(`${data}`);
+    });
+
+    program.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);
+    });
+
+    program.on('close', (code) => {
+      console.log(`child process close with code ${code}`);
+      resolve(code);
+    });
+
+    program.on('disconnect', () => {
+      console.log(`child process disconnect`);
+      resolve(code);
+    });
+
+    program.on('error', (error) => {
+      console.log(`child process error ${error.message}`);
+      resolve(code);
+    });
+    /*
+        program.on('exit', (code) => {
+          console.log(`child process exit with code ${code}`);
+          resolve(code);
+        });
+    */
+  });
 }
