@@ -1,0 +1,52 @@
+{
+  "name": "node-api transforms",
+  "request": {
+    "method": "POST",
+    "baseURL": "http://localhost:8089/node/transfer",
+    "request": {
+      "auth": {
+        "username": "user",
+        "password": "user"
+      }
+    },
+    "timeout": 2000
+  },
+  "expected": {
+    "status": 200
+  },
+  "queries": [
+    {
+      "name": "mysql-elasticsearch",
+      "data": {
+        "origin": {
+          "SMT": "mysql_foo_schema_pk"
+        },
+        "terminal": {
+          "SMT": "es_foo_transform"
+        },
+        "transforms": {
+          "filter": {
+            "match": {
+              "Bar": "row"
+            },
+            "drop": {
+              "Baz": {
+                "eq": 456
+              }
+            }
+          },
+          "select": {
+            "inject_before": {
+              "Fie": "where's es fum?"
+            },
+            "fields": {
+              "Foo": "Foo",
+              "Bar": "Bar",
+              "Baz": "Bazzy"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

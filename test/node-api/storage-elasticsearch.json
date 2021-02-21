@@ -1,0 +1,293 @@
+{
+  "name": "elasticsearch",
+  "request": {
+    "method": "GET",
+    "baseURL": "http://localhost:8089/node",
+    "auth": {
+      "username": "user",
+      "password": "user"
+    },
+    "timeout": 90000
+  },
+  "expected": {
+    "status": 200
+  },
+  "queries": [
+    {
+      "name": "status",
+      "request": {
+        "method": "GET",
+        "url": "/status/es_foo_schema_pk"
+      }
+    },
+    {
+      "name": "putEncoding",
+      "request": {
+        "method": "PUT",
+        "url": "/encoding/es_foo_schema_pk",
+        "data": {
+          "fields": {
+            "Foo": {
+              "name": "Foo",
+              "type": "keyword",
+              "size": 64,
+              "default": null,
+              "isNullable": false,
+              "isKey": true,
+              "label": "Foo"
+            },
+            "Bar": {
+              "name": "Bar",
+              "type": "keyword",
+              "size": 64,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Bar"
+            },
+            "Baz": {
+              "name": "Baz",
+              "type": "integer",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Baz"
+            },
+            "Fobe": {
+              "name": "Fobe",
+              "type": "number",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Fobe, ain't no Foo"
+            },
+            "Dt Test": {
+              "name": "Dt Test",
+              "type": "date",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Dt Test"
+            },
+            "enabled": {
+              "name": "enabled",
+              "type": "boolean",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "enabled"
+            }
+          }
+        }
+      },
+      "expected": {
+        "status": [200, 409]
+      }
+    },
+    {
+      "name": "getEncoding",
+      "request": {
+        "method": "GET",
+        "url": "/encoding/es_foo_schema_pk"
+      }
+    },
+    {
+      "name": "list",
+      "request": {
+        "method": "POST",
+        "url": "/list/es_foo_schema_pk",
+        "params": {
+          "schema": "foo*"
+        }
+      }
+    },
+    {
+      "name": "store",
+      "request": {
+        "method": "PUT",
+        "url": "/store/es_foo_schema_ks",
+        "data": {
+          "data": [
+            {
+              "Foo": "one",
+              "Bar": "row",
+              "Baz": 1,
+              "Fobe": 1.1,
+              "Dt Test": "2020-01-01T08:00:00",
+              "enabled": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "recall keystore",
+      "request": {
+        "method": "POST",
+        "url": "/recall/es_foo_schema_ks",
+        "data": {
+          "key": "twenty"
+        }
+      }
+    },
+    {
+      "name": "recall key field",
+      "request": {
+        "method": "POST",
+        "url": "/recall/es_foo_schema_kf",
+        "data": {
+          "Foo": "ten"
+        }
+      }
+    },
+    {
+      "name": "recall search",
+      "request": {
+        "method": "POST",
+        "url": "/recall/es_foo_schema_pk",
+        "data": {
+          "pattern": {
+            "match": {
+              "Foo": "twenty"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "transfer",
+      "request": {
+        "method": "POST",
+        "url": "/transfer",
+        "data": {
+          "tract": {
+            "origin": {
+              "SMT": "json_foofile"
+            },
+            "terminal": {
+              "SMT": "es_foo_schema_pk"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "retrieve",
+      "request": {
+        "method": "POST",
+        "url": "/retrieve/es_foo_schema_pk",
+        "data": {
+          "pattern": {
+            "match": {
+              "Bar": "row",
+              "Baz": {
+                "gte": 100,
+                "lte": 500
+              }
+            },
+            "count": 3,
+            "order": {
+              "Foo": "asc"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "aggregate",
+      "request": {
+        "method": "POST",
+        "url": "/retrieve/es_foo_schema",
+        "data": {
+          "pattern": {
+            "match": {
+              "Bar": "row",
+              "Baz": {
+                "gte": 100,
+                "lte": 500
+              }
+            },
+            "aggregate": {
+              "baz_sum": {
+                "sum": "Baz"
+              },
+              "dt_min": {
+                "min": "Dt Test"
+              },
+              "dt_max": {
+                "max": "Dt Test"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "groupby",
+      "request": {
+        "method": "POST",
+        "url": "/retrieve/es_foo_schema",
+        "data": {
+          "pattern": {
+            "match": {
+              "Bar": "row",
+              "Baz": {
+                "gte": 100,
+                "lte": 500
+              }
+            },
+            "aggregate": {
+              "baz_sum": {
+                "sum": "Baz"
+              },
+              "dt_min": {
+                "min": "Dt Test"
+              },
+              "dt_max": {
+                "max": "Dt Test"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "dull keystore",
+      "request": {
+        "method": "DELETE",
+        "url": "/recall/es_foo_schema_ks",
+        "data": {
+          "key": "twenty"
+        }
+      }
+    },
+    {
+      "name": "dull key field",
+      "request": {
+        "method": "DELETE",
+        "url": "/recall/es_foo_schema_kf",
+        "data": {
+          "Foo": "ten"
+        }
+      }
+    },
+    {
+      "name": "dull search",
+      "request": {
+        "method": "DELETE",
+        "url": "/recall/es_foo_schema_pk",
+        "data": {
+          "pattern": {
+            "match": {
+              "Foo": "twenty"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

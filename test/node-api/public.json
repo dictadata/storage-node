@@ -1,0 +1,52 @@
+{
+  "name": "node-api public",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8089/index.html",
+    "timeout": 2000
+  },
+  "expected": {
+    "status": 200
+  },
+  "queries": [
+    {
+      "name": "no user"
+    },
+    {
+      "name": "unknown user",
+      "request": {
+        "auth": {
+          "username": "Aladin",
+          "password": "opensesame"
+        }
+      }
+    },
+    {
+      "name": "guest",
+      "request": {
+        "auth": {
+          "username": "guest",
+          "password": "guest"
+        }
+      }
+    },
+    {
+      "name": "user",
+      "request": {
+        "auth": {
+          "username": "user",
+          "password": "user"
+        }
+      }
+    },
+    {
+      "name": "admin",
+      "request": {
+        "auth": {
+          "username": "admin",
+          "password": "admin"
+        }
+      }
+    }
+  ]
+}

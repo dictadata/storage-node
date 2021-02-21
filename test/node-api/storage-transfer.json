@@ -1,0 +1,32 @@
+{
+  "name": "node-api transforms",
+  "request": {
+    "method": "POST",
+    "baseURL": "http://localhost:8089/node/transfer",
+    "request": {
+      "auth": {
+        "username": "user",
+        "password": "user"
+      }
+    },
+    "timeout": 2000
+  },
+  "expected": {
+    "status": 200
+  },
+  "queries": [
+    {
+      "name": "es-mysql",
+      "request": {
+        "data": {
+          "origin": {
+            "SMT": "es_foo_schema_pk"
+          },
+          "terminal": {
+            "SMT": "mysql_foo_transfer"
+          }
+        }
+      }
+    }
+  ]
+}
