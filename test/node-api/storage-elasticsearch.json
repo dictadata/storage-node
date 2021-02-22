@@ -6,8 +6,7 @@
     "auth": {
       "username": "user",
       "password": "user"
-    },
-    "timeout": 90000
+    }
   },
   "expected": {
     "status": 200
@@ -106,30 +105,72 @@
       }
     },
     {
-      "name": "store",
+      "name": "store keystore",
       "request": {
         "method": "PUT",
         "url": "/store/es_foo_schema_ks",
         "data": {
-          "data": [
-            {
-              "Foo": "one",
-              "Bar": "row",
-              "Baz": 1,
-              "Fobe": 1.1,
-              "Dt Test": "2020-01-01T08:00:00",
-              "enabled": true
+            "data": {
+              "twenty": {
+                "Foo": "twenty",
+                "Bar": "row",
+                "Baz": 20,
+                "Fobe": 20.20,
+                "Dt Test": "2020-10-07T08:00:00",
+                "enabled": true
+              }
             }
-          ]
+        }
+      }
+    },
+    {
+      "name": "store keyfield",
+      "request": {
+        "method": "PUT",
+        "url": "/store/es_foo_schema_kf",
+        "data": {
+          "data": [{
+            "Foo": "ten",
+            "Bar": "row",
+            "Baz": 10,
+            "Fobe": 10.10,
+            "Dt Test": "2018-10-07T00:00:00.000Z",
+            "enabled": true
+          }]
+        }
+      }
+    },
+    {
+      "name": "store primarykey",
+      "request": {
+        "method": "PUT",
+        "url": "/store/es_foo_schema_pk",
+        "data": {
+          "SMT": "es_foo_schema_pk",
+            "data": [{
+              "Foo": "eleventy",
+              "Bar": "row",
+              "Baz": 11,
+              "Fobe": 11.11,
+              "Dt Test": "2011-10-07T08:00:00",
+              "enabled": true
+            },{
+              "Foo": "twelvety",
+              "Bar": "row",
+              "Baz": 12,
+              "Fobe": 12.12,
+              "Dt Test": "2012-03-03T08:00:00",
+              "enabled": true
+            }]
         }
       }
     },
     {
       "name": "recall keystore",
       "request": {
-        "method": "POST",
+        "method": "GET",
         "url": "/recall/es_foo_schema_ks",
-        "data": {
+        "params": {
           "key": "twenty"
         }
       }
@@ -137,9 +178,9 @@
     {
       "name": "recall key field",
       "request": {
-        "method": "POST",
+        "method": "GET",
         "url": "/recall/es_foo_schema_kf",
-        "data": {
+        "params": {
           "Foo": "ten"
         }
       }
@@ -259,18 +300,18 @@
       "name": "dull keystore",
       "request": {
         "method": "DELETE",
-        "url": "/recall/es_foo_schema_ks",
-        "data": {
+        "url": "/dull/es_foo_schema_ks",
+        "params": {
           "key": "twenty"
         }
       }
     },
     {
-      "name": "dull key field",
+      "name": "dull keyfield",
       "request": {
         "method": "DELETE",
-        "url": "/recall/es_foo_schema_kf",
-        "data": {
+        "url": "/dull/es_foo_schema_kf",
+        "params": {
           "Foo": "ten"
         }
       }
@@ -279,11 +320,12 @@
       "name": "dull search",
       "request": {
         "method": "DELETE",
-        "url": "/recall/es_foo_schema_pk",
+        "url": "/dull/es_foo_schema_pk",
         "data": {
+          "SMT": "es_foo_schema_pk",
           "pattern": {
             "match": {
-              "Foo": "twenty"
+              "Foo": "twelvety"
             }
           }
         }

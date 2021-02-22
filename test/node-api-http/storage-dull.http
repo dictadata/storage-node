@@ -17,7 +17,7 @@ Authorization: Basic user user
 Content-Type: application/json;charset=utf-8
 
 {
-    "key": "ten"
+    "Foo": "ten"
 }
 
 ### es_foo_schema_pk
@@ -29,7 +29,7 @@ Content-Type: application/json;charset=utf-8
   "SMT": "es_foo_schema_pk",
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "twelvety"
     }
   }
 }
