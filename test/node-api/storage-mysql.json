@@ -1,0 +1,279 @@
+{
+  "name": "mysql",
+  "request": {
+    "method": "GET",
+    "baseURL": "http://localhost:8089/node",
+    "auth": {
+      "username": "user",
+      "password": "user"
+    }
+  },
+  "expected": {
+    "status": 200
+  },
+  "queries": [
+    {
+      "name": "status",
+      "request": {
+        "method": "GET",
+        "url": "/status/mysql_foo_schema_pk"
+      }
+    },
+    {
+      "name": "putEncoding",
+      "request": {
+        "method": "PUT",
+        "url": "/encoding/mysql_foo_schema_pk",
+        "data": {
+          "fields": {
+            "Foo": {
+              "name": "Foo",
+              "type": "keyword",
+              "size": 64,
+              "default": null,
+              "isNullable": false,
+              "isKey": true,
+              "label": "Foo"
+            },
+            "Bar": {
+              "name": "Bar",
+              "type": "keyword",
+              "size": 64,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Bar"
+            },
+            "Baz": {
+              "name": "Baz",
+              "type": "integer",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Baz"
+            },
+            "Fobe": {
+              "name": "Fobe",
+              "type": "number",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Fobe, ain't no Foo"
+            },
+            "Dt Test": {
+              "name": "Dt Test",
+              "type": "date",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "Dt Test"
+            },
+            "enabled": {
+              "name": "enabled",
+              "type": "boolean",
+              "size": 0,
+              "default": null,
+              "isNullable": true,
+              "isKey": false,
+              "label": "enabled"
+            }
+          }
+        }
+      },
+      "expected": {
+        "status": [200, 409]
+      }
+    },
+    {
+      "name": "getEncoding",
+      "request": {
+        "method": "GET",
+        "url": "/encoding/mysql_foo_schema_pk"
+      }
+    },
+    {
+      "name": "list",
+      "request": {
+        "method": "POST",
+        "url": "/list/mysql_foo_schema_pk",
+        "params": {
+          "schema": "foo*"
+        }
+      }
+    },
+    {
+      "name": "store primarykey",
+      "request": {
+        "method": "PUT",
+        "url": "/store/mysql_foo_schema_pk",
+        "data": {
+          "SMT": "mysql_foo_schema_pk",
+            "data": [{
+              "Foo": "eleventy",
+              "Bar": "row",
+              "Baz": 11,
+              "Fobe": 11.11,
+              "Dt Test": "2011-10-07T08:00:00",
+              "enabled": true
+            },{
+              "Foo": "twelvety",
+              "Bar": "row",
+              "Baz": 12,
+              "Fobe": 12.12,
+              "Dt Test": "2012-03-03T08:00:00",
+              "enabled": true
+            }]
+        }
+      }
+    },
+    {
+      "name": "recall key",
+      "request": {
+        "method": "GET",
+        "url": "/recall/mysql_foo_schema_pk",
+        "params": {
+          "Foo": "ten"
+        }
+      }
+    },
+    {
+      "name": "recall search",
+      "request": {
+        "method": "POST",
+        "url": "/recall/mysql_foo_schema_pk",
+        "data": {
+          "pattern": {
+            "match": {
+              "Foo": "twenty"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "transfer",
+      "request": {
+        "method": "POST",
+        "url": "/transfer",
+        "data": {
+          "tract": {
+            "origin": {
+              "SMT": "json_foofile"
+            },
+            "terminal": {
+              "SMT": "mysql_foo_schema_pk"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "retrieve",
+      "request": {
+        "method": "POST",
+        "url": "/retrieve/mysql_foo_schema_pk",
+        "data": {
+          "pattern": {
+            "match": {
+              "Bar": "row",
+              "Baz": {
+                "gte": 100,
+                "lte": 500
+              }
+            },
+            "count": 3,
+            "order": {
+              "Foo": "asc"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "aggregate",
+      "request": {
+        "method": "POST",
+        "url": "/retrieve/mysql_foo_schema",
+        "data": {
+          "pattern": {
+            "match": {
+              "Bar": "row",
+              "Baz": {
+                "gte": 100,
+                "lte": 500
+              }
+            },
+            "aggregate": {
+              "baz_sum": {
+                "sum": "Baz"
+              },
+              "dt_min": {
+                "min": "Dt Test"
+              },
+              "dt_max": {
+                "max": "Dt Test"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "groupby",
+      "request": {
+        "method": "POST",
+        "url": "/retrieve/mysql_foo_schema",
+        "data": {
+          "pattern": {
+            "match": {
+              "Bar": "row",
+              "Baz": {
+                "gte": 100,
+                "lte": 500
+              }
+            },
+            "aggregate": {
+              "baz_sum": {
+                "sum": "Baz"
+              },
+              "dt_min": {
+                "min": "Dt Test"
+              },
+              "dt_max": {
+                "max": "Dt Test"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "dull key",
+      "request": {
+        "method": "DELETE",
+        "url": "/dull/mysql_foo_schema_pk",
+        "params": {
+          "Foo": "ten"
+        }
+      }
+    },
+    {
+      "name": "dull search",
+      "request": {
+        "method": "DELETE",
+        "url": "/dull/mysql_foo_schema_pk",
+        "data": {
+          "SMT": "mysql_foo_schema_pk",
+          "pattern": {
+            "match": {
+              "Foo": "twelvety"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

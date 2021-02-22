@@ -82,6 +82,39 @@
       "outputCapture": "std"
     },
     {
+      "name": "node-api mssql",
+      "type": "pwa-node",
+      "request": "launch",
+      "program": "${workspaceFolder}/testclient.js",
+      "args": ["${workspaceFolder}/test/node-api/storage-mssql.json"],
+      "envFile": "${workspaceFolder}/.env.development",
+      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
+      "skipFiles": ["<node_internals>/**"],
+      "outputCapture": "std"
+    },
+    {
+      "name": "node-api mysql",
+      "type": "pwa-node",
+      "request": "launch",
+      "program": "${workspaceFolder}/testclient.js",
+      "args": ["${workspaceFolder}/test/node-api/storage-mysql.json"],
+      "envFile": "${workspaceFolder}/.env.development",
+      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
+      "skipFiles": ["<node_internals>/**"],
+      "outputCapture": "std"
+    },
+    {
+      "name": "node-api oracle",
+      "type": "pwa-node",
+      "request": "launch",
+      "program": "${workspaceFolder}/testclient.js",
+      "args": ["${workspaceFolder}/test/node-api/storage-oracle.json"],
+      "envFile": "${workspaceFolder}/.env.development",
+      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
+      "skipFiles": ["<node_internals>/**"],
+      "outputCapture": "std"
+    },
+    {
       "name": "node-api transfer",
       "type": "pwa-node",
       "request": "launch",
