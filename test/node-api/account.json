@@ -2,8 +2,7 @@
   "name": "node-api account",
   "request": {
     "method": "",
-    "baseURL": "http://localhost:8089/node",
-    "timeout": 2000
+    "baseURL": "http://localhost:8089/node"
   },
   "expected": {
     "status": 200

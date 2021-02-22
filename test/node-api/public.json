@@ -2,8 +2,7 @@
   "name": "node-api public",
   "request": {
     "method": "GET",
-    "url": "http://localhost:8089/index.html",
-    "timeout": 2000
+    "url": "http://localhost:8089/index.html"
   },
   "expected": {
     "status": 200

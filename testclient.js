@@ -7,7 +7,7 @@ let testName = process.argv.length > 3 ? process.argv[3] : "";
 
 const axios = Axios.create({
   baseURL: "https://localhost:8089/node",
-  timeout: 90000,
+  timeout: 2000,
 });
 axios.defaults.headers.common["User-Agent"] = "@dictadata/storage-node/testclient";
 //axios.defaults.headers.patch['Content-Type'] = 'application/json;charset=utf-8';
@@ -94,11 +94,14 @@ async function submitQuery(request, expected, outputFile) {
       else if (err.response.status === expected.status)
         return 0;
 
-      console.log("FAILED status " + err.response.status + " " + err.response.statusText + ", expected " + expected.status);
+      if (err.response.status !== 500)
+        console.log("FAILED status " + err.response.status + " " + err.response.statusText + ", expected " + expected.status);
+      else
+        console.log("FAILED " + err.stack);
       return 1;
     }
     else
-      console.log("FAILED  " + err.message);
+      console.log("FAILED  " + err.stack);
     return 1;
   }
 }

@@ -2,8 +2,7 @@
   "name": "node-api status",
   "request": {
     "method": "GET",
-    "url": "http://localhost:8089/node/status",
-    "timeout": 2000
+    "url": "http://localhost:8089/node/status"
   },
   "expected": {
     "status": 200
