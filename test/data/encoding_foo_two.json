@@ -1,0 +1,28 @@
+{
+  "smt": {
+    "model": "*",
+    "locus": "*",
+    "schema": "foo_schema_two",
+    "key": "*"
+  },
+  "fields": {
+    "Foo": {
+      "name": "Foo",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "isNullable": false,
+      "keyOrdinal": 1,
+      "label": "Foo"
+    },
+    "Bar": {
+      "name": "Bar",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "isNullable": true,
+      "keyOrdinal": 2,
+      "label": "Bar"
+    }
+  }
+}

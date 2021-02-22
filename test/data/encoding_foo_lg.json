@@ -1,0 +1,64 @@
+{
+  "smt": {
+    "model": "*",
+    "locus": "*",
+    "schema": "foo_schema_lg",
+    "key": "*"
+  },
+  "fields": {
+    "Foo": {
+      "name": "Foo",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "isNullable": false,
+      "keyOrdinal": 1,
+      "label": "Foo"
+    },
+    "Bar": {
+      "name": "Bar",
+      "type": "keyword",
+      "size": 256,
+      "default": null,
+      "isNullable": true,
+      "keyOrdinal": 0,
+      "label": "Bar"
+    },
+    "Baz": {
+      "name": "Baz",
+      "type": "text",
+      "size": 20,
+      "default": null,
+      "isNullable": true,
+      "keyOrdinal": 0,
+      "label": "Baz"
+    },
+    "Fobe": {
+      "name": "Fobe",
+      "type": "text",
+      "size": 1200,
+      "default": null,
+      "isNullable": true,
+      "keyOrdinal": 0,
+      "label": "Fobe"
+    },
+    "Dt Test": {
+      "name": "Str Test",
+      "type": "text",
+      "size": 2500,
+      "default": null,
+      "isNullable": true,
+      "keyOrdinal": 0,
+      "label": "Str Test"
+    },
+    "enabled": {
+      "name": "enabler",
+      "type": "text",
+      "size": 200000,
+      "default": null,
+      "isNullable": true,
+      "keyOrdinal": 0,
+      "label": "enabler"
+    }
+  }
+}
