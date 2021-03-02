@@ -10,18 +10,6 @@ const axios = Axios.create({
   timeout: 2000,
 });
 axios.defaults.headers.common["User-Agent"] = "@dictadata/storage-node/testclient";
-//axios.defaults.headers.patch['Content-Type'] = 'application/json;charset=utf-8';
-//axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-//axios.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-/*
-axios.defaults.transformRequest = [function (data, headers) {
-  // Do whatever you want to transform the data
-  if (typeof data === "object")
-    return JSON.stringify(data);
-  else
-    return data;
-}];
-*/
 
 (async () => {
   console.log(testFile + "  " + testName);
@@ -39,6 +27,9 @@ axios.defaults.transformRequest = [function (data, headers) {
       let request = Object.assign({}, config.request, query.request);
       let expected = Object.assign({}, config.expected, query.expected);
       let outputFile = outputDir + query.name + ".json";
+
+      if (typeof request.data === "string")
+        request.data = JSON.parse(fs.readFileSync(request.data, "utf-8"));
 
       exitCode = await submitQuery(request, expected, outputFile);
       if (exitCode !== 0)
