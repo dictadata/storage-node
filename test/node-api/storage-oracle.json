@@ -24,64 +24,7 @@
       "request": {
         "method": "PUT",
         "url": "/encoding/oracle_foo_schema_pk",
-        "data": {
-          "fields": {
-            "Foo": {
-              "name": "Foo",
-              "type": "keyword",
-              "size": 64,
-              "default": null,
-              "isNullable": false,
-              "isKey": true,
-              "label": "Foo"
-            },
-            "Bar": {
-              "name": "Bar",
-              "type": "keyword",
-              "size": 64,
-              "default": null,
-              "isNullable": true,
-              "isKey": false,
-              "label": "Bar"
-            },
-            "Baz": {
-              "name": "Baz",
-              "type": "integer",
-              "size": 0,
-              "default": null,
-              "isNullable": true,
-              "isKey": false,
-              "label": "Baz"
-            },
-            "Fobe": {
-              "name": "Fobe",
-              "type": "number",
-              "size": 0,
-              "default": null,
-              "isNullable": true,
-              "isKey": false,
-              "label": "Fobe, ain't no Foo"
-            },
-            "Dt Test": {
-              "name": "Dt Test",
-              "type": "date",
-              "size": 0,
-              "default": null,
-              "isNullable": true,
-              "isKey": false,
-              "label": "Dt Test"
-            },
-            "enabled": {
-              "name": "enabled",
-              "type": "boolean",
-              "size": 0,
-              "default": null,
-              "isNullable": true,
-              "isKey": false,
-              "label": "enabled"
-            }
-          }
-        }
+        "data": "./test/data/encoding_foo.json"
       },
       "expected": {
         "status": [200, 409]
