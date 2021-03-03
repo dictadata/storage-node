@@ -1,4 +1,4 @@
-# @dictadata/storage-node 1.2.0
+# @dictadata/storage-node 1.5.0
 
 REST API services built on Node.js, Express.js, Passport.js and @dictadata/storage-junctions.
 Intended to be the base project for a web services server.  See the @dictadata/storage-api for an example server that is extended from this project.

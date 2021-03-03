@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.5.1
+  - update request body format, remove extra nested "data" property
+  - add automated testing scripts
+  - update dependency to @dictadata/storage-junctions 1.5.1
 - version 1.4.4
   - customizable stringBreakpoints for sizing database string types
   - improved handling of date strings
