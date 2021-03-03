@@ -48,28 +48,57 @@
       }
     },
     {
+      "name": "store twenty",
+      "request": {
+        "method": "PUT",
+        "url": "/store/oracle_foo_schema",
+        "data": {
+          "twenty": {
+            "Foo": "twenty",
+            "Bar": "row",
+            "Baz": 20,
+            "Fobe": 20.20,
+            "Dt Test": "2020-10-07T08:00:00",
+            "enabled": true
+          }
+        }
+      }
+    },
+    {
+      "name": "store ten",
+      "request": {
+        "method": "PUT",
+        "url": "/store/oracle_foo_schema_pk",
+        "data": [{
+          "Foo": "ten",
+          "Bar": "row",
+          "Baz": 10,
+          "Fobe": 10.10,
+          "Dt Test": "10/27/2018",
+          "enabled": true
+        }]
+      }
+    },
+    {
       "name": "store primarykey",
       "request": {
         "method": "PUT",
         "url": "/store/oracle_foo_schema_pk",
-        "data": {
-          "SMT": "oracle_foo_schema_pk",
-            "data": [{
-              "Foo": "eleventy",
-              "Bar": "row",
-              "Baz": 11,
-              "Fobe": 11.11,
-              "Dt Test": "2011-10-07T08:00:00",
-              "enabled": true
-            },{
-              "Foo": "twelvety",
-              "Bar": "row",
-              "Baz": 12,
-              "Fobe": 12.12,
-              "Dt Test": "2012-03-03T08:00:00",
-              "enabled": true
-            }]
-        }
+        "data": [{
+          "Foo": "eleventy",
+          "Bar": "row",
+          "Baz": 11,
+          "Fobe": 11.11,
+          "Dt Test": "2011-10-07T08:00:00",
+          "enabled": true
+        },{
+          "Foo": "twelvety",
+          "Bar": "row",
+          "Baz": 12,
+          "Fobe": 12.12,
+          "Dt Test": "2012-03-03T08:00:00",
+          "enabled": true
+        }]
       }
     },
     {
@@ -209,7 +238,6 @@
         "method": "DELETE",
         "url": "/dull/oracle_foo_schema_pk",
         "data": {
-          "SMT": "oracle_foo_schema_pk",
           "pattern": {
             "match": {
               "Foo": "twelvety"

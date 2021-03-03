@@ -14,14 +14,16 @@
   },
   "queries": [
     {
-      "name": "mysql-elasticsearch",
+      "name": "mssql-elasticsearch",
       "request": {
         "data": {
-          "origin": {
-            "SMT": "mysql_foo_transfer"
-          },
-          "terminal": {
-            "SMT": "es_foo_schema_pk"
+          "tract": {
+            "origin": {
+              "SMT": "mssql_foo_transfer"
+            },
+            "terminal": {
+              "SMT": "es_foo_transfer"
+            }
           }
         }
       }

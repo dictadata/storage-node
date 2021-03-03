@@ -17,31 +17,33 @@
       "name": "mysql-elasticsearch",
       "request": {
         "data": {
-          "origin": {
-            "SMT": "mysql_foo_schema_pk"
-          },
-          "terminal": {
-            "SMT": "es_foo_transform"
-          },
-          "transforms": {
-            "filter": {
-              "match": {
-                "Bar": "row"
-              },
-              "drop": {
-                "Baz": {
-                  "eq": 456
-                }
-              }
+          "tract": {
+            "origin": {
+              "SMT": "mysql_foo_schema_pk"
             },
-            "select": {
-              "inject_before": {
-                "Fie": "where's es fum?"
+            "terminal": {
+              "SMT": "es_foo_transform"
+            },
+            "transforms": {
+              "filter": {
+                "match": {
+                  "Bar": "row"
+                },
+                "drop": {
+                  "Baz": {
+                    "eq": 456
+                  }
+                }
               },
-              "fields": {
-                "Foo": "Foo",
-                "Bar": "Bar",
-                "Baz": "Bazzy"
+              "select": {
+                "inject_before": {
+                  "Fie": "where's es fum?"
+                },
+                "fields": {
+                  "Foo": "Foo",
+                  "Bar": "Bar",
+                  "Baz": "Bazzy"
+                }
               }
             }
           }
