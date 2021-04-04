@@ -1,16 +1,20 @@
 const fs = require("fs");
 const path = require("path");
-const Axios = require('axios').default;
+const { httpRequest } = require('@dictadata/storage-junctions').utils;
 const colors = require('colors');
 
 let testFile = process.argv.length > 2 ? process.argv[2] : "";
 let testName = process.argv.length > 3 ? process.argv[3] : "";
 
-const axios = Axios.create({
-  baseURL: "https://localhost:8089/node",
-  timeout: 45000,
-});
-axios.defaults.headers.common["User-Agent"] = "@dictadata/storage-node/testclient";
+var request = {
+  method: "GET",
+  origin: "https://localhost:8089/node",
+  timeout: 10000
+};
+request.headers = {
+  'Accept': 'application / json',
+  'User-Agent': "@dictadata/storage-node/testclient"
+};
 
 (async () => {
   console.log((testFile + "  " + testName).blue);
@@ -48,7 +52,7 @@ async function submitQuery(request, expected, outputFile) {
 
   try {
     // make request
-    let response = await axios.request(request);
+    let response = await httpRequest('', request);
 
     if (response.data)
       fs.writeFileSync(outputFile, JSON.stringify(response.data, null, 2), "utf8");

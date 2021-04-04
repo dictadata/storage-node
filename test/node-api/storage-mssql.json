@@ -24,7 +24,7 @@
       "request": {
         "method": "PUT",
         "url": "/encoding/mssql_foo_schema_pk",
-        "data": "./test/data/encoding_foo.json"
+        "data": "./data/test/data/encoding_foo.json"
       },
       "expected": {
         "status": [
