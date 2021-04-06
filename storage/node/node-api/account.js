@@ -4,7 +4,7 @@
  */
 
 const storage = require("@dictadata/storage-junctions");
-const { StorageResults, StorageError } = require("@dictadata/storage-junctions").types;
+const { StorageResponse, StorageError } = require("@dictadata/storage-junctions").types;
 const express = require("express");
 const accounts = require("../accounts");
 const Account = require('../account');
@@ -184,7 +184,7 @@ async function dull(req, res) {
     // delete user account
     let results = await accounts.dull(userid);
 
-    //let results = new StorageResults(0);
+    //let results = new StorageResponse(0);
     res.set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
@@ -217,7 +217,7 @@ async function logEvent(req, res) {
     logger.info(JSON.stringify(event));
 
     // return "ok"
-    let results = new StorageResults(0);
+    let results = new StorageResponse(0);
     res.set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {

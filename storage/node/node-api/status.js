@@ -8,7 +8,7 @@ const authorize = require('../authorize');
 const roles = require('../roles');
 const config = require('../config');
 const storage = require('@dictadata/storage-junctions');
-const { StorageResults, StorageError } = require("@dictadata/storage-junctions").types;
+const { StorageResponse, StorageError } = require("@dictadata/storage-junctions").types;
 const { typeOf } = require('@dictadata/storage-junctions').utils;
 const logger = require('../../utils/logger');
 
@@ -28,7 +28,7 @@ module.exports = router;
 function status(req, res) {
   logger.debug('/node-api/status');
 
-  var results = new StorageResults(0);
+  var results = new StorageResponse(0);
   results.add(config.name, "name");
   results.add(config.version, "vesion");
   results.add(new Date().toISOString(), "time");

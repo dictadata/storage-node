@@ -9,7 +9,7 @@ const roles = require("../roles");
 const config = require("../config.js");
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
-const { StorageResults, StorageError } = require('@dictadata/storage-junctions').types;
+const { StorageResponse, StorageError } = require('@dictadata/storage-junctions').types;
 const { typeOf } = require('@dictadata/storage-junctions').utils;
 
 /**
@@ -188,7 +188,7 @@ async function store (req, res) {
     junction = await storage.activate(config.smt[smtname]);
     await junction.getEncoding();
 
-    var storageResults = new StorageResults(0);
+    var storageResults = new StorageResponse(0);
 
     // body will be an array of constructs
     // or a object/map of key:constructs
