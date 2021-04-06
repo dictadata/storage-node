@@ -6,8 +6,7 @@
 // use the storage-junctions logger
 const { logger } = require('@dictadata/storage-junctions').utils;
 // which is the Winston logger
-const winston = require('winston');
-const { format } = winston;
+const { format } = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
 
 module.exports = exports = logger;

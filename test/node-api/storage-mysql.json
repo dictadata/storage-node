@@ -2,7 +2,7 @@
   "name": "mysql",
   "request": {
     "method": "GET",
-    "base": "http://localhost:8089/node",
+    "base": "http://localhost:8089/node/",
     "auth": {
       "username": "user",
       "password": "user"
@@ -16,14 +16,14 @@
       "name": "status",
       "request": {
         "method": "GET",
-        "url": "/status/mysql_foo_schema_pk"
+        "url": "status/mysql_foo_schema_pk"
       }
     },
     {
       "name": "putEncoding",
       "request": {
         "method": "PUT",
-        "url": "/encoding/mysql_foo_schema_pk",
+        "url": "encoding/mysql_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -37,14 +37,14 @@
       "name": "getEncoding",
       "request": {
         "method": "GET",
-        "url": "/encoding/mysql_foo_schema_pk"
+        "url": "encoding/mysql_foo_schema_pk"
       }
     },
     {
       "name": "list",
       "request": {
         "method": "POST",
-        "url": "/list/mysql_foo_schema_pk",
+        "url": "list/mysql_foo_schema_pk",
         "params": {
           "schema": "foo*"
         }
@@ -54,7 +54,7 @@
       "name": "store twenty",
       "request": {
         "method": "PUT",
-        "url": "/store/mysql_foo_schema",
+        "url": "store/mysql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -74,7 +74,7 @@
       "name": "store ten",
       "request": {
         "method": "PUT",
-        "url": "/store/mysql_foo_schema_pk",
+        "url": "store/mysql_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -92,7 +92,7 @@
       "name": "store primarykey",
       "request": {
         "method": "PUT",
-        "url": "/store/mysql_foo_schema_pk",
+        "url": "store/mysql_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -117,7 +117,7 @@
       "name": "recall key",
       "request": {
         "method": "GET",
-        "url": "/recall/mysql_foo_schema_pk",
+        "url": "recall/mysql_foo_schema_pk",
         "params": {
           "Foo": "ten"
         }
@@ -127,7 +127,7 @@
       "name": "recall search",
       "request": {
         "method": "POST",
-        "url": "/recall/mysql_foo_schema_pk",
+        "url": "recall/mysql_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -144,7 +144,7 @@
       "name": "transfer",
       "request": {
         "method": "POST",
-        "url": "/transfer",
+        "url": "transfer",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -164,7 +164,7 @@
       "name": "retrieve",
       "request": {
         "method": "POST",
-        "url": "/retrieve/mysql_foo_schema_pk",
+        "url": "retrieve/mysql_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -189,7 +189,7 @@
       "name": "aggregate",
       "request": {
         "method": "POST",
-        "url": "/retrieve/mysql_foo_schema",
+        "url": "retrieve/mysql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -221,7 +221,7 @@
       "name": "groupby",
       "request": {
         "method": "POST",
-        "url": "/retrieve/mysql_foo_schema",
+        "url": "retrieve/mysql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -253,7 +253,7 @@
       "name": "dull key",
       "request": {
         "method": "DELETE",
-        "url": "/dull/mysql_foo_schema_pk",
+        "url": "dull/mysql_foo_schema_pk",
         "params": {
           "Foo": "ten"
         }
@@ -263,7 +263,7 @@
       "name": "dull search",
       "request": {
         "method": "DELETE",
-        "url": "/dull/mysql_foo_schema_pk",
+        "url": "dull/mysql_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

@@ -2,7 +2,7 @@
   "name": "node-api transfers",
   "request": {
     "method": "POST",
-    "base": "http://localhost:8089/node/transfer",
+    "base": "http://localhost:8089/node/transfer/",
     "auth": {
       "username": "user",
       "password": "user"
