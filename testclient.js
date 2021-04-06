@@ -49,7 +49,7 @@ request.headers = {
 
 
 async function submitQuery(request, expected, outputFile) {
-  console.log("submitQuery");
+  //console.log("submitQuery");
 
   try {
     // make request
