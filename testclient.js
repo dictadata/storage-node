@@ -49,10 +49,11 @@ request.headers = {
 
 
 async function submitQuery(request, expected, outputFile) {
+  console.log("submitQuery");
 
   try {
     // make request
-    let response = await httpRequest(request.url, request, JSON.stringify(request.data));
+    let response = await httpRequest(request.url || '', request, JSON.stringify(request.data));
 
     if (response.data) {
       fs.writeFileSync(outputFile, response.data, "utf8");
