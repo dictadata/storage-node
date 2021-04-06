@@ -1,5 +1,5 @@
 {
-  "name": "node-api transforms",
+  "name": "transforms",
   "request": {
     "method": "POST",
     "base": "http://localhost:8089/node/transfer",

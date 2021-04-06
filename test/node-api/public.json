@@ -1,5 +1,5 @@
 {
-  "name": "node-api public",
+  "name": "public",
   "request": {
     "method": "GET",
     "url": "http://localhost:8089/index.html"

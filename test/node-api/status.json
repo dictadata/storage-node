@@ -1,5 +1,5 @@
 {
-  "name": "node-api status",
+  "name": "status",
   "request": {
     "method": "GET",
     "url": "http://localhost:8089/node/status"

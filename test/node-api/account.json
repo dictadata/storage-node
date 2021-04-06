@@ -1,5 +1,5 @@
 {
-  "name": "node-api account",
+  "name": "account",
   "request": {
     "method": "",
     "base": "http://localhost:8089/node/"
