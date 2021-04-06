@@ -5,9 +5,9 @@
 
 const express = require('express');
 const url = require('url');
-const logger = require('../lib/logger');
-const authorize = require('../lib/authorize');
-const roles = require('../lib/roles');
+const logger = require('../storage/utils/logger');
+const authorize = require('../storage/node/authorize');
+const roles = require('../storage/node/roles');
 
 /**
  * routes

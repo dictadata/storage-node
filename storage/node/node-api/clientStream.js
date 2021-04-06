@@ -10,7 +10,7 @@ const express = require('express');
 const authorize = require("../authorize");
 const roles = require("../roles");
 const config = require('../config');
-const logger = require('../logger');
+const logger = require('../../utils/logger');
 const formidable = require('formidable');
 const fs = require('fs');
 const stream = require('stream/promises');
@@ -110,7 +110,7 @@ async function uploadFiles(req, res) {
     if (importList.length != fileList.length) {
       let err = new StorageError(400, 'Invalid input values');
       logger.error(err);
-      res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+      res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
       return;
     }
 
@@ -167,7 +167,7 @@ async function uploadFiles(req, res) {
       }
       catch (err) {
         logger.error(err);
-        res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+        res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
       }
       finally {
         if (jo)

@@ -12,7 +12,7 @@ const { typeOf } = require('@dictadata/storage-junctions').utils;
 const Account = require('./account');
 const roles = require('./roles');
 const config = require('./config');
-const logger = require("./logger");
+const logger = require("../utils/logger");
 const fs = require("fs/promises");
 const path = require("path");
 
@@ -47,7 +47,7 @@ exports.startup = async (config) => {
       // create source
       let results = await junction.createSchema();
       if (typeOf(results) !== "object")
-        throw new StorageError({ statusCode: 500 }, "could not create accounts schema");
+        throw new StorageError(500, "could not create accounts schema");
 
       // create admin account
       let account = new Account('admin');
@@ -87,7 +87,7 @@ var recall = exports.recall = async function (userid) {
     pattern["userid"] = userid;
 
   let results = await junction.recall(pattern);
-  if (results.result === 'ok') {
+  if (results.resultCode === 0) {
     account = new Account();
     if (junction.engram.keyof === 'key')
       account.copy(results.data[userid]);
@@ -112,7 +112,7 @@ var retrieve = exports.retrieve = async function (pattern) {
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
   let results = await junction.retrieve(pattern);
-  if (results.result === 'ok') {
+  if (results.resultCode === 0) {
     let keys = Object.keys(results.data);
     let account = new Account();
     account.copy(results.data[keys[0]]);
@@ -147,8 +147,7 @@ var store = exports.store = async function (account) {
   }
 
   let results = await junction.store(account.encode(), pattern);
-  if (results.result !== 'ok')
-    throw new StorageError({ statusCode: 400 }, results.result);
+  return results;
 };
 
 /**
@@ -168,6 +167,5 @@ var dull = exports.dull = async function (userid) {
     pattern["userid"] = userid;
   
   let results = await junction.dull(pattern);
-  if (results.result !== 'ok')
-    throw new StorageError({ statusCode: 400 }, results.result);
+  return results;
 };

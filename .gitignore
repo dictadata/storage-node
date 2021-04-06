@@ -1,6 +1,5 @@
 dist/
 node_modules/
-storage/
 test/unit/coverage
 test/e2e/reports
 test/output

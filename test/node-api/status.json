@@ -5,13 +5,13 @@
     "url": "http://localhost:8089/node/status"
   },
   "expected": {
-    "status": 200
+    "statusCode": 200
   },
   "queries": [
     {
       "name": "no user",
       "expected": {
-        "status": 401
+        "statusCode": 401
       }
     },
     {

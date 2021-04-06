@@ -10,7 +10,7 @@ const express = require('express');
 const authorize = require("../authorize");
 const roles = require("../roles");
 const config = require('../config');
-const logger = require('../logger');
+const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
 const { StorageError } = require('@dictadata/storage-junctions').types;
 const stream = require('stream/promises');
@@ -37,9 +37,9 @@ async function transport(req, res) {
   var transforms = tract.transforms || {};
 
   if (!origin.SMT || origin.SMT[0] === '$' || !config.smt[origin.SMT])
-    throw new StorageError({ statusCode: 400 }, "invalid origin smt name");
+    throw new StorageError(400, "invalid origin smt name");
   if (!terminal.SMT || terminal.SMT[0] === '$' || !config.smt[terminal.SMT])
-    throw new StorageError({ statusCode: 400 }, "invalid terminal smt name");
+    throw new StorageError(400, "invalid terminal smt name");
 
   var jo, jt;
   try {
@@ -84,7 +84,7 @@ async function transport(req, res) {
   }
   catch (err) {
     logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (jo)

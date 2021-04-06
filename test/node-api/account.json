@@ -2,20 +2,23 @@
   "name": "node-api account",
   "request": {
     "method": "",
-    "baseURL": "http://localhost:8089/node"
+    "base": "http://localhost:8089/node/"
   },
   "expected": {
-    "status": 200
+    "statusCode": 200
   },
   "queries": [
     {
       "name": "register",
       "request": {
         "method": "POST",
-        "url": "/register",
+        "url": "register",
         "auth": {
           "username": "dullboy",
           "password": "dullboy"
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
           "account": {
@@ -25,14 +28,14 @@
         }
       },
       "expected": {
-        "status": [201, 409]
+        "statusCode": [201, 409]
       }
     },
     {
       "name": "login",
       "request": {
         "method": "GET",
-        "url": "/login",
+        "url": "login",
         "auth": {
           "username": "dullboy",
           "password": "dullboy"
@@ -43,7 +46,10 @@
       "name": "update",
       "request": {
         "method": "PUT",
-        "url": "/account",
+        "url": "account",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "auth": {
           "username": "dullboy",
           "password": "dullboy"
@@ -69,7 +75,7 @@
       "name": "dull",
       "request": {
         "method": "DELETE",
-        "url": "/account/dullboy",
+        "url": "account/dullboy",
         "auth": {
           "username": "dullboy",
           "password": "dullboy"

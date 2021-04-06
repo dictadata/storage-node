@@ -4,7 +4,7 @@
 "use strict";
 
 const path = require('path');
-const Package = require('../package.json');
+const Package = require('../../package.json');
 
 var config = {
   name: Package.name,
@@ -21,9 +21,9 @@ var config = {
   logLevel: process.env.LOG_LEVEL || 'info',
 
   // path to web root with index.html, robots.txt, ...
-  publicPath: path.join(__dirname, '../public'),
+  publicPath: path.join(__dirname, '../../public'),
   // path to directory to contain upload and download folders
-  dataPath: path.join(__dirname, '../data'),
+  dataPath: path.join(__dirname, '../../data'),
 
   // place holder for application defined routes
   routes: {

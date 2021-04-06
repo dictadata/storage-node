@@ -10,7 +10,7 @@ const express = require('express');
 const authorize = require("../authorize");
 const roles = require("../roles");
 const config = require('../config');
-const logger = require('../logger');
+const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
 const { StorageError } = require('@dictadata/storage-junctions').types;
 const { typeOf } = require('@dictadata/storage-junctions').utils;
@@ -40,9 +40,9 @@ async function transfer(req, res) {
   var jo, jt;
   try {
     if (!origin.SMT || origin.SMT[0] === '$' || !config.smt[origin.SMT])
-      throw new StorageError({ statusCode: 400 }, "invalid origin smt name: " + origin.SMT);
+      throw new StorageError(400, "invalid origin smt name: " + origin.SMT);
     if (!terminal.SMT || terminal.SMT[0] === '$' || !config.smt[terminal.SMT])
-      throw new StorageError({ statusCode: 400 }, "invalid terminal smt name: " + terminal.SMT);
+      throw new StorageError(400, "invalid terminal smt name: " + terminal.SMT);
 
     jo = await storage.activate(config.smt[origin.SMT], origin.options);
     jt = await storage.activate(config.smt[terminal.SMT], terminal.options);
@@ -98,7 +98,7 @@ async function transfer(req, res) {
   }
   catch (err) {
     logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (jo)

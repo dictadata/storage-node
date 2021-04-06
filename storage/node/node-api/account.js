@@ -11,21 +11,24 @@ const Account = require('../account');
 const authorize = require("../authorize");
 const roles = require("../roles");
 const config = require("../config");
-const logger = require("../logger");
+const logger = require("../../utils/logger");
 
 /**
  * account routes
  */
 var router = express.Router();
 // account requests
+router.get("/login", authorize([roles.Public]), login);
 router.get("/account", authorize([roles.Public]), login);
+
+router.post("/register", authorize([roles.Public]), register);
 router.post("/account", authorize([roles.Public]), register);
+
 router.put("/account", authorize([roles.User, roles.Admin]), store);
+
 router.delete("/account", authorize([roles.User, roles.Admin]), dull);
 router.delete("/account/:userid", authorize([roles.User, roles.Admin]), dull);
-// aliases
-router.get("/login", authorize([roles.Public]), login);
-router.post("/register", authorize([roles.Public]), register);
+
 router.post("/log", authorize([roles.Public]), logEvent);
 module.exports = router;
 
@@ -40,25 +43,25 @@ async function login(req, res) {
     // retrieve user account
     let account = await accounts.recall(req.user.userid);
     if (!account)
-      throw new StorageError({statusCode: 401}, "invalid userid/password" );
+      throw new StorageError(401, "invalid userid/password" );
 
     if (req.user.password !== account.password)
-      throw new StorageError({ statusCode: 401 }, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
 
     // update last login time
     account.lastLogin = new Date().toISOString();
-    await accounts.store(account);
+    let results = await accounts.store(account);
 
     // return account record
-    let results = new StorageResults("ok", account.packet(), req.user.userid);
+    results.data[req.user.userid] = account.packet();
     res.set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
   }
   catch(error) {
-    if (error.statusCode && error.statusCode === 401)
+    if (error.resultCode && error.resultCode === 401)
       logger.warn(error.message);
     else
       logger.error(error);
-    res.status(error.statusCode || 500).send(error.message);
+    res.status(error.resultCode || 500).send(error.message);
   }
 }
 
@@ -74,16 +77,16 @@ async function register(req, res) {
     let admin = req.user.roles.includes(roles.Admin);
 
     if (!admin && (req.user.userid !== reqAccount.userid))
-      throw new StorageError({statusCode: 401}, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
 
     // try to recall account
     let account = await accounts.recall(reqAccount.userid);
     if (account)
-      throw new StorageError({statusCode: 409}, "account already exists");
+      throw new StorageError(409, "account already exists");
 
     if (!admin && req.user.password !== reqAccount.password) {
       // both should be plain text and equal for new user request
-      throw new StorageError({statusCode: 401}, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
     }
 
     // store new user account
@@ -95,18 +98,18 @@ async function register(req, res) {
     newAccount.dateUpdated = new Date().toISOString();
     newAccount.lastLogin = new Date().toISOString();
 
-    await accounts.store(newAccount);
+    let results = await accounts.store(newAccount);
 
     // return user's record
-    let results = new StorageResults("ok", newAccount.packet(), newAccount.userid);
+    results.data[newAccount.userid] = newAccount.packet();
     res.status(201).set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
-    if (error.statusCode && error.statusCode === 409)
+    if (error.resultCode && error.resultCode === 409)
       logger.warn(error.message);
     else
       logger.error(error);
-    res.status(error.statusCode || 500).set('Content-Type', 'text/plain').send(error.message);
+    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }
 
@@ -121,15 +124,15 @@ async function store(req, res) {
     let admin = req.user.roles.includes(roles.Admin);
 
     if (!admin && (req.user.userid !== reqAccount.userid))
-      throw new StorageError({statusCode: 401}, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
 
     // find the user's account
     let oldAccount = await accounts.recall(reqAccount.userid);
     if (!oldAccount)
-      throw new StorageError({statusCode: 404}, "account not found");
+      throw new StorageError(404, "account not found");
 
     if (!admin && req.user.password !== oldAccount.password)
-      throw new StorageError({statusCode: 401}, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
 
     let modAccount = new Account(reqAccount.userid);
     modAccount.copy(oldAccount);
@@ -141,18 +144,18 @@ async function store(req, res) {
     modAccount.dateUpdated = new Date().toISOString();
 
     // save the updated user account
-    await accounts.store(modAccount);
+    let results = await accounts.store(modAccount);
 
     // return user's record
-    let results = new StorageResults("ok", modAccount.packet(), modAccount.userid);
+    results.data[modAccount.userid] = modAccount.packet();
     res.set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
-    if (error.statusCode && error.statusCode === 401)
+    if (error.resultCode && error.resultCode === 401)
       logger.warn(error.message);
     else
       logger.error(error);
-    res.status(error.statusCode || 500).set('Content-Type', 'text/plain').send(error.message);
+    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }
 
@@ -168,28 +171,28 @@ async function dull(req, res) {
     let admin = req.user.roles.includes(roles.Admin);
 
     if (!admin && (req.user.userid !== userid))
-      throw new StorageError({statusCode: 401}, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
 
     // find the user's account
     let account = await accounts.recall(userid);
     if (!account)
-      throw new StorageError({statusCode: 404}, "account not found");
+      throw new StorageError(404, "account not found");
 
     if (!admin && (req.user.password !== account.password))
-      throw new StorageError({statusCode: 401}, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
 
     // delete user account
-    await accounts.dull(userid);
+    let results = await accounts.dull(userid);
 
-    let results = new StorageResults("ok");
+    //let results = new StorageResults(0);
     res.set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
-    if (error.statusCode && error.statusCode === 401)
+    if (error.resultCode && error.resultCode === 401)
       logger.warn(error.message);
     else
       logger.error(error);
-    res.status(error.statusCode || 500).set('Content-Type', 'text/plain').send(error.message);
+    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }
 
@@ -203,25 +206,25 @@ async function logEvent(req, res) {
     let event = req.body.event || {};
     let admin = req.user.roles.includes(roles.Admin);
     if (!admin && (req.user.userid !== event.userid))
-      throw new StorageError({statusCode: 401}, "invalid userid/password");
+      throw new StorageError(401, "invalid userid/password");
 
     // find the user's account
     let account = await accounts.recall(event.userid);
     if (!account)
-      throw new StorageError({statusCode: 404}, "account not found");
+      throw new StorageError(404, "account not found");
 
     // log event
     logger.info(JSON.stringify(event));
 
     // return "ok"
-    let results = new StorageResults("ok");
+    let results = new StorageResults(0);
     res.set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
-    if (error.statusCode && error.statusCode === 401)
+    if (error.resultCode && error.resultCode === 401)
       logger.warn(error.message);
     else
       logger.error(error);
-    res.status(error.statusCode || 500).set('Content-Type', 'text/plain').send(error.message);
+    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }

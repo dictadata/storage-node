@@ -8,7 +8,7 @@
 
 const accounts = require('./accounts');
 const Account = require('./account');
-const logger = require("./logger");
+const logger = require("../utils/logger");
 
 /**
  * Passport callback for handling LocalStrategy requests

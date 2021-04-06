@@ -3,16 +3,16 @@
  */
 "use strict";
 
-const server = require('./lib/server');
-const app = require('./lib/app');
+const server = require('./storage/node/server');
+const app = require('./storage/node/app');
 
-const authenticate = require('./lib/authenticate');
-const authorize = require('./lib/authorize');
-const roles = require('./lib/roles');
-const Account = require('./lib/account');
+const authenticate = require('./storage/node/authenticate');
+const authorize = require('./storage/node/authorize');
+const roles = require('./storage/node/roles');
+const Account = require('./storage/node/account');
 
-const startup = require('./lib/startup');
-const logger = require('./lib/logger');
+const startup = require('./storage/node/startup');
+const logger = require('./storage/utils/logger');
 
 exports = module.exports = server;
 exports.app = app;

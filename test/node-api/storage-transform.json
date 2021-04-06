@@ -2,7 +2,7 @@
   "name": "node-api transforms",
   "request": {
     "method": "POST",
-    "baseURL": "http://localhost:8089/node/transfer",
+    "base": "http://localhost:8089/node/transfer",
     "auth": {
       "username": "user",
       "password": "user"
@@ -10,12 +10,15 @@
     "timeout": 90000
   },
   "expected": {
-    "status": 200
+    "statusCode": 200
   },
   "queries": [
     {
       "name": "mysql-elasticsearch",
       "request": {
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "tract": {
             "origin": {

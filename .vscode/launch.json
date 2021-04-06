@@ -19,8 +19,6 @@
       "request": "launch",
       "type": "pwa-node",
       "envFile": "${workspaceFolder}/.env.development",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
       "program": "${workspaceFolder}/test/main.js",
       "restart": true,
       "runtimeExecutable": "nodemon",

@@ -1,7 +1,7 @@
 ### mysql_foo_schema_pk => es_foo_transform
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
@@ -37,7 +37,7 @@ Content-Type: application/json;charset=utf-8
 ### es_foo_schema_pk => mssql_foo_transform
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
@@ -73,7 +73,7 @@ Content-Type: application/json;charset=utf-8
 ### es_foo_schema_pk => mysql_foo_transform
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
@@ -109,7 +109,7 @@ Content-Type: application/json;charset=utf-8
 ### es_foo_schema_pk => oracle_foo_transform
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json; charset=utf-8
 
 {
   "origin": {

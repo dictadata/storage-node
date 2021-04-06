@@ -7,7 +7,7 @@ const express = require('express');
 const authorize = require("../authorize");
 const roles = require("../roles");
 const config = require("../config.js");
-const logger = require('../logger');
+const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
 const { StorageResults, StorageError } = require('@dictadata/storage-junctions').types;
 const { typeOf } = require('@dictadata/storage-junctions').utils;
@@ -61,7 +61,7 @@ async function list (req, res) {
   try {
     let smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
     if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-      throw new StorageError({statusCode: 400}, "invalid SMT name");
+      throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
 
@@ -78,7 +78,7 @@ async function list (req, res) {
   }
   catch(err) {
     logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -98,7 +98,7 @@ async function getEncoding (req, res) {
   try {
     let smtname = req.params['SMT'] || req.query["SMT"] || (req.body && req.body.SMT);
     if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-      throw new StorageError({statusCode: 400}, "invalid SMT name");
+      throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
 
@@ -113,12 +113,12 @@ async function getEncoding (req, res) {
       res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
     }
     else
-      throw new StorageError({statusCode: 404}, encoding);
+      throw new StorageError(404, encoding);
   }
   catch(err) {
-    if (err.statusCode !== 400 && err.statusCode !== 404)
+    if (err.resultCode !== 400 && err.resultCode !== 404)
       logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -138,7 +138,7 @@ async function putEncoding (req, res) {
   try {
     let smtname = req.params['SMT'] || req.query["SMT"] || (req.body && req.body.SMT);
     if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-      throw new StorageError({statusCode: 400}, "invalid SMT name");
+      throw new StorageError(400, "invalid SMT name");
 
     let newEncoding = req.body.encoding || req.body;
 
@@ -155,12 +155,12 @@ async function putEncoding (req, res) {
       res.status(201).set("Cache-Control", "no-store").jsonp(results);
     }
     else
-      throw new StorageError({statusCode: 409}, encoding);
+      throw new StorageError(409, encoding);
   }
   catch(err) {
-    if (err.statusCode !== 400 && err.statusCode !== 409)
+    if (err.resultCode !== 400 && err.resultCode !== 409)
       logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -177,43 +177,48 @@ async function store (req, res) {
   logger.verbose('/storage/store');
 
   if (!req.body)
-    throw new StorageError({statusCode: 400}, "invalid data");
+    throw new StorageError(400, "invalid data");
 
   var junction;
   try {
     let smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
     if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-      throw new StorageError({statusCode: 400}, "invalid SMT name");
+      throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
     await junction.getEncoding();
 
-    var storageResults = null;
+    var storageResults = new StorageResults(0);
 
+    // body will be an array of constructs
+    // or a object/map of key:constructs
     if (Array.isArray(req.body)) {
-      storageResults = new StorageResults("ok");
       for (let construct of req.body) {
         let results = await junction.store(construct);
         let key = Object.keys(results.data)[0];
-        storageResults.add(results.result === "ok" && key ? key : junction.engram.get_uid(construct) );
-        if (results.result !== 'ok')
-          storageResults.result = results.result;
+        storageResults.add(results.resultCode === 0 && key ? key : junction.engram.get_uid(construct) );
+        if (results.resultCode !== 0) {
+          storageResults.resultCode = results.resultCode;
+          storageResults.resultText = results.resultText;
+        }
       }
     }
     else {
-      storageResults = new StorageResults("ok",null,true);
+      // object/map of key:construct
       for (let [key, construct] of Object.entries(req.body)) {
         let results = await junction.store(construct, {"key": key});
-        storageResults.add( (results.result === "ok" && results.data ? Object.values(results.data)[0] : results.result), key);
-        if (results.result !== 'ok')
-          storageResults.result = results.result;
+        storageResults.add( (results.resultCode === 0 && results.data ? Object.values(results.data)[0] : results.resultText), key);
+        if (results.resultCode !== 0) {
+          storageResults.resultCode = results.resultCode;
+          storageResults.resultText = results.resultText;
+        }
       }
     }
 
     res.set("Cache-Control", "no-store").jsonp(storageResults);
   }
   catch(err) {
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -233,14 +238,14 @@ async function recall (req, res) {
   try {
     let smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
     if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-      throw new StorageError({statusCode: 400}, "invalid SMT name");
+      throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
     let results = await junction.recall(pattern);
-    if (results.result === 'ok') {
+    if (results.resultCode === 0) {
       let response = {
         result: results.result,
         SMT: smtname,
@@ -254,7 +259,7 @@ async function recall (req, res) {
       res.status(400).jsonp(results);
   }
   catch(err) {
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -274,14 +279,14 @@ async function retrieve (req, res) {
   try {
     let smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
     if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-      throw new StorageError({statusCode: 400}, "invalid SMT name");
+      throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
     let results = await junction.retrieve(pattern);
-    if (results.result === 'ok') {
+    if (results.resultCode === 0) {
       let response = {
         result: results.result,
         SMT: smtname,
@@ -296,7 +301,7 @@ async function retrieve (req, res) {
   }
   catch(err) {
     logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -316,14 +321,14 @@ async function dull(req, res) {
   try {
     let smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
     if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-      throw new StorageError({statusCode: 400}, "invalid SMT name");
+      throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
     let results = await junction.dull(pattern);
-    if (results.result === 'ok')
+    if (results.resultCode === 0)
       res.set("Cache-Control", "no-store").jsonp(results);
     else if (results.result === 'not found')
       res.status(404).jsonp(results);
@@ -331,7 +336,7 @@ async function dull(req, res) {
       res.status(400).jsonp(results);
   }
   catch (err) {
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -349,7 +354,7 @@ async function getSMT(req, res) {
 
   var smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
   if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-    throw new StorageError({statusCode: 400}, "invalid SMT name");
+    throw new StorageError(400, "invalid SMT name");
 
   try {
     if (config.smt[smtname])
@@ -359,7 +364,7 @@ async function getSMT(req, res) {
   }
   catch (err) {
     logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }
 
@@ -373,7 +378,7 @@ async function putSMT(req, res) {
 
   var smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
   if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-    throw new StorageError({statusCode: 400}, "invalid SMT name");
+    throw new StorageError(400, "invalid SMT name");
 
   var smt = req.body.smt || req.body;
 
@@ -382,7 +387,7 @@ async function putSMT(req, res) {
     res.status(201).set("Cache-Control", "no-store").jsonp({result: "ok"});
   }
   catch (err) {
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }
 
@@ -396,7 +401,7 @@ async function dullSMT(req, res) {
 
   var smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
   if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-    throw new StorageError({statusCode: 400}, "invalid SMT name");
+    throw new StorageError(400, "invalid SMT name");
 
   try {
     if (config.smt[smtname]) {
@@ -408,6 +413,6 @@ async function dullSMT(req, res) {
   }
   catch (err) {
     logger.error(err);
-    res.status(err.statusCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }

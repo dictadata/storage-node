@@ -5,7 +5,7 @@
     "url": "http://localhost:8089/index.html"
   },
   "expected": {
-    "status": 200
+    "statusCode": 200
   },
   "queries": [
     {

@@ -2,14 +2,14 @@
   "name": "mysql",
   "request": {
     "method": "GET",
-    "baseURL": "http://localhost:8089/node",
+    "base": "http://localhost:8089/node",
     "auth": {
       "username": "user",
       "password": "user"
     }
   },
   "expected": {
-    "status": 200
+    "statusCode": 200
   },
   "queries": [
     {
@@ -24,10 +24,13 @@
       "request": {
         "method": "PUT",
         "url": "/encoding/mysql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": "./data/test/data/encoding_foo.json"
       },
       "expected": {
-        "status": [200, 409]
+        "statusCode": [200, 409]
       }
     },
     {
@@ -52,6 +55,9 @@
       "request": {
         "method": "PUT",
         "url": "/store/mysql_foo_schema",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "twenty": {
             "Foo": "twenty",
@@ -69,6 +75,9 @@
       "request": {
         "method": "PUT",
         "url": "/store/mysql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": [{
           "Foo": "ten",
           "Bar": "row",
@@ -84,6 +93,9 @@
       "request": {
         "method": "PUT",
         "url": "/store/mysql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": [{
           "Foo": "eleventy",
           "Bar": "row",
@@ -116,6 +128,9 @@
       "request": {
         "method": "POST",
         "url": "/recall/mysql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
@@ -130,6 +145,9 @@
       "request": {
         "method": "POST",
         "url": "/transfer",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "tract": {
             "origin": {
@@ -147,6 +165,9 @@
       "request": {
         "method": "POST",
         "url": "/retrieve/mysql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
@@ -169,6 +190,9 @@
       "request": {
         "method": "POST",
         "url": "/retrieve/mysql_foo_schema",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
@@ -198,6 +222,9 @@
       "request": {
         "method": "POST",
         "url": "/retrieve/mysql_foo_schema",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
@@ -237,6 +264,9 @@
       "request": {
         "method": "DELETE",
         "url": "/dull/mysql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {

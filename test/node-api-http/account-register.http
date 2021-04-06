@@ -3,7 +3,7 @@
 ### dullboy
 POST http://localhost:8089/node/account HTTP/1.1
 Authorization: Basic dullboy dullboy
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json; charset=utf-8
 
 {
   "account": {
@@ -15,7 +15,7 @@ Content-Type: application/json;charset=utf-8
 ### guest - created by admin with Public role only
 POST http://localhost:8089/node/register HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json; charset=utf-8
 
 {
   "account": {
@@ -28,7 +28,7 @@ Content-Type: application/json;charset=utf-8
 ### user, cannot set roles, defaults to ["Public","User"]
 POST http://localhost:8089/node/register HTTP/1.1
 Authorization: Basic user user
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json; charset=utf-8
 
 {
   "account": {

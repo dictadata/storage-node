@@ -2,14 +2,14 @@
   "name": "mssql",
   "request": {
     "method": "GET",
-    "baseURL": "http://localhost:8089/node",
+    "base": "http://localhost:8089/node",
     "auth": {
       "username": "user",
       "password": "user"
     }
   },
   "expected": {
-    "status": 200
+    "statusCode": 200
   },
   "queries": [
     {
@@ -24,10 +24,13 @@
       "request": {
         "method": "PUT",
         "url": "/encoding/mssql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": "./data/test/data/encoding_foo.json"
       },
       "expected": {
-        "status": [
+        "statusCode": [
           200,
           409
         ]
@@ -55,6 +58,9 @@
       "request": {
         "method": "PUT",
         "url": "/store/mssql_foo_schema",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "twenty": {
             "Foo": "twenty",
@@ -72,6 +78,9 @@
       "request": {
         "method": "PUT",
         "url": "/store/mssql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": [{
           "Foo": "ten",
           "Bar": "row",
@@ -87,6 +96,9 @@
       "request": {
         "method": "PUT",
         "url": "/store/mssql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": [
           {
             "Foo": "eleventy",
@@ -122,6 +134,9 @@
       "request": {
         "method": "POST",
         "url": "/recall/mssql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
@@ -136,6 +151,9 @@
       "request": {
         "method": "POST",
         "url": "/transfer",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "tract": {
             "origin": {
@@ -153,6 +171,9 @@
       "request": {
         "method": "POST",
         "url": "/retrieve/mssql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
@@ -175,6 +196,9 @@
       "request": {
         "method": "POST",
         "url": "/retrieve/mssql_foo_schema",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
@@ -204,6 +228,9 @@
       "request": {
         "method": "POST",
         "url": "/retrieve/mssql_foo_schema",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {

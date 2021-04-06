@@ -22,7 +22,7 @@ request.headers = {
   let tf = fs.readFileSync(testFile, "utf-8");
   var config = JSON.parse(tf);
 
-  let outputDir = path.dirname(testFile).replace("/test/", "/output/") + testName + "/" + config.name + "/";
+  let outputDir = path.dirname(testFile).replace("/test/", "/data/output/") + testName + "/" + config.name + "/";
   fs.mkdirSync(outputDir, { recursive: true });
 
   let exitCode = 0;
@@ -52,18 +52,15 @@ async function submitQuery(request, expected, outputFile) {
 
   try {
     // make request
-    let response = await httpRequest('', request);
+    let response = await httpRequest(request.url, request, JSON.stringify(request.data));
 
-    if (response.data)
-      fs.writeFileSync(outputFile, JSON.stringify(response.data, null, 2), "utf8");
+    if (response.data) {
+      fs.writeFileSync(outputFile, response.data, "utf8");
+    }
 
     // validate response agains expected expected
-    if (Array.isArray(expected.status) ? !expected.status.includes(response.status) : response.status !== expected.status) {
-      console.log("  FAILED status ".bgRed + response.status + " " + response.statusText + ", expected " + expected.status);
-      return 1;
-    }
-    if (expected.statusText && response.statusText !== expected.statusText) {
-      console.log("  FAILED statusText ".bgRed + response.statusText + ", expected " + expected.statusText);
+    if (Array.isArray(expected.statusCode) ? !expected.statusCode.includes(response.statusCode) : response.statusCode !== expected.statusCode) {
+      console.log("  FAILED status ".bgRed + response.statusCode + " " + response.data + ", expected " + expected.statusCode);
       return 1;
     }
     if (expected.match_fail) {
@@ -86,13 +83,13 @@ async function submitQuery(request, expected, outputFile) {
   }
   catch (err) {
     if (err.response) {
-      if (Array.isArray(expected.status) && expected.status.includes(err.response.status))
+      if (Array.isArray(expected.statusCode) && expected.statusCode.includes(err.response.statusCode))
         return 0;
-      else if (err.response.status === expected.status)
+      else if (err.response.statusCode === expected.statusCode)
         return 0;
 
-      if (err.response.status !== 500)
-        console.log("FAILED status ".bgRed + err.response.status + " " + err.response.statusText + ", expected " + expected.status);
+      if (err.response.statusCode !== 500)
+        console.log("FAILED status ".bgRed + err.response.statusCode + " " + err.response.data + ", expected " + expected.statusCode);
       else
         console.log("FAILED ".bgRed + err.stack);
       return 1;
