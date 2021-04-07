@@ -111,8 +111,8 @@ if (process.env.NODE_ENV === 'development') {
   //config.smt.$_accounts = "mysql|host=localhost;user=dicta;password=data;database=storage_node|node_accounts|=userid";
   //config.smt.accounts = "mysql|host=localhost;user=dicta;password=data;database=storage_node|node_accounts|=userid";
 
-  config.smt["csv_foofile"] = "csv|./data/test/data/|foofile.csv|*";
-  config.smt["json_foofile"] = "json|./data/test/data/|foofile.json|*";
+  config.smt["csv_foofile"] = "csv|./data/test/|foofile.csv|*";
+  config.smt["json_foofile"] = "json|./data/test/|foofile.json|*";
 
   config.smt.es_foo_schema    = "elasticsearch|http://localhost:9200|foo_schema|*";
   config.smt.es_foo_schema_ks = "elasticsearch|http://localhost:9200|foo_schema|!";
