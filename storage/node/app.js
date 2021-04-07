@@ -21,7 +21,6 @@ const logger = require('../utils/logger');
 
 // Express middleware
 // authentication
-//const auth = require('./auth');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const BasicStrategy = require('passport-http').BasicStrategy;
@@ -104,7 +103,6 @@ app.startup = function(config) {
   //app.all('/data/*', filter.jsoncheck);
   app.all(security);
   app.all(seo);
-  //app.all(auth);  // old HTTP authentication
 
   // passport authentication
   app.use(passport.initialize());
