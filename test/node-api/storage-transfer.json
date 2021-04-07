@@ -3,10 +3,7 @@
   "request": {
     "method": "POST",
     "base": "http://localhost:8089/node/transfer/",
-    "auth": {
-      "username": "user",
-      "password": "user"
-    },
+    "auth": "user:user",
     "timeout": 90000
   },
   "expected": {

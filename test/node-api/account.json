@@ -13,10 +13,7 @@
       "request": {
         "method": "POST",
         "url": "register",
-        "auth": {
-          "username": "dullboy",
-          "password": "dullboy"
-        },
+        "auth": "dullboy:dullboy",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -36,10 +33,7 @@
       "request": {
         "method": "GET",
         "url": "login",
-        "auth": {
-          "username": "dullboy",
-          "password": "dullboy"
-        }
+        "auth": "dullboy:dullboy"
       }
     },
     {
@@ -50,10 +44,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "auth": {
-          "username": "dullboy",
-          "password": "dullboy"
-        },
+        "auth": "dullboy:dullboy",
         "data": {
           "account": {
             "userid": "dullboy",
@@ -76,10 +67,7 @@
       "request": {
         "method": "DELETE",
         "url": "account/dullboy",
-        "auth": {
-          "username": "dullboy",
-          "password": "dullboy"
-        }
+        "auth": "dullboy:dullboy"
       }
     }
   ]

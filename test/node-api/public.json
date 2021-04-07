@@ -14,37 +14,25 @@
     {
       "name": "unknown user",
       "request": {
-        "auth": {
-          "username": "Aladin",
-          "password": "opensesame"
-        }
+        "auth": "Aladin:opensesame"
       }
     },
     {
       "name": "guest",
       "request": {
-        "auth": {
-          "username": "guest",
-          "password": "guest"
-        }
+        "auth": "guest:guest"
       }
     },
     {
       "name": "user",
       "request": {
-        "auth": {
-          "username": "user",
-          "password": "user"
-        }
+        "auth": "user:user"
       }
     },
     {
       "name": "admin",
       "request": {
-        "auth": {
-          "username": "admin",
-          "password": "admin"
-        }
+        "auth": "admin:admin"
       }
     }
   ]

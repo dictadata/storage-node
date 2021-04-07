@@ -3,10 +3,7 @@
   "request": {
     "method": "GET",
     "base": "http://localhost:8089/node/",
-    "auth": {
-      "username": "user",
-      "password": "user"
-    }
+    "auth": "user:user"
   },
   "expected": {
     "statusCode": 200
@@ -20,17 +17,21 @@
       }
     },
     {
-      "name": "putEncoding",
+      "name": "createSchema",
       "request": {
         "method": "PUT",
         "url": "encoding/es_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./data/test/data/encoding_foo.json"
+        "data": "./data/test/encoding_foo.json"
       },
       "expected": {
-        "statusCode": [200, 409]
+        "statusCode": 200,
+        "resultCode": [
+          201,
+          409
+        ]
       }
     },
     {
@@ -45,7 +46,7 @@
       "request": {
         "method": "POST",
         "url": "list/es_foo_schema_pk",
-        "params": {
+        "query": {
           "schema": "foo*"
         }
       }
@@ -98,29 +99,32 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": [{
-          "Foo": "eleventy",
-          "Bar": "row",
-          "Baz": 11,
-          "Fobe": 11.11,
-          "Dt Test": "2011-10-07T08:00:00",
-          "enabled": true
-        },{
-          "Foo": "twelvety",
-          "Bar": "row",
-          "Baz": 12,
-          "Fobe": 12.12,
-          "Dt Test": "2012-03-03T08:00:00",
-          "enabled": true
-        }]
-      }        
+        "data": [
+          {
+            "Foo": "eleventy",
+            "Bar": "row",
+            "Baz": 11,
+            "Fobe": 11.11,
+            "Dt Test": "2011-10-07T08:00:00",
+            "enabled": true
+          },
+          {
+            "Foo": "twelvety",
+            "Bar": "row",
+            "Baz": 12,
+            "Fobe": 12.12,
+            "Dt Test": "2012-03-03T08:00:00",
+            "enabled": true
+          }
+        ]
+      }
     },
     {
       "name": "recall keystore",
       "request": {
         "method": "GET",
-        "url": "recall/es_foo_schema_ks",
-        "params": {
+        "url": "recall/es_foo_schema_ks?key=twenty",
+        "query": {
           "key": "twenty"
         }
       }
@@ -130,7 +134,7 @@
       "request": {
         "method": "GET",
         "url": "recall/es_foo_schema_kf",
-        "params": {
+        "query": {
           "Foo": "ten"
         }
       }
@@ -146,7 +150,7 @@
         "data": {
           "pattern": {
             "match": {
-              "Foo": "twenty"
+              "Foo": "twelvety"
             }
           }
         }
@@ -266,7 +270,7 @@
       "request": {
         "method": "DELETE",
         "url": "dull/es_foo_schema_ks",
-        "params": {
+        "query": {
           "key": "twenty"
         }
       }
@@ -276,7 +280,7 @@
       "request": {
         "method": "DELETE",
         "url": "dull/es_foo_schema_kf",
-        "params": {
+        "query": {
           "Foo": "ten"
         }
       }
@@ -284,7 +288,7 @@
     {
       "name": "dull search",
       "request": {
-        "method": "DELETE",
+        "method": "POST",
         "url": "dull/es_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"

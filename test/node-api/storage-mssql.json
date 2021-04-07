@@ -3,10 +3,7 @@
   "request": {
     "method": "GET",
     "base": "http://localhost:8089/node/",
-    "auth": {
-      "username": "user",
-      "password": "user"
-    }
+    "auth": "user:user"
   },
   "expected": {
     "statusCode": 200
@@ -20,14 +17,14 @@
       }
     },
     {
-      "name": "putEncoding",
+      "name": "createSchema",
       "request": {
         "method": "PUT",
         "url": "encoding/mssql_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./data/test/data/encoding_foo.json"
+        "data": "./data/test/encoding_foo.json"
       },
       "expected": {
         "statusCode": [
@@ -48,7 +45,7 @@
       "request": {
         "method": "POST",
         "url": "list/mssql_foo_schema_pk",
-        "params": {
+        "query": {
           "schema": "foo*"
         }
       }
@@ -124,7 +121,7 @@
       "request": {
         "method": "GET",
         "url": "recall/mssql_foo_schema_pk",
-        "params": {
+        "query": {
           "Foo": "ten"
         }
       }
@@ -260,7 +257,7 @@
       "request": {
         "method": "DELETE",
         "url": "dull/mssql_foo_schema_pk",
-        "params": {
+        "query": {
           "Foo": "ten"
         }
       }
@@ -268,8 +265,11 @@
     {
       "name": "dull search",
       "request": {
-        "method": "DELETE",
+        "method": "POST",
         "url": "dull/mssql_foo_schema_pk",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
         "data": {
           "pattern": {
             "match": {
