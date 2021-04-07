@@ -47,7 +47,8 @@ async function transfer(req, res) {
     jo = await storage.activate(config.smt[origin.SMT], origin.options);
     jt = await storage.activate(config.smt[terminal.SMT], terminal.options);
 
-    let encoding = await jo.encoding;  // load encoding from origin for validation
+    let results = await jo.getEncoding();  // load encoding from origin for validation
+    let encoding = results.data["encoding"];
 
     logger.verbose("build codify pipeline");
     let pipe1 = [];
@@ -67,8 +68,8 @@ async function transfer(req, res) {
 
     logger.debug("put terminal encoding");
     jt.encoding = encoding;
-    let encoding_result = await jt.createSchema();
-    let dest_mode = (typeOf(encoding_result) === "object") ? "created" : "append";
+    results = await jt.createSchema();
+    let dest_mode = (results.resultCode === 0) ? "created" : "append";
 
     logger.debug("build transfer pipeline");
     var pipes = [];
@@ -83,18 +84,9 @@ async function transfer(req, res) {
     logger.debug("run transfer pipeline");
     await stream.pipeline(pipes);
 
-    let results = {
-      result: "ok",
-      origin: {
-        SMT: origin.SMT
-      },
-      terminal: {
-        SMT: terminal.SMT,
-        mode: dest_mode
-      }
-    };
+    let response = new storage.StorageResponse(0);
 
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch (err) {
     logger.error(err);

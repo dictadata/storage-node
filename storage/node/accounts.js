@@ -38,8 +38,8 @@ exports.startup = async (config) => {
     accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts_encoding.json')));
 
     junction = await storage.activate(config.smt.$_accounts, {encoding: accountsEncoding});
-    let results = await junction.encoding;
-    if (typeOf(results) === "object") {
+    let results = await junction.getEncoding();
+    if (results.resultCode === 0) {
       logger.verbose("accounts schema exists");
       junction.encoding = accountsEncoding;  // overlay encoding overlay
     }

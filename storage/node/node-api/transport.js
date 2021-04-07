@@ -46,7 +46,8 @@ async function transport(req, res) {
     jo = await storage.activate(config.smt[origin.SMT], origin.options);
     jt = await storage.activate(config.smt[terminal.SMT], terminal.options);
 
-    let encoding = await jo.encoding;  // load encoding from origin for validation
+    let results = await jo.getEncoding();  // load encoding from origin for validation
+    let encoding = results.data["encoding"];
 
     logger.verbose("build codify pipeline");
     let pipe1 = [];
@@ -80,7 +81,9 @@ async function transport(req, res) {
     logger.debug("run pipeline");
     await stream.pipeline(pipes);
 
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp({ result: "ok" });
+    let response = new storage.StorageResponse(0);
+
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch (err) {
     logger.error(err);
