@@ -55,25 +55,37 @@ async function submitQuery(request, expected, outputFile) {
     // make request
     let response = await httpRequest(request.url || '', request, JSON.stringify(request.data));
 
+    let results;
     if (response.data) {
       fs.writeFileSync(outputFile, response.data, "utf8");
+      if (httpRequest.contentTypeIsJSON(response.headers["content-type"]))
+        results = JSON.parse(response.data);
+      else
+        results = response.data;
     }
 
     // validate response agains expected expected
     if (Array.isArray(expected.statusCode) ? !expected.statusCode.includes(response.statusCode) : response.statusCode !== expected.statusCode) {
-      console.log("  FAILED status ".bgRed + response.statusCode + " " + response.data + ", expected " + expected.statusCode);
+      console.log("  FAILED statusCode ".bgRed + response.statusCode + " " + response.data + ", expected " + expected.statusCode);
       return 1;
     }
+
+    if (expected.resultCode) {
+      if (Array.isArray(expected.resultCode) ? !expected.resultCode.includes(results.resultCode) : results.resultCode !== expected.resultCode) {
+        console.log("  FAILED resultCode ".bgRed + results.resultCode + ", expected " + expected.resultCode);
+        return 1;
+      }
+    }
+
     if (expected.match_fail) {
-      let data = (typeof response.data === "string") ? response.data : JSON.stringify(response.data);
-      if (data.indexOf(expected.match_fail) >= 0) {
+      if (response.data.indexOf(expected.match_fail) >= 0) {
         console.log("  FAILED fail text found: ".bgRed + expected.match_fail);
         return 1;
       }
     }
+
     if (expected.match_success) {
-      let data = (typeof response.data === "string") ? response.data : JSON.stringify(response.data);
-      if (data.indexOf(expected.match_success) < 0) {
+      if (response.data.indexOf(expected.match_success) < 0) {
         console.log("  FAILED success text NOT found: ".bgRed + expected.match_success);
         return 1;
       }
