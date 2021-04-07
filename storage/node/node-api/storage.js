@@ -25,8 +25,8 @@ router.get('/encoding/:SMT', authorize([roles.ETL, roles.Admin]), getEncoding);
 router.post('/encoding/:SMT', authorize([roles.ETL, roles.Admin]), getEncoding);
 router.post('/encoding', authorize([roles.ETL, roles.Admin]), getEncoding);
 
-router.put('/encoding/:SMT', authorize([roles.ETL, roles.Admin]), putEncoding);
-router.put('/encoding', authorize([roles.ETL, roles.Admin]), putEncoding);
+router.put('/encoding/:SMT', authorize([roles.ETL, roles.Admin]), createSchema);
+router.put('/encoding', authorize([roles.ETL, roles.Admin]), createSchema);
 
 router.put('/store/:SMT', authorize([roles.User, roles.Admin]), store);
 router.put('/store', authorize([roles.User, roles.Admin]), store);
@@ -40,13 +40,9 @@ router.post('/retrieve/:SMT', authorize([roles.User, roles.Admin]), retrieve);
 router.post('/retrieve', authorize([roles.User, roles.Admin]), retrieve);
 
 router.delete('/dull/:SMT', authorize([roles.User, roles.Admin]), dull);
-router.delete('/dull', authorize([roles.User, roles.Admin]), dull);
+router.post('/dull/:SMT', authorize([roles.User, roles.Admin]), dull);
+router.post('/dull', authorize([roles.User, roles.Admin]), dull);
 
-router.get('/smt/:SMT', authorize([roles.ETL, roles.Admin]), getSMT);
-router.put('/smt/:SMT', authorize([roles.ETL, roles.Admin]), putSMT);
-router.put('/smt', authorize([roles.ETL, roles.Admin]), putSMT);
-router.delete('/smt', authorize([roles.ETL, roles.Admin]), dullSMT);
-router.delete('/smt/:SMT', authorize([roles.ETL, roles.Admin]), dullSMT);
 module.exports = router;
 
 /**
@@ -67,14 +63,9 @@ async function list (req, res) {
 
     let schema = req.query['schema'] || (req.body && req.body.schema) || junction.smt.schema || '*';
 
-    let list = await junction.list({ schema: schema });
-    logger.debug(list);
-    if (Array.isArray(list)) {
-      let response = { result: "ok", list: list };
-      res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
-    }
-    else
-      res.sendStatus(500);
+    let response = await junction.list({ schema: schema });
+    logger.debug(response);
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch(err) {
     logger.error(err);
@@ -102,18 +93,9 @@ async function getEncoding (req, res) {
 
     junction = await storage.activate(config.smt[smtname]);
 
-    let encoding = await junction.encoding;
-    logger.debug(encoding);
-    if (typeOf(encoding) === 'object') {
-      let results = {
-        result: "ok",
-        SMT: smtname,
-        fields: encoding.fields
-      };
-      res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
-    }
-    else
-      throw new StorageError(404, encoding);
+    let response = await junction.getEncoding();
+    logger.debug(response);
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch(err) {
     if (err.resultCode !== 400 && err.resultCode !== 404)
@@ -127,12 +109,12 @@ async function getEncoding (req, res) {
 }
 
 /**
- * putEncoding
+ * createSchema
  * @param {*} req
  * @param {*} res
  */
-async function putEncoding (req, res) {
-  logger.verbose('/storage/putEncoding');
+async function createSchema (req, res) {
+  logger.verbose('/storage/createSchema');
 
   var junction;
   try {
@@ -144,18 +126,9 @@ async function putEncoding (req, res) {
 
     junction = await storage.activate(config.smt[smtname], { encoding: newEncoding });
 
-    let encoding = await junction.createSchema();
-    logger.debug(encoding);
-    if (typeOf(encoding) === 'object') {
-      let results = {
-        result: "ok",
-        SMT: smtname,
-        fields: encoding.fields
-      };
-      res.status(201).set("Cache-Control", "no-store").jsonp(results);
-    }
-    else
-      throw new StorageError(409, encoding);
+    let response = await junction.createSchema();
+    logger.debug(response);
+    res.status(200).set("Cache-Control", "no-store").jsonp(response);
   }
   catch(err) {
     if (err.resultCode !== 400 && err.resultCode !== 409)
@@ -188,7 +161,7 @@ async function store (req, res) {
     junction = await storage.activate(config.smt[smtname]);
     await junction.getEncoding();
 
-    var storageResults = new StorageResponse(0);
+    var response = new StorageResponse(0);
 
     // body will be an array of constructs
     // or a object/map of key:constructs
@@ -196,10 +169,10 @@ async function store (req, res) {
       for (let construct of req.body) {
         let results = await junction.store(construct);
         let key = Object.keys(results.data)[0];
-        storageResults.add(results.resultCode === 0 && key ? key : junction.engram.get_uid(construct) );
+        response.add(results.resultCode === 0 && key ? key : junction.engram.get_uid(construct) );
         if (results.resultCode !== 0) {
-          storageResults.resultCode = results.resultCode;
-          storageResults.resultText = results.resultText;
+          response.resultCode = results.resultCode;
+          response.resultText = results.resultText;
         }
       }
     }
@@ -207,15 +180,15 @@ async function store (req, res) {
       // object/map of key:construct
       for (let [key, construct] of Object.entries(req.body)) {
         let results = await junction.store(construct, {"key": key});
-        storageResults.add( (results.resultCode === 0 && results.data ? Object.values(results.data)[0] : results.resultText), key);
+        response.add( (results.resultCode === 0 && results.data ? Object.values(results.data)[0] : results.resultText), key);
         if (results.resultCode !== 0) {
-          storageResults.resultCode = results.resultCode;
-          storageResults.resultText = results.resultText;
+          response.resultCode = results.resultCode;
+          response.resultText = results.resultText;
         }
       }
     }
 
-    res.set("Cache-Control", "no-store").jsonp(storageResults);
+    res.set("Cache-Control", "no-store").jsonp(response);
   }
   catch(err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
@@ -244,19 +217,8 @@ async function recall (req, res) {
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
-    let results = await junction.recall(pattern);
-    if (results.resultCode === 0) {
-      let response = {
-        result: results.result,
-        SMT: smtname,
-        data: results.data
-      };
-      res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
-    }
-    else if (results.result === 'not found')
-      res.status(404).jsonp(results);
-    else
-      res.status(400).jsonp(results);
+    let response = await junction.recall(pattern);
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch(err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
@@ -285,19 +247,8 @@ async function retrieve (req, res) {
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
-    let results = await junction.retrieve(pattern);
-    if (results.resultCode === 0) {
-      let response = {
-        result: results.result,
-        SMT: smtname,
-        data: results.data
-      };
-      res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
-    }
-    else if (results.result === 'not found')
-      res.status(404).jsonp(results);
-    else
-      res.status(400).jsonp(results);
+    let response = await junction.retrieve(pattern);
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch(err) {
     logger.error(err);
@@ -327,13 +278,8 @@ async function dull(req, res) {
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
-    let results = await junction.dull(pattern);
-    if (results.resultCode === 0)
-      res.set("Cache-Control", "no-store").jsonp(results);
-    else if (results.result === 'not found')
-      res.status(404).jsonp(results);
-    else
-      res.status(400).jsonp(results);
+    let response = await junction.dull(pattern);
+    res.set("Cache-Control", "no-store").jsonp(response);
   }
   catch (err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
@@ -341,78 +287,5 @@ async function dull(req, res) {
   finally {
     if (junction)
       junction.relax();
-  }
-}
-
-/**
- * getSMT
- * @param {*} req
- * @param {*} res
- */
-async function getSMT(req, res) {
-  logger.verbose('/storage/getSMT');
-
-  var smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
-  if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-    throw new StorageError(400, "invalid SMT name");
-
-  try {
-    if (config.smt[smtname])
-      res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(config.smt[smtname]);
-    else
-      res.sendStatus(404);
-  }
-  catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
-  }
-}
-
-/**
- * putSMT
- * @param {*} req
- * @param {*} res
- */
-async function putSMT(req, res) {
-  logger.verbose('/storage/putSMT');
-
-  var smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
-  if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-    throw new StorageError(400, "invalid SMT name");
-
-  var smt = req.body.smt || req.body;
-
-  try {
-    config.smt[smtname] = smt;
-    res.status(201).set("Cache-Control", "no-store").jsonp({result: "ok"});
-  }
-  catch (err) {
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
-  }
-}
-
-/**
- * dullSMT
- * @param {*} req
- * @param {*} res
- */
-async function dullSMT(req, res) {
-  logger.verbose('/storage/dullSMT');
-
-  var smtname = req.params['SMT'] || req.query['SMT'] || (req.body && req.body.SMT);
-  if (!smtname || smtname[0] === "$" || !config.smt[smtname])
-    throw new StorageError(400, "invalid SMT name");
-
-  try {
-    if (config.smt[smtname]) {
-      delete config.smt.smtname;
-      res.status(201).set("Cache-Control", "no-store").jsonp({ result: "ok" });
-    }
-    else
-      res.sendStatus(404);
-  }
-  catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }
