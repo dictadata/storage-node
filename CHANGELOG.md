@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.7.2
+  - republish npm package
 - version 1.7.1
   - update dependency to @dictadata/storage-junctions 1.7.3
   - all valid requests now return StorageResponse in the response body
