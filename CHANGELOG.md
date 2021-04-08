@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.7.1
+  - update dependency to @dictadata/storage-junctions 1.7.3
+  - all valid requests now return StorageResponse in the response body
 - version 1.5.1
   - update request body format, remove extra nested "data" property
   - add automated testing scripts
