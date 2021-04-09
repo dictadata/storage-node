@@ -3,7 +3,7 @@
  */
 "use strict";
 
-const StorageNode = require('../index');
+const StorageNode = require('../storage/index');
 const routes = require('./myroutes');
 
 StorageNode.start({
