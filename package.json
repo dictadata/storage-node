@@ -4,13 +4,13 @@
   "description": "REST API services built on Node.js, Express.js and @dictadata/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
-  "main": "index.js",
+  "main": "storage/index.js",
   "repository": "gitlab:dictadata/js/storage-node",
   "scripts": {
     "debug": "node --inspect --preserve-symlinks test/main.js",
     "nodemon": "nodemon --inspect --preserve-symlinks test/main.js",
-    "lint": "eslint lib/*.js",
-    "lint-fix": "eslint --fix lib/*.js",
+    "lint": "eslint storage/*.js",
+    "lint-fix": "eslint --fix storage/*.js",
     "test": "testrunner"
   },
   "engines": {
