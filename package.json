@@ -5,7 +5,7 @@
   "author": "Drew O. Letcher",
   "license": "MIT",
   "main": "index.js",
-  "repository": "github:dictadata/storage-node",
+  "repository": "gitlab:dictadata/js/storage-node",
   "scripts": {
     "debug": "node --inspect --preserve-symlinks test/main.js",
     "nodemon": "nodemon --inspect --preserve-symlinks test/main.js",
