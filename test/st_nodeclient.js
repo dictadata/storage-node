@@ -1,6 +1,16 @@
+#!/usr/bin/env node
+/**
+ * test/st_nodeclient.js
+ * 
+ * Read a JSON file that defines the HTTP tests.
+ * Run the tests defined in the "queries" array other properties define the default values.
+ * See st_nodeclient_example.json. 
+ */
+"use strict";
+
 const fs = require("fs");
 const path = require("path");
-const { httpRequest } = require('@dictadata/storage-junctions').utils;
+const { httpRequest } = require("@dictadata/storage-junctions").utils;
 const colors = require('colors');
 
 let testFile = process.argv.length > 2 ? process.argv[2] : "";
@@ -9,11 +19,11 @@ let testName = process.argv.length > 3 ? process.argv[3] : "";
 var request = {
   method: "GET",
   origin: "https://localhost:8089/node",
-  timeout: 10000
+  timeout: 8000
 };
 request.headers = {
   'Accept': 'application / json',
-  'User-Agent': "@dictadata/storage-node/testclient"
+  'User-Agent': "@dictadata/storage/nodeclient 1.7.x"
 };
 
 (async () => {
