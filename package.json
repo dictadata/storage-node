@@ -1,11 +1,15 @@
 {
   "name": "@dictadata/storage-node",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "REST API services built on Node.js, Express.js and @dictadata/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
   "main": "storage/index.js",
   "repository": "gitlab:dictadata/js/storage-node",
+  "bugs": {
+    "url": "https://gitlab.com/dictadata/js/storage-node/issues"
+  },
+  "homepage": "https://gitlab.com/dictadata/js/storage-node#readme",
   "scripts": {
     "debug": "node --inspect --preserve-symlinks test/main.js",
     "nodemon": "nodemon --inspect --preserve-symlinks test/main.js",
@@ -17,7 +21,7 @@
     "node": ">=15.0.1"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^1.7.3",
+    "@dictadata/storage-junctions": "^1.7.4",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
@@ -39,6 +43,6 @@
   "devDependencies": {
     "colors": "^1.4.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1"
+    "eslint-plugin-promise": "^5.1.0"
   }
 }

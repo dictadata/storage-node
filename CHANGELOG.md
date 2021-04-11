@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.7.3
+  - testing with st_launcher and st_nodeclient
+  - update dependenciesnpm
 - version 1.7.2
   - republish npm package
 - version 1.7.1
