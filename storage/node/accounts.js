@@ -38,23 +38,25 @@ exports.startup = async (config) => {
     accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts_encoding.json')));
 
     junction = await storage.activate(config.smt.$_accounts, {encoding: accountsEncoding});
-    let results = await junction.getEncoding();
+    // attempt to create accounts schema
+    let results = await junction.createSchema();
     if (results.resultCode === 0) {
-      logger.verbose("accounts schema exists");
-      junction.encoding = accountsEncoding;  // overlay encoding overlay
-    }
-    else {
-      // create source
-      let results = await junction.createSchema();
-      if (typeOf(results) !== "object")
-        throw new StorageError(500, "could not create accounts schema");
-
-      // create admin account
+      logger.info("created accounts schema");
+      logger.info("creating admin account");
       let account = new Account('admin');
       account.password = Account.hashPwd('admin');
       account.roles = [roles.Public, roles.User, roles.Admin];
-      await store(account);
+      results = await store(account);
+      if (results.resultCode !== 201) {
+        throw new StorageError(500, "unable to create admin account");
+      }
     }
+    else if (results.resultCode === 409) {
+      logger.verbose("accounts schema exists");
+    }
+    else {
+      throw new StorageError(500, "unable to create accounts schema");
+    }      
   }
   catch (err) {
     logger.error('accounts startup failed: ', err);
