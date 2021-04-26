@@ -157,7 +157,7 @@
       }
     },
     {
-      "name": "transfer",
+      "name": "writer",
       "request": {
         "method": "POST",
         "url": "transfer",
