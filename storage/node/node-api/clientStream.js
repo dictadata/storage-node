@@ -156,8 +156,7 @@ async function uploadFiles(req, res) {
         logger.debug(results);
 
         // update terminal encodings
-        results = await writer.putEncoding(reader.getEncoding());
-        logger.debug(results);
+        writer.encoding = reader.encoding;
 
         // read csv records and import to Elasticsearch
         await stream.pipeline(reader, writer);

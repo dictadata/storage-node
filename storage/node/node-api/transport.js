@@ -46,8 +46,11 @@ async function transport(req, res) {
     jo = await storage.activate(config.smt[origin.SMT], origin.options);
     jt = await storage.activate(config.smt[terminal.SMT], terminal.options);
 
-    let results = await jo.getEncoding();  // load encoding from origin for validation
-    let encoding = results.data["encoding"];
+    let encoding;
+    if (jo.capabilities.encoding && !jo.engram.isDefined) {
+      let results = await jo.getEncoding();  // load encoding from origin for validation
+      encoding = results.data["encoding"];
+    }
 
     logger.verbose("build codify pipeline");
     let pipe1 = [];
@@ -66,7 +69,11 @@ async function transport(req, res) {
     logger.debug(JSON.stringify(encoding.fields));
 
     logger.debug("put terminal encoding");
-    await jt.createSchema({ encoding: encoding });
+    jt.encoding = encoding;
+    if (jt.capabilities.encoding) {
+      let results = await jt.createSchema();
+      let dest_mode = (results.resultCode === 0) ? "created" : "append";
+    }
 
     logger.debug("build pipeline");
     var pipes = [];

@@ -47,10 +47,13 @@ async function transfer(req, res) {
     jo = await storage.activate(config.smt[origin.SMT], origin.options);
     jt = await storage.activate(config.smt[terminal.SMT], terminal.options);
 
-    let results = await jo.getEncoding();  // load encoding from origin for validation
-    let encoding = results.data["encoding"];
+    let encoding;
+    if (jo.capabilities.encoding && !jo.engram.isDefined) {
+      let results = await jo.getEncoding();  // load encoding from origin for validation
+      encoding = results.data["encoding"];
+    }
 
-    logger.verbose("build codify pipeline");
+    logger.verbose("codify pipeline");
     let pipe1 = [];
     pipe1.push(jo.createReadStream({ max_read: 100 }));
     for (let [tfType, tfOptions] of Object.entries(transforms))
@@ -58,7 +61,6 @@ async function transfer(req, res) {
     let cf = jo.createTransform('codify');
     pipe1.push(cf);
 
-    logger.verbose("run codify pipeline");
     await stream.pipeline(pipe1);
     encoding = await cf.encoding;
 
@@ -68,10 +70,12 @@ async function transfer(req, res) {
 
     logger.debug("put terminal encoding");
     jt.encoding = encoding;
-    results = await jt.createSchema();
-    let dest_mode = (results.resultCode === 0) ? "created" : "append";
+    if (jt.capabilities.encoding) {
+      let results = await jt.createSchema();
+      let dest_mode = (results.resultCode === 0) ? "created" : "append";
+    }
 
-    logger.debug("build transfer pipeline");
+    logger.debug("transfer pipeline");
     var pipes = [];
     pipes.push(jo.createReadStream());
     if (transforms) {
@@ -81,11 +85,9 @@ async function transfer(req, res) {
     }
     pipes.push(jt.createWriteStream());
 
-    logger.debug("run transfer pipeline");
     await stream.pipeline(pipes);
 
     let response = new storage.StorageResponse(0);
-
     res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch (err) {

@@ -92,8 +92,11 @@ async function getEncoding (req, res) {
       throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
+    if (!junction.capabilities.encoding)
+      throw new StorageError(405);
 
     let response = await junction.getEncoding();
+    
     logger.debug(response);
     res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
@@ -125,6 +128,8 @@ async function createSchema (req, res) {
     let newEncoding = req.body.encoding || req.body;
 
     junction = await storage.activate(config.smt[smtname], { encoding: newEncoding });
+    if (!junction.capabilities.encoding)
+      throw new StorageError(405);
 
     let response = await junction.createSchema();
     logger.debug(response);
@@ -159,7 +164,11 @@ async function store (req, res) {
       throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(config.smt[smtname]);
-    await junction.getEncoding();
+    if (!junction.capabilities.store)
+      throw new StorageError(405);
+
+    if (junction.capabilities.encoding && !junction.engram.isDefined)
+      await junction.getEncoding();
 
     var response = new StorageResponse(0);
 
