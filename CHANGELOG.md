@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.7.4
+  - improvements to REST junction and httpRequest for querystring and web form parameters
+  - implement junction capabilities
 - version 1.7.3
   - testing with st_launcher and st_nodeclient
   - update dependenciesnpm
