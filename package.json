@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "colors": "^1.4.0",
+    "eslint": "^7.25.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0"
   }
