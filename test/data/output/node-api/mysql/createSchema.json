@@ -1,0 +1,7 @@
+{
+  "resultCode": 409,
+  "resultText": "Conflict",
+  "data": [
+    "table exists"
+  ]
+}

@@ -32,7 +32,7 @@ request.headers = {
   let tf = fs.readFileSync(testFile, "utf-8");
   var config = JSON.parse(tf);
 
-  let outputDir = path.dirname(testFile).replace("/test/", "/data/output/") + testName + "/" + config.name + "/";
+  let outputDir = path.dirname(testFile).replace("/test/", "/test/data/output/") + testName + "/" + config.name + "/";
   fs.mkdirSync(outputDir, { recursive: true });
 
   let exitCode = 0;

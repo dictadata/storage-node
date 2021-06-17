@@ -1,0 +1,59 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": {
+    "encoding": {
+      "smt": {
+        "model": "elasticsearch",
+        "locus": "http://localhost:9200",
+        "schema": "foo_schema",
+        "key": "=Foo"
+      },
+      "fields": {
+        "Bar": {
+          "name": "Bar",
+          "type": "keyword",
+          "_elasticsearch": {
+            "type": "keyword"
+          }
+        },
+        "Baz": {
+          "name": "Baz",
+          "type": "integer",
+          "_elasticsearch": {
+            "type": "integer"
+          }
+        },
+        "Dt Test": {
+          "name": "Dt Test",
+          "type": "date",
+          "_elasticsearch": {
+            "type": "date"
+          }
+        },
+        "Fobe": {
+          "name": "Fobe",
+          "type": "float",
+          "_elasticsearch": {
+            "type": "double"
+          }
+        },
+        "Foo": {
+          "name": "Foo",
+          "type": "keyword",
+          "_elasticsearch": {
+            "type": "keyword"
+          }
+        },
+        "enabled": {
+          "name": "enabled",
+          "type": "boolean",
+          "_elasticsearch": {
+            "type": "boolean"
+          }
+        }
+      },
+      "_SMT": "elasticsearch|http://localhost:9200|foo_schema|=Foo"
+    }
+  }
+}

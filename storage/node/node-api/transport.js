@@ -54,7 +54,7 @@ async function transport(req, res) {
 
     logger.verbose("build codify pipeline");
     let pipe1 = [];
-    pipe1.push(jo.createReadStream({ max_read: 100 }));
+    pipe1.push(jo.createReader({ max_read: 100 }));
     for (let [tfType, tfOptions] of Object.entries(transforms))
       pipe1.push(jo.createTransform(tfType, tfOptions));
     let cf = jo.createTransform('codify');
@@ -77,13 +77,13 @@ async function transport(req, res) {
 
     logger.debug("build pipeline");
     var pipes = [];
-    pipes.push(jo.createReadStream());
+    pipes.push(jo.createReader());
     if (transforms) {
       logger.debug("add transforms to pipeline");
       for (let [tfType, options] of Object.entries(transforms))
         pipes.push(jo.createTransform(tfType, options));
     }
-    pipes.push(jt.createWriteStream());
+    pipes.push(jt.createWriter());
 
     logger.debug("run pipeline");
     await stream.pipeline(pipes);

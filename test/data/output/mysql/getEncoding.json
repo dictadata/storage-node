@@ -1,0 +1,89 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": {
+    "encoding": {
+      "smt": {
+        "model": "mysql",
+        "locus": "host=localhost;user=dicta;password=data;database=storage_node",
+        "schema": "foo_schema",
+        "key": "=Foo"
+      },
+      "fields": {
+        "Foo": {
+          "name": "Foo",
+          "type": "keyword",
+          "size": 64,
+          "default": null,
+          "isNullable": false,
+          "keyOrdinal": 1,
+          "label": "Foo",
+          "_mysql": {
+            "Type": "varchar(64)"
+          }
+        },
+        "Bar": {
+          "name": "Bar",
+          "type": "keyword",
+          "size": 64,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Bar",
+          "_mysql": {
+            "Type": "varchar(64)"
+          }
+        },
+        "Baz": {
+          "name": "Baz",
+          "type": "integer",
+          "size": null,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Baz",
+          "_mysql": {
+            "Type": "int"
+          }
+        },
+        "Fobe": {
+          "name": "Fobe",
+          "type": "float",
+          "size": null,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Fobe",
+          "_mysql": {
+            "Type": "double"
+          }
+        },
+        "Dt Test": {
+          "name": "Dt Test",
+          "type": "date",
+          "size": null,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Dt Test",
+          "_mysql": {
+            "Type": "datetime"
+          }
+        },
+        "enabled": {
+          "name": "enabled",
+          "type": "boolean",
+          "size": 1,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "enabled",
+          "_mysql": {
+            "Type": "tinyint(1)"
+          }
+        }
+      },
+      "_SMT": "mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo"
+    }
+  }
+}

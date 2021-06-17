@@ -1,0 +1,15 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": [
+    "FOO_SCHEMA_TWO",
+    "FOO_SCHEMA_01",
+    "FOO_SCHEMA",
+    "FOO_SCHEMA_02",
+    "FOO_SCHEMA_LG",
+    "FOO_DBTRANSFORM",
+    "FOO_SCHEMA_ETL",
+    "FOO_TRANSFER",
+    "FOO_SCHEMA_ETL2"
+  ]
+}

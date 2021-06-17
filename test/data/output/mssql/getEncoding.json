@@ -1,0 +1,101 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": {
+    "encoding": {
+      "smt": {
+        "model": "mssql",
+        "locus": "server=localhost;username=dicta;password=data;database=storage_node",
+        "schema": "foo_schema",
+        "key": "=Foo"
+      },
+      "fields": {
+        "Foo": {
+          "name": "Foo",
+          "type": "keyword",
+          "size": 64,
+          "default": null,
+          "isNullable": false,
+          "keyOrdinal": 1,
+          "label": "Foo",
+          "_mssql": {
+            "precision": 0,
+            "scale": 0,
+            "type": "varchar(64)"
+          }
+        },
+        "Bar": {
+          "name": "Bar",
+          "type": "keyword",
+          "size": 64,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Bar",
+          "_mssql": {
+            "precision": 0,
+            "scale": 0,
+            "type": "varchar(64)"
+          }
+        },
+        "Baz": {
+          "name": "Baz",
+          "type": "integer",
+          "size": 4,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Baz",
+          "_mssql": {
+            "precision": 10,
+            "scale": 0,
+            "type": "int"
+          }
+        },
+        "Fobe": {
+          "name": "Fobe",
+          "type": "number",
+          "size": 8,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Fobe",
+          "_mssql": {
+            "precision": 53,
+            "scale": 0,
+            "type": "float"
+          }
+        },
+        "Dt Test": {
+          "name": "Dt Test",
+          "type": "date",
+          "size": 8,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Dt Test",
+          "_mssql": {
+            "precision": 23,
+            "scale": 3,
+            "type": "datetime"
+          }
+        },
+        "enabled": {
+          "name": "enabled",
+          "type": "boolean",
+          "size": 1,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "enabled",
+          "_mssql": {
+            "precision": 1,
+            "scale": 0,
+            "type": "bit"
+          }
+        }
+      },
+      "_SMT": "mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo"
+    }
+  }
+}

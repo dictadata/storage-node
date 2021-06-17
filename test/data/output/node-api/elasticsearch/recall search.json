@@ -1,0 +1,14 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": [
+    {
+      "Foo": "twelvety",
+      "Bar": "row",
+      "Baz": 12,
+      "Fobe": 12.12,
+      "Dt Test": "2012-03-03T14:00:00.000Z",
+      "enabled": true
+    }
+  ]
+}

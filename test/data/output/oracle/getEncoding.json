@@ -1,0 +1,131 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": {
+    "encoding": {
+      "smt": {
+        "model": "oracledb",
+        "locus": "connectString=localhost/xepdb1;user=dicta;password=data",
+        "schema": "foo_schema",
+        "key": "=Foo"
+      },
+      "fields": {
+        "Foo": {
+          "name": "Foo",
+          "type": "text",
+          "size": 128,
+          "default": null,
+          "isNullable": false,
+          "keyOrdinal": 1,
+          "label": "Foo",
+          "ordinal": 1,
+          "_oracle": {
+            "COLUMN_ID": 1,
+            "COLUMN_NAME": "Foo",
+            "DATA_TYPE": "NVARCHAR2",
+            "DATA_LENGTH": 128,
+            "DATA_PRECISION": null,
+            "DATA_SCALE": null,
+            "NULLABLE": "N"
+          }
+        },
+        "Bar": {
+          "name": "Bar",
+          "type": "text",
+          "size": 128,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Bar",
+          "ordinal": 2,
+          "_oracle": {
+            "COLUMN_ID": 2,
+            "COLUMN_NAME": "Bar",
+            "DATA_TYPE": "NVARCHAR2",
+            "DATA_LENGTH": 128,
+            "DATA_PRECISION": null,
+            "DATA_SCALE": null,
+            "NULLABLE": "Y"
+          }
+        },
+        "Baz": {
+          "name": "Baz",
+          "type": "number",
+          "size": 22,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Baz",
+          "ordinal": 3,
+          "_oracle": {
+            "COLUMN_ID": 3,
+            "COLUMN_NAME": "Baz",
+            "DATA_TYPE": "NUMBER",
+            "DATA_LENGTH": 22,
+            "DATA_PRECISION": null,
+            "DATA_SCALE": 0,
+            "NULLABLE": "Y"
+          }
+        },
+        "Fobe": {
+          "name": "Fobe",
+          "type": "undefined",
+          "size": 22,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Fobe",
+          "ordinal": 4,
+          "_oracle": {
+            "COLUMN_ID": 4,
+            "COLUMN_NAME": "Fobe",
+            "DATA_TYPE": "FLOAT",
+            "DATA_LENGTH": 22,
+            "DATA_PRECISION": 126,
+            "DATA_SCALE": null,
+            "NULLABLE": "Y"
+          }
+        },
+        "Dt Test": {
+          "name": "Dt Test",
+          "type": "date",
+          "size": 7,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "Dt Test",
+          "ordinal": 5,
+          "_oracle": {
+            "COLUMN_ID": 5,
+            "COLUMN_NAME": "Dt Test",
+            "DATA_TYPE": "DATE",
+            "DATA_LENGTH": 7,
+            "DATA_PRECISION": null,
+            "DATA_SCALE": null,
+            "NULLABLE": "Y"
+          }
+        },
+        "enabled": {
+          "name": "enabled",
+          "type": "boolean",
+          "size": 1,
+          "default": null,
+          "isNullable": true,
+          "keyOrdinal": 0,
+          "label": "enabled",
+          "ordinal": 6,
+          "_oracle": {
+            "COLUMN_ID": 6,
+            "COLUMN_NAME": "enabled",
+            "DATA_TYPE": "CHAR",
+            "DATA_LENGTH": 1,
+            "DATA_PRECISION": null,
+            "DATA_SCALE": null,
+            "NULLABLE": "Y"
+          }
+        }
+      },
+      "_SMT": "oracledb|connectString=localhost/xepdb1;user=dicta;password=data|foo_schema|=Foo"
+    }
+  }
+}

@@ -24,7 +24,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./data/test/encoding_foo.json"
+        "data": "./test/data/encoding_foo.json"
       },
       "expected": {
         "statusCode": [
