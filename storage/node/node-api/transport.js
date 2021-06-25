@@ -12,7 +12,7 @@ const roles = require("../roles");
 const config = require('../config');
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
-const { StorageError } = require('@dictadata/storage-junctions').types;
+const { StorageError } = require('@dictadata/storage-junctions/types');
 const stream = require('stream/promises');
 
 

@@ -4,7 +4,7 @@
  */
 
 const storage = require("@dictadata/storage-junctions");
-const { StorageResponse, StorageError } = require("@dictadata/storage-junctions").types;
+const { StorageResponse, StorageError } = require("@dictadata/storage-junctions/types");
 const express = require("express");
 const accounts = require("../accounts");
 const Account = require('../account');

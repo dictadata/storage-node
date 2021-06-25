@@ -16,7 +16,7 @@ const flash = require('connect-flash');
 const morgan = require('morgan');
 const path = require('path');
 const rfs = require('rotating-file-stream');
-const { StorageError } = require("@dictadata/storage-junctions").types;
+const { StorageError } = require("@dictadata/storage-junctions/types");
 const logger = require('../utils/logger');
 
 // Express middleware

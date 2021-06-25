@@ -9,8 +9,8 @@ const roles = require("../roles");
 const config = require("../config.js");
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
-const { StorageResponse, StorageError } = require('@dictadata/storage-junctions').types;
-const { typeOf } = require('@dictadata/storage-junctions').utils;
+const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
+const { typeOf } = require('@dictadata/storage-junctions/utils');
 
 /**
  * storage routes

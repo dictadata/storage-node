@@ -10,7 +10,7 @@ const logger = require('../utils/logger');
 const startup = require('./startup');
 const accounts = require('./accounts');
 const datapath = require('./datapath');
-const { StorageError } = require("@dictadata/storage-junctions").types;
+const { StorageError } = require("@dictadata/storage-junctions/types");
 var httpPort = config.serverPort;
 var httpServer = null;
 

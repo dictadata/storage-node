@@ -18,7 +18,7 @@ const util = require('util');
 const path = require('path');
 
 const storage = require('@dictadata/storage-junctions');
-const { StorageError } = require("@dictadata/storage-junctions").types;
+const { StorageError } = require("@dictadata/storage-junctions/types");
 
 
 /**

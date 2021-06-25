@@ -10,7 +10,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { httpRequest } = require("@dictadata/storage-junctions").utils;
+const { httpRequest } = require("@dictadata/storage-junctions/utils");
 const colors = require('colors');
 
 let testFile = process.argv.length > 2 ? process.argv[2] : "";
