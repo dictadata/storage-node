@@ -1,9 +1,14 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.8.0
+  - update to @dictadata/storage-junctions 1.8.0
+  - ShapeFileJunction added
+  - ZipFileSystem added
+  - support geoJSON in Elasticsearch
 - version 1.7.4
+  - update to @dictadata/storage-junctions 1.7.5
   - improvements to REST junction and httpRequest for querystring and web form parameters
   - implement junction capabilities
-  - update to @dictadata/storage-junctions 1.7.5
 - version 1.7.3
   - testing with st_launcher and st_nodeclient
   - update dependenciesnpm
