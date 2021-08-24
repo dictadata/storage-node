@@ -101,17 +101,6 @@
       "outputCapture": "std"
     },
     {
-      "name": "node-api oracle",
-      "type": "pwa-node",
-      "request": "launch",
-      "program": "${workspaceFolder}/test/st_nodeclient.js",
-      "args": ["${workspaceFolder}/test/node-api/storage-oracle.json"],
-      "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
-      "outputCapture": "std"
-    },
-    {
       "name": "node-api transfer",
       "type": "pwa-node",
       "request": "launch",

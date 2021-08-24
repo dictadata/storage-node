@@ -1,6 +1,6 @@
 {
   "name": "@dictadata/storage-node",
-  "version": "1.8.0",
+  "version": "1.8.3",
   "description": "REST API services built on Node.js, Express.js and @dictadata/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "node": ">=15.0.1"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^1.8.0",
+    "@dictadata/storage-junctions": "^1.8.3",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
