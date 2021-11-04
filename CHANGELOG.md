@@ -1,7 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.8.5
+  - update to @dictadata/storage-junctions 1.8.5
 - version 1.8.3
-  - update to @dictadata/storage-junctions 1.8.0
+  - update to @dictadata/storage-junctions 1.8.3
 - version 1.8.0
   - update to @dictadata/storage-junctions 1.8.0
   - ShapeFileJunction added
