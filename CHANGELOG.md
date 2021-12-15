@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.8.6
+  - refactor endpoint authorization roles
+  - add Roles.Coder role
 - version 1.8.5
   - update to @dictadata/storage-junctions 1.8.5
 - version 1.8.3
