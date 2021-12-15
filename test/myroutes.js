@@ -13,10 +13,10 @@ const roles = require('../storage/node/roles');
  * routes
  */
 var router = express.Router();
-router.get('/echo', authorize([roles.User]), echo);
-router.get('/echo/:param', authorize([roles.Admin]), echo);
-router.post('/echo', authorize([roles.User]), echo);
-router.post('/echo/:param', authorize([roles.Admin]), echo);
+router.get('/echo', authorize([roles.Public]), echo);
+router.get('/echo/:param', authorize([roles.User]), echo);
+router.post('/echo', authorize([roles.Public]), echo);
+router.post('/echo/:param', authorize([roles.User]), echo);
 router.get('/flasher', authorize([roles.Public]), flasher);
 module.exports = router;
 

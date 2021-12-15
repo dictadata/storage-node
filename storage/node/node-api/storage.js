@@ -17,31 +17,31 @@ const { typeOf } = require('@dictadata/storage-junctions/utils');
  */
 
 var router = express.Router();
-router.get('/list/:SMT', authorize([roles.ETL, roles.Admin]), list);
-router.post('/list/:SMT', authorize([roles.ETL, roles.Admin]), list);
-router.post('/list', authorize([roles.ETL, roles.Admin]), list);
+router.get('/list/:SMT', authorize([roles.Public]), list);
+router.post('/list/:SMT', authorize([roles.Public]), list);
+router.post('/list', authorize([roles.Public]), list);
 
-router.get('/encoding/:SMT', authorize([roles.ETL, roles.Admin]), getEncoding);
-router.post('/encoding/:SMT', authorize([roles.ETL, roles.Admin]), getEncoding);
-router.post('/encoding', authorize([roles.ETL, roles.Admin]), getEncoding);
+router.get('/encoding/:SMT', authorize([roles.Public]), getEncoding);
+router.post('/encoding/:SMT', authorize([roles.Public]), getEncoding);
+router.post('/encoding', authorize([roles.Public]), getEncoding);
 
-router.put('/encoding/:SMT', authorize([roles.ETL, roles.Admin]), createSchema);
-router.put('/encoding', authorize([roles.ETL, roles.Admin]), createSchema);
+router.put('/encoding/:SMT', authorize([roles.Coder]), createSchema);
+router.put('/encoding', authorize([roles.Coder]), createSchema);
 
-router.put('/store/:SMT', authorize([roles.User, roles.Admin]), store);
-router.put('/store', authorize([roles.User, roles.Admin]), store);
+router.put('/store/:SMT', authorize([roles.User]), store);
+router.put('/store', authorize([roles.User]), store);
 
-router.get('/recall/:SMT', authorize([roles.User, roles.Admin]), recall);
-router.post('/recall/:SMT', authorize([roles.User, roles.Admin]), recall);
-router.post('/recall', authorize([roles.User, roles.Admin]), recall);
+router.get('/recall/:SMT', authorize([roles.Public]), recall);
+router.post('/recall/:SMT', authorize([roles.Public]), recall);
+router.post('/recall', authorize([roles.Public]), recall);
 
-router.get('/retrieve/:SMT', authorize([roles.User, roles.Admin]), retrieve);
-router.post('/retrieve/:SMT', authorize([roles.User, roles.Admin]), retrieve);
-router.post('/retrieve', authorize([roles.User, roles.Admin]), retrieve);
+router.get('/retrieve/:SMT', authorize([roles.Public]), retrieve);
+router.post('/retrieve/:SMT', authorize([roles.Public]), retrieve);
+router.post('/retrieve', authorize([roles.Public]), retrieve);
 
-router.delete('/dull/:SMT', authorize([roles.User, roles.Admin]), dull);
-router.post('/dull/:SMT', authorize([roles.User, roles.Admin]), dull);
-router.post('/dull', authorize([roles.User, roles.Admin]), dull);
+router.delete('/dull/:SMT', authorize([roles.User]), dull);
+router.post('/dull/:SMT', authorize([roles.User]), dull);
+router.post('/dull', authorize([roles.User]), dull);
 
 module.exports = router;
 
@@ -96,7 +96,7 @@ async function getEncoding (req, res) {
       throw new StorageError(405);
 
     let response = await junction.getEncoding();
-    
+
     logger.debug(response);
     res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }

@@ -17,7 +17,7 @@ const logger = require('../../utils/logger');
  */
 var router = express.Router();
 router.get('/status', authorize([roles.Public, roles.Monitor]), status);
-router.get('/status/:SMT', authorize([roles.User, roles.Monitor, roles.Admin]), smt_status);
+router.get('/status/:SMT', authorize([roles.User, roles.Monitor]), smt_status);
 module.exports = router;
 
 /**

@@ -18,7 +18,7 @@ const path = require("path");
 
 exports.defaultRoles = [roles.Public];
 //if (process.env.NODE_ENV === 'development')
-//  defaultRoles = [roles.Public, roles.User, roles.Admin, roles.Monitor];
+//  defaultRoles = [roles.Public, roles.User, roles.Monitor];
 
 var accountsEncoding;
 
@@ -45,7 +45,7 @@ exports.startup = async (config) => {
       logger.info("creating admin account");
       let account = new Account('admin');
       account.password = Account.hashPwd('admin');
-      account.roles = [roles.Public, roles.User, roles.Admin];
+      account.roles = [roles.Public, roles.User];
       results = await store(account);
       if (results.resultCode !== 201) {
         throw new StorageError(500, "unable to create admin account");
@@ -56,7 +56,7 @@ exports.startup = async (config) => {
     }
     else {
       throw new StorageError(500, "unable to create accounts schema");
-    }      
+    }
   }
   catch (err) {
     logger.error('accounts startup failed: ', err);
@@ -167,7 +167,7 @@ var dull = exports.dull = async function (userid) {
     pattern["key"] = userid;
   else
     pattern["userid"] = userid;
-  
+
   let results = await junction.dull(pattern);
   return results;
 };

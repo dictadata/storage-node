@@ -21,7 +21,7 @@ const stream = require('stream/promises');
  * transfer routes
  */
 var router = express.Router();
-router.post('/transfer', authorize([roles.ETL, roles.Admin]), transfer);
+router.post('/transfer', authorize([roles.ETL]), transfer);
 module.exports = router;
 
 /**

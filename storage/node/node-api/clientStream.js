@@ -25,9 +25,9 @@ const { StorageError } = require("@dictadata/storage-junctions/types");
  * upload routes
  */
 var router = express.Router();
-router.get('/export/:filename', authorize([roles.ETL, roles.Admin]), exportData);
-router.put('/import/:filename', authorize([roles.ETL, roles.Admin]), importData);
-router.post('/upload', authorize([roles.ETL, roles.Admin]), uploadFiles);
+router.get('/export/:filename', authorize([roles.ETL]), exportData);
+router.put('/import/:filename', authorize([roles.ETL]), importData);
+router.post('/upload', authorize([roles.ETL]), uploadFiles);
 module.exports = router;
 
 /**

@@ -19,13 +19,20 @@ function authorize(roles = []) {
       logger.verbose("authorize");
       logger.debug(roles, (req.user && req.user.roles));
 
-      let authorized = (roles[0] === Roles.Public);
-      if (req.user) {
-        for ( let i = 0; i < req.user.roles.length; i++ ) {
-          if (roles.length && roles.includes(req.user.roles[i])) {
-            // authorization successful
-            authorized = true;
-            break;
+      // check if interface is public
+      let authorized = (roles.includes(Roles.Public));
+
+      if (!authorized && req.user) {
+        // check if user is Admin
+        authorized = req.user.roles.includes(Roles.Admin);
+
+        if (!authorized) {
+          // check if user has a role that matches an interface role
+          for (let i = 0; i < roles.length; i++) {
+            if (req.user.roles.includes(roles[ i ])) {
+              authorized = true;
+              break;
+            }
           }
         }
       }

@@ -24,10 +24,10 @@ router.get("/account", authorize([roles.Public]), login);
 router.post("/register", authorize([roles.Public]), register);
 router.post("/account", authorize([roles.Public]), register);
 
-router.put("/account", authorize([roles.User, roles.Admin]), store);
+router.put("/account", authorize([roles.User]), store);
 
-router.delete("/account", authorize([roles.User, roles.Admin]), dull);
-router.delete("/account/:userid", authorize([roles.User, roles.Admin]), dull);
+router.delete("/account", authorize([roles.User]), dull);
+router.delete("/account/:userid", authorize([roles.User]), dull);
 
 router.post("/log", authorize([roles.Public]), logEvent);
 module.exports = router;

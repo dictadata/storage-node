@@ -18,13 +18,13 @@ const { typeOf } = require('@dictadata/storage-junctions/utils');
 
 var router = express.Router();
 
-router.get('/smt/:SMT', authorize([roles.ETL, roles.Admin]), getSMT);
+router.get('/smt/:SMT', authorize([roles.Public]), getSMT);
 
-router.put('/smt/:SMT', authorize([roles.ETL, roles.Admin]), putSMT);
-router.put('/smt', authorize([roles.ETL, roles.Admin]), putSMT);
+router.put('/smt/:SMT', authorize([roles.Coder]), putSMT);
+router.put('/smt', authorize([roles.Coder]), putSMT);
 
-router.delete('/smt', authorize([roles.ETL, roles.Admin]), dullSMT);
-router.delete('/smt/:SMT', authorize([roles.ETL, roles.Admin]), dullSMT);
+router.delete('/smt', authorize([roles.Coder]), dullSMT);
+router.delete('/smt/:SMT', authorize([roles.Coder]), dullSMT);
 
 module.exports = router;
 

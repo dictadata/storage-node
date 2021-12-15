@@ -1,9 +1,12 @@
 "use strict";
 
 module.exports = {
+  // end-user roles
   Public: 'Public',
-  Monitor: 'Monitor',
   User: 'User',
+  Coder: 'Coder',
+  // system roles
   ETL: 'ETL',
+  Monitor: 'Monitor',
   Admin: 'Admin'
 };
