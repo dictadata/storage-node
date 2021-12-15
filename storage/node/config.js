@@ -111,6 +111,8 @@ if (process.env.NODE_ENV === 'development') {
   //config.smt.$_accounts = "mysql|host=localhost;user=dicta;password=data;database=storage_node|node_accounts|=userid";
   //config.smt.accounts = "mysql|host=localhost;user=dicta;password=data;database=storage_node|node_accounts|=userid";
 
+  config.smt.tiger2020 = "elasticsearch|http://localhost:9200|tiger2020|!";
+
   config.smt["csv_foofile"] = "csv|./test/data/|foofile.csv|*";
   config.smt["json_foofile"] = "json|./test/data/|foofile.json|*";
 

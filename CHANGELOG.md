@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 1.8.7
+  - update to @dictadata/storage-junctions 1.8.6
+  - support for Elasticsearch geo_shape queries
 - version 1.8.6
   - refactor endpoint authorization roles
   - add Roles.Coder role

@@ -202,6 +202,28 @@
       }
     },
     {
+      "name": "retrieve geo_shape",
+      "request": {
+        "method": "POST",
+        "url": "retrieve/tiger2020",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "pattern": {
+            "match": {
+              "geometry": {
+                "contains": [
+                  -73.985428,
+                  40.748817
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "aggregate",
       "request": {
         "method": "POST",
