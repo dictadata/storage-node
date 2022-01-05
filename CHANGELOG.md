@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.0.1
+  - update to @dictadata/storage-junctions 2.0.1
+  - Codex support
 - version 1.8.7
   - update to @dictadata/storage-junctions 1.8.6
   - support for Elasticsearch geo_shape queries
