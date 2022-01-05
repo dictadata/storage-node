@@ -12,7 +12,7 @@ const roles = require("../roles");
 const config = require('../config');
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
-const { StorageError } = require('@dictadata/storage-junctions/types');
+const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
 const { typeOf } = require('@dictadata/storage-junctions/utils');
 const stream = require('stream/promises');
 
@@ -21,7 +21,7 @@ const stream = require('stream/promises');
  * transfer routes
  */
 var router = express.Router();
-router.post('/transfer', authorize([roles.ETL]), transfer);
+router.post('/transfer', authorize([ roles.ETL ]), transfer);
 module.exports = router;
 
 /**
@@ -39,24 +39,24 @@ async function transfer(req, res) {
 
   var jo, jt;
   try {
-    if (!origin.SMT || origin.SMT[0] === '$' || !config.smt[origin.SMT])
+    if (!origin.SMT || origin.SMT[ 0 ] === '$' || !config.smt[ origin.SMT ])
       throw new StorageError(400, "invalid origin smt name: " + origin.SMT);
-    if (!terminal.SMT || terminal.SMT[0] === '$' || !config.smt[terminal.SMT])
+    if (!terminal.SMT || terminal.SMT[ 0 ] === '$' || !config.smt[ terminal.SMT ])
       throw new StorageError(400, "invalid terminal smt name: " + terminal.SMT);
 
-    jo = await storage.activate(config.smt[origin.SMT], origin.options);
-    jt = await storage.activate(config.smt[terminal.SMT], terminal.options);
+    jo = await storage.activate(config.smt[ origin.SMT ], origin.options);
+    jt = await storage.activate(config.smt[ terminal.SMT ], terminal.options);
 
     let encoding;
     if (jo.capabilities.encoding && !jo.engram.isDefined) {
       let results = await jo.getEncoding();  // load encoding from origin for validation
-      encoding = results.data["encoding"];
+      encoding = results.data[ "encoding" ];
     }
 
     logger.verbose("codify pipeline");
     let pipe1 = [];
     pipe1.push(jo.createReader({ max_read: 100 }));
-    for (let [tfType, tfOptions] of Object.entries(transforms))
+    for (let [ tfType, tfOptions ] of Object.entries(transforms))
       pipe1.push(jo.createTransform(tfType, tfOptions));
     let cf = jo.createTransform('codify');
     pipe1.push(cf);
@@ -80,14 +80,14 @@ async function transfer(req, res) {
     pipes.push(jo.createReader());
     if (transforms) {
       logger.debug("add transforms to pipeline");
-      for (let [tfType, options] of Object.entries(transforms))
+      for (let [ tfType, options ] of Object.entries(transforms))
         pipes.push(jo.createTransform(tfType, options));
     }
     pipes.push(jt.createWriter());
 
     await stream.pipeline(pipes);
 
-    let response = new storage.StorageResponse(0);
+    let response = new StorageResponse(0);
     res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
   }
   catch (err) {
