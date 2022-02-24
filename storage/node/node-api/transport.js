@@ -13,8 +13,7 @@ const config = require('../config');
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
 const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
-const stream = require('stream/promises');
-
+const stream = require('stream').promises;
 
 /**
  * transfer routes
@@ -36,15 +35,15 @@ async function transport(req, res) {
   var terminal = tract.terminal || {};
   var transforms = tract.transforms || {};
 
-  if (!origin.SMT || origin.SMT[ 0 ] === '$' || !config.smt[ origin.SMT ])
+  if (!origin.SMT || origin.SMT[ 0 ] === '$')
     throw new StorageError(400, "invalid origin smt name");
-  if (!terminal.SMT || terminal.SMT[ 0 ] === '$' || !config.smt[ terminal.SMT ])
+  if (!terminal.SMT || terminal.SMT[ 0 ] === '$')
     throw new StorageError(400, "invalid terminal smt name");
 
   var jo, jt;
   try {
-    jo = await storage.activate(config.smt[ origin.SMT ], origin.options);
-    jt = await storage.activate(config.smt[ terminal.SMT ], terminal.options);
+    jo = await storage.activate(origin.SMT, origin.options);
+    jt = await storage.activate(terminal.SMT, terminal.options);
 
     let encoding;
     if (jo.capabilities.encoding && !jo.engram.isDefined) {

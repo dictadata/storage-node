@@ -8,7 +8,7 @@ const { exitOnError } = require("winston");
 var startup_list = [];
 
 /**
- * 
+ *
  * @param {*} f_init a startup function
  */
 exports.add = (f_init) => {
@@ -23,4 +23,4 @@ exports.exec = async (config) => {
   }
 
   return 0;  // success
-}
+};

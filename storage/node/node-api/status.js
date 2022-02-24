@@ -16,8 +16,8 @@ const logger = require('../../utils/logger');
  * status routes
  */
 var router = express.Router();
-router.get('/status', authorize([roles.Public, roles.Monitor]), status);
-router.get('/status/:SMT', authorize([roles.User, roles.Monitor]), smt_status);
+router.get('/status', authorize([ roles.Public, roles.Monitor ]), status);
+router.get('/status/:SMT', authorize([ roles.User, roles.Monitor ]), smt_status);
 module.exports = router;
 
 /**
@@ -49,17 +49,17 @@ async function smt_status(req, res) {
 
   var junction;
   try {
-    let smtname = req.params['SMT'] || req.query["SMT"];
-    if (!smtname || !config.smt[smtname]) // || smtname[0] === "$")
+    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ];
+    if (!smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(config.smt[smtname]);
+    junction = await storage.activate(smtname);
 
     let results = await junction.list();
 
     res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
   }
-  catch(err) {
+  catch (err) {
     logger.error(err);
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }

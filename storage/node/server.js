@@ -8,25 +8,26 @@ const app = require('./app');
 const config = require('./config');
 const logger = require('../utils/logger');
 const startup = require('./startup');
+const codex = require('./codex');
 const accounts = require('./accounts');
 const datapath = require('./datapath');
 const { StorageError } = require("@dictadata/storage-junctions/types");
-var httpPort = config.serverPort;
+var httpPort = 0;
 var httpServer = null;
 
+// modules startup
+startup.add(codex.startup);
 startup.add(accounts.startup);
 startup.add(datapath.startup);
 // app.startup is last
 startup.add(app.startup);
-  
+
 /**
  * server.start
  * @param {*} options
  */
-exports.start = async function (options = null) {
-
-  if (options === null) options = {};
-  Object.assign(config, options);
+exports.start = async function () {
+  config.init();
 
   logger.configNodeLogger(config);
   logger.info("storage-node startup ...");
@@ -85,12 +86,12 @@ function onError(error) {
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-  case 'EACCES':
-    throw new StorageError(401, bind + ' requires elevated privileges');
-  case 'EADDRINUSE':
-    throw new StorageError(409, bind + ' is already in use');
-  default:
-    throw error;
+    case 'EACCES':
+      throw new StorageError(401, bind + ' requires elevated privileges');
+    case 'EADDRINUSE':
+      throw new StorageError(409, bind + ' is already in use');
+    default:
+      throw error;
   }
 }
 
@@ -113,11 +114,11 @@ process.on('SIGINT', () => {
   // TBD call any shutdown functions
   logger.warn('Process Interrupt Ctrl-C');
   process.exitCode = 1;
-})
+});
 
 process.on('SIGBREAK', () => {
   // user pressed Ctrl-Break on Windows
   // TBD call any shutdown functions
   logger.warn('Process Interrupt Ctrl-Break');
   process.exitCode = 1;
-})
+});

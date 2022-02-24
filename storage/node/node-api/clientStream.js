@@ -13,7 +13,7 @@ const config = require('../config');
 const logger = require('../../utils/logger');
 const formidable = require('formidable');
 const fs = require('fs');
-const stream = require('stream/promises');
+const stream = require('stream').promises;
 const util = require('util');
 const path = require('path');
 
@@ -25,9 +25,9 @@ const { StorageError } = require("@dictadata/storage-junctions/types");
  * upload routes
  */
 var router = express.Router();
-router.get('/export/:filename', authorize([roles.ETL]), exportData);
-router.put('/import/:filename', authorize([roles.ETL]), importData);
-router.post('/upload', authorize([roles.ETL]), uploadFiles);
+router.get('/export/:filename', authorize([ roles.ETL ]), exportData);
+router.put('/import/:filename', authorize([ roles.ETL ]), importData);
+router.post('/upload', authorize([ roles.ETL ]), uploadFiles);
 module.exports = router;
 
 /**
@@ -43,7 +43,7 @@ function exportData(req, res) {
   if (config.realm)
     dp += '/' + config.realm;
 
-  let filename = req.params["filename"];
+  let filename = req.params[ "filename" ];
 
   res.sendfile(dp + "/" + filename, { maxAge: 60 });
 }
@@ -121,17 +121,17 @@ async function uploadFiles(req, res) {
 
     // move files to upload directory
     for (let i = 0; i < fileList.length; i++) {
-      logger.debug(i, importList[i]);
-      let filename = uploadDir + fileList[i].name;
-      importList[i].filename = filename;
-      logger.debug('src: ', fileList[i].path);
+      logger.debug(i, importList[ i ]);
+      let filename = uploadDir + fileList[ i ].name;
+      importList[ i ].filename = filename;
+      logger.debug('src: ', fileList[ i ].path);
       logger.debug('dst: ', filename);
       try {
         if (fs.existsSync(filename)) {
           logger.warn("dst exists");
           await fs.promises.unlink(filename);
         }
-        await fs.promises.rename(fileList[i].path, filename);
+        await fs.promises.rename(fileList[ i ].path, filename);
       }
       catch (err) {
         logger.error(err);
@@ -140,11 +140,11 @@ async function uploadFiles(req, res) {
 
     logger.debug(importList);
     for (let i = 0; i < importList.length; i++) {
-      let index = fields.prefix + '_' + importList[i].container;
+      let index = fields.prefix + '_' + importList[ i ].container;
 
       var jo, jt;
       try {
-        jo = await storage.activate("csv|.|input.csv|*", { filename: importList[i].filename, header: true });
+        jo = await storage.activate("csv|.|input.csv|*", { filename: importList[ i ].filename, header: true });
         jt = await storage.activate("elasticsearch|./data/test/|testoutput.csv|*");
 
         var reader = jo.createReader();

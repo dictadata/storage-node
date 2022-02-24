@@ -1,0 +1,13 @@
+{
+  "serverPort": "8089",
+  "logPath": "/var/log/storage-node",
+  "logLevel": "info",
+  "node-api": {
+    "useClientStream": false,
+    "useTransport": false
+  },
+  "codex": {
+    "smt": "elasticsearch|http://localhost:9200|dicta_codex|!name"
+  },
+  "smt": {}
+}

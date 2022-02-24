@@ -1,5 +1,5 @@
 /**
- * accounts.js
+ * storage/node/accounts.js
  *
  * Return a method used for Passport authentication.
  *
@@ -16,7 +16,7 @@ const logger = require("../utils/logger");
 const fs = require("fs/promises");
 const path = require("path");
 
-exports.defaultRoles = [roles.Public];
+exports.defaultRoles = [ roles.Public ];
 //if (process.env.NODE_ENV === 'development')
 //  defaultRoles = [roles.Public, roles.User, roles.Monitor];
 
@@ -27,7 +27,7 @@ var accountsEncoding;
  */
 exports.startup = async (config) => {
   logger.info("accounts startup");
-  logger.verbose("accounts SMT: " + JSON.stringify(config.smt.$_accounts));
+  logger.verbose("accounts SMT: " + JSON.stringify(config.$_accounts));
 
   var exitCode = 0;
   var junction;
@@ -37,7 +37,7 @@ exports.startup = async (config) => {
 
     accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts_encoding.json')));
 
-    junction = await storage.activate(config.smt.$_accounts, {encoding: accountsEncoding});
+    junction = await storage.activate(config.$_accounts, { encoding: accountsEncoding });
     // attempt to create accounts schema
     let results = await junction.createSchema();
     if (results.resultCode === 0) {
@@ -45,7 +45,7 @@ exports.startup = async (config) => {
       logger.info("creating admin account");
       let account = new Account('admin');
       account.password = Account.hashPwd('admin');
-      account.roles = [roles.Public, roles.User];
+      account.roles = [ roles.Public, roles.User ];
       results = await store(account);
       if (results.resultCode !== 201) {
         throw new StorageError(500, "unable to create admin account");
@@ -78,23 +78,23 @@ var recall = exports.recall = async function (userid) {
 
   let account = null;
 
-  let smt = config.smt.$_accounts;
+  let smt = config.$_accounts;
   let junction = await storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
   let pattern = {};
   if (junction.engram.keyof === 'key')
-    pattern["key"] = userid;
+    pattern[ "key" ] = userid;
   else
-    pattern["userid"] = userid;
+    pattern[ "userid" ] = userid;
 
   let results = await junction.recall(pattern);
   if (results.resultCode === 0) {
     account = new Account();
     if (junction.engram.keyof === 'key')
-      account.copy(results.data[userid]);
+      account.copy(results.data[ userid ]);
     else
-      account.copy(results.data[0]);
+      account.copy(results.data[ 0 ]);
   }
 
   junction.relax();
@@ -109,7 +109,7 @@ var retrieve = exports.retrieve = async function (pattern) {
 
   let account = null;
 
-  let smt = config.smt.$_accounts;
+  let smt = config.$_accounts;
   let junction = await storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
@@ -117,7 +117,7 @@ var retrieve = exports.retrieve = async function (pattern) {
   if (results.resultCode === 0) {
     let keys = Object.keys(results.data);
     let account = new Account();
-    account.copy(results.data[keys[0]]);
+    account.copy(results.data[ keys[ 0 ] ]);
   }
 
   junction.relax();
@@ -130,7 +130,7 @@ var retrieve = exports.retrieve = async function (pattern) {
  */
 var store = exports.store = async function (account) {
 
-  let smt = config.smt.$_accounts;
+  let smt = config.$_accounts;
   let junction = await storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
@@ -142,7 +142,7 @@ var store = exports.store = async function (account) {
 
   let pattern = {};
   if (junction.engram.keyof === 'key') {
-    pattern["key"] = account.userid;
+    pattern[ "key" ] = account.userid;
   }
   else {
     // pattern not used with primary key
@@ -158,15 +158,15 @@ var store = exports.store = async function (account) {
  */
 var dull = exports.dull = async function (userid) {
 
-  let smt = config.smt.$_accounts;
+  let smt = config.$_accounts;
   let junction = await storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
   let pattern = {};
   if (junction.engram.keyof === 'key')
-    pattern["key"] = userid;
+    pattern[ "key" ] = userid;
   else
-    pattern["userid"] = userid;
+    pattern[ "userid" ] = userid;
 
   let results = await junction.dull(pattern);
   return results;

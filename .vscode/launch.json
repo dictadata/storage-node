@@ -9,7 +9,8 @@
       "request": "launch",
       "type": "pwa-node",
       "envFile": "${workspaceFolder}/.env.development",
-      "program": "${workspaceFolder}/test/main.js",
+      "cwd": "${workspaceFolder}/test/",
+      "program": "${workspaceFolder}/test/index.js",
       "runtimeArgs": ["--inspect", "--preserve-symlinks"],
       "skipFiles": ["<node_internals>/**"],
       "outputCapture": "std"
@@ -19,7 +20,8 @@
       "request": "launch",
       "type": "pwa-node",
       "envFile": "${workspaceFolder}/.env.development",
-      "program": "${workspaceFolder}/test/main.js",
+      "cwd": "${workspaceFolder}/test/",
+      "program": "${workspaceFolder}/test/index.js",
       "restart": true,
       "runtimeExecutable": "nodemon",
       "skipFiles": ["<node_internals>/**"],
@@ -30,7 +32,7 @@
       "request": "launch",
       "type": "pwa-node",
       "envFile": "${workspaceFolder}/.env.production",
-      "program": "${workspaceFolder}/test/main.js",
+      "program": "${workspaceFolder}/test/index.js",
       "runtimeArgs": ["--inspect", "--preserve-symlinks"],
       "skipFiles": ["<node_internals>/**"],
       "outputCapture": "std"
