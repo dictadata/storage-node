@@ -27,7 +27,10 @@
         "data": "./test/data/encoding_foo.json"
       },
       "expected": {
-        "statusCode": [200, 409]
+        "statusCode": [
+          200,
+          409
+        ]
       }
     },
     {
@@ -75,14 +78,16 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": [{
-          "Foo": "ten",
-          "Bar": "row",
-          "Baz": 10,
-          "Fobe": 10.10,
-          "Dt Test": "10/27/2018",
-          "enabled": true
-        }]
+        "data": [
+          {
+            "Foo": "ten",
+            "Bar": "row",
+            "Baz": 10,
+            "Fobe": 10.10,
+            "Dt Test": "10/27/2018",
+            "enabled": true
+          }
+        ]
       }
     },
     {
@@ -93,21 +98,24 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": [{
-          "Foo": "eleventy",
-          "Bar": "row",
-          "Baz": 11,
-          "Fobe": 11.11,
-          "Dt Test": "2011-10-07T08:00:00",
-          "enabled": true
-        },{
-          "Foo": "twelvety",
-          "Bar": "row",
-          "Baz": 12,
-          "Fobe": 12.12,
-          "Dt Test": "2012-03-03T08:00:00",
-          "enabled": true
-        }]
+        "data": [
+          {
+            "Foo": "eleventy",
+            "Bar": "row",
+            "Baz": 11,
+            "Fobe": 11.11,
+            "Dt Test": "2011-10-07T08:00:00",
+            "enabled": true
+          },
+          {
+            "Foo": "twelvety",
+            "Bar": "row",
+            "Baz": 12,
+            "Fobe": 12.12,
+            "Dt Test": "2012-03-03T08:00:00",
+            "enabled": true
+          }
+        ]
       }
     },
     {
