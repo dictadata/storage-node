@@ -3,7 +3,7 @@
     "model": "*",
     "locus": "*",
     "schema": "foo_schema_lg",
-    "key": "*"
+    "key": "=Foo"
   },
   "fields": {
     "Foo": {
@@ -11,8 +11,8 @@
       "type": "keyword",
       "size": 64,
       "default": null,
-      "isNullable": false,
-      "keyOrdinal": 1,
+      "nullable": false,
+      "key": 1,
       "label": "Foo"
     },
     "Bar": {
@@ -20,8 +20,7 @@
       "type": "keyword",
       "size": 256,
       "default": null,
-      "isNullable": true,
-      "keyOrdinal": 0,
+      "nullable": true,
       "label": "Bar"
     },
     "Baz": {
@@ -29,8 +28,7 @@
       "type": "text",
       "size": 20,
       "default": null,
-      "isNullable": true,
-      "keyOrdinal": 0,
+      "nullable": true,
       "label": "Baz"
     },
     "Fobe": {
@@ -38,8 +36,7 @@
       "type": "text",
       "size": 1200,
       "default": null,
-      "isNullable": true,
-      "keyOrdinal": 0,
+      "nullable": true,
       "label": "Fobe"
     },
     "Dt Test": {
@@ -47,8 +44,7 @@
       "type": "text",
       "size": 2500,
       "default": null,
-      "isNullable": true,
-      "keyOrdinal": 0,
+      "nullable": true,
       "label": "Str Test"
     },
     "enabled": {
@@ -56,8 +52,7 @@
       "type": "text",
       "size": 200000,
       "default": null,
-      "isNullable": true,
-      "keyOrdinal": 0,
+      "nullable": true,
       "label": "enabler"
     }
   }

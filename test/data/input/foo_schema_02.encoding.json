@@ -2,64 +2,64 @@
   "smt": {
     "model": "*",
     "locus": "*",
-    "schema": "encoding_template",
-    "key": "=foo"
+    "schema": "foo_schema_02",
+    "key": "=Baz+Foo"
   },
-  "fields": {
-    "Foo": {
+  "fields": [
+    {
       "name": "Foo",
       "type": "keyword",
       "size": 64,
       "default": null,
-      "isNullable": false,
-      "keyOrdinal": 2
+      "nullable": false,
+      "key": 2
     },
-    "Bar": {
+    {
       "name": "Bar",
       "type": "keyword",
       "size": 64,
       "default": null,
-      "isNullable": true
+      "nullable": true
     },
-    "Baz": {
+    {
       "name": "Baz",
       "type": "integer",
       "default": null,
-      "isNullable": true,
-      "keyOrdinal": 1
+      "nullable": true,
+      "key": 1
     },
-    "Fobe": {
+    {
       "name": "Fobe",
       "type": "number",
       "default": null,
-      "isNullable": true
+      "nullable": true
     },
-    "Dt Test": {
+    {
       "name": "Dt Test",
       "type": "date",
       "default": null,
-      "isNullable": true
+      "nullable": true
     },
-    "enabled": {
+    {
       "name": "enabled",
       "type": "boolean",
       "default": null,
-      "isNullable": true
+      "nullable": true
     },
-    "tags": {
+    {
       "name": "tags",
       "type": "list",
-      "_item": {
-        "name": "_item",
+      "_list": {
+        "name": "_list",
         "type": "keyword",
         "size": 64
       }
     },
-    "widgets": {
+    {
       "name": "widgets",
       "type": "list",
-      "_item": {
-        "name": "_item",
+      "_list": {
+        "name": "_list",
         "type": "map",
         "fields": {
           "part": {
@@ -74,16 +74,19 @@
         }
       }
     }
-  },
+  ],
   "indices": {
     "foo_index_02": {
       "unique": false,
-      "fields": [{
-        "name": "Bar"
-      },{
-        "name": "Fobe",
-        "order": "DESC"
-      }]
+      "fields": [
+        {
+          "name": "Bar"
+        },
+        {
+          "name": "Fobe",
+          "order": "DESC"
+        }
+      ]
     }
   }
 }
