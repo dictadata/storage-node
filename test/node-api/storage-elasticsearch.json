@@ -75,7 +75,7 @@
       "name": "store keyfield",
       "request": {
         "method": "PUT",
-        "url": "store/es_foo_schema_kf",
+        "url": "store/es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -133,7 +133,7 @@
       "name": "recall key field",
       "request": {
         "method": "GET",
-        "url": "recall/es_foo_schema_kf",
+        "url": "recall/es_foo_schema",
         "query": {
           "Foo": "ten"
         }
@@ -301,7 +301,7 @@
       "name": "dull keyfield",
       "request": {
         "method": "DELETE",
-        "url": "dull/es_foo_schema_kf",
+        "url": "dull/es_foo_schema",
         "query": {
           "Foo": "ten"
         }

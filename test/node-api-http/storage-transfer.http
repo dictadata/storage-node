@@ -16,7 +16,7 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### csv_foofile => mysql_foo_schema_pk
+### csv_foofile => mysql_foo_schema
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
@@ -29,19 +29,19 @@ Content-Type: application/json; charset=utf-8
     }
   },
   "terminal": {
-    "SMT": "mysql_foo_schema_pk",
+    "SMT": "mysql_foo_schema",
     "options": {}
   }
 }
 
-### mysql_foo_schema_pk => es_foo_transfer
+### mysql_foo_schema => es_foo_transfer
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "mysql_foo_schema_pk",
+    "SMT": "mysql_foo_schema",
     "options": {}
   },
   "terminal": {

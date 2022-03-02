@@ -127,8 +127,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### mssql_foo_schema_pk
-PUT http://localhost:8089/node/encoding/mssql_foo_schema_pk HTTP/1.1
+### mssql_foo_schema
+PUT http://localhost:8089/node/encoding/mssql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -191,13 +191,13 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### mssql_foo_schema_pk
+### mssql_foo_schema
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "mssql_foo_schema_pk",
+  "SMT": "mssql_foo_schema",
   "fields": {
     "Foo": {
       "name": "Foo",
@@ -256,8 +256,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### mysql_foo_schema_pk
-PUT http://localhost:8089/node/encoding/mysql_foo_schema_pk HTTP/1.1
+### mysql_foo_schema
+PUT http://localhost:8089/node/encoding/mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -320,13 +320,13 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### mysql_foo_schema_pk
+### mysql_foo_schema
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "mysql_foo_schema_pk",
+  "SMT": "mysql_foo_schema",
   "fields": {
     "Foo": {
       "name": "Foo",
@@ -386,8 +386,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 
-### oracle_foo_schema_pk
-PUT http://localhost:8089/node/encoding/oracle_foo_schema_pk HTTP/1.1
+### oracle_foo_schema
+PUT http://localhost:8089/node/encoding/oracle_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -450,13 +450,13 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### oracle_foo_schema_pk
+### oracle_foo_schema
 PUT http://localhost:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "oracle_foo_schema_pk",
+  "SMT": "oracle_foo_schema",
   "fields": {
     "Foo": {
       "name": "Foo",

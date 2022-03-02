@@ -131,9 +131,10 @@ async function createSchema(req, res) {
     if (!junction.capabilities.encoding)
       throw new StorageError(405);
 
-    let response = await junction.createSchema();
-    logger.debug(response);
-    res.status(200).set("Cache-Control", "no-store").jsonp(response);
+    let results = await junction.createSchema();
+    logger.debug(results);
+    res.status(200)
+      .set("Cache-Control", "no-store").jsonp(results);
   }
   catch (err) {
     if (err.resultCode !== 400 && err.resultCode !== 409)

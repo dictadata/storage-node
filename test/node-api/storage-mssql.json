@@ -13,14 +13,14 @@
       "name": "status",
       "request": {
         "method": "GET",
-        "url": "status/mssql_foo_schema_pk"
+        "url": "status/mssql_foo_schema"
       }
     },
     {
       "name": "createSchema",
       "request": {
         "method": "PUT",
-        "url": "encoding/mssql_foo_schema_pk",
+        "url": "encoding/mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -37,14 +37,14 @@
       "name": "getEncoding",
       "request": {
         "method": "GET",
-        "url": "encoding/mssql_foo_schema_pk"
+        "url": "encoding/mssql_foo_schema"
       }
     },
     {
       "name": "list",
       "request": {
         "method": "POST",
-        "url": "list/mssql_foo_schema_pk",
+        "url": "list/mssql_foo_schema",
         "query": {
           "schema": "foo*"
         }
@@ -74,7 +74,7 @@
       "name": "store ten",
       "request": {
         "method": "PUT",
-        "url": "store/mssql_foo_schema_pk",
+        "url": "store/mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -94,7 +94,7 @@
       "name": "store primarykey",
       "request": {
         "method": "PUT",
-        "url": "store/mssql_foo_schema_pk",
+        "url": "store/mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -122,7 +122,7 @@
       "name": "recall key",
       "request": {
         "method": "GET",
-        "url": "recall/mssql_foo_schema_pk",
+        "url": "recall/mssql_foo_schema",
         "query": {
           "Foo": "ten"
         }
@@ -132,7 +132,7 @@
       "name": "recall search",
       "request": {
         "method": "POST",
-        "url": "recall/mssql_foo_schema_pk",
+        "url": "recall/mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -159,7 +159,7 @@
               "SMT": "json_foofile"
             },
             "terminal": {
-              "SMT": "mssql_foo_schema_pk"
+              "SMT": "mssql_foo_schema"
             }
           }
         }
@@ -169,7 +169,7 @@
       "name": "retrieve",
       "request": {
         "method": "POST",
-        "url": "retrieve/mssql_foo_schema_pk",
+        "url": "retrieve/mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -258,7 +258,7 @@
       "name": "dull key",
       "request": {
         "method": "DELETE",
-        "url": "dull/mssql_foo_schema_pk",
+        "url": "dull/mssql_foo_schema",
         "query": {
           "Foo": "ten"
         }
@@ -268,7 +268,7 @@
       "name": "dull search",
       "request": {
         "method": "POST",
-        "url": "dull/mssql_foo_schema_pk",
+        "url": "dull/mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

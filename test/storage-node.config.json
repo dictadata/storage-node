@@ -7,30 +7,29 @@
     "useTransport": true
   },
   "codex": {
-    "smt": "elasticsearch|http://localhost:9200|dicta_codex|!name"
+    "smt": "elasticsearch|http://localhost:9200|dicta_codex|!name",
+    "options": {
+      "refresh": "true"
+    }
   },
   "smt": {
     "accounts": "elasticsearch|http://localhost:9200|node_accounts|!userid",
     "tiger2020": "elasticsearch|http://localhost:9200|tiger2020|!",
-    "csv_foofile": "csv|./data/|foofile.csv|*",
-    "json_foofile": "json|./data/|foofile.json|*",
-    "es_foo_schema": "elasticsearch|http://localhost:9200|foo_schema|*",
-    "es_foo_schema_ks": "elasticsearch|http://localhost:9200|foo_schema|!",
-    "es_foo_schema_kf": "elasticsearch|http://localhost:9200|foo_schema|!Foo",
-    "es_foo_schema_pk": "elasticsearch|http://localhost:9200|foo_schema|=Foo",
+    "csv_foofile": "csv|./data/input/|foofile.csv|*",
+    "json_foofile": "json|./data/input/|foofile.json|*",
+    "es_foo_schema": "elasticsearch|http://localhost:9200|foo_schema|!Foo",
     "es_foo_schema_id": "elasticsearch|http://localhost:9200|foo_schema|twenty",
+    "es_foo_schema_ks": "elasticsearch|http://localhost:9200|foo_schema|!",
+    "es_foo_schema_pk": "elasticsearch|http://localhost:9200|foo_schema_pk|=Foo",
     "es_foo_transfer": "elasticsearch|http://localhost:9200|foo_transfer|=Foo",
     "es_foo_transform": "elasticsearch|http://localhost:9200|foo_transform|=Foo",
-    "mssql_foo_schema": "mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|*",
-    "mssql_foo_schema_pk": "mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo",
+    "mssql_foo_schema": "mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo",
     "mssql_foo_transfer": "mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_transfer|=Foo",
     "mssql_foo_transform": "mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_transform|=Foo",
-    "mysql_foo_schema": "mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|*",
-    "mysql_foo_schema_pk": "mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo",
+    "mysql_foo_schema": "mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_schema|=Foo",
     "mysql_foo_transfer": "mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_transfer|=Foo",
     "mysql_foo_transform": "mysql|host=localhost;user=dicta;password=data;database=storage_node|foo_transform|=Foo",
-    "oracle_foo_schema": "oracledb|connectString=localhost/xepdb1;user=dicta;password=data|foo_schema|*",
-    "oracle_foo_schema_pk": "oracledb|connectString=localhost/xepdb1;user=dicta;password=data|foo_schema|=Foo",
+    "oracle_foo_schema": "oracledb|connectString=localhost/xepdb1;user=dicta;password=data|foo_schema|=Foo",
     "oracle_foo_transfer": "oracledb|connectString=localhost/xepdb1;user=dicta;password=data|foo_transfer|=Foo",
     "oracle_foo_transform": "oracledb|connectString=localhost/xepdb1;user=dicta;password=data|foo_transform|=Foo",
     "rest_weather_forecast": "rest|https://api.weather.gov/gridpoints/DVN/34;71/|forecast|*",

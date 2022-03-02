@@ -34,7 +34,7 @@ module.exports = router;
  * @param {*} res
  */
 async function recallSMT(req, res) {
-  logger.verbose('/storage/recallSMT');
+  logger.verbose('/codex/recallSMT');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -43,7 +43,8 @@ async function recallSMT(req, res) {
   try {
     if (smtname) {
       let results = await storage.codex.recall(smtname);
-      res.set("Cache-Control", "public, max-age=60, s-maxage=60")
+      res.status(results.resultCode === 0 ? 200 : results.resultCode)
+        .set("Cache-Control", "public, max-age=60, s-maxage=60")
         .jsonp(results);
     }
     else
@@ -63,7 +64,7 @@ async function recallSMT(req, res) {
  * @param {*} res
  */
 async function dullSMT(req, res) {
-  logger.verbose('/storage/dullSMT');
+  logger.verbose('/codex/dullSMT');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -71,8 +72,8 @@ async function dullSMT(req, res) {
 
   try {
     if (smtname) {
-      let results = storage.codex.dull(smtname);
-      res.status(201)
+      let results = await storage.codex.dull(smtname);
+      res.status(results.resultCode === 0 ? 200 : results.resultCode)
         .set("Cache-Control", "no-store")
         .jsonp(results);
     }
@@ -91,7 +92,7 @@ async function dullSMT(req, res) {
  * @param {*} res
  */
 async function storeSMT(req, res) {
-  logger.verbose('/storage/storeSMT');
+  logger.verbose('/codex/storeSMT');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] | (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -101,12 +102,12 @@ async function storeSMT(req, res) {
 
   try {
     let engram = new Engram(entry.smt);
-    engram.name = entry.name || smtname;
+    engram.name = smtname || entry.name;
     if (entry.encoding)
       engram.encoding = entry.encoding;
-    let results = storage.codex.store(engram.encoding);
+    let results = await storage.codex.store(engram.encoding);
 
-    res.status(201)
+    res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
       .jsonp(results);
   }
@@ -121,13 +122,13 @@ async function storeSMT(req, res) {
  * @param {*} res
  */
 async function retrieveSMT(req, res) {
-  logger.verbose('/storage/retrieveSMT');
+  logger.verbose('/codex/retrieveSMT');
 
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = storage.codex.retrieve(pattern);
-    res.status(201)
+    let results = await storage.codex.retrieve(pattern);
+    res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
       .jsonp(results);
   }

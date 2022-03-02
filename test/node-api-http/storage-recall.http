@@ -11,8 +11,8 @@ Content-Type: application/json; charset=utf-8
   "key": "twenty"
 }
 
-### es_foo_schema_kf
-GET http://localhost:8089/node/recall/es_foo_schema_kf HTTP/1.1
+### es_foo_schema
+GET http://localhost:8089/node/recall/es_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -34,8 +34,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### mssql_foo_schema_pk
-GET http://localhost:8089/node/recall/mssql_foo_schema_pk HTTP/1.1
+### mssql_foo_schema
+GET http://localhost:8089/node/recall/mssql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -47,8 +47,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### mysql_foo_schema_pk
-GET http://localhost:8089/node/recall/mysql_foo_schema_pk HTTP/1.1
+### mysql_foo_schema
+GET http://localhost:8089/node/recall/mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -61,8 +61,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 
-### oracle_foo_schema_pk
-GET http://localhost:8089/node/recall/oracle_foo_schema_pk HTTP/1.1
+### oracle_foo_schema
+GET http://localhost:8089/node/recall/oracle_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 

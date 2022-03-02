@@ -19,7 +19,7 @@
         "data": {
           "tract": {
             "origin": {
-              "SMT": "mysql_foo_schema_pk"
+              "SMT": "mysql_foo_schema"
             },
             "terminal": {
               "SMT": "es_foo_transform"

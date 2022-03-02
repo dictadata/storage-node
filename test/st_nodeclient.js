@@ -1,10 +1,12 @@
-#!/usr/bin/env node
 /**
  * test/st_nodeclient.js
- * 
+ *
+ * Storage Test Node Client for testing storage-node servers.
+ *
  * Read a JSON file that defines the HTTP tests.
  * Run the tests defined in the "queries" array other properties define the default values.
- * See st_nodeclient_example.json. 
+ *
+ * See st_nodeclient_example.json.
  */
 "use strict";
 
@@ -13,8 +15,8 @@ const path = require("path");
 const { httpRequest } = require("@dictadata/storage-junctions/utils");
 const colors = require('colors');
 
-let testFile = process.argv.length > 2 ? process.argv[2] : "";
-let testName = process.argv.length > 3 ? process.argv[3] : "";
+let testFile = process.argv.length > 2 ? process.argv[ 2 ] : "";
+let testName = process.argv.length > 3 ? process.argv[ 3 ] : "";
 
 var request = {
   method: "GET",
@@ -41,7 +43,7 @@ request.headers = {
       console.log(query.name.cyan);
       let request = Object.assign({}, config.request, query.request);
       let expected = Object.assign({}, config.expected, query.expected);
-      let outputFile = outputDir + query.name + ".json";
+      let outputFile = outputDir + query.name + ".results.json";
 
       if (typeof request.data === "string")
         request.data = JSON.parse(fs.readFileSync(request.data, "utf-8"));
@@ -64,11 +66,13 @@ async function submitQuery(request, expected, outputFile) {
   try {
     // make request
     let response = await httpRequest(request.url || '', request, JSON.stringify(request.data));
+    console.log(response.statusCode);
 
     let results;
     if (response.data) {
+      console.log(outputFile);
       fs.writeFileSync(outputFile, response.data, "utf8");
-      if (httpRequest.contentTypeIsJSON(response.headers["content-type"]))
+      if (httpRequest.contentTypeIsJSON(response.headers[ "content-type" ]))
         results = JSON.parse(response.data);
       else
         results = response.data;

@@ -34,9 +34,9 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### es_foo_schema_kf
+### es_foo_schema
 ### defined key is in construct["Foo"]
-PUT http://localhost:8089/node/store/es_foo_schema_kf HTTP/1.1
+PUT http://localhost:8089/node/store/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -77,8 +77,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 
-### mssql_foo_schema_pk
-PUT http://localhost:8089/node/store/mssql_foo_schema_pk HTTP/1.1
+### mssql_foo_schema
+PUT http://localhost:8089/node/store/mssql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -93,9 +93,9 @@ Content-Type: application/json; charset=utf-8
   }]
 }
 
-### mssql_foo_schema_pk
+### mssql_foo_schema
 ### store multiple rows
-PUT http://localhost:8089/node/store/mssql_foo_schema_pk HTTP/1.1
+PUT http://localhost:8089/node/store/mssql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -118,8 +118,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 
-### mysql_foo_schema_pk
-PUT http://localhost:8089/node/store/mysql_foo_schema_pk HTTP/1.1
+### mysql_foo_schema
+PUT http://localhost:8089/node/store/mysql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -134,9 +134,9 @@ Content-Type: application/json; charset=utf-8
   }]
 }
 
-### mysql_foo_schema_pk
+### mysql_foo_schema
 ### store multiple rows
-PUT http://localhost:8089/node/store/mysql_foo_schema_pk HTTP/1.1
+PUT http://localhost:8089/node/store/mysql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -159,8 +159,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 
-### oracle_foo_schema_pk
-PUT http://localhost:8089/node/store/oracle_foo_schema_pk HTTP/1.1
+### oracle_foo_schema
+PUT http://localhost:8089/node/store/oracle_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -175,9 +175,9 @@ Content-Type: application/json; charset=utf-8
   }]
 }
 
-### oracle_foo_schema_pk
+### oracle_foo_schema
 ### store multiple rows
-PUT http://localhost:8089/node/store/oracle_foo_schema_pk HTTP/1.1
+PUT http://localhost:8089/node/store/oracle_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

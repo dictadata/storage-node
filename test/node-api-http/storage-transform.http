@@ -1,11 +1,11 @@
-### mysql_foo_schema_pk => es_foo_transform
+### mysql_foo_schema => es_foo_transform
 POST http://localhost:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "mysql_foo_schema_pk",
+    "SMT": "mysql_foo_schema",
     "options": {}
   },
   "terminal": {

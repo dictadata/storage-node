@@ -1,5 +1,14 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.0.8
+  - update to @dictadata/storage-junctions 2.0.8
+  - enhancements to codex/junction options
+  - dependency updates for tedious and elasticsearch client
+- version 2.0.6
+  - update to @dictadata/storage-junctions 2.0.6
+  - further codex integration
+  - refactor config and startup
+  - read configuration from file "storage-node.config.json"
 - version 2.0.1
   - update to @dictadata/storage-junctions 2.0.1
   - Codex support
