@@ -40,7 +40,7 @@ var app = express();
 module.exports = exports = app;
 app.passport = passport;
 
-app.startup = function(config) {
+app.startup = function (config) {
   logger.info("app startup");
   let exitCode = 0;
 
@@ -54,7 +54,7 @@ app.startup = function(config) {
 
   // HTTP message processing
   app.options('*', cors());  // enable pre-flight across-the-board
-  app.use( cors(config && config.cors) );
+  app.use(cors(config && config.cors));
 
   app.use(compression({ threshold: 2048 }));
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -92,11 +92,11 @@ app.startup = function(config) {
     interval: '1d',
     size: '100M'
   });
-  app.use( morgan('combined', {stream: allstream }) );
+  app.use(morgan('combined', { stream: allstream }));
 
   if (process.env.NODE_ENV === 'development') {
     // log all requests to console
-    app.use( morgan('short', { stream: process.stdout }) );
+    app.use(morgan('short', { stream: process.stdout }));
   }
 
   // route middleware
@@ -107,8 +107,8 @@ app.startup = function(config) {
   // passport authentication
   app.use(passport.initialize());
   passport.use(new LocalStrategy(authenticate.local));
-  passport.use(new BasicStrategy( {realm: config.realm}, authenticate.basic ));
-  passport.use(new DigestStrategy( {realm: config.realm}, authenticate.digest, authenticate.digest_validate ));
+  passport.use(new BasicStrategy({ realm: config.realm }, authenticate.basic));
+  passport.use(new DigestStrategy({ realm: config.realm }, authenticate.digest, authenticate.digest_validate));
 
   if (config.useSessions) {
     app.use(passport.session());
@@ -129,27 +129,20 @@ app.startup = function(config) {
   app.use('/node', routes);
 
   // add application defined route handlers
-  for (let [route,router] of Object.entries(config.routes)) {
+  for (let [ route, router ] of Object.entries(config.routes)) {
     logger.info('Adding route: ' + route);
     app.use(route, router);
   }
 
-  // old way of defining route handlers
-  if (config.router) {
-    let rpath = config.routerPath || '/';
-    logger.info('Adding route: ' + rpath);
-    app.use(rpath, config.router);
-  }
-
   // default Not Found handler
   // generate 404 error, forward to error handler
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     const err = new StorageError(404, 'Not Found ' + req.originalUrl);
     next(err);
   });
 
   // error handler
-  app.use(function(err, req, res, _next) {
+  app.use(function (err, req, res, _next) {
     logger.warn(err.message);
 
     // set locals, only providing error in development
