@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.0.9
+  - refactor main, config and startup
+  - codex entries in config only stored in codex cache
 - version 2.0.8
   - update to @dictadata/storage-junctions 2.0.8
   - enhancements to codex/junction options
