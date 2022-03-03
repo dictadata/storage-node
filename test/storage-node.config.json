@@ -12,6 +12,9 @@
       "refresh": "true"
     }
   },
+  "roles": {
+    "Tester": "Tester"
+  },
   "smt": {
     "accounts": "elasticsearch|http://localhost:9200|node_accounts|!userid",
     "tiger2020": "elasticsearch|http://localhost:9200|tiger2020|!",

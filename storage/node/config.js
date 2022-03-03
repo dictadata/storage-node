@@ -100,12 +100,14 @@ var _config = {
 
 module.exports = _config;
 
-_config.init = () => {
+_config.init = (options) => {
   try {
     // read config file from working directory
     let text = fs.readFileSync("storage-node.config.json", 'utf-8');
     let cfg = JSON.parse(text);
-    _copy(_config, cfg);
+    _merge(_config, cfg);
+    if (options)
+      _merge(_config, options);
   }
   catch (err) {
     console.verbose(err.message);
@@ -121,21 +123,23 @@ _config.init = () => {
  * @param {object} dst
  * @param {object} src
  */
-function _copy(dst, src) {
+function _merge(dst, src) {
   for (let [ key, value ] of Object.entries(src)) {
     if (typeOf(value) === "object") { // fields, ...
-      dst[ key ] = {};
-      _copy(dst[ key ], value);
+      if (typeOf(dst[ key ]) !== "object")
+        dst[ key ] = {};
+      _merge(dst[ key ], value);
     }
     else if (typeOf(value) === "array") {
-      dst[ key ] = [];
+      if (typeOf(dst[ key ]) !== "array")
+        dst[ key ] = [];
       for (let item of value)
         if (typeOf(item) === "object")
-          dst[ key ].push(_copy({}, item));
+          dst[ key ].push(_merge({}, item));
         else
           dst[ key ].push(item);
     }
-    else if (typeOf(value) !== "function") {
+    else /* if (typeOf(value) !== "function") */ {
       dst[ key ] = value;
     }
   }

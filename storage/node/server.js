@@ -26,8 +26,8 @@ startup.add(app.startup);
  * server.start
  * @param {*} options
  */
-exports.start = async function () {
-  config.init();
+exports.start = async function (options) {
+  config.init(options);
 
   logger.configNodeLogger(config);
   logger.info("storage-node startup ...");
