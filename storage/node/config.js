@@ -36,24 +36,27 @@ var _config = {
   },
 
   codex: {
-    smt: "memory|dictadata|codex|!name"
+    smt: "memory|dictadata|codex|!name",
+
+    // application smt entries to be added to codex at startup
+    entries: {
+      // format
+      //   <name>: <smt string>
+      //   <name>: {
+      //     smt: <smt string> | <smt object>,
+      //     options: {
+      //       encoding: "<filename.encoding.json>" | {...}
+      //       <other junction options ...>
+      //     }
+      //   }
+    }
+
   },
 
   // storage-node API authentication
   $_accounts: "elasticsearch|http://localhost:9200|node_accounts|!userid",
   //$_accounts: "mssql|server=localhost;username=dicta;password=data;database=storage_node|node_accounts|=userid",
   //$_accounts: "mysql|host=localhost;user=dicta;password=data;database=storage_node|node_accounts|=userid",
-
-  // smt entries to be added to codex at startup
-  smt: {
-    // application SMT's
-    // format
-    //   <name>: <smt string>
-    //   <name>: {
-    //     smt: <smt string> | <smt object>,
-    //     encoding: "<filename.encoding.json>" | {...}
-    //   }
-  },
 
   // default Passport.js authentication strategy
   auth_strategy: 'basic', // 'local', 'basic', 'digest'

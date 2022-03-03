@@ -19,22 +19,23 @@ exports.startup = async (config) => {
   logger.verbose("codex SMT: " + JSON.stringify(config.codex));
 
   var exitCode = 0;
+  let codex;
+
   try {
-    if (config.codex && config.codex.smt) {
-      // activate codex junction
-      let codex = new storage.Codex(config.codex);
-      await codex.activate();
+    if (config.codex) {
+      // create codex
+      codex = new storage.Codex(config.codex);
+    }
 
-      // use codex for SMT name lookup
-      storage.codex = codex;
-
-      // add config.smt entries to codex
-      for (let [ name, entry ] of Object.entries(config.smt)) {
+    if (codex && config.codex.entries) {
+      // adds config.codex.entries to codex cache
+      // because codex junction is activated yet.
+      for (let [ name, entry ] of Object.entries(config.codex.entries)) {
         if (typeof entry === "string") {
           // assume entry is an SMT string
           let engram = new Engram(entry);
           engram.name = name;
-          let results = await storage.codex.store(engram.encoding);
+          await codex.store(engram.encoding);
         }
         else {
           // assume entry is a codex entry object
@@ -46,10 +47,17 @@ exports.startup = async (config) => {
               entry.encoding = JSON.parse(fs.readFileSync(entry.encoding, 'utf-8'));
             else
               engram.encoding = entry.encoding;
-            await storage.codex.store(engram.encoding);
+            await codex.store(engram.encoding);
           }
         }
       }
+    }
+
+    if (codex) {
+      // activate codex junction
+      await codex.activate();
+      // use codex for SMT name lookup
+      storage.codex = codex;
     }
   }
   catch (err) {
