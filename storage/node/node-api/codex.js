@@ -16,25 +16,25 @@ const { Engram, StorageResponse, StorageError } = require('@dictadata/storage-ju
 
 var router = express.Router();
 
-router.get('/codex/:SMT', authorize([ roles.Public ]), recallSMT);
+router.get('/codex/:SMT', authorize([ roles.Public ]), recall);
 
-router.put('/codex/:SMT', authorize([ roles.Coder ]), storeSMT);
-router.put('/codex', authorize([ roles.Coder ]), storeSMT);
+router.put('/codex/:SMT', authorize([ roles.Coder ]), store);
+router.put('/codex', authorize([ roles.Coder ]), store);
 
-router.post('/codex', authorize([ roles.Coder ]), retrieveSMT);
+router.post('/codex', authorize([ roles.Coder ]), retrieve);
 
-router.delete('/codex/:SMT', authorize([ roles.Coder ]), dullSMT);
-router.delete('/codex', authorize([ roles.Coder ]), dullSMT);
+router.delete('/codex/:SMT', authorize([ roles.Coder ]), dull);
+router.delete('/codex', authorize([ roles.Coder ]), dull);
 
 module.exports = router;
 
 /**
- * recallSMT
+ * recall
  * @param {*} req
  * @param {*} res
  */
-async function recallSMT(req, res) {
-  logger.verbose('/codex/recallSMT');
+async function recall(req, res) {
+  logger.verbose('/codex/recall');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -59,12 +59,12 @@ async function recallSMT(req, res) {
 }
 
 /**
- * dullSMT
+ * dull
  * @param {*} req
  * @param {*} res
  */
-async function dullSMT(req, res) {
-  logger.verbose('/codex/dullSMT');
+async function dull(req, res) {
+  logger.verbose('/codex/dull');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -87,12 +87,12 @@ async function dullSMT(req, res) {
 }
 
 /**
- * storeSMT
+ * store
  * @param {*} req
  * @param {*} res
  */
-async function storeSMT(req, res) {
-  logger.verbose('/codex/storeSMT');
+async function store(req, res) {
+  logger.verbose('/codex/store');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] | (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -117,12 +117,12 @@ async function storeSMT(req, res) {
 }
 
 /**
- * retrieveSMT
+ * retrieve
  * @param {*} req
  * @param {*} res
  */
-async function retrieveSMT(req, res) {
-  logger.verbose('/codex/retrieveSMT');
+async function retrieve(req, res) {
+  logger.verbose('/codex/retrieve');
 
   var pattern = req.body.pattern || req.body;
 
