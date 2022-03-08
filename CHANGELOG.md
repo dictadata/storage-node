@@ -1,20 +1,23 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.1.0
+  - update to @dictadata/storage-junctions 2.1.0
+  - refactor storage/cortex classes, remove codex class
 - version 2.0.9
   - refactor main, config and startup
-  - codex entries in config only stored in codex cache
+  - cortex entries in config only stored in cortex cache
 - version 2.0.8
   - update to @dictadata/storage-junctions 2.0.8
-  - enhancements to codex/junction options
+  - enhancements to cortex/junction options
   - dependency updates for tedious and elasticsearch client
 - version 2.0.6
   - update to @dictadata/storage-junctions 2.0.6
-  - further codex integration
+  - further cortex integration
   - refactor config and startup
   - read configuration from file "storage-node.config.json"
 - version 2.0.1
   - update to @dictadata/storage-junctions 2.0.1
-  - Codex support
+  - cortex support
 - version 1.8.7
   - update to @dictadata/storage-junctions 1.8.6
   - support for Elasticsearch geo_shape queries
