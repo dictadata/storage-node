@@ -16,15 +16,15 @@ const { Engram, StorageResponse, StorageError } = require('@dictadata/storage-ju
 
 var router = express.Router();
 
-router.get('/codex/:SMT', authorize([ roles.Public ]), recall);
+router.get('/cortex/:SMT', authorize([ roles.Public ]), recall);
 
-router.put('/codex/:SMT', authorize([ roles.Coder ]), store);
-router.put('/codex', authorize([ roles.Coder ]), store);
+router.put('/cortex/:SMT', authorize([ roles.Coder ]), store);
+router.put('/cortex', authorize([ roles.Coder ]), store);
 
-router.post('/codex', authorize([ roles.Coder ]), retrieve);
+router.post('/cortex', authorize([ roles.Coder ]), retrieve);
 
-router.delete('/codex/:SMT', authorize([ roles.Coder ]), dull);
-router.delete('/codex', authorize([ roles.Coder ]), dull);
+router.delete('/cortex/:SMT', authorize([ roles.Coder ]), dull);
+router.delete('/cortex', authorize([ roles.Coder ]), dull);
 
 module.exports = router;
 
@@ -34,7 +34,7 @@ module.exports = router;
  * @param {*} res
  */
 async function recall(req, res) {
-  logger.verbose('/codex/recall');
+  logger.verbose('/cortex/recall');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -42,7 +42,7 @@ async function recall(req, res) {
 
   try {
     if (smtname) {
-      let results = await storage.codex.recall(smtname);
+      let results = await storage.cortex.recall(smtname);
       res.status(results.resultCode === 0 ? 200 : results.resultCode)
         .set("Cache-Control", "public, max-age=60, s-maxage=60")
         .jsonp(results);
@@ -64,7 +64,7 @@ async function recall(req, res) {
  * @param {*} res
  */
 async function dull(req, res) {
-  logger.verbose('/codex/dull');
+  logger.verbose('/cortex/dull');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
@@ -72,7 +72,7 @@ async function dull(req, res) {
 
   try {
     if (smtname) {
-      let results = await storage.codex.dull(smtname);
+      let results = await storage.cortex.dull(smtname);
       res.status(results.resultCode === 0 ? 200 : results.resultCode)
         .set("Cache-Control", "no-store")
         .jsonp(results);
@@ -92,20 +92,20 @@ async function dull(req, res) {
  * @param {*} res
  */
 async function store(req, res) {
-  logger.verbose('/codex/store');
+  logger.verbose('/cortex/store');
 
   var smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] | (req.body && req.body.SMT);
   if (!smtname || smtname[ 0 ] === "$")
     throw new StorageError(400, "invalid SMT name");
 
-  var entry = req.body.codex || req.body;
+  var entry = req.body.cortex || req.body;
 
   try {
     let engram = new Engram(entry.smt);
     engram.name = smtname || entry.name;
     if (entry.encoding)
       engram.encoding = entry.encoding;
-    let results = await storage.codex.store(engram.encoding);
+    let results = await storage.cortex.store(engram.encoding);
 
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
@@ -122,12 +122,12 @@ async function store(req, res) {
  * @param {*} res
  */
 async function retrieve(req, res) {
-  logger.verbose('/codex/retrieve');
+  logger.verbose('/cortex/retrieve');
 
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = await storage.codex.retrieve(pattern);
+    let results = await storage.cortex.retrieve(pattern);
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
       .jsonp(results);

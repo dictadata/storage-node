@@ -1,5 +1,5 @@
 {
-  "name": "codex",
+  "name": "cortex",
   "request": {
     "method": "GET",
     "base": "http://localhost:8089/node/",
@@ -14,35 +14,35 @@
       "name": "foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/foo_schema"
+        "url": "cortex/foo_schema"
       }
     },
     {
       "name": "es_foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/es_foo_schema"
+        "url": "cortex/es_foo_schema"
       }
     },
     {
       "name": "mssql_foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/mssql_foo_schema"
+        "url": "cortex/mssql_foo_schema"
       }
     },
     {
       "name": "mysql_foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/mysql_foo_schema"
+        "url": "cortex/mysql_foo_schema"
       }
     },
     {
       "name": "foo_schema_XYZ-store",
       "request": {
         "method": "PUT",
-        "url": "codex/foo_schema_XYZ",
+        "url": "cortex/foo_schema_XYZ",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -60,14 +60,14 @@
       "name": "foo_schema_XYZ-recall",
       "request": {
         "method": "GET",
-        "url": "codex/foo_schema_XYZ"
+        "url": "cortex/foo_schema_XYZ"
       }
     },
     {
       "name": "foo_schema-retrieve1",
       "request": {
         "method": "POST",
-        "url": "codex",
+        "url": "cortex",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -86,14 +86,14 @@
       "name": "foo_schema_XYZ-dull",
       "request": {
         "method": "DELETE",
-        "url": "codex/foo_schema_XYZ"
+        "url": "cortex/foo_schema_XYZ"
       }
     },
     {
       "name": "foo_schema-retrieve2",
       "request": {
         "method": "POST",
-        "url": "codex",
+        "url": "cortex",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

@@ -59,11 +59,11 @@
       "outputCapture": "std"
     },
     {
-      "name": "node-api codex",
+      "name": "node-api cortex",
       "type": "pwa-node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_nodeclient.js",
-      "args": ["${workspaceFolder}/test/node-api/codex.json"],
+      "args": ["${workspaceFolder}/test/node-api/cortex.json"],
       "envFile": "${workspaceFolder}/.env.development",
       "skipFiles": ["<node_internals>/**"],
       "outputCapture": "std"

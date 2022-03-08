@@ -1,5 +1,5 @@
 /**
- * storage/node/codex.js
+ * storage/node/cortex.js
  *
  * Return a method used for Passport authentication.
  *
@@ -15,30 +15,30 @@ const fs = require("fs");
  * wait until server config is updated before initializing
  */
 exports.startup = async (config) => {
-  logger.info("codex startup");
-  logger.verbose("codex SMT: " + JSON.stringify(config.codex));
+  logger.info("cortex startup");
+  logger.verbose("cortex SMT: " + JSON.stringify(config.cortex));
 
   var exitCode = 0;
-  let codex;
+  let cortex;
 
   try {
-    if (config.codex) {
-      // create codex
-      codex = new storage.Codex(config.codex);
+    if (config.cortex) {
+      // create cortex
+      cortex = new storage.Cortex(config.cortex);
     }
 
-    if (codex && config.codex.entries) {
-      // adds config.codex.entries to codex cache
-      // because codex junction is activated yet.
-      for (let [ name, entry ] of Object.entries(config.codex.entries)) {
+    if (cortex && config.cortex.cords) {
+      // adds config.cortex.cords to cortex cache
+      // because cortex junction is activated yet.
+      for (let [ name, entry ] of Object.entries(config.cortex.cords)) {
         if (typeof entry === "string") {
           // assume entry is an SMT string
           let engram = new Engram(entry);
           engram.name = name;
-          await codex.store(engram.encoding);
+          await cortex.store(engram.encoding);
         }
         else {
-          // assume entry is a codex entry object
+          // assume entry is a cortex entry object
           let engram = new Engram(entry.smt);
           engram.name = entry.name || name;
           if (entry.encoding) {
@@ -47,21 +47,21 @@ exports.startup = async (config) => {
               entry.encoding = JSON.parse(fs.readFileSync(entry.encoding, 'utf-8'));
             else
               engram.encoding = entry.encoding;
-            await codex.store(engram.encoding);
+            await cortex.store(engram.encoding);
           }
         }
       }
     }
 
-    if (codex) {
-      // activate codex junction
-      await codex.activate();
-      // use codex for SMT name lookup
-      storage.codex = codex;
+    if (cortex) {
+      // activate cortex junction
+      await cortex.activate();
+      // use cortex for SMT name lookup
+      storage.cortex = cortex;
     }
   }
   catch (err) {
-    logger.error('codex startup failed: ', err);
+    logger.error('cortex startup failed: ', err);
     exitCode = 2; // startup failure
   }
 

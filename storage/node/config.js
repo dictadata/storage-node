@@ -35,10 +35,10 @@ var _config = {
   roles: {
   },
 
-  codex: {
-    smt: "memory|dictadata|codex|!name",
+  cortex: {
+    smt: "memory|dictadata|cortex|!name",
 
-    // application smt entries to be added to codex at startup
+    // application smt entries to be added to cortex at startup
     entries: {
       // format
       //   <name>: <smt string>

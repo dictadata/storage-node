@@ -6,8 +6,8 @@
     "useClientStream": false,
     "useTransport": false
   },
-  "codex": {
-    "smt": "elasticsearch|http://localhost:9200|dicta_codex|!name"
-  },
-  "smt": {}
+  "cortex": {
+    "smt": "elasticsearch|http://localhost:9200|dicta_cortex|!name",
+    "cords": {}
+  }
 }
