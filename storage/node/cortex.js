@@ -27,10 +27,10 @@ exports.startup = async (config) => {
       cortex = new storage.Cortex(config.cortex);
     }
 
-    if (cortex && config.cortex.cords) {
-      // adds config.cortex.cords to cortex cache
-      // because cortex junction is activated yet.
-      for (let [ name, entry ] of Object.entries(config.cortex.cords)) {
+    if (cortex && config.cortex.encodings) {
+      // adds config.cortex.encodings to cortex cache
+      // because cortex's junction is not activated yet.
+      for (let [ name, entry ] of Object.entries(config.cortex.encodings)) {
         if (typeof entry === "string") {
           // assume entry is an SMT string
           let engram = new Engram(entry);
@@ -38,17 +38,17 @@ exports.startup = async (config) => {
           await cortex.store(engram.encoding);
         }
         else {
-          // assume entry is a cortex entry object
+          // assume entry is an encoding object
           let engram = new Engram(entry.smt);
           engram.name = entry.name || name;
           if (entry.encoding) {
             if (typeof entry.encoding === "string")
               // read encoding from file
-              entry.encoding = JSON.parse(fs.readFileSync(entry.encoding, 'utf-8'));
+              engram.encoding = JSON.parse(fs.readFileSync(entry.encoding, 'utf-8'));
             else
               engram.encoding = entry.encoding;
-            await cortex.store(engram.encoding);
           }
+          await cortex.store(engram.encoding);
         }
       }
     }
