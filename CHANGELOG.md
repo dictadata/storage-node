@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.1.1
+  - update to @dictadata/storage-junctions 2.1.3
+  - bug fixes for cortex calls
 - version 2.1.0
   - update to @dictadata/storage-junctions 2.1.2
   - refactor storage/cortex classes, remove codex class
