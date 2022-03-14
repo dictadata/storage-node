@@ -1,11 +1,14 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.1.2
+  - update to @dictadata/storage-junctions 2.1.4
+  - bug fix: make type checking storage types case insensitive
 - version 2.1.1
   - update to @dictadata/storage-junctions 2.1.3
-  - bug fixes for cortex calls
+  - bug fix: for cortex calls
 - version 2.1.0
   - update to @dictadata/storage-junctions 2.1.2
-  - refactor storage/cortex classes, remove codex class
+  - refactor: storage/cortex classes, remove codex class
 - version 2.0.9
   - refactor main, config and startup
   - cortex entries in config only stored in cortex cache
