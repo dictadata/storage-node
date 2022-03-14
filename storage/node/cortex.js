@@ -16,7 +16,7 @@ const fs = require("fs");
  */
 exports.startup = async (config) => {
   logger.info("cortex startup");
-  logger.verbose("cortex SMT: " + JSON.stringify(config.cortex));
+  logger.verbose("cortex SMT: " + JSON.stringify(config.cortex.smt));
 
   var exitCode = 0;
   let cortex;
