@@ -27,10 +27,10 @@ exports.startup = async (config) => {
       cortex = new storage.Cortex(config.cortex);
     }
 
-    if (cortex && config.cortex.encodings) {
-      // adds config.cortex.encodings to cortex cache
+    if (cortex && config.cortex.engrams) {
+      // adds config.cortex.engrams to cortex cache
       // because cortex's junction is not activated yet.
-      for (let [ name, entry ] of Object.entries(config.cortex.encodings)) {
+      for (let [ name, entry ] of Object.entries(config.cortex.engrams)) {
         if (typeof entry === "string") {
           // assume entry is an SMT string
           let engram = new Engram(entry);
