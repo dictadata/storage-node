@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.1.3
+  - the cortex stores engrams.
 - version 2.1.2
   - update to @dictadata/storage-junctions 2.1.4
   - bug fix: make type checking storage types case insensitive
