@@ -35,7 +35,7 @@ exports.startup = async (config) => {
           // assume entry is an SMT string
           let engram = new Engram(entry);
           engram.name = name;
-          await cortex.store(engram.encoding);
+          await cortex.store(engram);
         }
         else {
           // assume entry is an encoding object
@@ -48,7 +48,7 @@ exports.startup = async (config) => {
             else
               engram.encoding = entry.encoding;
           }
-          await cortex.store(engram.encoding);
+          await cortex.store(engram);
         }
       }
     }

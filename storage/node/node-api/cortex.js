@@ -105,7 +105,7 @@ async function store(req, res) {
     engram.name = name || entry.name;
     if (entry.encoding)
       engram.encoding = entry.encoding;
-    let results = await storage.cortex.store(engram.encoding);
+    let results = await storage.cortex.store(engram);
 
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
