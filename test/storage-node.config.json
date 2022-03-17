@@ -13,7 +13,6 @@
     },
     "engrams": {
       "accounts": "elasticsearch|http://localhost:9200|node_accounts|!userid",
-      "tiger2020": "elasticsearch|http://localhost:9200|tiger2020|!",
       "csv_foofile": "csv|./data/input/|foofile.csv|*",
       "json_foofile": "json|./data/input/|foofile.json|*",
       "es_foo_schema": "elasticsearch|http://localhost:9200|foo_schema|!Foo",

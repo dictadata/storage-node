@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.1.4
+  - update to @dictadata/storage-junctions 2.1.5
+  - enhancements for census tiger line shapefiles
 - version 2.1.3
   - the cortex stores engrams.
 - version 2.1.2
