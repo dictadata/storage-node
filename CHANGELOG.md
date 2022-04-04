@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.1.5
+  - update to @dictadata/storage-junctions 2.1.6
+  - config node engine >= 16.4
 - version 2.1.4
   - update to @dictadata/storage-junctions 2.1.5
   - enhancements for census tiger line shapefiles
