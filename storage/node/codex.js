@@ -1,5 +1,5 @@
 /**
- * storage/node/cortex.js
+ * storage/node/codex.js
  *
  * Return a method used for Passport authentication.
  *
@@ -15,27 +15,27 @@ const fs = require("fs");
  * wait until server config is updated before initializing
  */
 exports.startup = async (config) => {
-  logger.info("cortex startup");
-  logger.verbose("cortex SMT: " + JSON.stringify(config.cortex.smt));
+  logger.info("codex startup");
+  logger.verbose("codex SMT: " + JSON.stringify(config.codex.smt));
 
   var exitCode = 0;
-  let cortex;
+  let codex;
 
   try {
-    if (config.cortex) {
-      // create cortex
-      cortex = new storage.Cortex(config.cortex);
+    if (config.codex) {
+      // create codex
+      codex = new storage.Codex(config.codex);
     }
 
-    if (cortex && config.cortex.engrams) {
-      // adds config.cortex.engrams to cortex cache
-      // because cortex's junction is not activated yet.
-      for (let [ name, entry ] of Object.entries(config.cortex.engrams)) {
+    if (codex && config.codex.engrams) {
+      // adds config.codex.engrams to codex cache
+      // because codex's junction is not activated yet.
+      for (let [ name, entry ] of Object.entries(config.codex.engrams)) {
         if (typeof entry === "string") {
           // assume entry is an SMT string
           let engram = new Engram(entry);
           engram.name = name;
-          await cortex.store(engram);
+          await codex.store(engram);
         }
         else {
           // assume entry is an encoding object
@@ -48,20 +48,20 @@ exports.startup = async (config) => {
             else
               engram.encoding = entry.encoding;
           }
-          await cortex.store(engram);
+          await codex.store(engram);
         }
       }
     }
 
-    if (cortex) {
-      // activate cortex junction
-      await cortex.activate();
-      // use cortex for SMT name lookup
-      storage.cortex = cortex;
+    if (codex) {
+      // activate codex junction
+      await codex.activate();
+      // use codex for SMT name lookup
+      storage.codex = codex;
     }
   }
   catch (err) {
-    logger.error('cortex startup failed: ', err);
+    logger.error('codex startup failed: ', err);
     exitCode = 2; // startup failure
   }
 

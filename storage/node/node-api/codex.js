@@ -16,15 +16,15 @@ const { Engram, StorageError } = require('@dictadata/storage-junctions/types');
 
 var router = express.Router();
 
-router.get('/cortex/:name', authorize([ roles.Public ]), recall);
+router.get('/codex/:name', authorize([ roles.Public ]), recall);
 
-router.put('/cortex/:name', authorize([ roles.Coder ]), store);
-router.put('/cortex', authorize([ roles.Coder ]), store);
+router.put('/codex/:name', authorize([ roles.Coder ]), store);
+router.put('/codex', authorize([ roles.Coder ]), store);
 
-router.post('/cortex', authorize([ roles.Coder ]), retrieve);
+router.post('/codex', authorize([ roles.Coder ]), retrieve);
 
-router.delete('/cortex/:name', authorize([ roles.Coder ]), dull);
-router.delete('/cortex', authorize([ roles.Coder ]), dull);
+router.delete('/codex/:name', authorize([ roles.Coder ]), dull);
+router.delete('/codex', authorize([ roles.Coder ]), dull);
 
 module.exports = router;
 
@@ -34,15 +34,15 @@ module.exports = router;
  * @param {*} res
  */
 async function recall(req, res) {
-  logger.verbose('/cortex/recall');
+  logger.verbose('/codex/recall');
 
   var name = req.params[ "name" ] || req.query[ "name" ] || (req.body && req.body.name);
   if (!name || name[ 0 ] === "$")
-    throw new StorageError(400, "invalid Cortex name");
+    throw new StorageError(400, "invalid Codex name");
 
   try {
     if (name) {
-      let results = await storage.cortex.recall(name);
+      let results = await storage.codex.recall(name);
       res.status(results.resultCode === 0 ? 200 : results.resultCode)
         .set("Cache-Control", "public, max-age=60, s-maxage=60")
         .jsonp(results);
@@ -64,15 +64,15 @@ async function recall(req, res) {
  * @param {*} res
  */
 async function dull(req, res) {
-  logger.verbose('/cortex/dull');
+  logger.verbose('/codex/dull');
 
   var name = req.params[ "name" ] || req.query[ "name" ] || (req.body && req.body.name);
   if (!name || name[ 0 ] === "$")
-    throw new StorageError(400, "invalid Cortex name");
+    throw new StorageError(400, "invalid Codex name");
 
   try {
     if (name) {
-      let results = await storage.cortex.dull(name);
+      let results = await storage.codex.dull(name);
       res.status(results.resultCode === 0 ? 200 : results.resultCode)
         .set("Cache-Control", "no-store")
         .jsonp(results);
@@ -92,20 +92,20 @@ async function dull(req, res) {
  * @param {*} res
  */
 async function store(req, res) {
-  logger.verbose('/cortex/store');
+  logger.verbose('/codex/store');
 
   var name = req.params[ "name" ] || req.query[ "name" ] | (req.body && req.body.name);
   if (!name || name[ 0 ] === "$")
-    throw new StorageError(400, "invalid Cortex name");
+    throw new StorageError(400, "invalid Codex name");
 
-  var entry = req.body.cortex || req.body;
+  var entry = req.body.codex || req.body;
 
   try {
     let engram = new Engram(entry.smt);
     engram.name = name || entry.name;
     if (entry.encoding)
       engram.encoding = entry.encoding;
-    let results = await storage.cortex.store(engram);
+    let results = await storage.codex.store(engram);
 
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
@@ -122,12 +122,12 @@ async function store(req, res) {
  * @param {*} res
  */
 async function retrieve(req, res) {
-  logger.verbose('/cortex/retrieve');
+  logger.verbose('/codex/retrieve');
 
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = await storage.cortex.retrieve(pattern);
+    let results = await storage.codex.retrieve(pattern);
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
       .jsonp(results);

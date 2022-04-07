@@ -8,7 +8,7 @@ const app = require('./app');
 const config = require('./config');
 const logger = require('../utils/logger');
 const startup = require('./startup');
-const cortex = require('./cortex');
+const codex = require('./codex');
 const accounts = require('./accounts');
 const datapath = require('./datapath');
 const { StorageError } = require("@dictadata/storage-junctions/types");
@@ -16,7 +16,7 @@ var httpPort = 0;
 var httpServer = null;
 
 // modules startup
-startup.add(cortex.startup);
+startup.add(codex.startup);
 startup.add(accounts.startup);
 startup.add(datapath.startup);
 // app.startup is last

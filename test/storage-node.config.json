@@ -6,8 +6,8 @@
     "useClientStream": true,
     "useTransport": true
   },
-  "cortex": {
-    "smt": "elasticsearch|http://localhost:9200|dicta_cortex|!name",
+  "codex": {
+    "smt": "elasticsearch|http://localhost:9200|dicta_codex|!name",
     "options": {
       "refresh": "true"
     },
