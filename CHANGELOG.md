@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.2.1
+  - update to @dictadata/storage-junctions 2.2.1
+  - refactor: using Codex
 - version 2.1.5
   - update to @dictadata/storage-junctions 2.1.6
   - config node engine >= 16.4
@@ -7,31 +10,31 @@
   - update to @dictadata/storage-junctions 2.1.5
   - enhancements for census tiger line shapefiles
 - version 2.1.3
-  - the cortex stores engrams.
+  - the codex stores engrams.
 - version 2.1.2
   - update to @dictadata/storage-junctions 2.1.4
   - bug fix: make type checking storage types case insensitive
 - version 2.1.1
   - update to @dictadata/storage-junctions 2.1.3
-  - bug fix: for cortex calls
+  - bug fix: for codex calls
 - version 2.1.0
   - update to @dictadata/storage-junctions 2.1.2
-  - refactor: storage/cortex classes, remove codex class
+  - refactor: Storage module, Cortex class, remove Codex class
 - version 2.0.9
   - refactor main, config and startup
-  - cortex entries in config only stored in cortex cache
+  - codex entries in config only stored in codex cache
 - version 2.0.8
   - update to @dictadata/storage-junctions 2.0.8
-  - enhancements to cortex/junction options
+  - enhancements to codex/junction options
   - dependency updates for tedious and elasticsearch client
 - version 2.0.6
   - update to @dictadata/storage-junctions 2.0.6
-  - further cortex integration
+  - further codex integration
   - refactor config and startup
   - read configuration from file "storage-node.config.json"
 - version 2.0.1
   - update to @dictadata/storage-junctions 2.0.1
-  - cortex support
+  - codex support
 - version 1.8.7
   - update to @dictadata/storage-junctions 1.8.6
   - support for Elasticsearch geo_shape queries
