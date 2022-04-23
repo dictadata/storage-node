@@ -1,0 +1,32 @@
+GET http://localhost:8089/node/codex/foo_schema
+Authorization: Basic user user
+
+###
+POST http://localhost:8089/node/codex
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+{
+  "pattern": {
+    "match": {
+      "name": {
+        "wc": "foo_schema*"
+      }
+    }
+  }
+}
+
+###
+POST http://localhost:8089/node/codex
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+{
+  "pattern": {
+    "match": {
+      "name": {
+        "eq": "tigerline"
+      }
+    }
+  }
+}
