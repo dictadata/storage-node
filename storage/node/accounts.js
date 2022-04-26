@@ -45,7 +45,7 @@ exports.startup = async (config) => {
       logger.info("creating admin account");
       let account = new Account('admin');
       account.password = Account.hashPwd('admin');
-      account.roles = [ roles.Public, roles.User ];
+      account.roles = [ roles.User, roles.Admin ];
       results = await store(account);
       if (results.resultCode !== 201) {
         throw new StorageError(500, "unable to create admin account");

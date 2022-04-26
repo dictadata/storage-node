@@ -25,7 +25,10 @@
         }
       },
       "expected": {
-        "statusCode": [201, 409]
+        "statusCode": [
+          201,
+          409
+        ]
       }
     },
     {
@@ -49,7 +52,10 @@
           "account": {
             "userid": "dullboy",
             "password": "dullboy",
-            "roles": ["Public","User","ETL"],
+            "roles": [
+              "User",
+              "ETL"
+            ],
             "settings": {
               "prefix": "myapp",
               "homepage": "/home",

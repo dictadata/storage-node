@@ -34,7 +34,7 @@ exports.start = async function (options) {
   logger.info("realm: " + config.realm);
   logger.verbose("logPath: " + config.logPath);
 
-  // initialize some things now that the config is updated
+  // initialize modules now that the config is updated
   let exitCode = await startup.exec(config);
   if (exitCode !== 0) {
     process.exitCode = exitCode;

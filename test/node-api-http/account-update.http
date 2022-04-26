@@ -8,7 +8,7 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "dullboy",
     "password": "dullboy",
-    "roles": ["Public","User","ETL"],
+    "roles": ["User","ETL"],
     "settings": {
       "prefix": "myapp",
       "homepage": "/home",
@@ -26,7 +26,7 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "guest",
     "password": "guest",
-    "roles": ["Public","User","Admin"],
+    "roles": ["User","Admin"],
     "settings": {
       "homepage": "/guest/myhomepage",
       "theme": "light"
@@ -43,7 +43,7 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "guest",
     "password": "guest",
-    "roles": ["Public","Demo"],
+    "roles": ["Demo"],
     "settings": {
       "homepage": "/guest/myhomepage",
       "theme": "dark"
@@ -60,7 +60,7 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "user",
     "password": "user",
-    "roles": ["Public","User","Admin"],
+    "roles": ["User","Admin"],
     "settings": {
       "homepage": "/home",
       "theme": "dark"
@@ -77,7 +77,7 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "user",
     "password": "user",
-    "roles": ["Public","User","Coder","ETL","Tester"]
+    "roles": ["User","Coder","ETL","Tester"]
   }
 }
 

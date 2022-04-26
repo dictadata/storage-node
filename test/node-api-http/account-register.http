@@ -25,7 +25,7 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### user, cannot set roles, defaults to ["Public","User"]
+### user, cannot set roles, defaults to ["User"]
 POST http://localhost:8089/node/register HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
@@ -34,6 +34,6 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "user",
     "password": "user",
-    "roles": ["Public", "User", "Admin"]
+    "roles": ["User", "Admin"]
   }
 }
