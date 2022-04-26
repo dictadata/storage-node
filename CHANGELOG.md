@@ -1,7 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
 - version 2.2.3
-  - add roles.User to codex.retrieve API
+  - add User role to codex.retrieve API
+  - export config module from library
 - version 2.2.2
   - update to @dictadata/storage-junctions 2.2.2
 - version 2.2.1
