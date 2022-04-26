@@ -6,10 +6,10 @@
 const StorageNode = require('../storage');
 const router = require('./test-routes');
 
-let options = {
+let config_options = {
   routes: {
     "/test": router
   }
 };
 
-StorageNode.start(options);
+StorageNode.start(config_options);
