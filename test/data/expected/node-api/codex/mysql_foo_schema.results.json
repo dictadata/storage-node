@@ -1,0 +1,20 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": {
+    "mysql_foo_schema": {
+      "name": "mysql_foo_schema",
+      "type": "engram",
+      "title": "",
+      "description": "",
+      "tags": [],
+      "smt": {
+        "model": "mysql",
+        "locus": "host=localhost;user=dicta;password=data;database=storage_node",
+        "schema": "foo_schema",
+        "key": "=Foo"
+      },
+      "fields": []
+    }
+  }
+}

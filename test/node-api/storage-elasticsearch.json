@@ -49,6 +49,9 @@
         "query": {
           "schema": "foo*"
         }
+      },
+      "expected": {
+        "compareValues": 1
       }
     },
     {
@@ -69,6 +72,9 @@
             "enabled": true
           }
         }
+      },
+      "expected": {
+        "compareValues": 1
       }
     },
     {
@@ -117,6 +123,9 @@
             "enabled": true
           }
         ]
+      },
+      "expected": {
+        "compareValues": 1
       }
     },
     {

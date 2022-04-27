@@ -10,9 +10,10 @@
  */
 "use strict";
 
+const { httpRequest } = require("@dictadata/storage-junctions/utils");
+const _compare = require("@dictadata/storage-junctions/test/lib/_compare");
 const fs = require("fs");
 const path = require("path");
-const { httpRequest } = require("@dictadata/storage-junctions/utils");
 const colors = require('colors');
 
 let testFile = process.argv.length > 2 ? process.argv[ 2 ] : "";
@@ -32,18 +33,18 @@ request.headers = {
   console.log((testFile + "  " + testName).blue);
 
   let tf = fs.readFileSync(testFile, "utf-8");
-  var config = JSON.parse(tf);
+  let testQueries = JSON.parse(tf);
 
-  let outputDir = path.dirname(testFile).replace("/test/", "/test/data/output/") + testName + "/" + config.name + "/";
+  let outputDir = path.dirname(testFile).replace("/test/", "/test/data/output/") + testName + "/" + testQueries.name + "/";
   fs.mkdirSync(outputDir, { recursive: true });
 
   let exitCode = 0;
-  for (let query of config.queries) {
+  for (let query of testQueries.queries) {
     if (!testName || query.name.indexOf(testName) >= 0) {
       console.log(query.name.cyan);
-      let request = Object.assign({}, config.request, query.request);
-      let expected = Object.assign({}, config.expected, query.expected);
-      let outputFile = outputDir + query.name + ".results.json";
+      let request = Object.assign({}, testQueries.request, query.request);
+      let expected = Object.assign({}, testQueries.expected, query.expected);
+      let outputFile = outputDir + query.name + ".results";
 
       if (typeof request.data === "string")
         request.data = JSON.parse(fs.readFileSync(request.data, "utf-8"));
@@ -64,49 +65,64 @@ async function submitQuery(request, expected, outputFile) {
   //console.log("submitQuery");
 
   try {
+    let retCode = 0;
+
     // make request
     let response = await httpRequest(request.url || '', request, JSON.stringify(request.data));
     console.log(response.statusCode);
 
     let results;
+    let isJSON = httpRequest.contentTypeIsJSON(response.headers[ "content-type" ]);
     if (response.data) {
-      console.log(outputFile);
-      fs.writeFileSync(outputFile, response.data, "utf8");
-      if (httpRequest.contentTypeIsJSON(response.headers[ "content-type" ]))
+      if (isJSON) {
+        outputFile += ".json";
         results = JSON.parse(response.data);
-      else
+      }
+      else {
+        outputFile += ".txt";
         results = response.data;
+      }
     }
 
-    // validate response agains expected expected
+    // validate HTTP statusCode against expected
     if (Array.isArray(expected.statusCode) ? !expected.statusCode.includes(response.statusCode) : response.statusCode !== expected.statusCode) {
       console.log("  FAILED statusCode ".bgRed + response.statusCode + " " + response.data + ", expected " + expected.statusCode);
-      return 1;
+      retCode = 1;
     }
-
+    // test query resultCode against expected
     if (expected.resultCode) {
       if (Array.isArray(expected.resultCode) ? !expected.resultCode.includes(results.resultCode) : results.resultCode !== expected.resultCode) {
         console.log("  FAILED resultCode ".bgRed + results.resultCode + ", expected " + expected.resultCode);
-        return 1;
+        retCode = 1;
       }
     }
-
+    //
     if (expected.match_fail) {
       if (response.data.indexOf(expected.match_fail) >= 0) {
         console.log("  FAILED fail text found: ".bgRed + expected.match_fail);
-        return 1;
+        retCode = 1;
       }
     }
-
     if (expected.match_success) {
       if (response.data.indexOf(expected.match_success) < 0) {
         console.log("  FAILED success text NOT found: ".bgRed + expected.match_success);
-        return 1;
+        retCode = 1;
       }
     }
 
-    //console.log("  Success")
-    return 0;
+    if (retCode === 0 && response.data) {
+      // compare output files to expected
+      console.log("output: ", outputFile);
+      fs.writeFileSync(outputFile, response.data, "utf8");
+
+      if (isJSON) {
+        let expected_output = outputFile.replace("output", "expected");
+        let compareValues = expected.compareValues || 2;
+        retCode = _compare(expected_output, outputFile, compareValues);
+      }
+    }
+
+    return retCode;
   }
   catch (err) {
     if (err.response) {
@@ -119,10 +135,11 @@ async function submitQuery(request, expected, outputFile) {
         console.log("FAILED status ".bgRed + err.response.statusCode + " " + err.response.data + ", expected " + expected.statusCode);
       else
         console.log("FAILED ".bgRed + err.stack);
-      return 1;
     }
-    else
-      console.log("FAILED  ".bgRed + err.stack);
+    else {
+      console.log("FAILED  ".bgRed + err.message);
+    }
+
     return 1;
   }
 }

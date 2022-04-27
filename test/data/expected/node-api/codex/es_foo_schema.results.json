@@ -1,0 +1,20 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": {
+    "es_foo_schema": {
+      "name": "es_foo_schema",
+      "type": "engram",
+      "title": "",
+      "description": "",
+      "tags": [],
+      "smt": {
+        "model": "elasticsearch",
+        "locus": "http://localhost:9200",
+        "schema": "foo_schema",
+        "key": "!Foo"
+      },
+      "fields": []
+    }
+  }
+}
