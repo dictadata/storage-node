@@ -38,9 +38,12 @@ exports.startup = async (config) => {
           await codex.store(engram);
         }
         else {
-          // assume entry is an encoding object
+          // assume entry is an engram object
           let engram = new Engram(entry.smt);
           engram.name = entry.name || name;
+          if (entry.options) {
+            engram.options = entry.options;
+          }
           if (entry.encoding) {
             if (typeof entry.encoding === "string")
               // read encoding from file

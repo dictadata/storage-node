@@ -113,7 +113,8 @@ async function submitQuery(request, expected, outputFile) {
     if (retCode === 0 && response.data) {
       // compare output files to expected
       console.log("output: ", outputFile);
-      fs.writeFileSync(outputFile, response.data, "utf8");
+
+      fs.writeFileSync(outputFile, isJSON ? JSON.stringify(results, null, "  ") : results, "utf8");
 
       if (isJSON) {
         let expected_output = outputFile.replace("output", "expected");

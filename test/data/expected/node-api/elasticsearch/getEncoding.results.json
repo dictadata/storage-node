@@ -5,9 +5,6 @@
     "encoding": {
       "name": "foo_schema_pk",
       "type": "engram",
-      "title": "",
-      "description": "",
-      "tags": [],
       "smt": {
         "model": "elasticsearch",
         "locus": "http://localhost:9200",

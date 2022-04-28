@@ -48,6 +48,9 @@
         "query": {
           "schema": "foo*"
         }
+      },
+      "expected": {
+        "compareValues": 1
       }
     },
     {

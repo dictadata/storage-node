@@ -15,10 +15,30 @@
       "accounts": "elasticsearch|http://localhost:9200|node_accounts|!userid",
       "csv_foofile": "csv|./data/input/|foofile.csv|*",
       "json_foofile": "json|./data/input/|foofile.json|*",
-      "es_foo_schema": "elasticsearch|http://localhost:9200|foo_schema|!Foo",
-      "es_foo_schema_id": "elasticsearch|http://localhost:9200|foo_schema|twenty",
-      "es_foo_schema_ks": "elasticsearch|http://localhost:9200|foo_schema|!",
-      "es_foo_schema_pk": "elasticsearch|http://localhost:9200|foo_schema_pk|=Foo",
+      "es_foo_schema": {
+        "smt": "elasticsearch|http://localhost:9200|foo_schema|!Foo",
+        "options": {
+          "refresh": true
+        }
+      },
+      "es_foo_schema_id": {
+        "smt": "elasticsearch|http://localhost:9200|foo_schema|twenty",
+        "options": {
+          "refresh": true
+        }
+      },
+      "es_foo_schema_ks": {
+        "smt": "elasticsearch|http://localhost:9200|foo_schema|!",
+        "options": {
+          "refresh": true
+        }
+      },
+      "es_foo_schema_pk": {
+        "smt": "elasticsearch|http://localhost:9200|foo_schema_pk|=Foo",
+        "options": {
+          "refresh": true
+        }
+      },
       "es_foo_transfer": "elasticsearch|http://localhost:9200|foo_transfer|=Foo",
       "es_foo_transform": "elasticsearch|http://localhost:9200|foo_transform|=Foo",
       "mssql_foo_schema": "mssql|server=localhost;username=dicta;password=data;database=storage_node|foo_schema|=Foo",

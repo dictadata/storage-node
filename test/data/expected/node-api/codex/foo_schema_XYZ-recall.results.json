@@ -5,9 +5,6 @@
     "foo_schema_XYZ": {
       "name": "foo_schema_XYZ",
       "type": "engram",
-      "title": "",
-      "description": "",
-      "tags": [],
       "smt": {
         "model": "*",
         "locus": "*",

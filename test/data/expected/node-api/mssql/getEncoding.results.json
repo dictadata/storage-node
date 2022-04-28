@@ -5,9 +5,6 @@
     "encoding": {
       "name": "foo_schema",
       "type": "engram",
-      "title": "",
-      "description": "",
-      "tags": [],
       "smt": {
         "model": "mssql",
         "locus": "server=localhost;username=dicta;password=data;database=storage_node",

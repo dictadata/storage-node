@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.2.4
+  - update to @dictadata/storage-junctions 2.2.3
+  - testing: update st_nodeclient to compare query results to expected values
 - version 2.2.3
   - add User role to codex.retrieve API
   - export config module from library
