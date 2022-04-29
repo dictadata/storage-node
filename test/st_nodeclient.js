@@ -10,7 +10,7 @@
  */
 "use strict";
 
-const { httpRequest } = require("@dictadata/storage-junctions/utils");
+const { httpRequest, hasOwnProperty } = require("@dictadata/storage-junctions/utils");
 const _compare = require("@dictadata/storage-junctions/test/lib/_compare");
 const fs = require("fs");
 const path = require("path");
@@ -118,7 +118,7 @@ async function submitQuery(request, expected, outputFile) {
 
       if (isJSON) {
         let expected_output = outputFile.replace("output", "expected");
-        let compareValues = expected.compareValues || 2;
+        let compareValues = hasOwnProperty(expected, "compareValues") ? expected.compareValues : 2;
         retCode = _compare(expected_output, outputFile, compareValues);
       }
     }
