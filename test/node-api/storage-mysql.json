@@ -68,6 +68,9 @@
             "enabled": true
           }
         }
+      },
+      "expected": {
+        "compareValues": 1
       }
     },
     {

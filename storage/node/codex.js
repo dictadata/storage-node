@@ -11,6 +11,8 @@ const storage = require("@dictadata/storage-junctions");
 const { Engram } = require("@dictadata/storage-junctions/types");
 const fs = require("fs");
 
+var codex;
+
 /**
  * wait until server config is updated before initializing
  */
@@ -19,7 +21,6 @@ exports.startup = async (config) => {
   logger.verbose("codex SMT: " + JSON.stringify(config.codex.smt));
 
   var exitCode = 0;
-  let codex;
 
   try {
     if (config.codex) {
