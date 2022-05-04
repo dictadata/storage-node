@@ -5,7 +5,8 @@
     "url": "http://localhost:8089/node/status"
   },
   "expected": {
-    "statusCode": 200
+    "statusCode": 200,
+    "compareValues": 1
   },
   "queries": [
     {
