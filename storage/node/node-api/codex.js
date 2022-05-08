@@ -101,10 +101,16 @@ async function store(req, res) {
   var entry = req.body.codex || req.body;
 
   try {
-    let engram = new Engram(entry.smt);
-    engram.name = name || entry.name;
-    if (entry.encoding)
-      engram.encoding = entry.encoding;
+    let engram;
+    if (entry.type === "engram") {
+      engram = new Engram(entry.smt);
+      engram.name = name || entry.name;
+      if (entry.encoding)
+        engram.encoding = entry.encoding;
+    }
+    else
+      engram = entry;
+
     let results = await storage.codex.store(engram);
 
     res.status(results.resultCode === 0 ? 200 : results.resultCode)

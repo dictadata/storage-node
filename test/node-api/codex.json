@@ -107,6 +107,54 @@
           }
         }
       }
+    },
+    {
+      "name": "foo_alias-store",
+      "request": {
+        "method": "PUT",
+        "url": "codex/foo_alias",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "name": "foo_alias",
+          "type": "alias",
+          "alias_smt": "foo_schema"
+        }
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ],
+        "resultCode": 0
+      }
+    },
+    {
+      "name": "foo_alias-recall",
+      "request": {
+        "method": "GET",
+        "url": "codex/foo_alias"
+      }
+    },
+    {
+      "name": "foo_alias-retrieve1",
+      "request": {
+        "method": "POST",
+        "url": "codex",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "pattern": {
+            "match": {
+              "name": {
+                "wc": "foo_alias*"
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }

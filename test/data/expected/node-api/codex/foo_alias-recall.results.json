@@ -1,0 +1,11 @@
+{
+  "resultCode": 0,
+  "resultText": "OK",
+  "data": {
+    "foo_alias": {
+      "name": "foo_alias",
+      "type": "alias",
+      "alias_smt": "foo_schema"
+    }
+  }
+}
