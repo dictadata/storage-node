@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.2.6
+  - update to @dictadata/storage-junctions 2.2.5
+  - update: Codex alias entries
 - version 2.2.5
   - update to @dictadata/storage-junctions 2.2.4
   - testing: minor updates
