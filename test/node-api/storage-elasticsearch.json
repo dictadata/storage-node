@@ -46,7 +46,7 @@
       "request": {
         "method": "POST",
         "url": "list/es_foo_schema_pk",
-        "query": {
+        "params": {
           "schema": "foo*"
         }
       },
@@ -65,7 +65,7 @@
         "data": {
           "twenty": {
             "Foo": "twenty",
-            "Bar": "row",
+            "Bar": "Jackson",
             "Baz": 20,
             "Fobe": 20.20,
             "Dt Test": "2020-10-07T08:00:00",
@@ -132,19 +132,9 @@
       "name": "recall keystore",
       "request": {
         "method": "GET",
-        "url": "recall/es_foo_schema_ks?key=twenty",
-        "query": {
+        "url": "recall/es_foo_schema_ks",
+        "params": {
           "key": "twenty"
-        }
-      }
-    },
-    {
-      "name": "recall key field",
-      "request": {
-        "method": "GET",
-        "url": "recall/es_foo_schema",
-        "query": {
-          "Foo": "ten"
         }
       }
     },
@@ -166,7 +156,7 @@
       }
     },
     {
-      "name": "writer",
+      "name": "transfer",
       "request": {
         "method": "POST",
         "url": "transfer",
@@ -301,7 +291,7 @@
       "request": {
         "method": "DELETE",
         "url": "dull/es_foo_schema_ks",
-        "query": {
+        "params": {
           "key": "twenty"
         }
       }
@@ -311,7 +301,7 @@
       "request": {
         "method": "DELETE",
         "url": "dull/es_foo_schema",
-        "query": {
+        "params": {
           "Foo": "ten"
         }
       }

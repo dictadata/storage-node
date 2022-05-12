@@ -45,7 +45,7 @@
       "request": {
         "method": "POST",
         "url": "list/mysql_foo_schema",
-        "query": {
+        "params": {
           "schema": "foo*"
         }
       }
@@ -126,7 +126,7 @@
       "request": {
         "method": "GET",
         "url": "recall/mysql_foo_schema",
-        "query": {
+        "params": {
           "Foo": "ten"
         }
       }
@@ -149,7 +149,7 @@
       }
     },
     {
-      "name": "writer",
+      "name": "transfer",
       "request": {
         "method": "POST",
         "url": "transfer",
@@ -262,7 +262,7 @@
       "request": {
         "method": "DELETE",
         "url": "dull/mysql_foo_schema",
-        "query": {
+        "params": {
           "Foo": "ten"
         }
       }
