@@ -43,8 +43,8 @@ async function transfer(req, res) {
     if (!terminal.SMT || terminal.SMT[ 0 ] === '$')
       throw new StorageError(400, "invalid terminal smt name: " + terminal.SMT);
 
+    logger.debug("create origin junction");
     jo = await storage.activate(origin.SMT, origin.options);
-    jt = await storage.activate(terminal.SMT, terminal.options);
 
     let encoding;
     if (jo.capabilities.encoding && !jo.engram.isDefined) {
@@ -54,10 +54,11 @@ async function transfer(req, res) {
 
     logger.verbose("codify pipeline");
     let pipe1 = [];
-    pipe1.push(jo.createReader({ max_read: 100 }));
+    let cpattern = Object.assign({ max_read: 100 }, tract.origin.pattern);
+    pipe1.push(jo.createReader(cpattern));
     for (let [ tfType, tfOptions ] of Object.entries(transforms))
-      pipe1.push(jo.createTransform(tfType, tfOptions));
-    let cf = jo.createTransform('codify');
+      pipe1.push(await jo.createTransform(tfType, tfOptions));
+    let cf = await jo.createTransform('codify');
     pipe1.push(cf);
 
     await stream.pipeline(pipe1);
@@ -66,6 +67,9 @@ async function transfer(req, res) {
     logger.debug("encoding results");
     logger.debug(encoding);
     logger.debug(JSON.stringify(encoding.fields));
+
+    logger.debug("create terminal junction");
+    jt = await storage.activate(terminal.SMT, terminal.options);
 
     logger.debug("put terminal encoding");
     jt.encoding = encoding;
@@ -76,11 +80,12 @@ async function transfer(req, res) {
 
     logger.debug("transfer pipeline");
     var pipes = [];
-    pipes.push(jo.createReader());
+    let pattern = Object.assign({}, tract.origin.pattern);
+    pipes.push(jo.createReader(pattern));
     if (transforms) {
       logger.debug("add transforms to pipeline");
       for (let [ tfType, options ] of Object.entries(transforms))
-        pipes.push(jo.createTransform(tfType, options));
+        pipes.push(await jo.createTransform(tfType, options));
     }
     pipes.push(jt.createWriter());
 

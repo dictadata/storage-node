@@ -1,6 +1,9 @@
 /**
  * storage-node/clientStream
  *
+ * !!!!! work in progress !!!!!
+ * !!!!! not tested recently !!!!!
+ *
  * transfers between:
  *  client and storage-node
  */

@@ -1,7 +1,10 @@
 /**
  * storage-node/transport
  *
- * transfers between:
+ * !!!!! work in progress !!!!!
+ * !!!!! not tested recently !!!!!
+ *
+ *  transfers between:
  *  storage-nodes
  */
 "use strict";
@@ -55,8 +58,8 @@ async function transport(req, res) {
     let pipe1 = [];
     pipe1.push(jo.createReader({ max_read: 100 }));
     for (let [ tfType, tfOptions ] of Object.entries(transforms))
-      pipe1.push(jo.createTransform(tfType, tfOptions));
-    let cf = jo.createTransform('codify');
+      pipe1.push(await jo.createTransform(tfType, tfOptions));
+    let cf = await jo.createTransform('codify');
     pipe1.push(cf);
 
     logger.verbose("run pipeline");
@@ -80,7 +83,7 @@ async function transport(req, res) {
     if (transforms) {
       logger.debug("add transforms to pipeline");
       for (let [ tfType, options ] of Object.entries(transforms))
-        pipes.push(jo.createTransform(tfType, options));
+        pipes.push(await jo.createTransform(tfType, options));
     }
     pipes.push(jt.createWriter());
 
