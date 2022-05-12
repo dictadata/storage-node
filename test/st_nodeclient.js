@@ -19,14 +19,14 @@ const colors = require('colors');
 let testFile = process.argv.length > 2 ? process.argv[ 2 ] : "";
 let testName = process.argv.length > 3 ? process.argv[ 3 ] : "";
 
-var request = {
+var request_defaults = {
   method: "GET",
   origin: "https://localhost:8089/node",
-  timeout: 8000
-};
-request.headers = {
-  'Accept': 'application / json',
-  'User-Agent': "@dictadata/storage/nodeclient 1.7.x"
+  timeout: 8000,
+  headers: {
+    'Accept': 'application / json',
+    'User-Agent': "@dictadata/storage/nodeclient 1.7.x"
+  }
 };
 
 (async () => {
@@ -42,7 +42,7 @@ request.headers = {
   for (let query of testQueries.queries) {
     if (!testName || query.name.indexOf(testName) >= 0) {
       console.log(query.name.cyan);
-      let request = Object.assign({}, testQueries.request, query.request);
+      let request = Object.assign({}, request_defaults, testQueries.request, query.request);
       let expected = Object.assign({}, testQueries.expected, query.expected);
       let outputFile = outputDir + query.name + ".results";
 

@@ -16,24 +16,25 @@
   "queries": [
     {
       "request": {
-        "query": {
-          "name": "test_group my_test1",
-          "method": "POST",
-          "url": "storage/mySMT",
-          "headers": {
-            "Content-Type": "application/json; charset=utf-8"
-          },
-          "data": { 
-            "pattern": {
-              "match": {
-                "Foo": "two"
-              }
+        "name": "test_group my_test1",
+        "method": "POST",
+        "url": "storage/mySMT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "pattern": {
+            "match": {
+              "Foo": "two"
             }
           }
         }
       },
       "expected": {
-        "statusCode": [200, 409]
+        "statusCode": [
+          200,
+          409
+        ]
       }
     }
   ]
