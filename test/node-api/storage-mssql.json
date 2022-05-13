@@ -43,7 +43,7 @@
     {
       "name": "list",
       "request": {
-        "method": "POST",
+        "method": "GET",
         "url": "list/mssql_foo_schema",
         "params": {
           "schema": "foo*"
@@ -64,7 +64,7 @@
         "data": {
           "twenty": {
             "Foo": "twenty",
-            "Bar": "row",
+            "Bar": "Jackson",
             "Baz": 20,
             "Fobe": 20.20,
             "Dt Test": "2020-10-07T08:00:00",

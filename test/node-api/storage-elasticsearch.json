@@ -44,7 +44,7 @@
     {
       "name": "list",
       "request": {
-        "method": "POST",
+        "method": "GET",
         "url": "list/es_foo_schema_pk",
         "params": {
           "schema": "foo*"
