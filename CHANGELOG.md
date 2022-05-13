@@ -1,5 +1,10 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.3.0
+  - update to @dictadata/storage-junctions 2.3.0
+  - update: add await for createTransform()
+  - testing: fix issue with default http options
+  - testing: fix issue with querystring params
 - version 2.2.6
   - update to @dictadata/storage-junctions 2.2.5
   - update: Codex alias entries

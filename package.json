@@ -1,6 +1,6 @@
 {
   "name": "@dictadata/storage-node",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "description": "REST API services built on Node.js, Express.js and @dictadata/storage-junctions.",
   "author": "Drew O. Letcher",
   "license": "MIT",
@@ -21,14 +21,14 @@
     "node": ">=16.4.0"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^2.2.5",
+    "@dictadata/storage-junctions": "^2.3.0",
     "body-parser": "^1.20.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "express-session": "^1.17.2",
+    "express-session": "^1.17.3",
     "formidable": "^2.0.1",
     "memorystore": "^1.6.6",
     "morgan": "^1.10.0",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "colors": "^1.4.0",
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0"
   }
