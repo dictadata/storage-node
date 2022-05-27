@@ -278,7 +278,10 @@
         "data": {
           "pattern": {
             "match": {
-              "Foo": "twelvety"
+              "Foo": [
+                "eleventy",
+                "twelvety"
+              ]
             }
           }
         }
