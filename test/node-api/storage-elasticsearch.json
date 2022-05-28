@@ -58,17 +58,17 @@
       "name": "store keystore",
       "request": {
         "method": "PUT",
-        "url": "store/es_foo_schema_ks",
+        "url": "store/es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
-          "twenty": {
-            "Foo": "twenty",
-            "Bar": "Jackson",
-            "Baz": 20,
-            "Fobe": 20.20,
-            "Dt Test": "2020-10-07T08:00:00",
+          "fifty": {
+            "Foo": "fifty",
+            "Bar": "Grant",
+            "Baz": 50,
+            "Fobe": 50.5,
+            "Dt Test": "2022-05-05T08:00:00",
             "enabled": true
           }
         }
@@ -132,9 +132,9 @@
       "name": "recall keystore",
       "request": {
         "method": "GET",
-        "url": "recall/es_foo_schema_ks",
+        "url": "recall/es_foo_schema",
         "params": {
-          "key": "twenty"
+          "key": "fifty"
         }
       }
     },
@@ -290,9 +290,9 @@
       "name": "dull keystore",
       "request": {
         "method": "DELETE",
-        "url": "dull/es_foo_schema_ks",
+        "url": "dull/es_foo_schema",
         "params": {
-          "key": "twenty"
+          "key": "fifty"
         }
       }
     },

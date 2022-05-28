@@ -1,6 +1,6 @@
-### es_foo_schema_ks
+### es_foo_schema
 ### if array list then elasticsearch generates the key
-PUT http://localhost:8089/node/store/es_foo_schema_ks HTTP/1.1
+PUT http://localhost:8089/node/store/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -15,20 +15,20 @@ Content-Type: application/json; charset=utf-8
   }]
 }
 
-### es_foo_schema_ks
+### es_foo_schema
 ### if dictionary object then property names are the keys
-PUT http://localhost:8089/node/store/es_foo_schema_ks HTTP/1.1
+PUT http://localhost:8089/node/store/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
   "data": {
-    "twenty": {
-      "Foo": "twenty",
-      "Bar": "Jackson",
-      "Baz": 20,
-      "Fobe": 20.20,
-      "Dt Test": "2020-10-07T08:00:00",
+    "fifty": {
+      "Foo": "fifty",
+      "Bar": "Grant",
+      "Baz": 50,
+      "Fobe": 50.5,
+      "Dt Test": "2022-05-05T08:00:00",
       "enabled": true
     }
   }
@@ -84,11 +84,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "data": [{
-    "Foo": "twenty",
-    "Bar": "Jackson",
-    "Baz": 20,
-    "Fobe": 20.20,
-    "Dt Test": "2020-10-07T00:00:00.000Z",
+    "Foo": "fifty",
+    "Bar": "Grant",
+    "Baz": 50,
+    "Fobe": 50.5,
+    "Dt Test": "2022-05-05T00:00:00.000Z",
     "enabled": true
   }]
 }
@@ -125,11 +125,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "data": [{
-    "Foo": "twenty",
-    "Bar": "Jackson",
-    "Baz": 20,
-    "Fobe": 20.20,
-    "Dt Test": "2020-10-07T00:00:00.000Z",
+    "Foo": "fifty",
+    "Bar": "Grant",
+    "Baz": 50,
+    "Fobe": 50.5,
+    "Dt Test": "2020-05-05T08:00:00.000Z",
     "enabled": true
   }]
 }
@@ -166,11 +166,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "data": [{
-    "Foo": "twenty",
-    "Bar": "Jackson",
-    "Baz": 20,
-    "Fobe": 20.20,
-    "Dt Test": "2020-10-07T00:00:00.000Z",
+    "Foo": "fifty",
+    "Bar": "Grant",
+    "Baz": 50,
+    "Fobe": 50.5,
+    "Dt Test": "2022-05-05T08:00:00.000Z",
     "enabled": true
   }]
 }

@@ -2,13 +2,13 @@
 DELETE http://localhost:8089/node/dull/es_foo_schema_id HTTP/1.1
 Authorization: Basic user user
 
-### es_foo_schema_ks
-DELETE http://localhost:8089/node/dull/es_foo_schema_ks HTTP/1.1
+### es_foo_schema
+DELETE http://localhost:8089/node/dull/es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-    "key": "twenty"
+    "key": "fifty"
 }
 
 ### es_foo_schema

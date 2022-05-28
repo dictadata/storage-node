@@ -10,16 +10,16 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### es_foo_schema_ks
+### es_foo_schema
 POST http://localhost:8089/node/retrieve HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "es_foo_schema_ks",
+  "SMT": "es_foo_schema",
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }
@@ -57,7 +57,7 @@ Content-Type: application/json; charset=utf-8
 {
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }
@@ -95,7 +95,7 @@ Content-Type: application/json; charset=utf-8
 {
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }
@@ -133,7 +133,7 @@ Content-Type: application/json; charset=utf-8
 {
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }

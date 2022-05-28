@@ -3,11 +3,11 @@
   "resultText": "OK",
   "data": [
     {
-      "Foo": "twenty",
-      "Bar": "Jackson",
-      "Baz": 20,
-      "Fobe": 20.2,
-      "Dt Test": "2020-10-07T08:00:00.000Z",
+      "Foo": "fifty",
+      "Bar": "Grant",
+      "Baz": 50,
+      "Fobe": 50.5,
+      "Dt Test": "2022-05-05T08:00:00.000Z",
       "enabled": true
     }
   ]

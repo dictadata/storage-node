@@ -14,7 +14,9 @@
         "izze": 12
       }
     },
-    "tags": [ "one" ]
+    "tags": [
+      "one"
+    ]
   },
   {
     "Foo": "second",
@@ -31,7 +33,10 @@
         "izze": 88
       }
     },
-    "tags": [ "one", "two" ]
+    "tags": [
+      "one",
+      "two"
+    ]
   },
   {
     "Foo": "third",
@@ -48,7 +53,11 @@
         "izze": 33
       }
     },
-    "tags": [ "one", "two", "three" ]
+    "tags": [
+      "one",
+      "two",
+      "three"
+    ]
   },
   {
     "Foo": "fourth",
@@ -65,7 +74,11 @@
         "izze": 12
       }
     },
-    "tags": [ "one", "two", "three" ]
+    "tags": [
+      "one",
+      "two",
+      "three"
+    ]
   },
   {
     "Foo": "fifth",
@@ -82,7 +95,10 @@
         "izze": 21
       }
     },
-    "tags": [ "one", "twenty" ]
+    "tags": [
+      "one",
+      "fifty"
+    ]
   },
   {
     "Foo": "sixth",

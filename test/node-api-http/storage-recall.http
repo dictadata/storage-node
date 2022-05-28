@@ -2,13 +2,13 @@
 GET http://localhost:8089/node/recall/es_foo_schema_id HTTP/1.1
 Authorization: Basic admin admin
 
-### es_foo_schema_ks
-GET http://localhost:8089/node/recall/es_foo_schema_ks HTTP/1.1
+### es_foo_schema
+GET http://localhost:8089/node/recall/es_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "key": "twenty"
+  "key": "fifty"
 }
 
 ### es_foo_schema
@@ -29,7 +29,7 @@ Content-Type: application/json; charset=utf-8
   "SMT": "es_foo_schema_pk",
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }
@@ -42,7 +42,7 @@ Content-Type: application/json; charset=utf-8
 {
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }
@@ -55,7 +55,7 @@ Content-Type: application/json; charset=utf-8
 {
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }
@@ -69,7 +69,7 @@ Content-Type: application/json; charset=utf-8
 {
   "pattern": {
     "match": {
-      "Foo": "twenty"
+      "Foo": "fifty"
     }
   }
 }
