@@ -1,5 +1,10 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.3.1
+  - update to @dictadata/storage-junctions 2.3.1
+  - update: CsvJunction supports other delimited files
+  - update: match field expression, support array values (OR); { field: [value, ...] }
+  - bug fix: use HTTP request "params", changed from "query"
 - version 2.3.0
   - update to @dictadata/storage-junctions 2.3.0
   - update: add await for createTransform()
