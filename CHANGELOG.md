@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.3.2
+  - update dependencies
 - version 2.3.1
   - update to @dictadata/storage-junctions 2.3.1
   - update: CsvJunction supports other delimited files
