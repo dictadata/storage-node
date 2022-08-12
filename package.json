@@ -32,17 +32,17 @@
     "formidable": "^2.0.1",
     "memorystore": "^1.6.6",
     "morgan": "^1.10.0",
-    "passport": "^0.5.3",
+    "passport": "^0.6.0",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "rotating-file-stream": "^3.0.4",
     "serve-favicon": "^2.5.0",
-    "winston": "^3.7.2",
-    "winston-daily-rotate-file": "^4.5.5"
+    "winston": "^3.8.1",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
     "colors": "^1.4.0",
-    "eslint": "^8.16.0",
+    "eslint": "^8.21.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0"
   }
