@@ -20,8 +20,8 @@
         },
         {
           "name": "Bar",
-          "type": "keyword",
-          "size": 64
+          "type": "text",
+          "size": 256
         },
         {
           "name": "Baz",
@@ -39,6 +39,9 @@
           "name": "enabled",
           "type": "boolean"
         }
+      ],
+      "tags": [
+        "foo"
       ]
     },
     "foo_schema_typesonly": {
@@ -58,7 +61,7 @@
         },
         {
           "name": "Bar",
-          "type": "keyword"
+          "type": "text"
         },
         {
           "name": "Baz",
@@ -76,6 +79,9 @@
           "name": "enabled",
           "type": "boolean"
         }
+      ],
+      "tags": [
+        "foo"
       ]
     },
     "foo_schema_XYZ": {
@@ -110,8 +116,8 @@
         },
         {
           "name": "Bar",
-          "type": "keyword",
-          "size": 64,
+          "type": "text",
+          "size": 256,
           "default": null,
           "nullable": true,
           "label": "Bar"
@@ -148,6 +154,9 @@
           "nullable": true,
           "label": "enabled"
         }
+      ],
+      "tags": [
+        "foo"
       ]
     }
   }

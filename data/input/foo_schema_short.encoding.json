@@ -12,8 +12,8 @@
       "key": 1
     },
     "Bar": {
-      "type": "keyword",
-      "size": 64
+      "type": "text",
+      "size": 256
     },
     "Baz": {
       "type": "integer"

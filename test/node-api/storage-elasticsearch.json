@@ -13,7 +13,7 @@
       "name": "status",
       "request": {
         "method": "GET",
-        "url": "status/es_foo_schema_pk"
+        "url": "status/es_foo_schema"
       }
     },
     {
@@ -29,6 +29,8 @@
       "expected": {
         "statusCode": 200,
         "resultCode": [
+          0,
+          200,
           201,
           409
         ]
@@ -81,7 +83,7 @@
       "name": "store keyfield",
       "request": {
         "method": "PUT",
-        "url": "store/es_foo_schema",
+        "url": "store/es_foo_schema_id",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -139,7 +141,7 @@
       }
     },
     {
-      "name": "recall search",
+      "name": "recall primarykey",
       "request": {
         "method": "POST",
         "url": "recall/es_foo_schema_pk",
@@ -169,7 +171,7 @@
               "SMT": "json_foofile"
             },
             "terminal": {
-              "SMT": "es_foo_schema_pk"
+              "SMT": "es_foo_schema"
             }
           }
         }
@@ -179,7 +181,7 @@
       "name": "retrieve",
       "request": {
         "method": "POST",
-        "url": "retrieve/es_foo_schema_pk",
+        "url": "retrieve/es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -195,6 +197,25 @@
             "count": 3,
             "order": {
               "Foo": "asc"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "retrieve search",
+      "request": {
+        "method": "POST",
+        "url": "retrieve/es_foo_schema",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "pattern": {
+            "match": {
+              "Bar": {
+                "search": "row boat"
+              }
             }
           }
         }
@@ -300,14 +321,14 @@
       "name": "dull keyfield",
       "request": {
         "method": "DELETE",
-        "url": "dull/es_foo_schema",
+        "url": "dull/es_foo_schema_id",
         "params": {
           "Foo": "ten"
         }
       }
     },
     {
-      "name": "dull search",
+      "name": "dull primarykey",
       "request": {
         "method": "POST",
         "url": "dull/es_foo_schema_pk",

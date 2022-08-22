@@ -14,9 +14,9 @@
       "fields": [
         {
           "name": "Bar",
-          "type": "keyword",
+          "type": "text",
           "_elasticsearch": {
-            "type": "keyword"
+            "type": "text"
           }
         },
         {

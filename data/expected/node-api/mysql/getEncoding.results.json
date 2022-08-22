@@ -30,11 +30,11 @@
         },
         {
           "name": "Bar",
-          "type": "keyword",
-          "size": 64,
+          "type": "text",
+          "size": 256,
           "_mysql": {
             "Field": "Bar",
-            "Type": "varchar(64)",
+            "Type": "varchar(256)",
             "Null": "YES",
             "Key": "",
             "Default": null,

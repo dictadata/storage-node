@@ -31,14 +31,14 @@
         },
         {
           "name": "Bar",
-          "type": "keyword",
-          "size": 64,
+          "type": "text",
+          "size": 256,
           "default": null,
           "nullable": true,
           "_mssql": {
             "name": "Bar",
             "type": "varchar",
-            "size": 64,
+            "size": 256,
             "precision": 0,
             "scale": 0,
             "is_nullable": true,

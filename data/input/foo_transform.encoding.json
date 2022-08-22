@@ -3,13 +3,13 @@
     "model": "*",
     "locus": "*",
     "schema": "foo_transform",
-    "key": "*"
+    "key": "=Foo"
   },
   "description": "types-only encoding for transforms",
   "fields": {
     "Dt Test": "date",
     "Foo": "keyword",
-    "Bar": "keyword",
+    "Bar": "text",
     "Baz": "integer"
   }
 }

@@ -1,7 +1,7 @@
 {
   "fields": {
     "Foo": { "type": "keyword", "key": 1 },
-    "Bar": "keyword",
+    "Bar": "text",
     "Baz": "integer",
     "Fobe": "number",
     "Dt Test": "date",

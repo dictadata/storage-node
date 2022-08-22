@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.3.3
+  - support full-text search patterns
+  - update to @dictadata/storage-junctions 2.3.2
 - version 2.3.2
   - update dependencies
 - version 2.3.1

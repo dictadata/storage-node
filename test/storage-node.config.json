@@ -22,7 +22,7 @@
         }
       },
       "es_foo_schema_id": {
-        "smt": "elasticsearch|http://localhost:9200|foo_schema|fifty",
+        "smt": "elasticsearch|http://localhost:9200|foo_schema|ten",
         "options": {
           "refresh": true
         }
