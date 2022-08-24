@@ -1,7 +1,9 @@
 {
   "name": "foo_schema",
   "type": "engram",
-  "description": "",
+  "title": "foo_schema encoding",
+  "description": "test input for foo_schema encoding",
+  "source": "file:./data/input/foo_schema.encoding.json",
   "tags": [
     "foo"
   ],

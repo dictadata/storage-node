@@ -1,4 +1,5 @@
 {
+  "smt": "*|*|*|*",
   "fields": {
     "Foo": { "type": "keyword", "key": 1 },
     "Bar": "text",
