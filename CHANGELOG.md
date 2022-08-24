@@ -1,7 +1,11 @@
 # CHANGELOG for @dictadata/storage-node
 
+- verfion 2.3.4
+  - update: Codex.store() validate entry's name and type
+  - refactor: add source and notes to codex entry, remove alias_smt
+  - update to @dictadata/storage-junctions 2.3.3
 - version 2.3.3
-  - support full-text search patterns
+  - implement full-text search patterns in elasticsearch-junction
   - update to @dictadata/storage-junctions 2.3.2
 - version 2.3.2
   - update dependencies
