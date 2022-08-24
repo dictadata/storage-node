@@ -9,7 +9,7 @@
   "codex": {
     "smt": "elasticsearch|http://localhost:9200|dicta_codex|!name",
     "options": {
-      "refresh": "true"
+      "refresh": true
     },
     "engrams": {
       "accounts": "elasticsearch|http://localhost:9200|node_accounts|!userid",
@@ -49,7 +49,7 @@
       "mssql_weather_forecast": "mssql|server=localhost;username=dicta;password=data;database=storage_node|weather_forecast|*",
       "mysql_weather_forecast": "mysql|host=localhost;user=dicta;password=data;database=storage_node|weather_forecast|*",
       "oracle_weather_forecast": "oracledb|connectString=localhost/xepdb1;user=dicta;password=data|weather_forecast|*",
-      "tiger2020": "elasticsearch|http://localhost:9200|geo_2020_us_state|!"
+      "tiger2020": "elasticsearch|http://localhost:9200|tl_2020_us_state|!"
     }
   },
   "roles": {
