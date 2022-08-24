@@ -95,21 +95,26 @@ async function store(req, res) {
   logger.verbose('/codex/store');
 
   var name = req.params[ "name" ] || req.query[ "name" ] | (req.body && req.body.name);
-  if (!name || name[ 0 ] === "$")
+  if (!name || name === "*" || name[ 0 ] === "$")
     throw new StorageError(400, "invalid Codex name");
 
   var entry = req.body.codex || req.body;
+  entry.name = name; // override entry name
 
   try {
     let engram;
-    if (entry.type === "engram") {
-      engram = new Engram(entry.smt);
-      engram.name = name || entry.name;
-      if (entry.encoding)
-        engram.encoding = entry.encoding;
+    switch (entry.type) {
+      case "engram":
+        engram = new Engram(entry);
+        break;
+      case "alias":
+      case "tract":
+        // need to do some type validation like Engram above
+        engram = entry;
+        break;
+      default:
+        throw new StorageError(400, "invalid codex type");
     }
-    else
-      engram = entry;
 
     let results = await storage.codex.store(engram);
 
