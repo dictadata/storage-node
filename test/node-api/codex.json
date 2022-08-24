@@ -53,7 +53,8 @@
           200,
           201
         ],
-        "resultCode": 0
+        "resultCode": 0,
+        "compareValues": 0
       }
     },
     {
@@ -119,7 +120,7 @@
         "data": {
           "name": "foo_alias",
           "type": "alias",
-          "alias_smt": "foo_schema"
+          "source": "foo_schema"
         }
       },
       "expected": {

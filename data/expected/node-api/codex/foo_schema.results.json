@@ -5,6 +5,12 @@
     "foo_schema": {
       "name": "foo_schema",
       "type": "engram",
+      "title": "foo_schema encoding",
+      "description": "test input for foo_schema encoding",
+      "source": "file:./data/input/foo_schema.encoding.json",
+      "tags": [
+        "foo"
+      ],
       "smt": {
         "model": "*",
         "locus": "*",
@@ -61,9 +67,6 @@
           "nullable": true,
           "label": "enabled"
         }
-      ],
-      "tags": [
-        "foo"
       ]
     }
   }
