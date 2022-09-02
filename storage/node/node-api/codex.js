@@ -42,7 +42,8 @@ async function recall(req, res) {
 
   try {
     if (name) {
-      let results = await storage.codex.recall(name);
+      let resolve_alias = req.query[ "resolve" ];
+      let results = await storage.codex.recall(name, resolve_alias);
       res.status(results.resultCode === 0 ? 200 : results.resultCode)
         .set("Cache-Control", "public, max-age=60, s-maxage=60")
         .jsonp(results);
