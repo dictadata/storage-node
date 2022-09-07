@@ -1,10 +1,10 @@
 {
   "domain": "foo",
-  "name": "foo_schema",
+  "name": "foo_schema_XYZ",
   "type": "engram",
   "title": "foo_schema encoding",
-  "description": "test input for foo_schema encoding",
-  "source": "file:./data/input/foo_schema.encoding.json",
+  "description": "test input for foo_schema_XYZ encoding",
+  "source": "file:./data/input/foo_schema_XYZ.encoding.json",
   "tags": [
     "foo"
   ],

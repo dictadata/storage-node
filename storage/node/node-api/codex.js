@@ -7,26 +7,63 @@ const express = require('express');
 const authorize = require("../authorize");
 const roles = require("../roles");
 const logger = require('../../utils/logger');
-const storage = require('@dictadata/storage-junctions');
+const Storage = require('@dictadata/storage-junctions');
 const { Engram, StorageError } = require('@dictadata/storage-junctions/types');
 
 /**
  * Express routes
  */
-
 var router = express.Router();
 
-router.get('/codex/:name', authorize([ roles.Coder, roles.Public ]), recall);
-
-router.put('/codex/:name', authorize([ roles.Coder ]), store);
 router.put('/codex', authorize([ roles.Coder ]), store);
+
+router.get('/codex/:smt_id', authorize([ roles.Coder, roles.Public ]), recall);
+router.get('/codex/:domain/:name', authorize([ roles.Coder, roles.Public ]), recall);
+router.get('/codex', authorize([ roles.Coder, roles.Public ]), recall);
+
+router.delete('/codex/:smt_id', authorize([ roles.Coder ]), dull);
+router.delete('/codex/:domain/:name', authorize([ roles.Coder ]), dull);
+router.delete('/codex', authorize([ roles.Coder ]), dull);
 
 router.post('/codex', authorize([ roles.Coder, roles.User ]), retrieve);
 
-router.delete('/codex/:name', authorize([ roles.Coder ]), dull);
-router.delete('/codex', authorize([ roles.Coder ]), dull);
-
 module.exports = router;
+
+/**
+ * store
+ * @param {*} req
+ * @param {*} res
+ */
+async function store(req, res) {
+  logger.verbose('/codex/store');
+
+  var entry = req.body.codex || req.body;
+
+  try {
+    let engram;
+    switch (entry.type) {
+      case "engram":
+        engram = new Engram(entry);
+        break;
+      case "alias":
+      case "tract":
+        // need to do some type validation like Engram above
+        engram = entry;
+        break;
+      default:
+        throw new StorageError(400, "invalid codex type");
+    }
+
+    let results = await Storage.codex.store(engram);
+
+    res.status(results.resultCode === 0 ? 200 : results.resultCode)
+      .set("Cache-Control", "no-store")
+      .jsonp(results);
+  }
+  catch (err) {
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+  }
+}
 
 /**
  * recall
@@ -36,20 +73,24 @@ module.exports = router;
 async function recall(req, res) {
   logger.verbose('/codex/recall');
 
-  var name = req.params[ "name" ] || req.query[ "name" ] || (req.body && req.body.name);
-  if (!name || name[ 0 ] === "$")
+  var smt_id = req.params[ "smt_id" ] || req.query[ "smt_id" ];
+  var domain = req.params[ "domain" ] || req.query[ "domain" ];
+  var name = req.params[ "name" ] || req.query[ "name" ];
+  var resolve = req.query[ "resolve" ];
+
+  if ((!smt_id || smt_id[ 0 ] === "$") && !name)
     throw new StorageError(400, "invalid Codex name");
 
   try {
-    if (name) {
-      let resolve_alias = req.query[ "resolve" ];
-      let results = await storage.codex.recall(name, resolve_alias);
-      res.status(results.resultCode === 0 ? 200 : results.resultCode)
-        .set("Cache-Control", "public, max-age=60, s-maxage=60")
-        .jsonp(results);
-    }
+    let results;
+    if (smt_id)
+      results = await Storage.codex.recall({ key: smt_id, resolve: resolve });
     else
-      res.sendStatus(404);
+      results = await Storage.codex.recall({ match: { domain: domain, name: name }, resolve: resolve });
+
+    res.status(results.resultCode === 0 ? 200 : results.resultCode)
+      .set("Cache-Control", "public, max-age=60, s-maxage=60")
+      .jsonp(results);
   }
   catch (err) {
     logger.error(err);
@@ -67,63 +108,26 @@ async function recall(req, res) {
 async function dull(req, res) {
   logger.verbose('/codex/dull');
 
+  var smt_id = req.params[ "smt_id" ] || req.query[ "smt_id" ] || (req.body && req.body.smt_id);
+  var domain = req.params[ "domain" ] || req.query[ "domain" ] || (req.body && req.body.domain);
   var name = req.params[ "name" ] || req.query[ "name" ] || (req.body && req.body.name);
-  if (!name || name[ 0 ] === "$")
+
+  if ((!smt_id || smt_id[ 0 ] === "$") && !name)
     throw new StorageError(400, "invalid Codex name");
 
   try {
-    if (name) {
-      let results = await storage.codex.dull(name);
-      res.status(results.resultCode === 0 ? 200 : results.resultCode)
-        .set("Cache-Control", "no-store")
-        .jsonp(results);
-    }
+    let results;
+    if (smt_id)
+      results = await Storage.codex.dull(smt_id);
     else
-      res.sendStatus(404);
-  }
-  catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
-  }
-}
-
-/**
- * store
- * @param {*} req
- * @param {*} res
- */
-async function store(req, res) {
-  logger.verbose('/codex/store');
-
-  var name = req.params[ "name" ] || req.query[ "name" ] | (req.body && req.body.name);
-  if (!name || name === "*" || name[ 0 ] === "$")
-    throw new StorageError(400, "invalid Codex name");
-
-  var entry = req.body.codex || req.body;
-  entry.name = name; // override entry name
-
-  try {
-    let engram;
-    switch (entry.type) {
-      case "engram":
-        engram = new Engram(entry);
-        break;
-      case "alias":
-      case "tract":
-        // need to do some type validation like Engram above
-        engram = entry;
-        break;
-      default:
-        throw new StorageError(400, "invalid codex type");
-    }
-
-    let results = await storage.codex.store(engram);
+      results = await Storage.codex.dull({ domain: domain, name: name });
 
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
       .jsonp(results);
   }
   catch (err) {
+    logger.error(err);
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }
@@ -139,7 +143,7 @@ async function retrieve(req, res) {
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = await storage.codex.retrieve(pattern);
+    let results = await Storage.codex.retrieve(pattern);
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "no-store")
       .jsonp(results);

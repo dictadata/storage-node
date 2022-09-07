@@ -36,7 +36,7 @@ var _config = {
   },
 
   codex: {
-    smt: "memory|dictadata|codex|!name",
+    smt: "memory|dictadata|codex|*",
 
     // application smt entries to be added to codex at startup
     engrams: {

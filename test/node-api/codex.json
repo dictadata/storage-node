@@ -2,7 +2,7 @@
   "name": "codex",
   "request": {
     "method": "GET",
-    "base": "http://localhost:8089/node/",
+    "base": "http://localhost:8089/node/codex/",
     "auth": "user:user"
   },
   "expected": {
@@ -14,39 +14,38 @@
       "name": "foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/foo_schema"
+        "url": "foo/foo_schema"
       }
     },
     {
       "name": "es_foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/es_foo_schema"
+        "url": "es_foo_schema"
       }
     },
     {
       "name": "mssql_foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/mssql_foo_schema"
+        "url": "mssql_foo_schema"
       }
     },
     {
       "name": "mysql_foo_schema",
       "request": {
         "method": "GET",
-        "url": "codex/mysql_foo_schema"
+        "url": "mysql_foo_schema"
       }
     },
     {
       "name": "foo_schema_XYZ-store",
       "request": {
         "method": "PUT",
-        "url": "codex/foo_schema_XYZ",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./data/input/foo_schema.encoding.json"
+        "data": "./data/input/foo_schema_XYZ.encoding.json"
       },
       "expected": {
         "statusCode": [
@@ -61,20 +60,20 @@
       "name": "foo_schema_XYZ-recall",
       "request": {
         "method": "GET",
-        "url": "codex/foo_schema_XYZ"
+        "url": "foo/foo_schema_XYZ"
       }
     },
     {
       "name": "foo_schema-retrieve1",
       "request": {
         "method": "POST",
-        "url": "codex",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
           "pattern": {
             "match": {
+              "type": "engram",
               "name": {
                 "wc": "foo_schema*"
               }
@@ -87,20 +86,20 @@
       "name": "foo_schema_XYZ-dull",
       "request": {
         "method": "DELETE",
-        "url": "codex/foo_schema_XYZ"
+        "url": "foo/foo_schema_XYZ"
       }
     },
     {
       "name": "foo_schema-retrieve2",
       "request": {
         "method": "POST",
-        "url": "codex",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
           "pattern": {
             "match": {
+              "type": "engram",
               "name": {
                 "wc": "foo_schema*"
               }
@@ -113,14 +112,14 @@
       "name": "foo_alias-store",
       "request": {
         "method": "PUT",
-        "url": "codex/foo_alias",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
+          "domain": "foo",
           "name": "foo_alias",
           "type": "alias",
-          "source": "foo_schema"
+          "source": "foo/foo_schema"
         }
       },
       "expected": {
@@ -135,23 +134,21 @@
       "name": "foo_alias-recall",
       "request": {
         "method": "GET",
-        "url": "codex/foo_alias"
+        "url": "foo/foo_alias"
       }
     },
     {
       "name": "foo_alias-retrieve1",
       "request": {
         "method": "POST",
-        "url": "codex",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
-          "pattern": {
-            "match": {
-              "name": {
-                "wc": "foo_alias*"
-              }
+          "match": {
+            "type": "alias",
+            "name": {
+              "wc": "foo_alias*"
             }
           }
         }
