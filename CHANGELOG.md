@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.4.0
+  - feature: smt_id used as key for codex directory
+  - update to @dictadata/storage-junctions 2.4.0
 - version 2.3.5
   - refactor: add domain and roles to codex entry
   - update to @dictadata/storage-junctions 2.3.4
