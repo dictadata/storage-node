@@ -1,12 +1,12 @@
 /**
- * test/st_nodeclient.js
+ * test/st_node_test_client.js
  *
- * Storage Test Node Client for testing storage-node servers.
+ * Storage Node Test Client for testing storage-node servers.
  *
  * Read a JSON file that defines the HTTP tests.
  * Run the tests defined in the "queries" array other properties define the default values.
  *
- * See st_nodeclient_example.json.
+ * See st_node_test_example.json.
  */
 "use strict";
 
