@@ -14,7 +14,7 @@
       "name": "foo_schema",
       "request": {
         "method": "GET",
-        "url": "foo/foo_schema"
+        "url": "foo:foo_schema"
       }
     },
     {
@@ -60,7 +60,7 @@
       "name": "foo_schema_XYZ-recall",
       "request": {
         "method": "GET",
-        "url": "foo/foo_schema_XYZ"
+        "url": "foo:foo_schema_XYZ"
       }
     },
     {
@@ -86,7 +86,7 @@
       "name": "foo_schema_XYZ-dull",
       "request": {
         "method": "DELETE",
-        "url": "foo/foo_schema_XYZ"
+        "url": "foo:foo_schema_XYZ"
       }
     },
     {
@@ -119,7 +119,7 @@
           "domain": "foo",
           "name": "foo_alias",
           "type": "alias",
-          "source": "foo/foo_schema"
+          "source": "foo:foo_schema"
         }
       },
       "expected": {
@@ -134,7 +134,7 @@
       "name": "foo_alias-recall",
       "request": {
         "method": "GET",
-        "url": "foo/foo_alias"
+        "url": "foo:foo_alias"
       }
     },
     {

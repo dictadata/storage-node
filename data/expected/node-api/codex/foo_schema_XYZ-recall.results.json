@@ -2,7 +2,7 @@
   "resultCode": 0,
   "resultText": "OK",
   "data": {
-    "foo/foo_schema_XYZ": {
+    "foo:foo_schema_XYZ": {
       "name": "foo_schema_XYZ",
       "type": "engram",
       "domain": "foo",

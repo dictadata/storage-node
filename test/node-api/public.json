@@ -2,7 +2,8 @@
   "name": "public",
   "request": {
     "method": "GET",
-    "url": "http://dev.dictadata.org:8089/index.html"
+    "base": "http://dev.dictadata.org:8089/",
+    "url": "index.html"
   },
   "expected": {
     "statusCode": 200

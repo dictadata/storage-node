@@ -2,11 +2,11 @@
   "resultCode": 0,
   "resultText": "OK",
   "data": {
-    "foo/foo_alias": {
+    "foo:foo_alias": {
       "domain": "foo",
       "name": "foo_alias",
       "type": "alias",
-      "source": "foo/foo_schema"
+      "source": "foo:foo_schema"
     }
   }
 }

@@ -2,7 +2,7 @@
   "name": "status",
   "request": {
     "method": "GET",
-    "url": "http://dev.dictadata.org:8089/node/status"
+    "base": "http://dev.dictadata.org:8089/node/status"
   },
   "expected": {
     "statusCode": 200,

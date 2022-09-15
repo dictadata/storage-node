@@ -17,12 +17,10 @@ var router = express.Router();
 
 router.put('/codex', authorize([ roles.Coder ]), store);
 
-router.get('/codex/:smt_id', authorize([ roles.Coder, roles.Public ]), recall);
-router.get('/codex/:domain/:name', authorize([ roles.Coder, roles.Public ]), recall);
+router.get('/codex/:smt_urn', authorize([ roles.Coder, roles.Public ]), recall);
 router.get('/codex', authorize([ roles.Coder, roles.Public ]), recall);
 
-router.delete('/codex/:smt_id', authorize([ roles.Coder ]), dull);
-router.delete('/codex/:domain/:name', authorize([ roles.Coder ]), dull);
+router.delete('/codex/:smt_urn', authorize([ roles.Coder ]), dull);
 router.delete('/codex', authorize([ roles.Coder ]), dull);
 
 router.post('/codex', authorize([ roles.Coder, roles.User ]), retrieve);
@@ -73,20 +71,20 @@ async function store(req, res) {
 async function recall(req, res) {
   logger.verbose('/codex/recall');
 
-  var smt_id = req.params[ "smt_id" ] || req.query[ "smt_id" ];
-  var domain = req.params[ "domain" ] || req.query[ "domain" ];
-  var name = req.params[ "name" ] || req.query[ "name" ];
+  var smt_urn = req.params[ "smt_urn" ] || req.query[ "smt_urn" ];
+  var domain = req.query[ "domain" ];
+  var name = req.query[ "name" ];
   var resolve = req.query[ "resolve" ];
 
-  if ((!smt_id || smt_id[ 0 ] === "$") && !name)
+  if ((!smt_urn || smt_urn[ 0 ] === "$") && !name)
     throw new StorageError(400, "invalid Codex name");
 
   try {
     let results;
-    if (smt_id)
-      results = await Storage.codex.recall({ key: smt_id, resolve: resolve });
+    if (smt_urn)
+      results = await Storage.codex.recall({ key: smt_urn, resolve: resolve });
     else
-      results = await Storage.codex.recall({ match: { domain: domain, name: name }, resolve: resolve });
+      results = await Storage.codex.recall({ domain: domain, name: name, resolve: resolve });
 
     res.status(results.resultCode === 0 ? 200 : results.resultCode)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
@@ -108,17 +106,17 @@ async function recall(req, res) {
 async function dull(req, res) {
   logger.verbose('/codex/dull');
 
-  var smt_id = req.params[ "smt_id" ] || req.query[ "smt_id" ] || (req.body && req.body.smt_id);
-  var domain = req.params[ "domain" ] || req.query[ "domain" ] || (req.body && req.body.domain);
-  var name = req.params[ "name" ] || req.query[ "name" ] || (req.body && req.body.name);
+  var smt_urn = req.params[ "smt_urn" ] || req.query[ "smt_urn" ] || (req.body && req.body.smt_urn);
+  var domain = req.query[ "domain" ] || (req.body && req.body.domain);
+  var name = req.query[ "name" ] || (req.body && req.body.name);
 
-  if ((!smt_id || smt_id[ 0 ] === "$") && !name)
+  if ((!smt_urn || smt_urn[ 0 ] === "$") && !name)
     throw new StorageError(400, "invalid Codex name");
 
   try {
     let results;
-    if (smt_id)
-      results = await Storage.codex.dull(smt_id);
+    if (smt_urn)
+      results = await Storage.codex.dull(smt_urn);
     else
       results = await Storage.codex.dull({ domain: domain, name: name });
 

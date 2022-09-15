@@ -66,9 +66,11 @@ async function submitQuery(request, expected, outputFile) {
 
   try {
     let retCode = 0;
+    let url = request.url || '';
+    if (url.includes(':')) url = encodeURIComponent(url);
 
     // make request
-    let response = await httpRequest(request.url || '', request, JSON.stringify(request.data));
+    let response = await httpRequest(url, request, JSON.stringify(request.data));
     console.log(response.statusCode);
 
     let results;
