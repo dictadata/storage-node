@@ -2,7 +2,7 @@
   "name": "mssql",
   "request": {
     "method": "GET",
-    "base": "http://localhost:8089/node/",
+    "base": "http://dev.dictadata.org:8089/node/",
     "auth": "user:user"
   },
   "expected": {

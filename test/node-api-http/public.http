@@ -1,18 +1,18 @@
 ### no user
-GET http://localhost:8089/index.html HTTP/1.1
+GET http://dev.dictadata.org:8089/index.html HTTP/1.1
 
 ### unknown user
-GET http://localhost:8089/index.html HTTP/1.1
+GET http://dev.dictadata.org:8089/index.html HTTP/1.1
 Authorization: Basic Aladin opensesame
 
 ### guest
-GET http://localhost:8089/index.html HTTP/1.1
+GET http://dev.dictadata.org:8089/index.html HTTP/1.1
 Authorization: Basic guest guest
 
 ### user
-GET http://localhost:8089/index.html HTTP/1.1
+GET http://dev.dictadata.org:8089/index.html HTTP/1.1
 Authorization: Basic user user
 
 ### admin
-GET http://localhost:8089/index.html HTTP/1.1
+GET http://dev.dictadata.org:8089/index.html HTTP/1.1
 Authorization: Basic admin admin

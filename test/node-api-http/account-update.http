@@ -1,6 +1,6 @@
 
 ### dullboy, cannot modify own roles
-PUT http://localhost:8089/node/account HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/account HTTP/1.1
 Authorization: Basic dullboy dullboy
 Content-Type: application/json; charset=utf-8
 
@@ -18,7 +18,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### guest:guest - guest does not have User rights
-PUT http://localhost:8089/node/account HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/account HTTP/1.1
 Authorization: Basic guest guest
 Content-Type: application/json; charset=utf-8
 
@@ -35,7 +35,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### guest:guest - changed by admin
-PUT http://localhost:8089/node/account HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -52,7 +52,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### user - changed by user, cannot change own roles
-PUT http://localhost:8089/node/account HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/account HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -69,7 +69,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### user - changed roles by admin
-PUT http://localhost:8089/node/account HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -82,7 +82,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### admin - change password
-PUT http://localhost:8089/node/account HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/account HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -94,7 +94,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### admin - change it back
-PUT http://localhost:8089/node/account HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/account HTTP/1.1
 Authorization: Basic admin dictadata
 Content-Type: application/json; charset=utf-8
 

@@ -1,9 +1,9 @@
 ### es_foo_schema_pk
-GET http://localhost:8089/node/encoding/es_foo_schema_pk HTTP/1.1
+GET http://dev.dictadata.org:8089/node/encoding/es_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 
 ### es_foo_schema_pk
-GET http://localhost:8089/node/encoding HTTP/1.1
+GET http://dev.dictadata.org:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -13,7 +13,7 @@ Content-Type: application/json; charset=utf-8
 
 ### accounts
 ### accounts is a development only SMT
-GET http://localhost:8089/node/encoding HTTP/1.1
+GET http://dev.dictadata.org:8089/node/encoding HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -22,13 +22,13 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mssql_foo_schema
-GET http://localhost:8089/node/encoding/mssql_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/encoding/mssql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 
 ### mysql_foo_schema
-GET http://localhost:8089/node/encoding/mysql_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/encoding/mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 
 ### oracle_foo_schema
-GET http://localhost:8089/node/encoding/oracle_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/encoding/oracle_foo_schema HTTP/1.1
 Authorization: Basic admin admin

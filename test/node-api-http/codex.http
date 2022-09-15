@@ -1,8 +1,8 @@
-GET http://localhost:8089/node/codex/foo_schema
+GET http://dev.dictadata.org:8089/node/codex/foo_schema
 Authorization: Basic user user
 
 ###
-POST http://localhost:8089/node/codex
+POST http://dev.dictadata.org:8089/node/codex
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -17,7 +17,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ###
-POST http://localhost:8089/node/codex
+POST http://dev.dictadata.org:8089/node/codex
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

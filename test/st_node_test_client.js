@@ -21,7 +21,7 @@ let testName = process.argv.length > 3 ? process.argv[ 3 ] : "";
 
 var request_defaults = {
   method: "GET",
-  origin: "https://localhost:8089/node",
+  origin: "https://dev.dictadata.org:8089/node",
   timeout: 8000,
   headers: {
     'Accept': 'application / json',
