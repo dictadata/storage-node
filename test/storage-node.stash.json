@@ -1,0 +1,17 @@
+{
+  "http://localhost:9200": {
+    "apiKey": "abc123dorami"
+  },
+  "ftp://127.0.0.1": {
+    "username": "dicta",
+    "password": "data"
+  },
+  "server=localhost;database=storage_node": {
+    "username": "dicta",
+    "password": "data"
+  },
+  "host=localhost;database=storage_node": {
+    "username": "dicta",
+    "password": "data"
+  }
+}

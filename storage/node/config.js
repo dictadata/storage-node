@@ -55,8 +55,8 @@ var _config = {
 
   // storage-node API authentication
   $_accounts: "elasticsearch|http://localhost:9200|node_accounts|!userid",
-  //$_accounts: "mssql|server=localhost;username=dicta;password=data;database=storage_node|node_accounts|=userid",
-  //$_accounts: "mysql|host=localhost;user=dicta;password=data;database=storage_node|node_accounts|=userid",
+  //$_accounts: "mssql|server=localhost;database=storage_node|node_accounts|=userid",
+  //$_accounts: "mysql|host=localhost;database=storage_node|node_accounts|=userid",
 
   // default Passport.js authentication strategy
   auth_strategy: 'basic', // 'local', 'basic', 'digest'

@@ -24,6 +24,10 @@ exports.startup = async (config) => {
   var codex;
 
   try {
+    // load auth_stash
+    if (config.codex.auth_stash)
+      Storage.authStash.load(config.codex.auth_stash);
+
     if (config.codex) {
       // create codex
       codex = new Storage.Codex(config.codex.smt, config.codex.options);
