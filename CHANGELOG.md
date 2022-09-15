@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.4.2
+  - refactor: Codex key replace smt_id with smt_urn
 - version 2.4.1
   - feature: authStash for storing username, password, apiKey, etc.
   - testing: use dev.dictadata.org instead of localhost
