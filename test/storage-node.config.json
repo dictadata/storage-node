@@ -11,7 +11,7 @@
     "options": {
       "refresh": true
     },
-    "auth_stash": "storage-node.stash.json",
+    "auth_stash": "storage-node.auth.json",
     "engrams": {
       "accounts": "elasticsearch|http://dev.dictadata.org:9200|node_accounts|!userid",
       "csv_foofile": "csv|../data/input/|foofile.csv|*",
