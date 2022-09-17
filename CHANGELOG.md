@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.4.4
+  - update to @dictadata/storage-junctions 2.4.3
 - version 2.4.3
   - refactor: add auth property to auth_stash objects
 - version 2.4.2
