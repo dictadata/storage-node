@@ -1,9 +1,9 @@
 ### es_foo_schema_id
-GET http://dev.dictadata.org:8089/node/recall/es_foo_schema_id HTTP/1.1
+GET http://dev.dictadata.org:8089/node/recall/:es_foo_schema_id HTTP/1.1
 Authorization: Basic admin admin
 
 ### es_foo_schema
-GET http://dev.dictadata.org:8089/node/recall/es_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/recall/:es_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -12,7 +12,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### es_foo_schema
-GET http://dev.dictadata.org:8089/node/recall/es_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/recall/:es_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -26,7 +26,7 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "es_foo_schema_pk",
+  "smt": ":es_foo_schema_pk",
   "pattern": {
     "match": {
       "Foo": "fifty"
@@ -35,7 +35,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mssql_foo_schema
-GET http://dev.dictadata.org:8089/node/recall/mssql_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/recall/:mssql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -48,7 +48,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mysql_foo_schema
-GET http://dev.dictadata.org:8089/node/recall/mysql_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/recall/:mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 

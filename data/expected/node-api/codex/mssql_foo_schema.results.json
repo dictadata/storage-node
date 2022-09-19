@@ -2,7 +2,7 @@
   "resultCode": 0,
   "resultText": "OK",
   "data": {
-    "mssql_foo_schema": {
+    ":mssql_foo_schema": {
       "name": "mssql_foo_schema",
       "type": "engram",
       "smt": {

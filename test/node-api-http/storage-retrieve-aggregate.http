@@ -1,5 +1,5 @@
 ### es_foo_schema
-POST http://dev.dictadata.org:8089/node/retrieve/es_foo_schema HTTP/1.1
+POST http://dev.dictadata.org:8089/node/retrieve/:es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -18,7 +18,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mssql_foo_schema
-POST http://dev.dictadata.org:8089/node/retrieve/mssql_foo_schema HTTP/1.1
+POST http://dev.dictadata.org:8089/node/retrieve/:mssql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -37,7 +37,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mysql_foo_schema
-POST http://dev.dictadata.org:8089/node/retrieve/mysql_foo_schema HTTP/1.1
+POST http://dev.dictadata.org:8089/node/retrieve/:mysql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

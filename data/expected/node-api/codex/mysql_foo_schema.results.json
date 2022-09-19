@@ -2,7 +2,7 @@
   "resultCode": 0,
   "resultText": "OK",
   "data": {
-    "mysql_foo_schema": {
+    ":mysql_foo_schema": {
       "name": "mysql_foo_schema",
       "type": "engram",
       "smt": {

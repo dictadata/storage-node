@@ -1,9 +1,9 @@
 ### es_foo_schema_id
-DELETE http://dev.dictadata.org:8089/node/dull/es_foo_schema_id HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/dull/:es_foo_schema_id HTTP/1.1
 Authorization: Basic user user
 
 ### es_foo_schema
-DELETE http://dev.dictadata.org:8089/node/dull/es_foo_schema HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/dull/:es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -12,7 +12,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### es_foo_schema
-DELETE http://dev.dictadata.org:8089/node/dull/es_foo_schema HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/dull/:es_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -26,7 +26,7 @@ Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "es_foo_schema_pk",
+  "smt": ":es_foo_schema_pk",
   "pattern": {
     "match": {
       "Foo": "twelvety"
@@ -36,7 +36,7 @@ Content-Type: application/json; charset=utf-8
 
 
 ### mssql_foo_schema
-DELETE http://dev.dictadata.org:8089/node/dull/mssql_foo_schema HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/dull/:mssql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -49,7 +49,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mysql_foo_schema
-DELETE http://dev.dictadata.org:8089/node/dull/mysql_foo_schema HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/dull/:mysql_foo_schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

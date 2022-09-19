@@ -2,7 +2,7 @@
   "resultCode": 0,
   "resultText": "OK",
   "data": {
-    "es_foo_schema": {
+    ":es_foo_schema": {
       "name": "es_foo_schema",
       "type": "engram",
       "smt": {

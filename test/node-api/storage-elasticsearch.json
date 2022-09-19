@@ -13,14 +13,14 @@
       "name": "status",
       "request": {
         "method": "GET",
-        "url": "status/es_foo_schema"
+        "url": "status/:es_foo_schema"
       }
     },
     {
       "name": "createSchema",
       "request": {
         "method": "PUT",
-        "url": "encoding/es_foo_schema_pk",
+        "url": "encoding/:es_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -40,14 +40,14 @@
       "name": "getEncoding",
       "request": {
         "method": "GET",
-        "url": "encoding/es_foo_schema_pk"
+        "url": "encoding/:es_foo_schema_pk"
       }
     },
     {
       "name": "list",
       "request": {
         "method": "GET",
-        "url": "list/es_foo_schema_pk",
+        "url": "list/:es_foo_schema_pk",
         "params": {
           "schema": "foo*"
         }
@@ -60,7 +60,7 @@
       "name": "store keystore",
       "request": {
         "method": "PUT",
-        "url": "store/es_foo_schema",
+        "url": "store/:es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -83,7 +83,7 @@
       "name": "store keyfield",
       "request": {
         "method": "PUT",
-        "url": "store/es_foo_schema_id",
+        "url": "store/:es_foo_schema_id",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -103,7 +103,7 @@
       "name": "store primarykey",
       "request": {
         "method": "PUT",
-        "url": "store/es_foo_schema_pk",
+        "url": "store/:es_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -134,7 +134,7 @@
       "name": "recall keystore",
       "request": {
         "method": "GET",
-        "url": "recall/es_foo_schema",
+        "url": "recall/:es_foo_schema",
         "params": {
           "key": "fifty"
         }
@@ -144,7 +144,7 @@
       "name": "recall primarykey",
       "request": {
         "method": "POST",
-        "url": "recall/es_foo_schema_pk",
+        "url": "recall/:es_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -168,10 +168,10 @@
         "data": {
           "tract": {
             "origin": {
-              "SMT": "json_foofile"
+              "smt": ":json_foofile"
             },
             "terminal": {
-              "SMT": "es_foo_schema"
+              "smt": ":es_foo_schema"
             }
           }
         }
@@ -181,7 +181,7 @@
       "name": "retrieve",
       "request": {
         "method": "POST",
-        "url": "retrieve/es_foo_schema",
+        "url": "retrieve/:es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -206,7 +206,7 @@
       "name": "retrieve search",
       "request": {
         "method": "POST",
-        "url": "retrieve/es_foo_schema",
+        "url": "retrieve/:es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -225,7 +225,7 @@
       "name": "retrieve geo_shape",
       "request": {
         "method": "POST",
-        "url": "retrieve/tiger2020",
+        "url": "retrieve/:tiger2020",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -247,7 +247,7 @@
       "name": "aggregate",
       "request": {
         "method": "POST",
-        "url": "retrieve/es_foo_schema",
+        "url": "retrieve/:es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -279,7 +279,7 @@
       "name": "groupby",
       "request": {
         "method": "POST",
-        "url": "retrieve/es_foo_schema",
+        "url": "retrieve/:es_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -311,7 +311,7 @@
       "name": "dull keystore",
       "request": {
         "method": "DELETE",
-        "url": "dull/es_foo_schema",
+        "url": "dull/:es_foo_schema",
         "params": {
           "key": "fifty"
         }
@@ -321,7 +321,7 @@
       "name": "dull keyfield",
       "request": {
         "method": "DELETE",
-        "url": "dull/es_foo_schema_id",
+        "url": "dull/:es_foo_schema_id",
         "params": {
           "Foo": "ten"
         }
@@ -331,7 +331,7 @@
       "name": "dull primarykey",
       "request": {
         "method": "POST",
-        "url": "dull/es_foo_schema_pk",
+        "url": "dull/:es_foo_schema_pk",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

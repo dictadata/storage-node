@@ -1,5 +1,5 @@
 ### es_foo_schema_pk
-PUT http://dev.dictadata.org:8089/node/encoding/es_foo_schema_pk HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/encoding/:es_foo_schema_pk HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -68,7 +68,7 @@ Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "es_foo_schema_pk",
+  "smt": ":es_foo_schema_pk",
   "fields": {
     "Foo": {
       "name": "Foo",
@@ -128,7 +128,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mssql_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding/mssql_foo_schema HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/encoding/:mssql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -197,7 +197,7 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "mssql_foo_schema",
+  "smt": ":mssql_foo_schema",
   "fields": {
     "Foo": {
       "name": "Foo",
@@ -257,7 +257,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mysql_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding/mysql_foo_schema HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/encoding/:mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -326,7 +326,7 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "mysql_foo_schema",
+  "smt": ":mysql_foo_schema",
   "fields": {
     "Foo": {
       "name": "Foo",
@@ -456,7 +456,7 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "oracle_foo_schema",
+  "smt": ":oracle_foo_schema",
   "fields": {
     "Foo": {
       "name": "Foo",

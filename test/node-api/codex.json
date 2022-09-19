@@ -21,21 +21,21 @@
       "name": "es_foo_schema",
       "request": {
         "method": "GET",
-        "url": "es_foo_schema"
+        "url": ":es_foo_schema"
       }
     },
     {
       "name": "mssql_foo_schema",
       "request": {
         "method": "GET",
-        "url": "mssql_foo_schema"
+        "url": ":mssql_foo_schema"
       }
     },
     {
       "name": "mysql_foo_schema",
       "request": {
         "method": "GET",
-        "url": "mysql_foo_schema"
+        "url": ":mysql_foo_schema"
       }
     },
     {

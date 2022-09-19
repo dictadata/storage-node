@@ -13,14 +13,14 @@
       "name": "status",
       "request": {
         "method": "GET",
-        "url": "status/mssql_foo_schema"
+        "url": "status/:mssql_foo_schema"
       }
     },
     {
       "name": "createSchema",
       "request": {
         "method": "PUT",
-        "url": "encoding/mssql_foo_schema",
+        "url": "encoding/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -37,14 +37,14 @@
       "name": "getEncoding",
       "request": {
         "method": "GET",
-        "url": "encoding/mssql_foo_schema"
+        "url": "encoding/:mssql_foo_schema"
       }
     },
     {
       "name": "list",
       "request": {
         "method": "GET",
-        "url": "list/mssql_foo_schema",
+        "url": "list/:mssql_foo_schema",
         "params": {
           "schema": "foo*"
         }
@@ -57,7 +57,7 @@
       "name": "store fifty",
       "request": {
         "method": "PUT",
-        "url": "store/mssql_foo_schema",
+        "url": "store/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -77,7 +77,7 @@
       "name": "store ten",
       "request": {
         "method": "PUT",
-        "url": "store/mssql_foo_schema",
+        "url": "store/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -97,7 +97,7 @@
       "name": "store primarykey",
       "request": {
         "method": "PUT",
-        "url": "store/mssql_foo_schema",
+        "url": "store/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -125,7 +125,7 @@
       "name": "recall key",
       "request": {
         "method": "GET",
-        "url": "recall/mssql_foo_schema",
+        "url": "recall/:mssql_foo_schema",
         "params": {
           "Foo": "ten"
         }
@@ -135,7 +135,7 @@
       "name": "recall search",
       "request": {
         "method": "POST",
-        "url": "recall/mssql_foo_schema",
+        "url": "recall/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -159,10 +159,10 @@
         "data": {
           "tract": {
             "origin": {
-              "SMT": "json_foofile"
+              "smt": ":json_foofile"
             },
             "terminal": {
-              "SMT": "mssql_foo_schema"
+              "smt": ":mssql_foo_schema"
             }
           }
         }
@@ -172,7 +172,7 @@
       "name": "retrieve",
       "request": {
         "method": "POST",
-        "url": "retrieve/mssql_foo_schema",
+        "url": "retrieve/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -197,7 +197,7 @@
       "name": "aggregate",
       "request": {
         "method": "POST",
-        "url": "retrieve/mssql_foo_schema",
+        "url": "retrieve/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -229,7 +229,7 @@
       "name": "groupby",
       "request": {
         "method": "POST",
-        "url": "retrieve/mssql_foo_schema",
+        "url": "retrieve/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -261,7 +261,7 @@
       "name": "dull key",
       "request": {
         "method": "DELETE",
-        "url": "dull/mssql_foo_schema",
+        "url": "dull/:mssql_foo_schema",
         "params": {
           "Foo": "ten"
         }
@@ -271,7 +271,7 @@
       "name": "dull search",
       "request": {
         "method": "POST",
-        "url": "dull/mssql_foo_schema",
+        "url": "dull/:mssql_foo_schema",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

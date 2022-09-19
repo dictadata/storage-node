@@ -156,10 +156,10 @@
         "data": {
           "tract": {
             "origin": {
-              "SMT": "json_foofile"
+              "smt": ":json_foofile"
             },
             "terminal": {
-              "SMT": "oracle_foo_schema"
+              "smt": ":oracle_foo_schema"
             }
           }
         }

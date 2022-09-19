@@ -1,9 +1,9 @@
 ### es_foo_schema_pk
-POST http://dev.dictadata.org:8089/node/list/es_foo_schema_pk HTTP/1.1
+POST http://dev.dictadata.org:8089/node/list/:es_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
 
 ### es_foo_schema_pk
-POST http://dev.dictadata.org:8089/node/list/es_foo_schema_pk?schema=* HTTP/1.1
+POST http://dev.dictadata.org:8089/node/list/:es_foo_schema_pk?schema=* HTTP/1.1
 Authorization: Basic admin admin
 
 ### es_foo_schema_pk
@@ -12,17 +12,17 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "es_foo_schema_pk",
+  "smt": ":es_foo_schema_pk",
   "schema": "foo*"
 }
 
 
 ### mssql_foo_schema
-POST http://dev.dictadata.org:8089/node/list/mssql_foo_schema HTTP/1.1
+POST http://dev.dictadata.org:8089/node/list/:mssql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 
 ### mssql_foo_schema *
-POST http://dev.dictadata.org:8089/node/list/mssql_foo_schema?schema=* HTTP/1.1
+POST http://dev.dictadata.org:8089/node/list/:mssql_foo_schema?schema=* HTTP/1.1
 Authorization: Basic admin admin
 
 ### mssql_foo_schema foo*
@@ -31,17 +31,17 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "mssql_foo_schema",
+  "smt": ":mssql_foo_schema",
   "schema": "foo*"
 }
 
 
 ### mysql_foo_schema
-POST http://dev.dictadata.org:8089/node/list/mysql_foo_schema HTTP/1.1
+POST http://dev.dictadata.org:8089/node/list/:mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 
 ### mysql_foo_schema *
-POST http://dev.dictadata.org:8089/node/list/mysql_foo_schema?schema=* HTTP/1.1
+POST http://dev.dictadata.org:8089/node/list/:mysql_foo_schema?schema=* HTTP/1.1
 Authorization: Basic admin admin
 
 ### mysql_foo_schema foo*
@@ -50,7 +50,7 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "mysql_foo_schema",
+  "smt": ":mysql_foo_schema",
   "schema": "foo*"
 }
 
@@ -70,6 +70,6 @@ Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
 {
-  "SMT": "oracle_foo_schema",
+  "smt": ":oracle_foo_schema",
   "schema": "foo*"
 }
