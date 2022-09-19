@@ -19,10 +19,10 @@
         "data": {
           "tract": {
             "origin": {
-              "SMT": "mysql_foo_schema"
+              "smt": ":mysql_foo_schema"
             },
             "terminal": {
-              "SMT": "es_foo_transform"
+              "smt": ":es_foo_transform"
             },
             "transforms": {
               "filter": {

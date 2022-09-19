@@ -38,15 +38,15 @@ async function transport(req, res) {
   var terminal = tract.terminal || {};
   var transforms = tract.transforms || {};
 
-  if (!origin.SMT || origin.SMT[ 0 ] === '$')
+  if (!origin.smt || origin.smt[ 0 ] === '$')
     throw new StorageError(400, "invalid origin smt name");
-  if (!terminal.SMT || terminal.SMT[ 0 ] === '$')
+  if (!terminal.smt || terminal.smt[ 0 ] === '$')
     throw new StorageError(400, "invalid terminal smt name");
 
   var jo, jt;
   try {
-    jo = await storage.activate(origin.SMT, origin.options);
-    jt = await storage.activate(terminal.SMT, terminal.options);
+    jo = await storage.activate(origin.smt, origin.options);
+    jt = await storage.activate(terminal.smt, terminal.options);
 
     let encoding;
     if (jo.capabilities.encoding && !jo.engram.isDefined) {

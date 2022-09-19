@@ -6,11 +6,11 @@ Content-Type: application/json; charset=utf-8
 {
   "tract": {
     "origin": {
-      "SMT": "json_foofile",
+      "smt": ":json_foofile",
       "options": {}
     },
     "terminal": {
-      "SMT": "es_foo_schema_pk",
+      "smt": ":es_foo_schema_pk",
       "options": {}
     }
   }
@@ -23,13 +23,13 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "csv_foofile",
+    "smt": ":csv_foofile",
     "options": {
       "header": true
     }
   },
   "terminal": {
-    "SMT": "mysql_foo_schema",
+    "smt": ":mysql_foo_schema",
     "options": {}
   }
 }
@@ -41,11 +41,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "mysql_foo_schema",
+    "smt": ":mysql_foo_schema",
     "options": {}
   },
   "terminal": {
-    "SMT": "es_foo_transfer",
+    "smt": ":es_foo_transfer",
     "options": {}
   }
 }
@@ -57,11 +57,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "es_foo_schema_pk",
+    "smt": ":es_foo_schema_pk",
     "options": {}
   },
   "terminal": {
-    "SMT": "mysql_foo_transfer",
+    "smt": ":mysql_foo_transfer",
     "options": {}
   },
   "transforms": {
@@ -85,7 +85,7 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "rest_weather_forecast",
+    "smt": ":rest_weather_forecast",
     "options": {
         "headers": {
           "Accept": "application/ld+json",
@@ -100,7 +100,7 @@ Content-Type: application/json; charset=utf-8
     }
   },
   "terminal": {
-    "SMT": "es_weather_forecast",
+    "smt": ":es_weather_forecast",
     "options": {}
   }
 }
@@ -112,7 +112,7 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "rest_weather_forecast",
+    "smt": ":rest_weather_forecast",
     "options": {
         "headers": {
           "Accept": "application/ld+json",
@@ -127,7 +127,7 @@ Content-Type: application/json; charset=utf-8
     }
   },
   "terminal": {
-    "SMT": "mssql_weather_forecast",
+    "smt": ":mssql_weather_forecast",
     "options": {}
   }
 }
@@ -139,7 +139,7 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "rest_weather_forecast",
+    "smt": ":rest_weather_forecast",
     "options": {
         "headers": {
           "Accept": "application/ld+json",
@@ -154,7 +154,7 @@ Content-Type: application/json; charset=utf-8
     }
   },
   "terminal": {
-    "SMT": "mysql_weather_forecast",
+    "smt": ":mysql_weather_forecast",
     "options": {}
   }
 }
@@ -167,7 +167,7 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "rest_weather_forecast",
+    "smt": ":rest_weather_forecast",
     "options": {
         "headers": {
           "Accept": "application/ld+json",
@@ -182,7 +182,7 @@ Content-Type: application/json; charset=utf-8
     }
   },
   "terminal": {
-    "SMT": "oracle_weather_forecast",
+    "smt": ":oracle_weather_forecast",
     "options": {}
   }
 }

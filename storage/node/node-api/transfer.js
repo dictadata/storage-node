@@ -38,13 +38,13 @@ async function transfer(req, res) {
 
   var jo, jt;
   try {
-    if (!origin.SMT || origin.SMT[ 0 ] === '$')
-      throw new StorageError(400, "invalid origin smt name: " + origin.SMT);
-    if (!terminal.SMT || terminal.SMT[ 0 ] === '$')
-      throw new StorageError(400, "invalid terminal smt name: " + terminal.SMT);
+    if (!origin.smt || origin.smt[ 0 ] === '$')
+      throw new StorageError(400, "invalid origin smt name: " + origin.smt);
+    if (!terminal.smt || terminal.smt[ 0 ] === '$')
+      throw new StorageError(400, "invalid terminal smt name: " + terminal.smt);
 
     logger.debug("create origin junction");
-    jo = await storage.activate(origin.SMT, origin.options);
+    jo = await storage.activate(origin.smt, origin.options);
 
     let encoding;
     if (jo.capabilities.encoding && !jo.engram.isDefined) {
@@ -69,7 +69,7 @@ async function transfer(req, res) {
     logger.debug(JSON.stringify(encoding.fields));
 
     logger.debug("create terminal junction");
-    jt = await storage.activate(terminal.SMT, terminal.options);
+    jt = await storage.activate(terminal.smt, terminal.options);
 
     logger.debug("put terminal encoding");
     jt.encoding = encoding;

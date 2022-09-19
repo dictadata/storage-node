@@ -5,11 +5,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "mysql_foo_schema",
+    "smt": ":mysql_foo_schema",
     "options": {}
   },
   "terminal": {
-    "SMT": "es_foo_transform",
+    "smt": ":es_foo_transform",
     "options": {}
   },
   "transforms": {
@@ -41,11 +41,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "es_foo_schema_pk",
+    "smt": ":es_foo_schema_pk",
     "options": {}
   },
   "terminal": {
-    "SMT": "mssql_foo_transform",
+    "smt": ":mssql_foo_transform",
     "options": {}
   },
   "transforms": {
@@ -77,11 +77,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "es_foo_schema_pk",
+    "smt": ":es_foo_schema_pk",
     "options": {}
   },
   "terminal": {
-    "SMT": "mysql_foo_transform",
+    "smt": ":mysql_foo_transform",
     "options": {}
   },
   "transforms": {
@@ -113,11 +113,11 @@ Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "SMT": "es_foo_schema_pk",
+    "smt": ":es_foo_schema_pk",
     "options": {}
   },
   "terminal": {
-    "SMT": "oracle_foo_transform",
+    "smt": ":oracle_foo_transform",
     "options": {}
   },
   "transforms": {

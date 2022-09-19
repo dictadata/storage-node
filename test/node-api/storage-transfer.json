@@ -19,10 +19,10 @@
         "data": {
           "tract": {
             "origin": {
-              "SMT": "mssql_foo_transfer"
+              "smt": ":mssql_foo_transfer"
             },
             "terminal": {
-              "SMT": "es_foo_transfer"
+              "smt": ":es_foo_transfer"
             }
           }
         }
