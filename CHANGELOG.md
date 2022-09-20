@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.5.0
+  - stable build of codex, smt_urn, auth_stash
+  - update to @dictadata/storage-junctions 2.5.0
 - version 2.4.4
   - update to @dictadata/storage-junctions 2.4.3
 - version 2.4.3
