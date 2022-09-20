@@ -21,7 +21,6 @@ exports.startup = async (config) => {
   logger.verbose("codex SMT: " + JSON.stringify(config.codex.smt));
 
   var exitCode = 0;
-  var codex;
 
   try {
     // load auth_stash
