@@ -21,11 +21,11 @@ Content-Type: application/json; charset=utf-8
         "Baz": { "eq": 456 }
       }
     },
-    "select": {
-      "inject_before": {
+    "mutate": {
+      "default": {
         "Fie": "where's es fum?"
       },
-      "fields": {
+      "map": {
         "Foo": "Foo",
         "Bar": "Bar",
         "Baz": "Bazzy"
@@ -57,11 +57,11 @@ Content-Type: application/json; charset=utf-8
         "Baz": { "eq": 456 }
       }
     },
-    "select": {
-      "inject_after": {
+    "mutate": {
+      "default": {
         "Fie": "where's my fum?"
       },
-      "fields": {
+      "map": {
         "Foo": "Foo",
         "Bar": "Bar",
         "Bazzy": "Bazzy"
@@ -93,11 +93,11 @@ Content-Type: application/json; charset=utf-8
         "Baz": { "eq": 456 }
       }
     },
-    "select": {
-      "inject_after": {
+    "mutate": {
+      "override": {
         "Fie": "where's my fum?"
       },
-      "fields": {
+      "map": {
         "Foo": "Foo",
         "Bar": "Bar",
         "Bazzy": "Bazzy"
@@ -129,11 +129,11 @@ Content-Type: application/json; charset=utf-8
         "Baz": { "eq": 456 }
       }
     },
-    "select": {
-      "inject_after": {
+    "mutate": {
+      "override": {
         "Fie": "where's my fum?"
       },
-      "fields": {
+      "map": {
         "Foo": "Foo",
         "Bar": "Bar",
         "Bazzy": "Bazzy"

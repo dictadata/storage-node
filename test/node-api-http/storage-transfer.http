@@ -65,8 +65,8 @@ Content-Type: application/json; charset=utf-8
     "options": {}
   },
   "transforms": {
-    "select": {
-      "fields": {
+    "mutate": {
+      "map": {
         "Foo": "Foo",
         "Bar": "Bar",
         "Baz": "Baz",

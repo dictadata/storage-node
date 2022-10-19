@@ -35,11 +35,11 @@
                   }
                 }
               },
-              "select": {
-                "inject_before": {
+              "mutate": {
+                "default": {
                   "Fie": "where's es fum?"
                 },
-                "fields": {
+                "map": {
                   "Foo": "Foo",
                   "Bar": "Bar",
                   "Baz": "Bazzy"
