@@ -78,15 +78,13 @@ async function submitQuery(request, expected, outputFile) {
 
     let results;
     let isJSON = httpRequest.contentTypeIsJSON(response.headers[ "content-type" ]);
-    if (response.data) {
-      if (isJSON) {
-        outputFile += ".json";
-        results = JSON.parse(response.data);
-      }
-      else {
-        outputFile += ".txt";
-        results = response.data;
-      }
+    if (isJSON) {
+      results = JSON.parse(response.data);
+      outputFile += ".json";
+    }
+    else {
+      results = response.data;
+      outputFile += ".txt";
     }
 
     // validate HTTP statusCode against expected
@@ -115,17 +113,26 @@ async function submitQuery(request, expected, outputFile) {
       }
     }
 
-    if (retCode === 0 && response.data) {
-      // compare output files to expected
-      console.log("output: ", outputFile);
-
-      fs.writeFileSync(outputFile, isJSON ? JSON.stringify(results, null, "  ") : results, "utf8");
-
-      if (isJSON) {
-        let expected_output = outputFile.replace("output", "expected");
-        let compareValues = hasOwnProperty(expected, "compareValues") ? expected.compareValues : 2;
-        retCode = _compare(expected_output, outputFile, compareValues);
+    console.log("output: ", outputFile);
+    if ([200, 201, 409].includes(response.statusCode)) {
+      fs.writeFileSync(outputFile, isJSON ? JSON.stringify(results, null, 2) : results, "utf8");
+    }
+    else {
+      let fd = fs.openSync(outputFile, 'w');
+      fs.writeSync(fd, "HTTP/" + response.httpVersion + " " + response.statusCode + " " + response.statusMessage + "\n");
+      for (let [ name, value ] of Object.entries(response.headers))
+        fs.writeSync(fd, name + ": " + value + "\n");
+      if (response.data) {
+        fs.writeSync(fd, "\n" + response.data);
+        fs.closeSync(fd);
       }
+    }
+
+    if (retCode === 0 && response.data && isJSON) {
+      // compare output files to expected
+      let expected_output = outputFile.replace("output", "expected");
+      let compareValues = hasOwnProperty(expected, "compareValues") ? expected.compareValues : 2;
+      retCode = _compare(expected_output, outputFile, compareValues);
     }
 
     return retCode;
@@ -143,7 +150,7 @@ async function submitQuery(request, expected, outputFile) {
         console.log("FAILED ".bgRed + err.stack);
     }
     else {
-      console.log("FAILED  ".bgRed + err.message);
+      console.log("FAILED  ".bgRed + err);
     }
 
     return 1;
