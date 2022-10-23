@@ -1,5 +1,12 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.5.1
+  - update to @dictadata/storage-junctions 2.5.2
+  - breaking changes:
+    - data responses, remove results wrapper from http response body
+    - response resultText renamed to resultMessage
+    - SelectTransform replaced with MutateTransform
+  - enhancement: transfer can use "stream:*" locus to stream data in request/response body
 - version 2.5.0
   - stable build of codex, smt_urn, auth_stash
   - update to @dictadata/storage-junctions 2.5.0
