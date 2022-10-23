@@ -97,7 +97,6 @@ async function transfer(req, res) {
     //logger.debug(encoding);
     //logger.debug(JSON.stringify(encoding.fields));
 
-
     /// create terminal junction
     logger.debug("create terminal junction");
     jt = await Storage.activate(terminal.smt, terminal.options);
@@ -110,7 +109,7 @@ async function transfer(req, res) {
         logger.info("could not create storage schema: " + results.resultMessage);
     }
 
-    /// transfer data
+    /// setup pipeline
     logger.debug("transfer pipeline");
     var pipes = [];
 
@@ -135,6 +134,7 @@ async function transfer(req, res) {
     });
     pipes.push(writer);
 
+    // transfer data
     logger.debug(">>> start transfer");
     if (jt.smt.locus.startsWith('stream:'))
       res.type('json');
