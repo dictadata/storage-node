@@ -7,7 +7,8 @@
     "timeout": 90000
   },
   "expected": {
-    "statusCode": 200
+    "statusCode": 200,
+    "compareValues": 2
   },
   "queries": [
     {
@@ -23,6 +24,24 @@
             },
             "terminal": {
               "smt": ":es_foo_transfer"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "foo-stream",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "tract": {
+            "origin": {
+              "smt": ":json_foofile"
+            },
+            "terminal": {
+              "smt": "json|stream:*|*|*"
             }
           }
         }
