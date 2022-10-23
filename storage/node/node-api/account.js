@@ -54,7 +54,7 @@ async function login(req, res) {
 
     // return account record
     results.data[req.user.userid] = account.packet();
-    res.set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
+    res.status(results.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results.data || response);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)
@@ -102,7 +102,7 @@ async function register(req, res) {
 
     // return user's record
     results.data[newAccount.userid] = newAccount.packet();
-    res.status(201).set("Cache-Control", "no-store").jsonp(results);
+    res.status(results.resultCode || 201).set("Cache-Control", "no-store").jsonp(results.data || results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 409)
@@ -148,7 +148,7 @@ async function store(req, res) {
 
     // return user's record
     results.data[modAccount.userid] = modAccount.packet();
-    res.set("Cache-Control", "no-store").jsonp(results);
+    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results.data || results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)
@@ -185,7 +185,7 @@ async function dull(req, res) {
     let results = await accounts.dull(userid);
 
     //let results = new StorageResponse(0);
-    res.set("Cache-Control", "no-store").jsonp(results);
+    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results.data || results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)
@@ -218,7 +218,7 @@ async function logEvent(req, res) {
 
     // return "ok"
     let results = new StorageResponse(0);
-    res.set("Cache-Control", "no-store").jsonp(results);
+    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results.data || results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)

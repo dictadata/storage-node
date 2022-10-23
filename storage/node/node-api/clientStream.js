@@ -40,7 +40,7 @@ module.exports = router;
  */
 function exportData(req, res) {
   logger.verbose('/clientStream export');
-  res.writeHead(200, { 'content-type': 'text/plain' });
+  res.status(200).set('content-type', 'text/plain');
 
   let dp = config.dataPath || path.join(__dirname, '../data');
   if (config.realm)
@@ -71,9 +71,9 @@ function importData(req, res) {
   fm.multiples = true;
 
   fm.parse(req, function (err, fields, files) {
-    res.writeHead(200, { 'content-type': 'text/plain' });
-    res.write('received upload:\n\n');
-    res.write(util.inspect({ fields: fields, files: files }, { depth: 3 }));
+    res.status(200).set('content-type', 'text/plain');
+    res.send('received upload:\n\n');
+    res.send(util.inspect({ fields: fields, files: files }, { depth: 3 }));
     res.end();
   });
 }
@@ -165,7 +165,7 @@ async function uploadFiles(req, res) {
         await stream.pipeline(reader, writer);
         logger.debug(results);
 
-        res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
+        res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results.data || response);
       }
       catch (err) {
         logger.error(err);

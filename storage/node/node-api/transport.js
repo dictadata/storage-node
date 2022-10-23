@@ -91,8 +91,7 @@ async function transport(req, res) {
     await stream.pipeline(pipes);
 
     let response = new StorageResponse(0);
-
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
+    res.jsonp(response);
   }
   catch (err) {
     logger.error(err);

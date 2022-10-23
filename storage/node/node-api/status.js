@@ -30,13 +30,11 @@ function status(req, res) {
 
   var results = new StorageResponse(0);
   results.add(config.name, "name");
-  results.add(config.version, "vesion");
+  results.add(config.version, "version");
   results.add(new Date().toISOString(), "time");
   //info.userid = ' + request.user.userid + '/' + request.user.password;
 
-  res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-  res.write(JSON.stringify(results));
-  res.end();
+  res.status(200).jsonp(results.data || results);
 }
 
 /**
@@ -57,7 +55,7 @@ async function smt_status(req, res) {
 
     let results = await junction.list();
 
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
+    res.status(results.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results.data || results);
   }
   catch (err) {
     logger.error(err);
