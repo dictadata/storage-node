@@ -1,61 +1,57 @@
 {
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": {
-    "encoding": {
-      "name": "foo_schema_pk",
-      "type": "engram",
-      "smt": {
-        "model": "elasticsearch",
-        "locus": "http://dev.dictadata.org:9200",
-        "schema": "foo_schema_pk",
-        "key": "=Foo"
-      },
-      "fields": [
-        {
-          "name": "Bar",
-          "type": "text",
-          "_elasticsearch": {
-            "type": "text"
-          }
-        },
-        {
-          "name": "Baz",
-          "type": "integer",
-          "_elasticsearch": {
-            "type": "integer"
-          }
-        },
-        {
-          "name": "Dt Test",
-          "type": "date",
-          "_elasticsearch": {
-            "type": "date"
-          }
-        },
-        {
-          "name": "Fobe",
-          "type": "float",
-          "_elasticsearch": {
-            "type": "double"
-          }
-        },
-        {
-          "name": "Foo",
-          "type": "keyword",
-          "_elasticsearch": {
-            "type": "keyword"
-          },
-          "key": 1
-        },
-        {
-          "name": "enabled",
-          "type": "boolean",
-          "_elasticsearch": {
-            "type": "boolean"
-          }
+  "encoding": {
+    "name": "foo_schema_pk",
+    "type": "engram",
+    "smt": {
+      "model": "elasticsearch",
+      "locus": "http://dev.dictadata.org:9200",
+      "schema": "foo_schema_pk",
+      "key": "=Foo"
+    },
+    "fields": [
+      {
+        "name": "Bar",
+        "type": "text",
+        "_elasticsearch": {
+          "type": "text"
         }
-      ]
-    }
+      },
+      {
+        "name": "Baz",
+        "type": "integer",
+        "_elasticsearch": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "Dt Test",
+        "type": "date",
+        "_elasticsearch": {
+          "type": "date"
+        }
+      },
+      {
+        "name": "Fobe",
+        "type": "float",
+        "_elasticsearch": {
+          "type": "double"
+        }
+      },
+      {
+        "name": "Foo",
+        "type": "keyword",
+        "_elasticsearch": {
+          "type": "keyword"
+        },
+        "key": 1
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "_elasticsearch": {
+          "type": "boolean"
+        }
+      }
+    ]
   }
 }

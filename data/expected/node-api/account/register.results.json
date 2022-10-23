@@ -1,40 +1,36 @@
 {
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": {
-    "dullboy": {
-      "userid": "dullboy",
-      "roles": [
-        "Public",
-        "User"
-      ],
-      "dateCreated": "2022-04-26T19:19:04.425Z",
-      "dateUpdated": "2022-04-26T19:19:04.426Z",
-      "lastLogin": "2022-04-26T19:19:04.425Z",
-      "profile": {
-        "provider": "",
-        "id": "",
-        "displayName": "",
-        "name": {
-          "familyName": "",
-          "givenName": "",
-          "middleName": ""
-        },
-        "emails": [
-          {
-            "value": "",
-            "type": ""
-          }
-        ],
-        "photos": [
-          {
-            "value": ""
-          }
-        ]
+  "dullboy": {
+    "userid": "dullboy",
+    "roles": [
+      "Public",
+      "User"
+    ],
+    "dateCreated": "2022-04-26T19:19:04.425Z",
+    "dateUpdated": "2022-04-26T19:19:04.426Z",
+    "lastLogin": "2022-04-26T19:19:04.425Z",
+    "profile": {
+      "provider": "",
+      "id": "",
+      "displayName": "",
+      "name": {
+        "familyName": "",
+        "givenName": "",
+        "middleName": ""
       },
-      "settings": {
-        "prefix": ""
-      }
+      "emails": [
+        {
+          "value": "",
+          "type": ""
+        }
+      ],
+      "photos": [
+        {
+          "value": ""
+        }
+      ]
+    },
+    "settings": {
+      "prefix": ""
     }
   }
 }

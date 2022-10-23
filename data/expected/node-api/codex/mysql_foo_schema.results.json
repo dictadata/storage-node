@@ -1,17 +1,13 @@
 {
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": {
-    ":mysql_foo_schema": {
-      "name": "mysql_foo_schema",
-      "type": "engram",
-      "smt": {
-        "model": "mysql",
-        "locus": "host=dev.dictadata.org;database=storage_node",
-        "schema": "foo_schema",
-        "key": "=Foo"
-      },
-      "fields": []
-    }
+  ":mysql_foo_schema": {
+    "name": "mysql_foo_schema",
+    "type": "engram",
+    "smt": {
+      "model": "mysql",
+      "locus": "host=dev.dictadata.org;database=storage_node",
+      "schema": "foo_schema",
+      "key": "=Foo"
+    },
+    "fields": []
   }
 }

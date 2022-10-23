@@ -1,20 +1,16 @@
 {
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": {
-    ":es_foo_schema": {
-      "name": "es_foo_schema",
-      "type": "engram",
-      "smt": {
-        "model": "elasticsearch",
-        "locus": "http://dev.dictadata.org:9200",
-        "schema": "foo_schema",
-        "key": "!Foo"
-      },
-      "fields": [],
-      "options": {
-        "refresh": true
-      }
+  ":es_foo_schema": {
+    "name": "es_foo_schema",
+    "type": "engram",
+    "smt": {
+      "model": "elasticsearch",
+      "locus": "http://dev.dictadata.org:9200",
+      "schema": "foo_schema",
+      "key": "!Foo"
+    },
+    "fields": [],
+    "options": {
+      "refresh": true
     }
   }
 }

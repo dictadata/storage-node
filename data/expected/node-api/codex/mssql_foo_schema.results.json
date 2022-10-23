@@ -1,17 +1,13 @@
 {
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": {
-    ":mssql_foo_schema": {
-      "name": "mssql_foo_schema",
-      "type": "engram",
-      "smt": {
-        "model": "mssql",
-        "locus": "server=dev.dictadata.org;database=storage_node",
-        "schema": "foo_schema",
-        "key": "=Foo"
-      },
-      "fields": []
-    }
+  ":mssql_foo_schema": {
+    "name": "mssql_foo_schema",
+    "type": "engram",
+    "smt": {
+      "model": "mssql",
+      "locus": "server=dev.dictadata.org;database=storage_node",
+      "schema": "foo_schema",
+      "key": "=Foo"
+    },
+    "fields": []
   }
 }

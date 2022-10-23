@@ -1,7 +1,3 @@
 {
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": {
-    "foo:foo_alias": "updated"
-  }
+  "foo:foo_alias": "updated"
 }

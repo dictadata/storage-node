@@ -1,16 +1,12 @@
-{
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": [
-    "foo_dbtransform",
-    "foo_load",
-    "foo_schema",
-    "foo_schema_01",
-    "foo_schema_02",
-    "foo_schema_etl",
-    "foo_schema_etl2",
-    "foo_schema_lg",
-    "foo_schema_two",
-    "foo_transfer"
-  ]
-}
+[
+  "foo_dbtransform",
+  "foo_load",
+  "foo_schema",
+  "foo_schema_01",
+  "foo_schema_02",
+  "foo_schema_etl",
+  "foo_schema_etl2",
+  "foo_schema_lg",
+  "foo_schema_two",
+  "foo_transfer"
+]

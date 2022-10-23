@@ -1,7 +1,3 @@
 {
-  "resultCode": 0,
-  "resultText": "OK",
-  "data": {
-    "foo:foo_schema_XYZ": "deleted"
-  }
+  "foo:foo_schema_XYZ": "deleted"
 }
