@@ -1,19 +1,16 @@
 /**
- * storage-node/transfer
+ * storage/node/node-api/transfer
  *
- * transfers between:
- *  storage-node and storage sources
+ * stream data from datastore to client or datastore to datastore
  */
 "use strict";
 
 const express = require('express');
 const authorize = require("../authorize");
 const roles = require("../roles");
-const config = require('../config');
 const logger = require('../../utils/logger');
-const storage = require('@dictadata/storage-junctions');
+const Storage = require('@dictadata/storage-junctions');
 const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
-const { typeOf } = require('@dictadata/storage-junctions/utils');
 const stream = require('stream').promises;
 
 /**
@@ -24,79 +21,137 @@ router.post('/transfer', authorize([ roles.ETL ]), transfer);
 module.exports = router;
 
 /**
- *  transfer handlers
+ *  transfer handler
  */
-
 async function transfer(req, res) {
   logger.verbose('/transfer');
   logger.debug(req.body);
 
-  var tract = req.body.tract || req.body;
-  var origin = tract.origin || {};
-  var terminal = tract.terminal || {};
-  var transforms = tract.transforms || {};
+  const tract = req.body.tract || req.body;
+  const origin = tract.origin || {};
+  const terminal = tract.terminal || {};
+  const transforms = tract.transform || tract.transforms || {};
+  if (!origin.options) origin.options = {};
+  if (!terminal.options) terminal.options = {};
 
-  var jo, jt;
+  var jo, jt; // junctions origin, terminal
   try {
+    /// validate parameters
     if (!origin.smt || origin.smt[ 0 ] === '$')
       throw new StorageError(400, "invalid origin smt name: " + origin.smt);
     if (!terminal.smt || terminal.smt[ 0 ] === '$')
       throw new StorageError(400, "invalid terminal smt name: " + terminal.smt);
 
+    /// create origin junction
     logger.debug("create origin junction");
-    jo = await storage.activate(origin.smt, origin.options);
+    jo = await Storage.activate(origin.smt, origin.options);
 
-    let encoding;
-    if (jo.capabilities.encoding && !jo.engram.isDefined) {
+    /// get origin encoding
+    logger.debug(">>> get origin encoding");
+    let encoding = origin.options.encoding;
+    if (!encoding && jo.capabilities.encoding) {
       let results = await jo.getEncoding();  // load encoding from origin for validation
       encoding = results.data[ "encoding" ];
     }
 
-    logger.verbose("codify pipeline");
-    let pipe1 = [];
-    let cpattern = Object.assign({ max_read: 100 }, tract.origin.pattern);
-    pipe1.push(jo.createReader(cpattern));
-    for (let [ tfType, tfOptions ] of Object.entries(transforms))
-      pipe1.push(await jo.createTransform(tfType, tfOptions));
-    let cf = await jo.createTransform('codify');
-    pipe1.push(cf);
+    /// determine terminal encoding
+    logger.verbose(">>> determine terminal encoding");
+    if (terminal.options && typeof terminal.options.encoding === "string") {
+      // read encoding from file
+      let filename = terminal.options.encoding;
+      terminal.options.encoding = JSON.parse(fs.readFileSync(filename, "utf8"));
+    }
+    else if (!encoding || Object.keys(transforms).length > 0) {
+      // otherwise run some objects through any transforms to get terminal encoding
+      logger.verbose("codify pipeline");
+      let pipes = [];
 
-    await stream.pipeline(pipe1);
-    encoding = await cf.encoding;
+      let options = Object.assign({
+        reader: req,
+        max_read: (origin.options && origin.options.max_read) || 100
+      }, origin.pattern);
 
-    logger.debug("encoding results");
-    logger.debug(encoding);
-    logger.debug(JSON.stringify(encoding.fields));
+      let reader = jo.createReader(options);
+      reader.on('error', (error) => {
+        logger.error("transfer reader: " + error.message);
+      });
+      pipes.push(reader);
 
+      for (let [ tfType, tfOptions ] of Object.entries(transforms))
+        pipes.push(await jo.createTransform(tfType, tfOptions));
+
+      let codify = await jo.createTransform('codify');
+      pipes.push(codify);
+
+      await stream.pipeline(pipes);
+      terminal.options.encoding = codify.encoding;
+    }
+    else
+      // use origin encoding
+      terminal.options.encoding = encoding;
+
+    if (typeof terminal.options.encoding !== "object")
+      throw new StorageError(400, "invalid terminal encoding");
+
+    //logger.debug("encoding results");
+    //logger.debug(encoding);
+    //logger.debug(JSON.stringify(encoding.fields));
+
+
+    /// create terminal junction
     logger.debug("create terminal junction");
-    jt = await storage.activate(terminal.smt, terminal.options);
+    jt = await Storage.activate(terminal.smt, terminal.options);
 
-    logger.debug("put terminal encoding");
-    jt.encoding = encoding;
-    if (jt.capabilities.encoding) {
+    logger.debug("create terminal schema");
+    if (jt.capabilities.encoding && !terminal.options.append) {
       let results = await jt.createSchema();
-      let dest_mode = (results.resultCode === 0) ? "created" : "append";
+      logger.verbose(">>> createSchema");
+      if (results.resultCode !== 0)
+        logger.info("could not create storage schema: " + results.resultMessage);
     }
 
+    /// transfer data
     logger.debug("transfer pipeline");
     var pipes = [];
-    let pattern = Object.assign({}, tract.origin.pattern);
-    pipes.push(jo.createReader(pattern));
-    if (transforms) {
-      logger.debug("add transforms to pipeline");
-      for (let [ tfType, options ] of Object.entries(transforms))
-        pipes.push(await jo.createTransform(tfType, options));
-    }
-    pipes.push(jt.createWriter());
 
+    // reader
+    let options = Object.assign({ reader: req }, origin.pattern);
+    let reader = jo.createReader(options);
+    reader.on('error', (error) => {
+      logger.error("transfer reader: " + error.message);
+    });
+    pipes.push(reader);
+
+    // transforms
+    for (let [ tfName, tfOptions ] of Object.entries(transforms)) {
+      let tfType = tfName.split("-")[ 0 ];
+      pipes.push(await jo.createTransform(tfType, tfOptions));
+    }
+
+    // writer
+    let writer = jt.createWriter({ writer: res });
+    writer.on('error', (error) => {
+      logger.error("transfer writer: " + error.message);
+    });
+    pipes.push(writer);
+
+    logger.debug(">>> start transfer");
+    if (jt.smt.locus.startsWith('stream:'))
+      res.type('json');
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60");
     await stream.pipeline(pipes);
 
-    let response = new StorageResponse(0);
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(response);
+    if (jt.smt.locus.startsWith('stream:'))
+      res.end();
+    else {
+      let response = new StorageResponse(0);
+      res.jsonp(response);
+    }
   }
   catch (err) {
     logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    let response = new StorageError(err.resultCode, err.message);
+    res.status(err.resultCode || 500).jsonp(response);
   }
   finally {
     if (jo)
