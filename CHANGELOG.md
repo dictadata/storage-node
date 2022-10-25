@@ -1,7 +1,11 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 2.5.2
+  - updated: to @dictadata/storage-junctions 2.5.3
+  - bugfix: accept filename for terminal.options.encoding
+  - testing: add test cases for locus = "stream:*"
 - version 2.5.1
-  - update to @dictadata/storage-junctions 2.5.2
+  - updated: to @dictadata/storage-junctions 2.5.2
   - breaking changes:
     - data responses, remove results wrapper from http response body
     - response resultText renamed to resultMessage
