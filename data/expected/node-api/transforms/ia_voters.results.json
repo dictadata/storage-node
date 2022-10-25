@@ -1,0 +1,1802 @@
+[
+  {
+    "County": "Adams",
+    "Active": {
+      "Democratic": 472,
+      "Republican": 1145,
+      "No Party": 809,
+      "Other": 8,
+      "Total": 2434
+    },
+    "Inactive": {
+      "Democratic": 56,
+      "Republican": 77,
+      "No Party": 250,
+      "Other": 0,
+      "Total": 383
+    },
+    "Total": 2817
+  },
+  {
+    "County": "Adair",
+    "Active": {
+      "Democratic": 865,
+      "Republican": 2250,
+      "No Party": 1551,
+      "Other": 22,
+      "Total": 4688
+    },
+    "Inactive": {
+      "Democratic": 111,
+      "Republican": 192,
+      "No Party": 426,
+      "Other": 8,
+      "Total": 737
+    },
+    "Total": 5425
+  },
+  {
+    "County": "Buena Vista",
+    "Active": {
+      "Democratic": 2508,
+      "Republican": 4090,
+      "No Party": 2961,
+      "Other": 71,
+      "Total": 9630
+    },
+    "Inactive": {
+      "Democratic": 754,
+      "Republican": 549,
+      "No Party": 1272,
+      "Other": 19,
+      "Total": 2594
+    },
+    "Total": 12224
+  },
+  {
+    "County": "Audubon",
+    "Active": {
+      "Democratic": 872,
+      "Republican": 1881,
+      "No Party": 910,
+      "Other": 17,
+      "Total": 3680
+    },
+    "Inactive": {
+      "Democratic": 91,
+      "Republican": 179,
+      "No Party": 271,
+      "Other": 4,
+      "Total": 545
+    },
+    "Total": 4225
+  },
+  {
+    "County": "Allamakee",
+    "Active": {
+      "Democratic": 1946,
+      "Republican": 4053,
+      "No Party": 2314,
+      "Other": 40,
+      "Total": 8353
+    },
+    "Inactive": {
+      "Democratic": 279,
+      "Republican": 403,
+      "No Party": 737,
+      "Other": 12,
+      "Total": 1431
+    },
+    "Total": 9784
+  },
+  {
+    "County": "Decatur",
+    "Active": {
+      "Democratic": 1014,
+      "Republican": 1946,
+      "No Party": 1148,
+      "Other": 20,
+      "Total": 4128
+    },
+    "Inactive": {
+      "Democratic": 264,
+      "Republican": 203,
+      "No Party": 321,
+      "Other": 15,
+      "Total": 803
+    },
+    "Total": 4931
+  },
+  {
+    "County": "Benton",
+    "Active": {
+      "Democratic": 3752,
+      "Republican": 6245,
+      "No Party": 6034,
+      "Other": 110,
+      "Total": 16141
+    },
+    "Inactive": {
+      "Democratic": 455,
+      "Republican": 467,
+      "No Party": 1441,
+      "Other": 26,
+      "Total": 2389
+    },
+    "Total": 18530
+  },
+  {
+    "County": "Appanoose",
+    "Active": {
+      "Democratic": 1698,
+      "Republican": 3469,
+      "No Party": 2181,
+      "Other": 56,
+      "Total": 7404
+    },
+    "Inactive": {
+      "Democratic": 356,
+      "Republican": 358,
+      "No Party": 744,
+      "Other": 10,
+      "Total": 1468
+    },
+    "Total": 8872
+  },
+  {
+    "County": "Des Moines",
+    "Active": {
+      "Democratic": 8312,
+      "Republican": 7240,
+      "No Party": 6812,
+      "Other": 181,
+      "Total": 22545
+    },
+    "Inactive": {
+      "Democratic": 1760,
+      "Republican": 928,
+      "No Party": 2482,
+      "Other": 56,
+      "Total": 5226
+    },
+    "Total": 27771
+  },
+  {
+    "County": "Black Hawk",
+    "Active": {
+      "Democratic": 28021,
+      "Republican": 20903,
+      "No Party": 22964,
+      "Other": 600,
+      "Total": 72488
+    },
+    "Inactive": {
+      "Democratic": 5229,
+      "Republican": 2372,
+      "No Party": 6700,
+      "Other": 197,
+      "Total": 14498
+    },
+    "Total": 86986
+  },
+  {
+    "County": "Bremer",
+    "Active": {
+      "Democratic": 3986,
+      "Republican": 5659,
+      "No Party": 5952,
+      "Other": 76,
+      "Total": 15673
+    },
+    "Inactive": {
+      "Democratic": 550,
+      "Republican": 470,
+      "No Party": 1290,
+      "Other": 23,
+      "Total": 2333
+    },
+    "Total": 18006
+  },
+  {
+    "County": "Dickinson",
+    "Active": {
+      "Democratic": 2477,
+      "Republican": 6393,
+      "No Party": 3643,
+      "Other": 91,
+      "Total": 12604
+    },
+    "Inactive": {
+      "Democratic": 368,
+      "Republican": 654,
+      "No Party": 955,
+      "Other": 29,
+      "Total": 2006
+    },
+    "Total": 14610
+  },
+  {
+    "County": "Boone",
+    "Active": {
+      "Democratic": 4914,
+      "Republican": 6310,
+      "No Party": 5611,
+      "Other": 130,
+      "Total": 16965
+    },
+    "Inactive": {
+      "Democratic": 603,
+      "Republican": 628,
+      "No Party": 1699,
+      "Other": 48,
+      "Total": 2978
+    },
+    "Total": 19943
+  },
+  {
+    "County": "Calhoun",
+    "Active": {
+      "Democratic": 1128,
+      "Republican": 2784,
+      "No Party": 1940,
+      "Other": 42,
+      "Total": 5894
+    },
+    "Inactive": {
+      "Democratic": 149,
+      "Republican": 208,
+      "No Party": 464,
+      "Other": 11,
+      "Total": 832
+    },
+    "Total": 6726
+  },
+  {
+    "County": "Franklin",
+    "Active": {
+      "Democratic": 1103,
+      "Republican": 2931,
+      "No Party": 1674,
+      "Other": 34,
+      "Total": 5742
+    },
+    "Inactive": {
+      "Democratic": 165,
+      "Republican": 238,
+      "No Party": 487,
+      "Other": 6,
+      "Total": 896
+    },
+    "Total": 6638
+  },
+  {
+    "County": "Buchanan",
+    "Active": {
+      "Democratic": 3294,
+      "Republican": 3981,
+      "No Party": 4862,
+      "Other": 59,
+      "Total": 12196
+    },
+    "Inactive": {
+      "Democratic": 330,
+      "Republican": 287,
+      "No Party": 1324,
+      "Other": 13,
+      "Total": 1954
+    },
+    "Total": 14150
+  },
+  {
+    "County": "Cass",
+    "Active": {
+      "Democratic": 1400,
+      "Republican": 4445,
+      "No Party": 2260,
+      "Other": 46,
+      "Total": 8151
+    },
+    "Inactive": {
+      "Democratic": 209,
+      "Republican": 504,
+      "No Party": 731,
+      "Other": 18,
+      "Total": 1462
+    },
+    "Total": 9613
+  },
+  {
+    "County": "Fremont",
+    "Active": {
+      "Democratic": 816,
+      "Republican": 2512,
+      "No Party": 874,
+      "Other": 28,
+      "Total": 4230
+    },
+    "Inactive": {
+      "Democratic": 161,
+      "Republican": 295,
+      "No Party": 341,
+      "Other": 15,
+      "Total": 812
+    },
+    "Total": 5042
+  },
+  {
+    "County": "Butler",
+    "Active": {
+      "Democratic": 1713,
+      "Republican": 4535,
+      "No Party": 2579,
+      "Other": 57,
+      "Total": 8884
+    },
+    "Inactive": {
+      "Democratic": 189,
+      "Republican": 336,
+      "No Party": 731,
+      "Other": 11,
+      "Total": 1267
+    },
+    "Total": 10151
+  },
+  {
+    "County": "Cerro Gordo",
+    "Active": {
+      "Democratic": 8137,
+      "Republican": 8606,
+      "No Party": 9459,
+      "Other": 161,
+      "Total": 26363
+    },
+    "Inactive": {
+      "Democratic": 1194,
+      "Republican": 934,
+      "No Party": 2892,
+      "Other": 48,
+      "Total": 5068
+    },
+    "Total": 31431
+  },
+  {
+    "County": "Guthrie",
+    "Active": {
+      "Democratic": 1524,
+      "Republican": 3297,
+      "No Party": 2353,
+      "Other": 50,
+      "Total": 7224
+    },
+    "Inactive": {
+      "Democratic": 203,
+      "Republican": 276,
+      "No Party": 630,
+      "Other": 8,
+      "Total": 1117
+    },
+    "Total": 8341
+  },
+  {
+    "County": "Carroll",
+    "Active": {
+      "Democratic": 3058,
+      "Republican": 5158,
+      "No Party": 4568,
+      "Other": 88,
+      "Total": 12872
+    },
+    "Inactive": {
+      "Democratic": 394,
+      "Republican": 471,
+      "No Party": 1072,
+      "Other": 22,
+      "Total": 1959
+    },
+    "Total": 14831
+  },
+  {
+    "County": "Clarke",
+    "Active": {
+      "Democratic": 1251,
+      "Republican": 2278,
+      "No Party": 1578,
+      "Other": 31,
+      "Total": 5138
+    },
+    "Inactive": {
+      "Democratic": 220,
+      "Republican": 237,
+      "No Party": 551,
+      "Other": 17,
+      "Total": 1025
+    },
+    "Total": 6163
+  },
+  {
+    "County": "Hancock",
+    "Active": {
+      "Democratic": 1301,
+      "Republican": 3590,
+      "No Party": 1829,
+      "Other": 36,
+      "Total": 6756
+    },
+    "Inactive": {
+      "Democratic": 176,
+      "Republican": 285,
+      "No Party": 555,
+      "Other": 13,
+      "Total": 1029
+    },
+    "Total": 7785
+  },
+  {
+    "County": "Cedar",
+    "Active": {
+      "Democratic": 3067,
+      "Republican": 4438,
+      "No Party": 3737,
+      "Other": 86,
+      "Total": 11328
+    },
+    "Inactive": {
+      "Democratic": 317,
+      "Republican": 346,
+      "No Party": 827,
+      "Other": 25,
+      "Total": 1515
+    },
+    "Total": 12843
+  },
+  {
+    "County": "Clay",
+    "Active": {
+      "Democratic": 1849,
+      "Republican": 5363,
+      "No Party": 2727,
+      "Other": 81,
+      "Total": 10020
+    },
+    "Inactive": {
+      "Democratic": 305,
+      "Republican": 565,
+      "No Party": 957,
+      "Other": 19,
+      "Total": 1846
+    },
+    "Total": 11866
+  },
+  {
+    "County": "Hardin",
+    "Active": {
+      "Democratic": 2307,
+      "Republican": 4863,
+      "No Party": 2738,
+      "Other": 62,
+      "Total": 9970
+    },
+    "Inactive": {
+      "Democratic": 388,
+      "Republican": 464,
+      "No Party": 909,
+      "Other": 17,
+      "Total": 1778
+    },
+    "Total": 11748
+  },
+  {
+    "County": "Cherokee",
+    "Active": {
+      "Democratic": 1175,
+      "Republican": 4078,
+      "No Party": 1763,
+      "Other": 26,
+      "Total": 7042
+    },
+    "Inactive": {
+      "Democratic": 221,
+      "Republican": 330,
+      "No Party": 715,
+      "Other": 9,
+      "Total": 1275
+    },
+    "Total": 8317
+  },
+  {
+    "County": "Clayton",
+    "Active": {
+      "Democratic": 2811,
+      "Republican": 4253,
+      "No Party": 3579,
+      "Other": 75,
+      "Total": 10718
+    },
+    "Inactive": {
+      "Democratic": 322,
+      "Republican": 363,
+      "No Party": 766,
+      "Other": 15,
+      "Total": 1466
+    },
+    "Total": 12184
+  },
+  {
+    "County": "Henry",
+    "Active": {
+      "Democratic": 2399,
+      "Republican": 5136,
+      "No Party": 3594,
+      "Other": 76,
+      "Total": 11205
+    },
+    "Inactive": {
+      "Democratic": 574,
+      "Republican": 684,
+      "No Party": 1633,
+      "Other": 37,
+      "Total": 2928
+    },
+    "Total": 14133
+  },
+  {
+    "County": "Chickasaw",
+    "Active": {
+      "Democratic": 1992,
+      "Republican": 2777,
+      "No Party": 2336,
+      "Other": 34,
+      "Total": 7139
+    },
+    "Inactive": {
+      "Democratic": 240,
+      "Republican": 195,
+      "No Party": 697,
+      "Other": 12,
+      "Total": 1144
+    },
+    "Total": 8283
+  },
+  {
+    "County": "Crawford",
+    "Active": {
+      "Democratic": 1989,
+      "Republican": 3542,
+      "No Party": 2714,
+      "Other": 56,
+      "Total": 8301
+    },
+    "Inactive": {
+      "Democratic": 493,
+      "Republican": 381,
+      "No Party": 909,
+      "Other": 21,
+      "Total": 1804
+    },
+    "Total": 10105
+  },
+  {
+    "County": "Jasper",
+    "Active": {
+      "Democratic": 6975,
+      "Republican": 8532,
+      "No Party": 7207,
+      "Other": 141,
+      "Total": 22855
+    },
+    "Inactive": {
+      "Democratic": 986,
+      "Republican": 773,
+      "No Party": 2017,
+      "Other": 32,
+      "Total": 3808
+    },
+    "Total": 26663
+  },
+  {
+    "County": "Clinton",
+    "Active": {
+      "Democratic": 8494,
+      "Republican": 9286,
+      "No Party": 9998,
+      "Other": 172,
+      "Total": 27950
+    },
+    "Inactive": {
+      "Democratic": 1577,
+      "Republican": 896,
+      "No Party": 3330,
+      "Other": 73,
+      "Total": 5876
+    },
+    "Total": 33826
+  },
+  {
+    "County": "Dallas",
+    "Active": {
+      "Democratic": 18412,
+      "Republican": 22265,
+      "No Party": 21289,
+      "Other": 497,
+      "Total": 62463
+    },
+    "Inactive": {
+      "Democratic": 2246,
+      "Republican": 2423,
+      "No Party": 4777,
+      "Other": 164,
+      "Total": 9610
+    },
+    "Total": 72073
+  },
+  {
+    "County": "Jefferson",
+    "Active": {
+      "Democratic": 3829,
+      "Republican": 3469,
+      "No Party": 2249,
+      "Other": 77,
+      "Total": 9624
+    },
+    "Inactive": {
+      "Democratic": 677,
+      "Republican": 340,
+      "No Party": 790,
+      "Other": 27,
+      "Total": 1834
+    },
+    "Total": 11458
+  },
+  {
+    "County": "Davis",
+    "Active": {
+      "Democratic": 1173,
+      "Republican": 2201,
+      "No Party": 1071,
+      "Other": 21,
+      "Total": 4466
+    },
+    "Inactive": {
+      "Democratic": 155,
+      "Republican": 212,
+      "No Party": 307,
+      "Other": 11,
+      "Total": 685
+    },
+    "Total": 5151
+  },
+  {
+    "County": "Delaware",
+    "Active": {
+      "Democratic": 2314,
+      "Republican": 4736,
+      "No Party": 4023,
+      "Other": 49,
+      "Total": 11122
+    },
+    "Inactive": {
+      "Democratic": 249,
+      "Republican": 277,
+      "No Party": 676,
+      "Other": 17,
+      "Total": 1219
+    },
+    "Total": 12341
+  },
+  {
+    "County": "Johnson",
+    "Active": {
+      "Democratic": 46645,
+      "Republican": 16571,
+      "No Party": 26258,
+      "Other": 739,
+      "Total": 90213
+    },
+    "Inactive": {
+      "Democratic": 9958,
+      "Republican": 3824,
+      "No Party": 9295,
+      "Other": 335,
+      "Total": 23412
+    },
+    "Total": 113625
+  },
+  {
+    "County": "Dubuque",
+    "Active": {
+      "Democratic": 23696,
+      "Republican": 18787,
+      "No Party": 17438,
+      "Other": 487,
+      "Total": 60408
+    },
+    "Inactive": {
+      "Democratic": 3549,
+      "Republican": 2142,
+      "No Party": 4806,
+      "Other": 162,
+      "Total": 10659
+    },
+    "Total": 71067
+  },
+  {
+    "County": "Emmet",
+    "Active": {
+      "Democratic": 1380,
+      "Republican": 2071,
+      "No Party": 1930,
+      "Other": 35,
+      "Total": 5416
+    },
+    "Inactive": {
+      "Democratic": 266,
+      "Republican": 285,
+      "No Party": 755,
+      "Other": 7,
+      "Total": 1313
+    },
+    "Total": 6729
+  },
+  {
+    "County": "Mahaska",
+    "Active": {
+      "Democratic": 2175,
+      "Republican": 6936,
+      "No Party": 3271,
+      "Other": 112,
+      "Total": 12494
+    },
+    "Inactive": {
+      "Democratic": 448,
+      "Republican": 651,
+      "No Party": 1189,
+      "Other": 23,
+      "Total": 2311
+    },
+    "Total": 14805
+  },
+  {
+    "County": "Fayette",
+    "Active": {
+      "Democratic": 2978,
+      "Republican": 4401,
+      "No Party": 3469,
+      "Other": 62,
+      "Total": 10910
+    },
+    "Inactive": {
+      "Democratic": 398,
+      "Republican": 348,
+      "No Party": 836,
+      "Other": 26,
+      "Total": 1608
+    },
+    "Total": 12518
+  },
+  {
+    "County": "Howard",
+    "Active": {
+      "Democratic": 1438,
+      "Republican": 1752,
+      "No Party": 2250,
+      "Other": 29,
+      "Total": 5469
+    },
+    "Inactive": {
+      "Democratic": 162,
+      "Republican": 132,
+      "No Party": 513,
+      "Other": 9,
+      "Total": 816
+    },
+    "Total": 6285
+  },
+  {
+    "County": "Marshall",
+    "Active": {
+      "Democratic": 6648,
+      "Republican": 7521,
+      "No Party": 5929,
+      "Other": 144,
+      "Total": 20242
+    },
+    "Inactive": {
+      "Democratic": 1184,
+      "Republican": 833,
+      "No Party": 2306,
+      "Other": 54,
+      "Total": 4377
+    },
+    "Total": 24619
+  },
+  {
+    "County": "Floyd",
+    "Active": {
+      "Democratic": 2474,
+      "Republican": 2962,
+      "No Party": 3572,
+      "Other": 56,
+      "Total": 9064
+    },
+    "Inactive": {
+      "Democratic": 528,
+      "Republican": 351,
+      "No Party": 1158,
+      "Other": 19,
+      "Total": 2056
+    },
+    "Total": 11120
+  },
+  {
+    "County": "Ida",
+    "Active": {
+      "Democratic": 669,
+      "Republican": 2262,
+      "No Party": 1288,
+      "Other": 13,
+      "Total": 4232
+    },
+    "Inactive": {
+      "Democratic": 106,
+      "Republican": 196,
+      "No Party": 364,
+      "Other": 7,
+      "Total": 673
+    },
+    "Total": 4905
+  },
+  {
+    "County": "Mills",
+    "Active": {
+      "Democratic": 1810,
+      "Republican": 5386,
+      "No Party": 2241,
+      "Other": 122,
+      "Total": 9559
+    },
+    "Inactive": {
+      "Democratic": 328,
+      "Republican": 655,
+      "No Party": 790,
+      "Other": 40,
+      "Total": 1813
+    },
+    "Total": 11372
+  },
+  {
+    "County": "Greene",
+    "Active": {
+      "Democratic": 1427,
+      "Republican": 2513,
+      "No Party": 1642,
+      "Other": 50,
+      "Total": 5632
+    },
+    "Inactive": {
+      "Democratic": 179,
+      "Republican": 213,
+      "No Party": 488,
+      "Other": 7,
+      "Total": 887
+    },
+    "Total": 6519
+  },
+  {
+    "County": "Iowa",
+    "Active": {
+      "Democratic": 2438,
+      "Republican": 4725,
+      "No Party": 3679,
+      "Other": 64,
+      "Total": 10906
+    },
+    "Inactive": {
+      "Democratic": 303,
+      "Republican": 346,
+      "No Party": 865,
+      "Other": 27,
+      "Total": 1541
+    },
+    "Total": 12447
+  },
+  {
+    "County": "Mitchell",
+    "Active": {
+      "Democratic": 1505,
+      "Republican": 2732,
+      "No Party": 2113,
+      "Other": 38,
+      "Total": 6388
+    },
+    "Inactive": {
+      "Democratic": 207,
+      "Republican": 247,
+      "No Party": 535,
+      "Other": 13,
+      "Total": 1002
+    },
+    "Total": 7390
+  },
+  {
+    "County": "Grundy",
+    "Active": {
+      "Democratic": 1480,
+      "Republican": 4246,
+      "No Party": 2263,
+      "Other": 45,
+      "Total": 8034
+    },
+    "Inactive": {
+      "Democratic": 162,
+      "Republican": 290,
+      "No Party": 560,
+      "Other": 9,
+      "Total": 1021
+    },
+    "Total": 9055
+  },
+  {
+    "County": "Jones",
+    "Active": {
+      "Democratic": 2879,
+      "Republican": 4700,
+      "No Party": 4527,
+      "Other": 57,
+      "Total": 12163
+    },
+    "Inactive": {
+      "Democratic": 322,
+      "Republican": 356,
+      "No Party": 1163,
+      "Other": 17,
+      "Total": 1858
+    },
+    "Total": 14021
+  },
+  {
+    "County": "Muscatine",
+    "Active": {
+      "Democratic": 7015,
+      "Republican": 8186,
+      "No Party": 7778,
+      "Other": 204,
+      "Total": 23183
+    },
+    "Inactive": {
+      "Democratic": 1618,
+      "Republican": 1131,
+      "No Party": 3020,
+      "Other": 80,
+      "Total": 5849
+    },
+    "Total": 29032
+  },
+  {
+    "County": "Hamilton",
+    "Active": {
+      "Democratic": 2086,
+      "Republican": 4139,
+      "No Party": 2439,
+      "Other": 56,
+      "Total": 8720
+    },
+    "Inactive": {
+      "Democratic": 289,
+      "Republican": 360,
+      "No Party": 759,
+      "Other": 15,
+      "Total": 1423
+    },
+    "Total": 10143
+  },
+  {
+    "County": "Kossuth",
+    "Active": {
+      "Democratic": 2257,
+      "Republican": 4595,
+      "No Party": 2982,
+      "Other": 41,
+      "Total": 9875
+    },
+    "Inactive": {
+      "Democratic": 216,
+      "Republican": 316,
+      "No Party": 719,
+      "Other": 15,
+      "Total": 1266
+    },
+    "Total": 11141
+  },
+  {
+    "County": "Osceola",
+    "Active": {
+      "Democratic": 380,
+      "Republican": 2465,
+      "No Party": 796,
+      "Other": 12,
+      "Total": 3653
+    },
+    "Inactive": {
+      "Democratic": 71,
+      "Republican": 216,
+      "No Party": 294,
+      "Other": 4,
+      "Total": 585
+    },
+    "Total": 4238
+  },
+  {
+    "County": "Harrison",
+    "Active": {
+      "Democratic": 1748,
+      "Republican": 4574,
+      "No Party": 2044,
+      "Other": 71,
+      "Total": 8437
+    },
+    "Inactive": {
+      "Democratic": 114,
+      "Republican": 199,
+      "No Party": 207,
+      "Other": 11,
+      "Total": 531
+    },
+    "Total": 8968
+  },
+  {
+    "County": "Lee",
+    "Active": {
+      "Democratic": 6917,
+      "Republican": 5707,
+      "No Party": 5840,
+      "Other": 146,
+      "Total": 18610
+    },
+    "Inactive": {
+      "Democratic": 1267,
+      "Republican": 640,
+      "No Party": 2310,
+      "Other": 56,
+      "Total": 4273
+    },
+    "Total": 22883
+  },
+  {
+    "County": "Page",
+    "Active": {
+      "Democratic": 1419,
+      "Republican": 5205,
+      "No Party": 2059,
+      "Other": 61,
+      "Total": 8744
+    },
+    "Inactive": {
+      "Democratic": 298,
+      "Republican": 558,
+      "No Party": 818,
+      "Other": 18,
+      "Total": 1692
+    },
+    "Total": 10436
+  },
+  {
+    "County": "Humboldt",
+    "Active": {
+      "Democratic": 1041,
+      "Republican": 2853,
+      "No Party": 1939,
+      "Other": 31,
+      "Total": 5864
+    },
+    "Inactive": {
+      "Democratic": 132,
+      "Republican": 236,
+      "No Party": 443,
+      "Other": 8,
+      "Total": 819
+    },
+    "Total": 6683
+  },
+  {
+    "County": "Louisa",
+    "Active": {
+      "Democratic": 1428,
+      "Republican": 2650,
+      "No Party": 1952,
+      "Other": 28,
+      "Total": 6058
+    },
+    "Inactive": {
+      "Democratic": 294,
+      "Republican": 244,
+      "No Party": 706,
+      "Other": 9,
+      "Total": 1253
+    },
+    "Total": 7311
+  },
+  {
+    "County": "Pottawattamie",
+    "Active": {
+      "Democratic": 14379,
+      "Republican": 22057,
+      "No Party": 14797,
+      "Other": 622,
+      "Total": 51855
+    },
+    "Inactive": {
+      "Democratic": 3303,
+      "Republican": 3334,
+      "No Party": 6040,
+      "Other": 267,
+      "Total": 12944
+    },
+    "Total": 64799
+  },
+  {
+    "County": "Jackson",
+    "Active": {
+      "Democratic": 4185,
+      "Republican": 4252,
+      "No Party": 4010,
+      "Other": 48,
+      "Total": 12495
+    },
+    "Inactive": {
+      "Democratic": 529,
+      "Republican": 344,
+      "No Party": 1351,
+      "Other": 9,
+      "Total": 2233
+    },
+    "Total": 14728
+  },
+  {
+    "County": "Lucas",
+    "Active": {
+      "Democratic": 1025,
+      "Republican": 2586,
+      "No Party": 1534,
+      "Other": 27,
+      "Total": 5172
+    },
+    "Inactive": {
+      "Democratic": 163,
+      "Republican": 243,
+      "No Party": 440,
+      "Other": 8,
+      "Total": 854
+    },
+    "Total": 6026
+  },
+  {
+    "County": "Sac",
+    "Active": {
+      "Democratic": 1005,
+      "Republican": 3549,
+      "No Party": 1701,
+      "Other": 24,
+      "Total": 6279
+    },
+    "Inactive": {
+      "Democratic": 139,
+      "Republican": 265,
+      "No Party": 533,
+      "Other": 5,
+      "Total": 942
+    },
+    "Total": 7221
+  },
+  {
+    "County": "Keokuk",
+    "Active": {
+      "Democratic": 1364,
+      "Republican": 2737,
+      "No Party": 1681,
+      "Other": 29,
+      "Total": 5811
+    },
+    "Inactive": {
+      "Democratic": 220,
+      "Republican": 234,
+      "No Party": 484,
+      "Other": 5,
+      "Total": 943
+    },
+    "Total": 6754
+  },
+  {
+    "County": "Lyon",
+    "Active": {
+      "Democratic": 698,
+      "Republican": 5961,
+      "No Party": 1041,
+      "Other": 15,
+      "Total": 7715
+    },
+    "Inactive": {
+      "Democratic": 127,
+      "Republican": 460,
+      "No Party": 340,
+      "Other": 7,
+      "Total": 934
+    },
+    "Total": 8649
+  },
+  {
+    "County": "Shelby",
+    "Active": {
+      "Democratic": 1536,
+      "Republican": 4061,
+      "No Party": 2064,
+      "Other": 36,
+      "Total": 7697
+    },
+    "Inactive": {
+      "Democratic": 211,
+      "Republican": 328,
+      "No Party": 458,
+      "Other": 17,
+      "Total": 1014
+    },
+    "Total": 8711
+  },
+  {
+    "County": "Linn",
+    "Active": {
+      "Democratic": 53482,
+      "Republican": 38826,
+      "No Party": 44151,
+      "Other": 1387,
+      "Total": 137846
+    },
+    "Inactive": {
+      "Democratic": 8028,
+      "Republican": 4700,
+      "No Party": 11051,
+      "Other": 465,
+      "Total": 24244
+    },
+    "Total": 162090
+  },
+  {
+    "County": "O'Brien",
+    "Active": {
+      "Democratic": 1094,
+      "Republican": 5520,
+      "No Party": 1686,
+      "Other": 50,
+      "Total": 8350
+    },
+    "Inactive": {
+      "Democratic": 239,
+      "Republican": 553,
+      "No Party": 603,
+      "Other": 20,
+      "Total": 1415
+    },
+    "Total": 9765
+  },
+  {
+    "County": "Sioux",
+    "Active": {
+      "Democratic": 1821,
+      "Republican": 15425,
+      "No Party": 3589,
+      "Other": 78,
+      "Total": 20913
+    },
+    "Inactive": {
+      "Democratic": 303,
+      "Republican": 1177,
+      "No Party": 876,
+      "Other": 27,
+      "Total": 2383
+    },
+    "Total": 23296
+  },
+  {
+    "County": "Madison",
+    "Active": {
+      "Democratic": 2476,
+      "Republican": 4871,
+      "No Party": 3352,
+      "Other": 85,
+      "Total": 10784
+    },
+    "Inactive": {
+      "Democratic": 311,
+      "Republican": 452,
+      "No Party": 737,
+      "Other": 19,
+      "Total": 1519
+    },
+    "Total": 12303
+  },
+  {
+    "County": "Plymouth",
+    "Active": {
+      "Democratic": 2692,
+      "Republican": 8663,
+      "No Party": 4316,
+      "Other": 100,
+      "Total": 15771
+    },
+    "Inactive": {
+      "Democratic": 455,
+      "Republican": 837,
+      "No Party": 1174,
+      "Other": 31,
+      "Total": 2497
+    },
+    "Total": 18268
+  },
+  {
+    "County": "Story",
+    "Active": {
+      "Democratic": 19979,
+      "Republican": 15374,
+      "No Party": 17881,
+      "Other": 641,
+      "Total": 53875
+    },
+    "Inactive": {
+      "Democratic": 5262,
+      "Republican": 3577,
+      "No Party": 7211,
+      "Other": 326,
+      "Total": 16376
+    },
+    "Total": 70251
+  },
+  {
+    "County": "Marion",
+    "Active": {
+      "Democratic": 4635,
+      "Republican": 10422,
+      "No Party": 6228,
+      "Other": 149,
+      "Total": 21434
+    },
+    "Inactive": {
+      "Democratic": 696,
+      "Republican": 973,
+      "No Party": 1569,
+      "Other": 27,
+      "Total": 3265
+    },
+    "Total": 24699
+  },
+  {
+    "County": "Pocahontas",
+    "Active": {
+      "Democratic": 738,
+      "Republican": 2210,
+      "No Party": 1241,
+      "Other": 35,
+      "Total": 4224
+    },
+    "Inactive": {
+      "Democratic": 140,
+      "Republican": 186,
+      "No Party": 377,
+      "Other": 9,
+      "Total": 712
+    },
+    "Total": 4936
+  },
+  {
+    "County": "Tama",
+    "Active": {
+      "Democratic": 2738,
+      "Republican": 3778,
+      "No Party": 3380,
+      "Other": 64,
+      "Total": 9960
+    },
+    "Inactive": {
+      "Democratic": 371,
+      "Republican": 290,
+      "No Party": 987,
+      "Other": 10,
+      "Total": 1658
+    },
+    "Total": 11618
+  },
+  {
+    "County": "Monona",
+    "Active": {
+      "Democratic": 1307,
+      "Republican": 2470,
+      "No Party": 1503,
+      "Other": 39,
+      "Total": 5319
+    },
+    "Inactive": {
+      "Democratic": 224,
+      "Republican": 231,
+      "No Party": 453,
+      "Other": 17,
+      "Total": 925
+    },
+    "Total": 6244
+  },
+  {
+    "County": "Poweshiek",
+    "Active": {
+      "Democratic": 3578,
+      "Republican": 3891,
+      "No Party": 4025,
+      "Other": 68,
+      "Total": 11562
+    },
+    "Inactive": {
+      "Democratic": 1362,
+      "Republican": 390,
+      "No Party": 1202,
+      "Other": 20,
+      "Total": 2974
+    },
+    "Total": 14536
+  },
+  {
+    "County": "Wapello",
+    "Active": {
+      "Democratic": 5978,
+      "Republican": 6136,
+      "No Party": 5313,
+      "Other": 119,
+      "Total": 17546
+    },
+    "Inactive": {
+      "Democratic": 1326,
+      "Republican": 757,
+      "No Party": 1998,
+      "Other": 45,
+      "Total": 4126
+    },
+    "Total": 21672
+  },
+  {
+    "County": "Monroe",
+    "Active": {
+      "Democratic": 1048,
+      "Republican": 2137,
+      "No Party": 1373,
+      "Other": 19,
+      "Total": 4577
+    },
+    "Inactive": {
+      "Democratic": 163,
+      "Republican": 182,
+      "No Party": 307,
+      "Other": 11,
+      "Total": 663
+    },
+    "Total": 5240
+  },
+  {
+    "County": "Ringgold",
+    "Active": {
+      "Democratic": 500,
+      "Republican": 1927,
+      "No Party": 490,
+      "Other": 14,
+      "Total": 2931
+    },
+    "Inactive": {
+      "Democratic": 81,
+      "Republican": 138,
+      "No Party": 157,
+      "Other": 2,
+      "Total": 378
+    },
+    "Total": 3309
+  },
+  {
+    "County": "Winneshiek",
+    "Active": {
+      "Democratic": 4206,
+      "Republican": 4566,
+      "No Party": 4085,
+      "Other": 53,
+      "Total": 12910
+    },
+    "Inactive": {
+      "Democratic": 734,
+      "Republican": 344,
+      "No Party": 988,
+      "Other": 29,
+      "Total": 2095
+    },
+    "Total": 15005
+  },
+  {
+    "County": "Montgomery",
+    "Active": {
+      "Democratic": 1056,
+      "Republican": 3425,
+      "No Party": 1579,
+      "Other": 45,
+      "Total": 6105
+    },
+    "Inactive": {
+      "Democratic": 208,
+      "Republican": 435,
+      "No Party": 666,
+      "Other": 15,
+      "Total": 1324
+    },
+    "Total": 7429
+  },
+  {
+    "County": "Taylor",
+    "Active": {
+      "Democratic": 566,
+      "Republican": 2018,
+      "No Party": 896,
+      "Other": 27,
+      "Total": 3507
+    },
+    "Inactive": {
+      "Democratic": 91,
+      "Republican": 171,
+      "No Party": 276,
+      "Other": 8,
+      "Total": 546
+    },
+    "Total": 4053
+  },
+  {
+    "County": "Palo Alto",
+    "Active": {
+      "Democratic": 1616,
+      "Republican": 2268,
+      "No Party": 1600,
+      "Other": 25,
+      "Total": 5509
+    },
+    "Inactive": {
+      "Democratic": 202,
+      "Republican": 173,
+      "No Party": 457,
+      "Other": 12,
+      "Total": 844
+    },
+    "Total": 6353
+  },
+  {
+    "County": "Union",
+    "Active": {
+      "Democratic": 1425,
+      "Republican": 3239,
+      "No Party": 2310,
+      "Other": 43,
+      "Total": 7017
+    },
+    "Inactive": {
+      "Democratic": 240,
+      "Republican": 272,
+      "No Party": 853,
+      "Other": 16,
+      "Total": 1381
+    },
+    "Total": 8398
+  },
+  {
+    "County": "Polk",
+    "Active": {
+      "Democratic": 118849,
+      "Republican": 81586,
+      "No Party": 79699,
+      "Other": 2776,
+      "Total": 282910
+    },
+    "Inactive": {
+      "Democratic": 18345,
+      "Republican": 9508,
+      "No Party": 19752,
+      "Other": 850,
+      "Total": 48455
+    },
+    "Total": 331365
+  },
+  {
+    "County": "Van Buren",
+    "Active": {
+      "Democratic": 733,
+      "Republican": 2287,
+      "No Party": 1187,
+      "Other": 31,
+      "Total": 4238
+    },
+    "Inactive": {
+      "Democratic": 129,
+      "Republican": 236,
+      "No Party": 377,
+      "Other": 6,
+      "Total": 748
+    },
+    "Total": 4986
+  },
+  {
+    "County": "Scott",
+    "Active": {
+      "Democratic": 34473,
+      "Republican": 31700,
+      "No Party": 36139,
+      "Other": 906,
+      "Total": 103218
+    },
+    "Inactive": {
+      "Democratic": 8637,
+      "Republican": 5111,
+      "No Party": 14711,
+      "Other": 379,
+      "Total": 28838
+    },
+    "Total": 132056
+  },
+  {
+    "County": "Webster",
+    "Active": {
+      "Democratic": 6090,
+      "Republican": 7669,
+      "No Party": 6409,
+      "Other": 149,
+      "Total": 20317
+    },
+    "Inactive": {
+      "Democratic": 1309,
+      "Republican": 1006,
+      "No Party": 2586,
+      "Other": 63,
+      "Total": 4964
+    },
+    "Total": 25281
+  },
+  {
+    "County": "Warren",
+    "Active": {
+      "Democratic": 10003,
+      "Republican": 13449,
+      "No Party": 10336,
+      "Other": 267,
+      "Total": 34055
+    },
+    "Inactive": {
+      "Democratic": 1166,
+      "Republican": 1274,
+      "No Party": 2280,
+      "Other": 88,
+      "Total": 4808
+    },
+    "Total": 38863
+  },
+  {
+    "County": "Woodbury",
+    "Active": {
+      "Democratic": 15301,
+      "Republican": 20844,
+      "No Party": 14756,
+      "Other": 410,
+      "Total": 51311
+    },
+    "Inactive": {
+      "Democratic": 3861,
+      "Republican": 2887,
+      "No Party": 6094,
+      "Other": 140,
+      "Total": 12982
+    },
+    "Total": 64293
+  },
+  {
+    "County": "Washington",
+    "Active": {
+      "Democratic": 3052,
+      "Republican": 6078,
+      "No Party": 4087,
+      "Other": 99,
+      "Total": 13316
+    },
+    "Inactive": {
+      "Democratic": 408,
+      "Republican": 605,
+      "No Party": 1174,
+      "Other": 43,
+      "Total": 2230
+    },
+    "Total": 15546
+  },
+  {
+    "County": "Worth",
+    "Active": {
+      "Democratic": 1200,
+      "Republican": 2021,
+      "No Party": 1634,
+      "Other": 25,
+      "Total": 4880
+    },
+    "Inactive": {
+      "Democratic": 141,
+      "Republican": 163,
+      "No Party": 440,
+      "Other": 4,
+      "Total": 748
+    },
+    "Total": 5628
+  },
+  {
+    "County": "Wayne",
+    "Active": {
+      "Democratic": 656,
+      "Republican": 1839,
+      "No Party": 903,
+      "Other": 19,
+      "Total": 3417
+    },
+    "Inactive": {
+      "Democratic": 104,
+      "Republican": 148,
+      "No Party": 213,
+      "Other": 3,
+      "Total": 468
+    },
+    "Total": 3885
+  },
+  {
+    "County": "Wright",
+    "Active": {
+      "Democratic": 1504,
+      "Republican": 3314,
+      "No Party": 2052,
+      "Other": 28,
+      "Total": 6898
+    },
+    "Inactive": {
+      "Democratic": 246,
+      "Republican": 313,
+      "No Party": 555,
+      "Other": 14,
+      "Total": 1128
+    },
+    "Total": 8026
+  },
+  {
+    "County": "Winnebago",
+    "Active": {
+      "Democratic": 1507,
+      "Republican": 3065,
+      "No Party": 2171,
+      "Other": 34,
+      "Total": 6777
+    },
+    "Inactive": {
+      "Democratic": 255,
+      "Republican": 268,
+      "No Party": 747,
+      "Other": 13,
+      "Total": 1283
+    },
+    "Total": 8060
+  },
+  {
+    "County": "Totals",
+    "Active": {
+      "Democratic": 596,
+      "Republican": 684,
+      "No Party": 570,
+      "Other": 14,
+      "Total": 1
+    },
+    "Inactive": {
+      "Democratic": 105,
+      "Republican": 77,
+      "No Party": 173,
+      "Other": 5,
+      "Total": 360
+    },
+    "Total": 2
+  }
+]
