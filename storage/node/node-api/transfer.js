@@ -11,13 +11,14 @@ const roles = require("../roles");
 const logger = require('../../utils/logger');
 const Storage = require('@dictadata/storage-junctions');
 const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
+const fs = require('fs');
 const stream = require('stream').promises;
 
 /**
  * transfer routes
  */
 var router = express.Router();
-router.post('/transfer', authorize([ roles.ETL ]), transfer);
+router.post('/transfer', authorize([ roles.User ]), transfer);
 module.exports = router;
 
 /**
@@ -56,10 +57,15 @@ async function transfer(req, res) {
 
     /// determine terminal encoding
     logger.verbose(">>> determine terminal encoding");
-    if (terminal.options && typeof terminal.options.encoding === "string") {
-      // read encoding from file
-      let filename = terminal.options.encoding;
-      terminal.options.encoding = JSON.parse(fs.readFileSync(filename, "utf8"));
+    if (terminal.options && terminal.options.encoding) {
+      if (typeof terminal.options.encoding === "string") {
+        // read encoding from file
+        let filename = terminal.options.encoding;
+        terminal.options.encoding = JSON.parse(fs.readFileSync(filename, "utf8"));
+      }
+      //else if (typeof terminal.options.encoding !== "object") {
+      //  throw "Invalid terminal encoding";
+      //}
     }
     else if (!encoding || Object.keys(transforms).length > 0) {
       // otherwise run some objects through any transforms to get terminal encoding
