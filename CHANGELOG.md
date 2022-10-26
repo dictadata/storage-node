@@ -1,7 +1,11 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.53
+  - new versioning
+  - updated: @dictadata/storage-junctions@0.9.83
+
 - version 2.5.2
-  - updated: to @dictadata/storage-junctions 2.5.3
+  - updated: @dictadata/storage-junctions 2.5.3
   - bugfix: accept filename for terminal.options.encoding
   - testing: add test cases for locus = "stream:*"
 - version 2.5.1
