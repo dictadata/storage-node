@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.54
+  - bug fix: transfer and readers usage of pattern objects
+  - testing: transfer test with geometry query
 - version 0.9.53
   - new versioning
   - updated: @dictadata/storage-junctions@0.9.83
