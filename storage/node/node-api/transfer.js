@@ -72,11 +72,11 @@ async function transfer(req, res) {
       logger.verbose("codify pipeline");
       let pipes = [];
 
-      let options = Object.assign({
-        reader: req,
-        max_read: (origin.options && origin.options.max_read) || 100
-      }, origin.pattern);
-
+      let options = {
+        max_read: (origin.options && origin.options.max_read) || 100,
+        pattern: origin.pattern,
+        reader: req
+      };
       let reader = jo.createReader(options);
       reader.on('error', (error) => {
         logger.error("transfer reader: " + error.message);
@@ -120,7 +120,7 @@ async function transfer(req, res) {
     var pipes = [];
 
     // reader
-    let options = Object.assign({ reader: req }, origin.pattern);
+    let options = { pattern: origin.pattern, reader: req };
     let reader = jo.createReader(options);
     reader.on('error', (error) => {
       logger.error("transfer reader: " + error.message);

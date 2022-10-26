@@ -46,6 +46,32 @@
           }
         }
       }
+    },
+    {
+      "name": "geometry query",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "origin": {
+            "smt": "legis.iowa.gov:bl_YYYY_ia_congress",
+            "pattern": {
+              "match": {
+                "geometry": {
+                  "contains": [
+                    -93.5776995,
+                    41.545924
+                  ]
+                }
+              }
+            }
+          },
+          "terminal": {
+            "smt": "json|stream:*|*|*"
+          }
+        }
+      }
     }
   ]
 }
