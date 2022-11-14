@@ -8,7 +8,7 @@
       "type": "keyword",
       "size": 256,
       "default": null,
-      "isNullable": true,
+      "nullable": true,
       "isKey": true,
       "_elasticsearch": {
         "type": "keyword",
@@ -19,7 +19,7 @@
       "type": "keyword",
       "size": 64,
       "default": null,
-      "isNullable": true,
+      "nullable": true,
       "isKey": false,
       "_elasticsearch": {
         "type": "keyword",
@@ -40,7 +40,7 @@
     "dateCreated": {
       "type": "date",
       "default": null,
-      "isNullable": false,
+      "nullable": false,
       "isKey": false,
       "_elasticsearch": {
         "type": "date"
@@ -50,7 +50,7 @@
       "type": "date",
       "size": 0,
       "default": null,
-      "isNullable": true,
+      "nullable": true,
       "isKey": false,
       "_elasticsearch": {
         "type": "date"
@@ -60,7 +60,7 @@
       "type": "date",
       "size": 0,
       "default": null,
-      "isNullable": true,
+      "nullable": true,
       "isKey": false,
       "_elasticsearch": {
         "type": "date"
