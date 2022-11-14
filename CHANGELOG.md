@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.55
+  - updated: @dictadata/storage-junctions@0.9.84
+  - feature: parse comma delimited numbers from text sources
 - version 0.9.54
   - bug fix: transfer and readers usage of pattern objects
   - testing: transfer test with geometry query
