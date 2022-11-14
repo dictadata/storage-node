@@ -32,7 +32,7 @@
       },
       {
         "name": "Fobe",
-        "type": "float",
+        "type": "number",
         "_elasticsearch": {
           "type": "double"
         }
