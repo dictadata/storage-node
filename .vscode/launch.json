@@ -7,131 +7,175 @@
     {
       "name": "dev server",
       "request": "launch",
-      "type": "pwa-node",
+      "type": "node",
       "envFile": "${workspaceFolder}/.env.development",
       "cwd": "${workspaceFolder}/test/",
       "program": "${workspaceFolder}/test/storage-node.js",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": [
+        "--inspect",
+        "--preserve-symlinks"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "dev nodemon",
       "request": "launch",
-      "type": "pwa-node",
+      "type": "node",
       "envFile": "${workspaceFolder}/.env.development",
       "cwd": "${workspaceFolder}/test/",
       "program": "${workspaceFolder}/test/storage-node.js",
       "restart": true,
       "runtimeExecutable": "nodemon",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "prod server",
       "request": "launch",
-      "type": "pwa-node",
+      "type": "node",
       "envFile": "${workspaceFolder}/.env.production",
       "program": "${workspaceFolder}/storage-node.js",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": [
+        "--inspect",
+        "--preserve-symlinks"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api public",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/public.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/public.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api status",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/status.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/status.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api codex",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/codex.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/codex.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api account",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/account.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/account.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": [
+        "--preserve-symlinks"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api elasticsearch",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/storage-elasticsearch.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/storage-elasticsearch.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api mssql",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/storage-mssql.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/storage-mssql.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api mysql",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/storage-mysql.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/storage-mysql.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api transfer",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/transfer.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/transfer.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     },
     {
       "name": "node-api transform",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": ["${workspaceFolder}/test/node-api/transform.json"],
+      "args": [
+        "${workspaceFolder}/test/node-api/transform.json"
+      ],
       "envFile": "${workspaceFolder}/.env.development",
-      "runtimeArgs": ["--inspect", "--preserve-symlinks"],
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "outputCapture": "std"
     }
   ]
