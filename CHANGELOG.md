@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.56
+  - updated: @dictadata/storage-junctions@0.9.85
+  - add "type" property to HTTP responses; list, map, construct, message
 - version 0.9.55
   - updated: @dictadata/storage-junctions@0.9.84
   - feature: parse comma delimited numbers from text sources
