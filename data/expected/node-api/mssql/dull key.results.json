@@ -1,3 +1,8 @@
 {
-  "rowCount": 1
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "message",
+  "data": {
+    "deleted": 1
+  }
 }

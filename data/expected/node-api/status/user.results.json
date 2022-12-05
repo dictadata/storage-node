@@ -1,5 +1,10 @@
 {
-  "name": "@dictadata/storage-node",
-  "version": "2.2.3",
-  "time": "2022-04-26T19:19:03.095Z"
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "construct",
+  "data": {
+    "name": "@dictadata/storage-node",
+    "version": "0.9.55",
+    "time": "2022-12-05T08:18:02.062Z"
+  }
 }

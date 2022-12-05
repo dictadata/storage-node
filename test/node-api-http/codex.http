@@ -1,4 +1,13 @@
+### not found
 GET http://dev.dictadata.org:8089/node/codex/foo_schema
+Authorization: Basic user user
+
+### not found
+GET http://dev.dictadata.org:8089/node/codex/:foo_schema
+Authorization: Basic user user
+
+### OK
+GET http://dev.dictadata.org:8089/node/codex/foo:foo_schema
 Authorization: Basic user user
 
 ###

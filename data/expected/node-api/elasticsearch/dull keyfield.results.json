@@ -1,3 +1,8 @@
 {
-  "ten": "deleted"
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "message",
+  "data": {
+    "ten": "deleted"
+  }
 }

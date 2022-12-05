@@ -1,38 +1,43 @@
 {
-  "dullboy": {
-    "userid": "dullboy",
-    "roles": [
-      "Public",
-      "User"
-    ],
-    "dateCreated": "2022-04-26T19:19:04.425Z",
-    "dateUpdated": "2022-04-26T19:19:04.816Z",
-    "lastLogin": "2022-04-26T19:19:04.626Z",
-    "profile": {
-      "provider": "",
-      "id": "",
-      "displayName": "",
-      "name": {
-        "familyName": "",
-        "givenName": "",
-        "middleName": ""
-      },
-      "emails": [
-        {
-          "value": "",
-          "type": ""
-        }
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "map",
+  "data": {
+    "dullboy": {
+      "userid": "dullboy",
+      "roles": [
+        "Public",
+        "User"
       ],
-      "photos": [
-        {
-          "value": ""
-        }
-      ]
-    },
-    "settings": {
-      "prefix": "myapp",
-      "homepage": "/home",
-      "theme": "vue"
+      "dateCreated": "2022-12-05T22:09:25.004Z",
+      "dateUpdated": "2022-12-05T22:16:01.608Z",
+      "lastLogin": "2022-12-05T22:16:01.564Z",
+      "profile": {
+        "provider": "",
+        "id": "",
+        "displayName": "",
+        "name": {
+          "familyName": "",
+          "givenName": "",
+          "middleName": ""
+        },
+        "emails": [
+          {
+            "value": "",
+            "type": ""
+          }
+        ],
+        "photos": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "settings": {
+        "prefix": "myapp",
+        "homepage": "/home",
+        "theme": "vue"
+      }
     }
   }
 }

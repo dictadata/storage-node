@@ -1,3 +1,4 @@
-[
-  "table exists"
-]
+{
+  "resultCode": 409,
+  "resultMessage": "table exists"
+}

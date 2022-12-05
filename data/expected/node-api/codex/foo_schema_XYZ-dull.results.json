@@ -1,3 +1,8 @@
 {
-  "foo:foo_schema_XYZ": "deleted"
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "message",
+  "data": {
+    "foo:foo_schema_XYZ": "deleted"
+  }
 }

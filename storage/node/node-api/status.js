@@ -28,13 +28,15 @@ module.exports = router;
 function status(req, res) {
   logger.debug('/node-api/status');
 
-  var results = new StorageResponse(0);
-  results.add(config.name, "name");
-  results.add(config.version, "version");
-  results.add(new Date().toISOString(), "time");
+  var results = new StorageResponse("construct");
+  results.add({
+    "name": config.name,
+    "version": config.version,
+    "time": new Date().toISOString()
+  });
   //info.userid = ' + request.user.userid + '/' + request.user.password;
 
-  res.status(200).jsonp(results.data || results);
+  res.status(200).jsonp(results);
 }
 
 /**
@@ -55,7 +57,7 @@ async function smt_status(req, res) {
 
     let results = await junction.list();
 
-    res.status(results.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results.data || results);
+    res.status(results.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
   }
   catch (err) {
     logger.error(err);

@@ -1,7 +1,10 @@
 {
-  "encoding": {
-    "name": "foo_schema_pk",
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "encoding",
+  "data": {
     "type": "engram",
+    "name": "foo_schema_pk",
     "smt": {
       "model": "elasticsearch",
       "locus": "http://dev.dictadata.org:9200",

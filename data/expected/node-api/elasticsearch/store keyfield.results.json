@@ -1,3 +1,8 @@
 {
-  "ten": "updated"
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "map",
+  "data": {
+    "ten": "created"
+  }
 }

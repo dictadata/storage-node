@@ -1,5 +1,8 @@
-[
-  {
+{
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "construct",
+  "data": {
     "Foo": "fifty",
     "Bar": "Grant",
     "Baz": 50,
@@ -7,4 +10,4 @@
     "Dt Test": "2022-05-05T08:00:00.000Z",
     "enabled": true
   }
-]
+}

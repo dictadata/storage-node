@@ -1,5 +1,8 @@
-[
-  {
+{
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "construct",
+  "data": {
     "Foo": "ten",
     "Bar": "row",
     "Baz": 10,
@@ -7,4 +10,4 @@
     "Dt Test": "2018-10-27T00:00:00.000Z",
     "enabled": true
   }
-]
+}

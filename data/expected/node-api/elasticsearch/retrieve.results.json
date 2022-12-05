@@ -1,18 +1,23 @@
 {
-  "first": {
-    "Foo": "first",
-    "Bar": "row",
-    "Baz": 123,
-    "Fobe": 1,
-    "Dt Test": "2018-10-07T00:00:00.000Z",
-    "enabled": true
-  },
-  "second": {
-    "Foo": "second",
-    "Bar": "row",
-    "Baz": 456,
-    "Fobe": 2.1,
-    "Dt Test": "2018-10-07T05:00:00.000Z",
-    "enabled": false
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "map",
+  "data": {
+    "first": {
+      "Foo": "first",
+      "Bar": "row",
+      "Baz": 123,
+      "Fobe": 1,
+      "Dt Test": "2018-10-07T00:00:00.000Z",
+      "enabled": true
+    },
+    "second": {
+      "Foo": "second",
+      "Bar": "row",
+      "Baz": 456,
+      "Fobe": 2.1,
+      "Dt Test": "2018-10-07T05:00:00.000Z",
+      "enabled": false
+    }
   }
 }

@@ -53,8 +53,9 @@ async function login(req, res) {
     let results = await accounts.store(account);
 
     // return account record
+    results.type = "map";
     results.data[req.user.userid] = account.packet();
-    res.status(results.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results.data || response);
+    res.status(results.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)
@@ -101,8 +102,9 @@ async function register(req, res) {
     let results = await accounts.store(newAccount);
 
     // return user's record
+    results.type = "map";
     results.data[newAccount.userid] = newAccount.packet();
-    res.status(results.resultCode || 201).set("Cache-Control", "no-store").jsonp(results.data || results);
+    res.status(results.resultCode || 201).set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 409)
@@ -147,8 +149,9 @@ async function store(req, res) {
     let results = await accounts.store(modAccount);
 
     // return user's record
+    results.type = "map";
     results.data[modAccount.userid] = modAccount.packet();
-    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results.data || results);
+    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)
@@ -185,7 +188,7 @@ async function dull(req, res) {
     let results = await accounts.dull(userid);
 
     //let results = new StorageResponse(0);
-    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results.data || results);
+    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)
@@ -218,7 +221,7 @@ async function logEvent(req, res) {
 
     // return "ok"
     let results = new StorageResponse(0);
-    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results.data || results);
+    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
     if (error.resultCode && error.resultCode === 401)

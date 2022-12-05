@@ -1,16 +1,21 @@
 {
-  ":es_foo_schema": {
-    "name": "es_foo_schema",
-    "type": "engram",
-    "smt": {
-      "model": "elasticsearch",
-      "locus": "http://dev.dictadata.org:9200",
-      "schema": "foo_schema",
-      "key": "!Foo"
-    },
-    "fields": [],
-    "options": {
-      "refresh": true
+  "resultCode": 0,
+  "resultMessage": "OK",
+  "type": "map",
+  "data": {
+    ":es_foo_schema": {
+      "type": "engram",
+      "name": "es_foo_schema",
+      "smt": {
+        "model": "elasticsearch",
+        "locus": "http://dev.dictadata.org:9200",
+        "schema": "foo_schema",
+        "key": "!Foo"
+      },
+      "fields": [],
+      "options": {
+        "refresh": true
+      }
     }
   }
 }

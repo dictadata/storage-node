@@ -165,7 +165,7 @@ async function uploadFiles(req, res) {
         await stream.pipeline(reader, writer);
         logger.debug(results);
 
-        res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results.data || response);
+        res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
       }
       catch (err) {
         logger.error(err);

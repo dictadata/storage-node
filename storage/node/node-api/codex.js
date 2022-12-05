@@ -56,7 +56,7 @@ async function store(req, res) {
 
     res.status(results.resultCode || 200)
       .set("Cache-Control", "no-store")
-      .jsonp(results.data || results);
+      .jsonp(results);
   }
   catch (err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
@@ -88,7 +88,7 @@ async function recall(req, res) {
 
     res.status(results.resultCode || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
-      .jsonp(results.data || results);
+      .jsonp(results);
   }
   catch (err) {
     logger.error(err);
@@ -122,7 +122,7 @@ async function dull(req, res) {
 
     res.status(results.resultCode || 200)
       .set("Cache-Control", "no-store")
-      .jsonp(results.data || results);
+      .jsonp(results);
   }
   catch (err) {
     logger.error(err);
@@ -144,7 +144,7 @@ async function retrieve(req, res) {
     let results = await Storage.codex.retrieve(pattern);
     res.status(results.resultCode || 200)
       .set("Cache-Control", "no-store")
-      .jsonp(results.data || results);
+      .jsonp(results);
   }
   catch (err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);

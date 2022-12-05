@@ -67,7 +67,7 @@ async function list(req, res) {
     logger.debug(response);
 
     res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response.data || response);
+    res.jsonp(response);
   }
   catch (err) {
     logger.error(err);
@@ -101,7 +101,7 @@ async function getEncoding(req, res) {
     logger.debug(response);
 
     res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response.data || response);
+    res.jsonp(response);
   }
   catch (err) {
     if (err.resultCode !== 400 && err.resultCode !== 404)
@@ -137,7 +137,7 @@ async function createSchema(req, res) {
     let results = await junction.createSchema();
     logger.debug(results);
     res.status(results.resultCode || 200)
-      .set("Cache-Control", "no-store").jsonp(results.data || results);
+      .set("Cache-Control", "no-store").jsonp(results);
   }
   catch (err) {
     if (err.resultCode !== 400 && err.resultCode !== 409)
@@ -176,13 +176,12 @@ async function store(req, res) {
 
     var response = new StorageResponse(0);
 
-    // body will be an array of constructs
-    // or a object/map of key:constructs
+    // body will be an object/map of key:constructs
     if (Array.isArray(req.body)) {
       for (let construct of req.body) {
         let results = await junction.store(construct);
         let [key, value] = Object.entries(results.data)[ 0 ];
-        response.add(value, results.resultCode === 0 && key ? key : junction.engram.get_uid(construct));
+        response.add(value, (results.resultCode === 0 && key) ? key : junction.engram.get_uid(construct));
         if (results.resultCode !== 0) {
           response.resultCode = results.resultCode;
           response.resultMessage = results.resultMessage;
@@ -193,7 +192,7 @@ async function store(req, res) {
       // object/map of key:construct
       for (let [ key, construct ] of Object.entries(req.body)) {
         let results = await junction.store(construct, { "key": key });
-        response.add((results.resultCode === 0 && results.data ? Object.values(results.data)[ 0 ] : results.resultMessage), key);
+        response.add((results.resultCode === 0 && results.data) ? Object.values(results.data)[ 0 ] : results.resultMessage, key);
         if (results.resultCode !== 0) {
           response.resultCode = results.resultCode;
           response.resultMessage = results.resultMessage;
@@ -204,7 +203,7 @@ async function store(req, res) {
     logger.debug(response);
 
     res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response.data || response);
+    res.jsonp(response);
   }
   catch (err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
@@ -237,7 +236,7 @@ async function recall(req, res) {
     logger.debug(response);
 
     res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response.data || response);
+    res.jsonp(response);
   }
   catch (err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
@@ -270,7 +269,7 @@ async function retrieve(req, res) {
     logger.debug(response);
 
     res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response.data || response);
+    res.jsonp(response);
   }
   catch (err) {
     logger.error(err);
@@ -304,7 +303,7 @@ async function dull(req, res) {
     logger.debug(response);
 
     res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response.data || response);
+    res.jsonp(response);
   }
   catch (err) {
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
