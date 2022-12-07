@@ -137,7 +137,7 @@
   - republish npm package
 - version 1.7.1
   - update dependency to @dictadata/storage-junctions 1.7.3
-  - all valid requests now return StorageResponse in the response body
+  - all valid requests now return StorageResults in the response body
 - version 1.5.1
   - update request body format, remove extra nested "data" property
   - add automated testing scripts
@@ -227,5 +227,5 @@
   - fix an issue with undefined results.data from mysqlJunction
 - version 1.0.0
   - Update dependency on @dictadata/storage-junctions v1.0.0
-  - Changes related to supporting new StorageResponse specification of returning lists (arrays) and dictionary maps (objects).
+  - Changes related to supporting new StorageResults specification of returning lists (arrays) and dictionary maps (objects).
   - Elasticsearch junction now returns data results as dictionary maps of key/value pairs. This applies to both application or Elasticsearch generated _id keys.
