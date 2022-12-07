@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.57
+  - add createSchema, dullSchema endpoints  PUT /node/schema/:SMT, DELETE /node/schema/:SMT
+  - updated: @dictadata/storage-junctions@0.9.86
 - version 0.9.56
   - updated: @dictadata/storage-junctions@0.9.85
   - add "type" property to HTTP responses; list, map, construct, message
