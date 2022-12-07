@@ -4,12 +4,12 @@
   "type": "encoding",
   "data": {
     "type": "engram",
-    "name": "foo_schema_pk",
+    "name": "foo_schema_x",
     "smt": {
       "model": "elasticsearch",
       "locus": "http://dev.dictadata.org:9200",
-      "schema": "foo_schema_pk",
-      "key": "=Foo"
+      "schema": "foo_schema_x",
+      "key": "!Foo"
     },
     "fields": [
       {

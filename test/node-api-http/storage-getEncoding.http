@@ -1,3 +1,7 @@
+### es_foo_schema_x
+GET http://dev.dictadata.org:8089/node/encoding/:es_foo_schema_x HTTP/1.1
+Authorization: Basic admin admin
+
 ### es_foo_schema_pk
 GET http://dev.dictadata.org:8089/node/encoding/:es_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin
@@ -30,5 +34,5 @@ GET http://dev.dictadata.org:8089/node/encoding/:mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 
 ### oracle_foo_schema
-GET http://dev.dictadata.org:8089/node/encoding/oracle_foo_schema HTTP/1.1
+GET http://dev.dictadata.org:8089/node/encoding/:oracle_foo_schema HTTP/1.1
 Authorization: Basic admin admin

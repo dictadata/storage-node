@@ -12,6 +12,7 @@
     "foo_schema_etl2",
     "foo_schema_lg",
     "foo_schema_two",
+    "foo_schema_x",
     "foo_transfer"
   ]
 }

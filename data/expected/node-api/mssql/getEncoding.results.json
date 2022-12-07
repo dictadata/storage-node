@@ -4,11 +4,11 @@
   "type": "encoding",
   "data": {
     "type": "engram",
-    "name": "foo_schema",
+    "name": "foo_schema_x",
     "smt": {
       "model": "mssql",
       "locus": "server=dev.dictadata.org;database=storage_node",
-      "schema": "foo_schema",
+      "schema": "foo_schema_x",
       "key": "=Foo"
     },
     "fields": [
@@ -25,7 +25,7 @@
           "precision": 0,
           "scale": 0,
           "is_nullable": false,
-          "default": null
+          "default": "(NULL)"
         },
         "key": 1
       },
@@ -42,7 +42,7 @@
           "precision": 0,
           "scale": 0,
           "is_nullable": true,
-          "default": null
+          "default": "(NULL)"
         }
       },
       {
@@ -58,7 +58,7 @@
           "precision": 10,
           "scale": 0,
           "is_nullable": true,
-          "default": null
+          "default": "(NULL)"
         }
       },
       {
@@ -74,7 +74,7 @@
           "precision": 53,
           "scale": 0,
           "is_nullable": true,
-          "default": null
+          "default": "(NULL)"
         }
       },
       {
@@ -90,7 +90,7 @@
           "precision": 23,
           "scale": 3,
           "is_nullable": true,
-          "default": null
+          "default": "(NULL)"
         }
       },
       {
@@ -106,7 +106,7 @@
           "precision": 1,
           "scale": 0,
           "is_nullable": true,
-          "default": null
+          "default": "(NULL)"
         }
       }
     ]

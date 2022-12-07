@@ -1,0 +1,3 @@
+### es_foo_schema_x
+DELETE http://dev.dictadata.org:8089/node/schema/:es_foo_schema_x HTTP/1.1
+Authorization: Basic user user

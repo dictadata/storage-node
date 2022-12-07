@@ -1,5 +1,5 @@
-### es_foo_schema_pk
-PUT http://dev.dictadata.org:8089/node/encoding/:es_foo_schema_pk HTTP/1.1
+### es_foo_schema_x
+PUT http://dev.dictadata.org:8089/node/schema/:es_foo_schema_x HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -63,7 +63,71 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### es_foo_schema_pk
-PUT http://dev.dictadata.org:8089/node/encoding HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/schema/:es_foo_schema_pk HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+{
+  "fields": {
+    "Foo": {
+      "name": "Foo",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "nullable": false,
+      "isKey": true,
+      "label": "Foo"
+    },
+    "Bar": {
+      "name": "Bar",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "Bar"
+    },
+    "Baz": {
+      "name": "Baz",
+      "type": "integer",
+      "size": 0,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "Baz"
+    },
+    "Fobe": {
+      "name": "Fobe",
+      "type": "number",
+      "size": 0,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "Fobe, ain't no Foo"
+    },
+    "Dt Test": {
+      "name": "Dt Test",
+      "type": "date",
+      "size": 0,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "Dt Test"
+    },
+    "enabled": {
+      "name": "enabled",
+      "type": "boolean",
+      "size": 0,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "enabled"
+    }
+  }
+}
+
+### es_foo_schema_pk
+PUT http://dev.dictadata.org:8089/node/schema HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -128,7 +192,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mssql_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding/:mssql_foo_schema HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/schema/:mssql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -192,7 +256,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mssql_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -257,7 +321,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mysql_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding/:mysql_foo_schema HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/schema/:mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -321,7 +385,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mysql_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -387,7 +451,7 @@ Content-Type: application/json; charset=utf-8
 
 
 ### oracle_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding/oracle_foo_schema HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/schema/:oracle_foo_schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -451,7 +515,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### oracle_foo_schema
-PUT http://dev.dictadata.org:8089/node/encoding HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/schema HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 

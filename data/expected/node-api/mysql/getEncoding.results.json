@@ -4,11 +4,11 @@
   "type": "encoding",
   "data": {
     "type": "engram",
-    "name": "foo_schema",
+    "name": "foo_schema_x",
     "smt": {
       "model": "mysql",
       "locus": "host=dev.dictadata.org;database=storage_node",
-      "schema": "foo_schema",
+      "schema": "foo_schema_x",
       "key": "=Foo"
     },
     "fields": [

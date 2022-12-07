@@ -1,3 +1,7 @@
+### es_foo_schema_x
+POST http://dev.dictadata.org:8089/node/list/:es_foo_schema_x HTTP/1.1
+Authorization: Basic admin admin
+
 ### es_foo_schema_pk
 POST http://dev.dictadata.org:8089/node/list/:es_foo_schema_pk HTTP/1.1
 Authorization: Basic admin admin

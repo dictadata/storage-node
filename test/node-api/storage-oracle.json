@@ -20,7 +20,7 @@
       "name": "createSchema",
       "request": {
         "method": "PUT",
-        "url": "encoding/oracle_foo_schema",
+        "url": "schema/:oracle_foo_schema_x",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -37,17 +37,24 @@
       "name": "getEncoding",
       "request": {
         "method": "GET",
-        "url": "encoding/oracle_foo_schema"
+        "url": "encoding/:oracle_foo_schema_x"
       }
     },
     {
       "name": "list",
       "request": {
         "method": "GET",
-        "url": "list/oracle_foo_schema",
+        "url": "list/oracle_foo_schema_x",
         "params": {
           "schema": "foo*"
         }
+      }
+    },
+    {
+      "name": "dullSchema",
+      "request": {
+        "method": "DELETE",
+        "url": "schema/:oracle_foo_schema_x"
       }
     },
     {

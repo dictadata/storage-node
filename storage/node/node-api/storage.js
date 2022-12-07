@@ -24,7 +24,12 @@ router.post('/list', authorize([ roles.Public ]), list);
 router.put('/schema/:SMT', authorize([ roles.Coder ]), createSchema);
 router.put('/schema', authorize([ roles.Coder ]), createSchema);
 
-//router.delete('/schema/:SMT', authorize([ roles.Coder ]), dullSchema);
+router.delete('/schema/:SMT', authorize([ roles.Coder ]), dullSchema);
+router.delete('/schema', authorize([ roles.Coder ]), dullSchema);
+
+router.get('/schema/:SMT', authorize([ roles.Public ]), getEncoding);
+router.post('/schema/:SMT', authorize([ roles.Public ]), getEncoding);
+router.post('/schema', authorize([ roles.Public ]), getEncoding);
 
 router.get('/encoding/:SMT', authorize([ roles.Public ]), getEncoding);
 router.post('/encoding/:SMT', authorize([ roles.Public ]), getEncoding);
@@ -82,41 +87,6 @@ async function list(req, res) {
 }
 
 /**
- * getEncoding
- * @param {*} req
- * @param {*} res
- */
-async function getEncoding(req, res) {
-  logger.verbose('/storage/getEncoding');
-
-  var junction;
-  try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || (req.body && req.body.SMT);
-    if (!smtname || smtname[ 0 ] === "$" || !smtname)
-      throw new StorageError(400, "invalid SMT name");
-
-    junction = await storage.activate(smtname);
-    if (!junction.capabilities.encoding)
-      throw new StorageError(405);
-
-    let response = await junction.getEncoding();
-    logger.debug(response);
-
-    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response);
-  }
-  catch (err) {
-    if (err.resultCode !== 400 && err.resultCode !== 404)
-      logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
-  }
-  finally {
-    if (junction)
-      junction.relax();
-  }
-}
-
-/**
  * createSchema
  * @param {*} req
  * @param {*} res
@@ -143,6 +113,73 @@ async function createSchema(req, res) {
   }
   catch (err) {
     if (err.resultCode !== 400 && err.resultCode !== 409)
+      logger.error(err);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+  }
+  finally {
+    if (junction)
+      junction.relax();
+  }
+}
+
+/**
+ * dullSchema
+ * @param {*} req
+ * @param {*} res
+ */
+async function dullSchema(req, res) {
+  logger.verbose('/storage/dullSchema');
+
+  var junction;
+  try {
+    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || (req.body && req.body.SMT);
+    if (!smtname || smtname[ 0 ] === "$" || !smtname)
+      throw new StorageError(400, "invalid SMT name");
+
+    junction = await storage.activate(smtname);
+
+    let results = await junction.dullSchema();
+    logger.debug(results);
+    res.status(results.resultCode || 200)
+      .set("Cache-Control", "no-store").jsonp(results);
+  }
+  catch (err) {
+    if (err.resultCode !== 400)
+      logger.error(err);
+    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+  }
+  finally {
+    if (junction)
+      junction.relax();
+  }
+}
+
+/**
+ * getEncoding
+ * @param {*} req
+ * @param {*} res
+ */
+async function getEncoding(req, res) {
+  logger.verbose('/storage/getEncoding');
+
+  var junction;
+  try {
+    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || (req.body && req.body.SMT);
+    if (!smtname || smtname[ 0 ] === "$" || !smtname)
+      throw new StorageError(400, "invalid SMT name");
+
+    junction = await storage.activate(smtname);
+    if (!junction.capabilities.encoding)
+      throw new StorageError(405);
+
+    let response = await junction.getEncoding();
+    logger.debug(response);
+
+    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.jsonp(response);
+  }
+  catch (err) {
+    if (err.resultCode !== 400 && err.resultCode !== 404)
       logger.error(err);
     res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
   }

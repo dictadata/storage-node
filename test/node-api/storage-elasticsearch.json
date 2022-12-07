@@ -20,7 +20,7 @@
       "name": "createSchema",
       "request": {
         "method": "PUT",
-        "url": "encoding/:es_foo_schema_pk",
+        "url": "schema/:es_foo_schema_x",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -44,20 +44,27 @@
       "name": "getEncoding",
       "request": {
         "method": "GET",
-        "url": "encoding/:es_foo_schema_pk"
+        "url": "encoding/:es_foo_schema_x"
       }
     },
     {
       "name": "list",
       "request": {
         "method": "GET",
-        "url": "list/:es_foo_schema_pk",
+        "url": "list/:es_foo_schema_x",
         "params": {
           "schema": "foo*"
         }
       },
       "expected": {
         "compareValues": 1
+      }
+    },
+    {
+      "name": "dullSchema",
+      "request": {
+        "method": "DELETE",
+        "url": "schema/:es_foo_schema_x"
       }
     },
     {
