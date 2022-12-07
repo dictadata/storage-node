@@ -9,7 +9,7 @@ const roles = require("../roles");
 const config = require("../config.js");
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
-const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
+const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
 const { typeOf } = require('@dictadata/storage-junctions/utils');
 
 /**
@@ -21,15 +21,21 @@ router.get('/list/:SMT', authorize([ roles.Public ]), list);
 router.post('/list/:SMT', authorize([ roles.Public ]), list);
 router.post('/list', authorize([ roles.Public ]), list);
 
+router.put('/schema/:SMT', authorize([ roles.Coder ]), createSchema);
+router.put('/schema', authorize([ roles.Coder ]), createSchema);
+
+//router.delete('/schema/:SMT', authorize([ roles.Coder ]), dullSchema);
+
 router.get('/encoding/:SMT', authorize([ roles.Public ]), getEncoding);
 router.post('/encoding/:SMT', authorize([ roles.Public ]), getEncoding);
 router.post('/encoding', authorize([ roles.Public ]), getEncoding);
 
-router.put('/encoding/:SMT', authorize([ roles.Coder ]), createSchema);
-router.put('/encoding', authorize([ roles.Coder ]), createSchema);
-
 router.put('/store/:SMT', authorize([ roles.User ]), store);
 router.put('/store', authorize([ roles.User ]), store);
+
+router.delete('/dull/:SMT', authorize([ roles.User ]), dull);
+router.post('/dull/:SMT', authorize([ roles.User ]), dull);
+router.post('/dull', authorize([ roles.User ]), dull);
 
 router.get('/recall/:SMT', authorize([ roles.Public ]), recall);
 router.post('/recall/:SMT', authorize([ roles.Public ]), recall);
@@ -38,10 +44,6 @@ router.post('/recall', authorize([ roles.Public ]), recall);
 router.get('/retrieve/:SMT', authorize([ roles.Public ]), retrieve);
 router.post('/retrieve/:SMT', authorize([ roles.Public ]), retrieve);
 router.post('/retrieve', authorize([ roles.Public ]), retrieve);
-
-router.delete('/dull/:SMT', authorize([ roles.User ]), dull);
-router.post('/dull/:SMT', authorize([ roles.User ]), dull);
-router.post('/dull', authorize([ roles.User ]), dull);
 
 module.exports = router;
 
@@ -174,7 +176,7 @@ async function store(req, res) {
     if (junction.capabilities.encoding && !junction.engram.isDefined)
       await junction.getEncoding();
 
-    var response = new StorageResponse(0);
+    var response = new StorageResults(0);
 
     // body will be an object/map of key:constructs
     if (Array.isArray(req.body)) {

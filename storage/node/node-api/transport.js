@@ -15,7 +15,7 @@ const roles = require("../roles");
 const config = require('../config');
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
-const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
+const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
 const stream = require('stream').promises;
 
 /**
@@ -90,7 +90,7 @@ async function transport(req, res) {
     logger.debug("run pipeline");
     await stream.pipeline(pipes);
 
-    let response = new StorageResponse(0);
+    let response = new StorageResults(0);
     res.jsonp(response);
   }
   catch (err) {

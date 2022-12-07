@@ -10,7 +10,7 @@ const authorize = require("../authorize");
 const roles = require("../roles");
 const logger = require('../../utils/logger');
 const Storage = require('@dictadata/storage-junctions');
-const { StorageResponse, StorageError } = require('@dictadata/storage-junctions/types');
+const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
 const fs = require('fs');
 const stream = require('stream').promises;
 
@@ -150,7 +150,7 @@ async function transfer(req, res) {
     if (jt.smt.locus.startsWith('stream:'))
       res.end();
     else {
-      let response = new StorageResponse(0);
+      let response = new StorageResults(0);
       res.jsonp(response);
     }
   }
