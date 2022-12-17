@@ -17,9 +17,15 @@ const logger = require("../../utils/logger");
  * account routes
  */
 var router = express.Router();
+
+router.post("/login", authorize([ roles.Public ]), login);
+router.post("/logout", authorize([ roles.Guest, roles.User ]), logout);
+router.post("/logout/:userid", authorize([ roles.Guest, roles.User ]), logout);
+router.post("/log", authorize([ roles.Guest, roles.User]), logEvent); // /log is probably not used
+
 // account requests
-router.get("/login", authorize([roles.Public]), login);
-router.get("/account", authorize([roles.Public]), login);
+router.get("/account", authorize([roles.User]), recall);
+router.get("/account/:userid", authorize([roles.User]), recall);
 
 router.post("/register", authorize([roles.Public]), register);
 router.post("/account", authorize([roles.Public]), register);
@@ -29,24 +35,94 @@ router.put("/account", authorize([roles.User]), store);
 router.delete("/account", authorize([roles.User]), dull);
 router.delete("/account/:userid", authorize([roles.User]), dull);
 
-router.post("/log", authorize([roles.Public]), logEvent);
 module.exports = router;
 
 /**
  * Retrieve account record from data store.
+ * Check the password and update the login time.
+ * @returns Returns the user's account record.
  */
 async function login(req, res) {
   logger.verbose("/accounts/login");
-  // no request body
+  let user = req.body.account || req.body;
+  let userid = req.params[ "userid" ] || req.query[ "userid" ] || user.userid || req.user.userid;
+  let password = req.query[ "password" ] || user.password || req.user.password;
 
   try {
     // retrieve user account
-    let account = await accounts.recall(req.user.userid);
+    let account = await accounts.recall(userid);
+    if (!account)
+      throw new StorageError(401, "invalid userid/password" );
+
+    if (account.password !== password)
+      throw new StorageError(401, "invalid userid/password");
+
+    // update last login time
+    account.lastLogin = new Date().toISOString();
+    let results = await accounts.store(account);
+
+    // return account record
+    results.type = "map";
+    results.data[req.user.userid] = account.packet();
+    res.status(results.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
+  }
+  catch(error) {
+    if (error.resultCode && error.resultCode === 401)
+      logger.warn(error.message);
+    else
+      logger.error(error);
+    res.status(error.resultCode || 500).send(error.message);
+  }
+}
+
+/**
+ * Records event in the server logs.
+ * @returns Returns "OK" status.
+ */
+async function logout(req, res) {
+  logger.verbose("/accounts/login");
+  let user = req.body.account || req.body;
+  let userid = req.params[ "userid" ] || req.query[ "userid" ] || user.userid || req.user.userid;
+
+  try {
+    // retrieve user account
+    let account = await accounts.recall(userid);
     if (!account)
       throw new StorageError(401, "invalid userid/password" );
 
     if (req.user.password !== account.password)
       throw new StorageError(401, "invalid userid/password");
+
+    // update last login time
+    account.lastLogin = new Date().toISOString();
+    let results = await accounts.store(account);
+
+    // return account record
+    results.type = "map";
+    results.data[req.user.userid] = account.packet();
+    res.status(results.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
+  }
+  catch(error) {
+    if (error.resultCode && error.resultCode === 401)
+      logger.warn(error.message);
+    else
+      logger.error(error);
+    res.status(error.resultCode || 500).send(error.message);
+  }
+}
+
+/**
+ * Retrieve account record from data store.
+ */
+async function recall(req, res) {
+  logger.verbose("/accounts/recall");
+  let userid = req.params[ "userid" ] || req.query[ "userid" ] || req.user.userid;
+
+  try {
+    // retrieve user account
+    let account = await accounts.recall(userid);
+    if (!account)
+      throw new StorageError(401, "invalid userid/password" );
 
     // update last login time
     account.lastLogin = new Date().toISOString();
@@ -169,8 +245,8 @@ async function dull(req, res) {
   logger.verbose("/accounts dull called");
 
   try {
-    let reqAccount = req.body.account || req.body;
-    let userid = reqAccount.userid || req.query["userid"] ||  req.params["userid"];
+    let user = req.body.account || req.body;
+    let userid = req.params[ "userid" ] || req.query[ "userid" ] || user.userid || req.user.userid;
     let admin = req.user.roles.includes(roles.Admin);
 
     if (!admin && (req.user.userid !== userid))
@@ -206,7 +282,7 @@ async function logEvent(req, res) {
   logger.verbose("/accounts/log");
 
   try {
-    let event = req.body.event || {};
+    let event = req.body.event || req.body || {};
     let admin = req.user.roles.includes(roles.Admin);
     if (!admin && (req.user.userid !== event.userid))
       throw new StorageError(401, "invalid userid/password");
