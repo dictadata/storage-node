@@ -12,9 +12,12 @@ module.exports = class Account {
    * account constructor
    * @param {*} userid
    */
-  constructor(userid = '') {
+  constructor(account = '') {
     this.clear();
-    this.userid = userid;
+    if (typeof account === 'string')
+      this.userid = account;
+    else
+      this.copy(account);
   }
 
   clear() {
@@ -88,7 +91,8 @@ module.exports = class Account {
     return false;
   }
 
-  // shallow copy of all non-function properties
+  // shallow copy of properties
+  // excluding functions, undefined values
   copy(a2) {
     let a1 = this;
 
@@ -100,8 +104,8 @@ module.exports = class Account {
     });
   }
 
-  // shallow copy of non-function properties
-  // excluding userid, password, roles, state
+  // shallow copy of account properties
+  // excluding userid, password, roles, state, functions, undefined values
   update(a2) {
     let a1 = this;
 
@@ -117,10 +121,10 @@ module.exports = class Account {
   }
 
   /**
-   * Copy of account properties for sending to client apps.
-   * Stripped of password, state.
+   * Sanitized copy of account properties for sending to client apps.
+   * Stripped of password, state, functions and undefined values.
    */
-  packet() {
+  sanitize() {
     let a1 = {};
     let a2 = this;
 
@@ -138,21 +142,22 @@ module.exports = class Account {
   }
 
   /**
-   * shallow-copy representation of construct for storage.
-   * 
-   * @param {*} pack 
+   * Representation of construct for storage.
+   * Any user-defined fields need to be stuffed into profile or settings.
+   *
+   * @param {*} pack
    */
   encode() {
     let construct = {
-      userid:      this.userid,
-      password:    this.password,
-      roles:       this.roles,
+      userid: this.userid,
+      password: this.password,
+      roles: this.roles,
       dateCreated: this.dateCreated,
       dateUpdated: this.dateUpdated,
-      lastLogin:   this.lastLogin,
-      profile:     this.profile,
-      settings:    this.settings
-    }
+      lastLogin: this.lastLogin,
+      profile: this.profile,
+      settings: this.settings
+    };
     return construct;
   }
 }
