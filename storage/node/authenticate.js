@@ -33,20 +33,21 @@ exports.basic = async function (userid, password, done) {
     return done(null, false);  // HTTP Authorization header missing or corrupt
 
   try {
-    let reqAccount = new Account(userid);
-    reqAccount.password = password;
-    reqAccount.roles = accounts.defaultRoles;
+    let reqAccount = new Account({ userid, password }); // roles.Public, state !isAuthenticated
 
-    let account = await accounts.recall(userid);
-    if (!account)
-      return done(null, reqAccount);  // not found, public account
+    let results = await accounts.recall(userid);
+    if (results.resultCode === 404)
+      return done(null, reqAccount);  // not found
+    else if (results.resultCode !== 0)
+      throw results;  // results should be a StorageError
 
-    let hpass = Account.hashPwd(password);
-    if (hpass !== account.password)
-      return done(null, reqAccount);  // bad password, public account
+    let account = new Account(results.data[ userid ]);
+
+    if (account.password !== Account.hashPwd(password))
+      return done(null, reqAccount);  // bad password
 
     account.isAuthenticated = true;
-    return done(null, account);  // authenticated, valid account
+    return done(null, account);  // authenticated account
   }
   catch(err) {
     logger.error("authenticate: ", err);
@@ -63,9 +64,11 @@ exports.digest = async function(userid, done) {
     return done(null, false);  // HTTP Authorization header missing or corrupt
 
   try {
-    let account = await accounts.recall(userid);
-    if (!account)
-      return done(null, false);  // not found
+    let results = await accounts.recall(userid);
+    if (results.resultCode !== 0)
+      return done(null, false);  // not found, reject request
+
+    let account = new Account(results.data[ userid ]);
 
     return done(null, account, account.password);  // valid account
   }
