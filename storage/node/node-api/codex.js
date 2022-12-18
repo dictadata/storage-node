@@ -16,16 +16,17 @@ const { Engram, StorageError } = require('@dictadata/storage-junctions/types');
 var router = express.Router();
 
 // Public role
-router.get('/codex/:smt_urn', authorize([ roles.Public, roles.Coder ]), recall);
 router.get('/codex', authorize([ roles.Public, roles.Coder ]), recall);
+router.get('/codex/:smt_urn', authorize([ roles.Public, roles.Coder ]), recall);
 
 // User role
 router.post('/codex', authorize([ roles.User, roles.Coder ]), retrieve);
 
 // Coder role
 router.put('/codex', authorize([ roles.Coder ]), store);
-router.delete('/codex/:smt_urn', authorize([ roles.Coder ]), dull);
+
 router.delete('/codex', authorize([ roles.Coder ]), dull);
+router.delete('/codex/:smt_urn', authorize([ roles.Coder ]), dull);
 
 
 module.exports = router;
