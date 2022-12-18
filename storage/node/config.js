@@ -1,5 +1,5 @@
 /**
- * config.js
+ * storage/node/config
  */
 "use strict";
 
@@ -86,10 +86,11 @@ var _config = {
 
   // enable node-api route handlers
   "node-api": {
-    useStorage: true,
+    useAccounts: true,
+    useLog: false,
     useTransfer: true,
     useClientStream: false,  // TBD not fully implemented
-    useTransport: false   // TBD not fully implemented
+    useTransport: false      // TBD not fully implemented
   },
 
   // clientStream max upload size
