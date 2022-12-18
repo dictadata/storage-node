@@ -8,7 +8,6 @@
 
 const storage = require('@dictadata/storage-junctions');
 const { StorageError } = require('@dictadata/storage-junctions/types');
-const { typeOf } = require('@dictadata/storage-junctions/utils');
 const Account = require('./account');
 const roles = require('./roles');
 const config = require('./config');
@@ -71,60 +70,6 @@ exports.startup = async (config) => {
 };
 
 /**
- * retrieve users' account from database
- * @param {*} userid
- */
-var recall = exports.recall = async function (userid) {
-
-  let account = null;
-
-  let smt = config.$_accounts;
-  let junction = await storage.activate(smt);
-  junction.encoding = accountsEncoding;  // overlay encoding overlay
-
-  let pattern = {};
-  if (junction.engram.keyof === 'key')
-    pattern[ "key" ] = userid;
-  else
-    pattern[ "userid" ] = userid;
-
-  let results = await junction.recall(pattern);
-  if (results.resultCode === 0) {
-    account = new Account();
-    if (junction.engram.keyof === 'key')
-      account.copy(results.data[ userid ]);
-    else
-      account.copy(results.data[ 0 ]);
-  }
-
-  junction.relax();
-  return account;
-};
-
-/**
- * retrieve account account from database
- * @param {*} pattern: {match: {field: value} }
- */
-var retrieve = exports.retrieve = async function (pattern) {
-
-  let account = null;
-
-  let smt = config.$_accounts;
-  let junction = await storage.activate(smt);
-  junction.encoding = accountsEncoding;  // overlay encoding overlay
-
-  let results = await junction.retrieve(pattern);
-  if (results.resultCode === 0) {
-    let keys = Object.keys(results.data);
-    let account = new Account();
-    account.copy(results.data[ keys[ 0 ] ]);
-  }
-
-  junction.relax();
-  return account;
-};
-
-/**
  * create account in database
  * @param {*} account
  */
@@ -156,7 +101,7 @@ var store = exports.store = async function (account) {
  * create account in database
  * @param {*} account
  */
-var dull = exports.dull = async function (userid) {
+exports.dull = async function (userid) {
 
   let smt = config.$_accounts;
   let junction = await storage.activate(smt);
@@ -169,5 +114,64 @@ var dull = exports.dull = async function (userid) {
     pattern[ "userid" ] = userid;
 
   let results = await junction.dull(pattern);
+  return results;
+};
+
+/**
+ * retrieve users' account from database
+ * @param {*} userid
+ */
+exports.recall = async function (userid) {
+
+  //let account = null;
+
+  let smt = config.$_accounts;
+  let junction = await storage.activate(smt);
+  junction.encoding = accountsEncoding;  // overlay encoding overlay
+
+  let pattern = {};
+  if (junction.engram.keyof === 'key')
+    pattern[ "key" ] = userid;
+  else
+    pattern[ "userid" ] = userid;
+
+  let results = await junction.recall(pattern);
+  /*
+  if (results.resultCode === 0) {
+    account = new Account();
+    if (junction.engram.keyof === 'key')
+      account.copy(results.data[ userid ]);
+    else
+      account.copy(results.data[ 0 ]);
+  }
+  */
+  junction.relax();
+  //return account;
+  return results;
+};
+
+/**
+ * retrieve account account from database
+ * @param {*} pattern: {match: {field: value} }
+ */
+exports.retrieve = async function (pattern) {
+
+  //let accounts = null;
+
+  let smt = config.$_accounts;
+
+  let junction = await storage.activate(smt);
+  junction.encoding = accountsEncoding;  // overlay encoding
+
+  let results = await junction.retrieve(pattern);
+  /*
+  if (results.resultCode === 0) {
+    let keys = Object.keys(results.data);
+    let account = new Account();
+    account.copy(results.data[ keys[ 0 ] ]);
+  }
+  */
+  junction.relax();
+  //return account;
   return results;
 };
