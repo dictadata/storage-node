@@ -1,3 +1,6 @@
+/**
+ * storage/node/authorize
+ */
 'use strict';
 
 const Roles = require('./roles');
@@ -24,7 +27,7 @@ function authorize(roles = []) {
 
       if (!authorized && req.user) {
         // check if user is Admin
-        authorized = req.user.roles.includes(Roles.Admin);
+        authorized = req.user.roles.includes(Roles.Super);
 
         if (!authorized) {
           // check if user has a role that matches an interface role

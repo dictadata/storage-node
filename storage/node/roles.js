@@ -1,10 +1,10 @@
 /**
- * storage/node/roles.js
+ * storage/node/roles
  *
- * A role is denoted by a simple string value.
+ * Roles are enumeration of string values.
  *
  * Example:
- *    let myroles = [ roles.User, "Coder", "MyRole" ]
+ *    user.roles = [ roles.User, "Coder", "MyRole" ]
  */
 "use strict";
 
@@ -17,11 +17,13 @@
  */
 const roles = {
   Public: 'Public',   // not authenticated
+  Guest: 'Guest',     // authenticated, limit functionality
   User: 'User',       // authenticated
-  Coder: 'Coder',     // codex writer
-  ETL: 'ETL',         // codex ETL user
+  Coder: 'Coder',     // codex editor
+  ETL: 'ETL',         // transfer user
   Monitor: 'Monitor', // status API's
-  Admin: 'Admin'      // god mode
+  Admin: 'Admin',     // accounts administrator
+  Super: 'Super',     // god mode
 };
 
 module.exports = roles;
