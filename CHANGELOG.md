@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.58
+  - separate user (login) API and log (events) API from accounts API
+  - add Roles for Guest, Super
+  - updated IIS web.config and IIS setup instructions
 - version 0.9.57
   - add createSchema, dullSchema endpoints  PUT /node/schema/:SMT, DELETE /node/schema/:SMT
   - updated: @dictadata/storage-junctions@0.9.86
