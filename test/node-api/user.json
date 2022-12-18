@@ -1,0 +1,83 @@
+{
+  "name": "user",
+  "request": {
+    "base": "http://dev.dictadata.org:8089/node/",
+    "auth": "dullboy:dullboy"
+  },
+  "expected": {
+    "statusCode": 200
+  },
+  "queries": [
+    {
+      "name": "register",
+      "request": {
+        "method": "POST",
+        "url": "register",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+          "data": {
+          "account": {
+            "userid": "dullboy",
+            "password": "dullboy"
+          }
+        }
+      },
+      "expected": {
+        "statusCode": [
+          201,
+          409
+        ]
+      }
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "GET",
+        "url": "login"
+      }
+    },
+    {
+      "name": "update",
+      "request": {
+        "method": "PUT",
+        "url": "user",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+        "account": {
+            "userid": "dullboy",
+            "password": "dullboy",
+            "roles": [
+              "User",
+              "ETL"
+            ],
+            "settings": {
+              "prefix": "myapp",
+              "homepage": "/home",
+              "theme": "vue"
+            }
+          }
+        }
+      },
+      "expected": {
+        "match_fail": "ETL"
+      }
+    },
+    {
+      "name": "logout",
+      "request": {
+        "method": "GET",
+        "url": "logout"
+      }
+    },
+    {
+      "name": "dull",
+      "request": {
+        "method": "DELETE",
+        "url": "accounts"
+      }
+    }
+  ]
+}

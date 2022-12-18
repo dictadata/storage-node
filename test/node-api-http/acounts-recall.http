@@ -1,0 +1,7 @@
+### dullboy, querystring
+GET http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+Authorization: Basic dullboy dullboy
+
+### dullboy, querystring
+GET http://dev.dictadata.org:8089/node/accounts/dullboy HTTP/1.1
+Authorization: Basic admin admin

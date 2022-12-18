@@ -8,8 +8,8 @@
       "roles": [
         "User"
       ],
-      "dateCreated": "2022-12-17T22:26:16.971Z",
-      "dateUpdated": "2022-12-17T22:26:17.058Z",
+      "dateCreated": "2022-12-17T22:33:25.719Z",
+      "dateUpdated": "2022-12-17T22:33:25.719Z",
       "lastLogin": null,
       "profile": {
         "provider": "",
@@ -33,9 +33,7 @@
         ]
       },
       "settings": {
-        "prefix": "myapp",
-        "homepage": "/home",
-        "theme": "vue"
+        "prefix": ""
       }
     }
   }

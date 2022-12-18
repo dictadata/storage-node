@@ -1,11 +1,14 @@
 
-### dullboy, querystring
-DELETE http://dev.dictadata.org:8089/node/account/dullboy HTTP/1.1
+### dullboy
+DELETE http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic dullboy dullboy
-Content-Type: application/json; charset=utf-8
+
+### dullboy by admin
+DELETE http://dev.dictadata.org:8089/node/accounts/dullboy HTTP/1.1
+Authorization: Basic admin admin
 
 ### guest, by unregistered user
-DELETE http://dev.dictadata.org:8089/node/account HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic aladdin opensesame
 Content-Type: application/json; charset=utf-8
 
@@ -16,7 +19,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### guest, does not have User rights
-DELETE http://dev.dictadata.org:8089/node/account HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic guest guest
 Content-Type: application/json; charset=utf-8
 
@@ -27,18 +30,11 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### guest, by admin
-DELETE http://dev.dictadata.org:8089/node/account HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/accounts/guest HTTP/1.1
 Authorization: Basic admin admin
-Content-Type: application/json; charset=utf-8
-
-{
-  "account": {
-    "userid": "guest"
-  }
-}
 
 ### user
-DELETE http://dev.dictadata.org:8089/node/account HTTP/1.1
+DELETE http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

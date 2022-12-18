@@ -1,0 +1,77 @@
+{
+  "name": "account",
+  "request": {
+    "method": "",
+    "url": "accounts",
+    "base": "http://dev.dictadata.org:8089/node/",
+    "auth": "dullboy:dullboy"
+  },
+  "expected": {
+    "statusCode": 200
+  },
+  "queries": [
+    {
+      "name": "store",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "auth": "admin:admin",
+        "data": {
+          "account": {
+            "userid": "dullboy",
+            "password": "dullboy",
+            "roles": [ "User" ]
+          }
+        }
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ]
+      }
+    },
+    {
+      "name": "recall",
+      "request": {
+        "method": "GET"
+      }
+    },
+    {
+      "name": "update",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "auth": "dullboy:dullboy",
+        "data": {
+          "account": {
+            "userid": "dullboy",
+            "password": "dullboy",
+            "roles": [
+              "User",
+              "ETL"
+            ],
+            "settings": {
+              "prefix": "myapp",
+              "homepage": "/home",
+              "theme": "vue"
+            }
+          }
+        }
+      },
+      "expected": {
+        "match_fail": "ETL"
+      }
+    },
+    {
+      "name": "dull",
+      "request": {
+        "method": "DELETE"
+      }
+    }
+  ]
+}

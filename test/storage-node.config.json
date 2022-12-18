@@ -1,6 +1,7 @@
 {
   "serverPort": "8089",
-  "logPath": "./log/",
+  "logPath": "../log/",
+  "logPrefix": "storage-node",
   "logLevel": "verbose",
   "node-api": {
     "useClientStream": true,

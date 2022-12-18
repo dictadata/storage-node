@@ -1,0 +1,25 @@
+### by userid
+POST http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json; charset=utf-8
+
+{
+  "pattern": {
+    "match": {
+      "userid": "dullboy"
+    }
+  }
+}
+
+### by Roles
+POST http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json; charset=utf-8
+
+{
+  "pattern": {
+    "match": {
+      "roles": ["Public", "Guest"]
+    }
+  }
+}

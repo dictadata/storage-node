@@ -14,13 +14,9 @@ GET http://dev.dictadata.org:8089/node/login HTTP/1.1
 Authorization: Basic guest guest
 
 ### user
-GET http://dev.dictadata.org/node/login HTTP/1.1
-Authorization: Basic user user
-
-### user
 GET http://dev.dictadata.org:8089/node/login HTTP/1.1
 Authorization: Basic user user
 
 ### admin
-GET http://dev.dictadata.org:8089/node/account HTTP/1.1
+GET http://dev.dictadata.org:8089/node/login HTTP/1.1
 Authorization: Basic admin admin

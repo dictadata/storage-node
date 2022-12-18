@@ -6,11 +6,12 @@
     "dullboy": {
       "userid": "dullboy",
       "roles": [
+        "Public",
         "User"
       ],
-      "dateCreated": "2022-12-17T22:26:16.971Z",
-      "dateUpdated": "2022-12-17T22:26:17.058Z",
-      "lastLogin": null,
+      "dateCreated": "2022-12-17T22:41:55.326Z",
+      "dateUpdated": "2022-12-17T22:41:55.377Z",
+      "lastLogin": "2022-12-17T22:41:55.375Z",
       "profile": {
         "provider": "",
         "id": "",
@@ -33,9 +34,7 @@
         ]
       },
       "settings": {
-        "prefix": "myapp",
-        "homepage": "/home",
-        "theme": "vue"
+        "prefix": ""
       }
     }
   }

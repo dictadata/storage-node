@@ -6,11 +6,12 @@
     "dullboy": {
       "userid": "dullboy",
       "roles": [
+        "Public",
         "User"
       ],
-      "dateCreated": "2022-12-17T22:26:16.971Z",
-      "dateUpdated": "2022-12-17T22:26:17.058Z",
-      "lastLogin": null,
+      "dateCreated": "2022-12-17T22:02:57.104Z",
+      "dateUpdated": "2022-12-17T22:09:28.927Z",
+      "lastLogin": "2022-12-17T22:09:28.873Z",
       "profile": {
         "provider": "",
         "id": "",
