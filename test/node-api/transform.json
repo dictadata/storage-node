@@ -63,7 +63,7 @@
               "options": {}
             },
             "terminal": {
-              "smt": "json|file:./data/output/transforms/|ia_voters_rows.json|*",
+              "smt": "json|file:../data/output/transforms/|ia_voters_rows.json|*",
               "options": {}
             }
           }
