@@ -1,7 +1,7 @@
 {
   "model": "*",
   "locus": "*",
-  "schema": "xyz_accounts",
+  "schema": "realm_accounts",
   "key": "=userid",
   "fields": [
     {

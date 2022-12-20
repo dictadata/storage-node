@@ -6,30 +6,23 @@
     "dullboy": {
       "userid": "dullboy",
       "roles": [
-        "Public",
         "User"
       ],
-      "dateCreated": "2022-12-17T22:02:57.104Z",
-      "dateUpdated": "2022-12-17T22:09:28.927Z",
-      "lastLogin": "2022-12-17T22:09:28.873Z",
+      "dateCreated": "2022-12-20T18:46:09.701Z",
+      "dateUpdated": "2022-12-20T18:46:09.782Z",
+      "lastLogin": "2022-12-20T18:46:09.748Z",
       "profile": {
-        "provider": "",
-        "id": "",
-        "displayName": "",
-        "name": {
-          "familyName": "",
-          "givenName": "",
-          "middleName": ""
-        },
-        "emails": [
+        "userName": "",
+        "givenName": "",
+        "middleName": "",
+        "familyName": "",
+        "email": "",
+        "photoURL": "",
+        "webURL": "",
+        "links": [
           {
-            "value": "",
-            "type": ""
-          }
-        ],
-        "photos": [
-          {
-            "value": ""
+            "name": "",
+            "webURL": ""
           }
         ]
       },

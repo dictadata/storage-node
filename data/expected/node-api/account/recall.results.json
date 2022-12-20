@@ -8,32 +8,28 @@
       "roles": [
         "User"
       ],
-      "dateCreated": "2022-12-17T22:36:05.081Z",
-      "dateUpdated": "2022-12-17T22:36:05.081Z",
+      "dateCreated": "2022-12-20T18:35:55.812Z",
+      "dateUpdated": "2022-12-20T18:43:06.352Z",
       "lastLogin": null,
       "profile": {
-        "provider": "",
-        "id": "",
-        "displayName": "",
-        "name": {
-          "familyName": "",
-          "givenName": "",
-          "middleName": ""
-        },
-        "emails": [
+        "userName": "",
+        "givenName": "",
+        "middleName": "",
+        "familyName": "",
+        "email": "",
+        "photoURL": "",
+        "webURL": "",
+        "links": [
           {
-            "value": "",
-            "type": ""
-          }
-        ],
-        "photos": [
-          {
-            "value": ""
+            "name": "",
+            "webURL": ""
           }
         ]
       },
       "settings": {
-        "prefix": ""
+        "homePage": "",
+        "theme": "",
+        "darkMode": false
       }
     }
   }
