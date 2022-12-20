@@ -1,6 +1,6 @@
 
-### dullboy, cannot modify own roles
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+### dullboy, not authorized
+PUT http://dev.dictadata.org/node/accounts HTTP/1.1
 Authorization: Basic dullboy dullboy
 Content-Type: application/json; charset=utf-8
 
@@ -17,8 +17,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### dullboy by admin, can set user's roles
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+### dullboy by admin
+PUT http://dev.dictadata.org/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -122,3 +122,8 @@ Content-Type: application/json; charset=utf-8
     "password": "admin"
   }
 }
+
+### admin - user
+PUT http://dev.dictadata.org:8089/node/accounts/ HTTP/1.1
+Authorization: Basic admin admin
+Content-Type: application/json; charset=utf-8

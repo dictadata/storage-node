@@ -5,3 +5,23 @@ Authorization: Basic dullboy dullboy
 ### dullboy, querystring
 GET http://dev.dictadata.org:8089/node/accounts/dullboy HTTP/1.1
 Authorization: Basic admin admin
+
+### dicta
+GET http://dev.dictadata.org/node/accounts/dicta HTTP/1.1
+Authorization: Basic admin admin
+
+### user
+GET http://dev.dictadata.org/node/accounts/user HTTP/1.1
+Authorization: Basic admin admin
+
+### drewlab
+GET http://dev.dictadata.org/node/accounts/drewlab HTTP/1.1
+Authorization: Basic admin admin
+
+### admin
+GET http://dev.dictadata.org/node/accounts/drewlab HTTP/1.1
+Authorization: Basic admin admin
+
+### admin
+GET http://dev.dictadata.org/node/accounts HTTP/1.1
+Authorization: Basic admin admin

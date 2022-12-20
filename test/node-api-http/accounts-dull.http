@@ -1,6 +1,6 @@
 
 ### dullboy
-DELETE http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+DELETE http://dev.dictadata.org/node/accounts HTTP/1.1
 Authorization: Basic dullboy dullboy
 
 ### dullboy by admin
@@ -29,10 +29,6 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### guest, by admin
-DELETE http://dev.dictadata.org:8089/node/accounts/guest HTTP/1.1
-Authorization: Basic admin admin
-
 ### user
 DELETE http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic user user
@@ -43,3 +39,7 @@ Content-Type: application/json; charset=utf-8
     "userid": "user"
   }
 }
+
+### by admin
+DELETE http://dev.dictadata.org/node/accounts/sonny HTTP/1.1
+Authorization: Basic admin admin
