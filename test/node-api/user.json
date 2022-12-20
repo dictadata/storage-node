@@ -33,7 +33,7 @@
     {
       "name": "login",
       "request": {
-        "method": "GET",
+        "method": "POST",
         "url": "login"
       }
     },
@@ -68,7 +68,7 @@
     {
       "name": "logout",
       "request": {
-        "method": "GET",
+        "method": "POST",
         "url": "logout"
       }
     },

@@ -16,8 +16,8 @@ const logger = require("../../utils/logger");
  */
 var router = module.exports = exports = express.Router();
 
-router.get("/login", authorize([ roles.Public ]), login);
-router.get("/logout", authorize([ roles.Guest, roles.User ]), logout);
+router.post("/login", authorize([ roles.Public ]), login);
+router.post("/logout", authorize([ roles.Guest, roles.User ]), logout);
 router.post("/register", authorize([roles.Public]), register);
 router.put("/user", authorize([ roles.User ]), update);
 
