@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.60
+  - default user role is Guest
+  - update account defaults for profile and settings
+  - fix issues creating realm_accounts schema and admin user
 - version 0.9.59
   - use POST for /node/login and /node/logout
 - version 0.9.58
