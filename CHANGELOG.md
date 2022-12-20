@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.59
+  - use POST for /node/login and /node/logout
 - version 0.9.58
   - separate user (login) API and log (events) API from accounts API
   - add Roles for Guest, Super
