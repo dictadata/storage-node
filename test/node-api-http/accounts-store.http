@@ -1,6 +1,6 @@
 
 ### dullboy, not authorized
-PUT http://dev.dictadata.org/node/accounts HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic dullboy dullboy
 Content-Type: application/json; charset=utf-8
 
@@ -18,7 +18,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### dullboy by admin
-PUT http://dev.dictadata.org/node/accounts HTTP/1.1
+PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -35,24 +35,7 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### guest:guest - guest does not have User rights
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
-Authorization: Basic guest guest
-Content-Type: application/json; charset=utf-8
-
-{
-  "account": {
-    "userid": "guest",
-    "password": "guest",
-    "roles": ["User","Admin"],
-    "settings": {
-      "homepage": "/guest/myhomepage",
-      "theme": "light"
-    }
-  }
-}
-
-### guest:guest - changed by admin
+### guest
 PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
@@ -61,24 +44,7 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "guest",
     "password": "guest",
-    "roles": [ "Guest", "Demo" ],
-    "settings": {
-      "homepage": ".",
-      "theme": "dark"
-    }
-  }
-}
-
-### user - changed by user, cannot change own roles
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
-Authorization: Basic user user
-Content-Type: application/json; charset=utf-8
-
-{
-  "account": {
-    "userid": "user",
-    "password": "user",
-    "roles": ["User","Admin"],
+    "roles": [ "Guest" ],
     "settings": {
       "homepage": "/home",
       "theme": "dark"
@@ -86,7 +52,7 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### user - changed roles by admin
+### user
 PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
@@ -95,7 +61,7 @@ Content-Type: application/json; charset=utf-8
   "account": {
     "userid": "user",
     "password": "user",
-    "roles": ["User","Coder","ETL","Tester"]
+    "roles": ["User","Coder","ETL"]
   }
 }
 
@@ -122,8 +88,3 @@ Content-Type: application/json; charset=utf-8
     "password": "admin"
   }
 }
-
-### admin - user
-PUT http://dev.dictadata.org:8089/node/accounts/ HTTP/1.1
-Authorization: Basic admin admin
-Content-Type: application/json; charset=utf-8
