@@ -22,11 +22,11 @@ function authorize(roles = []) {
       logger.verbose("authorize");
       logger.debug(roles, (req.user && req.user.roles));
 
-      // check if interface is public
+      // check if route is public
       let authorized = (roles.includes(Roles.Public));
 
       if (!authorized && req.user) {
-        // check if user is Admin
+        // check if user is Superman
         authorized = req.user.roles.includes(Roles.Super);
 
         if (!authorized) {
