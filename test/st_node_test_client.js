@@ -14,20 +14,20 @@ const { httpRequest, hasOwnProperty } = require("@dictadata/storage-junctions/ut
 const _compare = require("@dictadata/storage-junctions/test/lib/_compare");
 const fs = require("fs");
 const path = require("path");
-const colors = require('colors');
+require('colors');
 
 let testFile = process.argv.length > 2 ? process.argv[ 2 ] : "";
 let testName = process.argv.length > 3 ? process.argv[ 3 ] : "";
 
 var request_defaults = {
   method: "GET",
-  origin: "https://dev.dictadata.org:8089/node",
-  timeout: 8000,
+  timeout: 5000,
   headers: {
-    'Accept': 'application / json',
-    'User-Agent': "@dictadata/storage/nodeclient 1.7.x"
+    'Accept': 'application/json',
+    'User-Agent': "@dictadata storage client"
   }
 };
+  // origin: "http://dev.dictadata.org:8089",
 
 (async () => {
   console.log((testFile + "  " + testName).blue);
