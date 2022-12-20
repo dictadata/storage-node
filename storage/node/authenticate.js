@@ -18,7 +18,6 @@ exports.local = function (username, password, done) {
   let account = new Account();
   account.name = username;
   account.password = password;
-  account.roles = accounts.defaultRoles;
   return done(null, account);
 };
 
@@ -33,7 +32,7 @@ exports.basic = async function (userid, password, done) {
     return done(null, false);  // HTTP Authorization header missing or corrupt
 
   try {
-    let reqAccount = new Account({ userid, password }); // roles.Public, state !isAuthenticated
+    let reqAccount = new Account({ userid, password }); // roles.Guest, state !isAuthenticated
 
     let results = await accounts.recall(userid);
     if (results.resultCode === 404)

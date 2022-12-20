@@ -117,7 +117,7 @@ async function register(req, res) {
     let newAccount = new Account(reqAccount.userid);
     newAccount.update(reqAccount);
     newAccount.password = Account.hashPwd(reqAccount.password);
-    newAccount.roles = [roles.Public, roles.User];               // should be Guest until user verifies email address
+    newAccount.roles = [ roles.User ];        // should be Guest until user verifies email address
     newAccount.dateCreated = new Date().toISOString();
     newAccount.dateUpdated = new Date().toISOString();
     newAccount.lastLogin = new Date().toISOString();

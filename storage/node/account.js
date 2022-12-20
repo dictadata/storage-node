@@ -23,7 +23,7 @@ module.exports = class Account {
   clear() {
     this.userid = '';
     this.password = '';
-    this.roles = [roles.Public];
+    this.roles = [ roles.Guest ];
     this.dateCreated = null;
     this.dateUpdated = null;
     this.lastLogin = null;
