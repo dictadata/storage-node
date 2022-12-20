@@ -1,10 +1,11 @@
 {
   "model": "*",
   "locus": "*",
-  "schema": "node_accounts",
+  "schema": "xyz_accounts",
   "key": "=userid",
-  "fields": {
-    "userid": {
+  "fields": [
+    {
+      "name": "userid",
       "type": "keyword",
       "size": 256,
       "default": null,
@@ -15,7 +16,8 @@
         "ignore_above": 256
       }
     },
-    "password": {
+    {
+      "name": "password",
       "type": "keyword",
       "size": 64,
       "default": null,
@@ -26,9 +28,11 @@
         "ignore_above": 64
       }
     },
-    "roles": {
+    {
+      "name": "roles",
       "type": "list",
-      "_item": {
+      "_list": {
+        "name": "_list",
         "type": "keyword",
         "size": 32,
         "_elasticsearch": {
@@ -37,7 +41,8 @@
         }
       }
     },
-    "dateCreated": {
+    {
+      "name": "dateCreated",
       "type": "date",
       "default": null,
       "nullable": false,
@@ -46,7 +51,8 @@
         "type": "date"
       }
     },
-    "dateUpdated": {
+    {
+      "name": "dateUpdated",
       "type": "date",
       "size": 0,
       "default": null,
@@ -56,7 +62,8 @@
         "type": "date"
       }
     },
-    "lastLogin": {
+    {
+      "name": "lastLogin",
       "type": "date",
       "size": 0,
       "default": null,
@@ -66,15 +73,17 @@
         "type": "date"
       }
     },
-    "profile": {
+    {
+      "name": "profile",
       "type": "map",
       "fields": {
       }
     },
-    "settings": {
+    {
+      "name": "settings",
       "type": "map",
       "fields": {
       }
     }
-  }
+  ]
 }
