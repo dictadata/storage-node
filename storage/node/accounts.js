@@ -15,10 +15,6 @@ const logger = require("../utils/logger");
 const fs = require("fs/promises");
 const path = require("path");
 
-exports.defaultRoles = [ roles.Public ];
-//if (process.env.NODE_ENV === 'development')
-//  defaultRoles = [roles.Public, roles.User, roles.Monitor];
-
 var accountsEncoding;
 
 /**
@@ -46,7 +42,7 @@ exports.startup = async (config) => {
       account.password = Account.hashPwd('admin');
       account.roles = [ roles.User, roles.Admin ];
       results = await store(account);
-      if (results.resultCode !== 201) {
+      if (results.resultCode !== 0 && results.resultCode !== 201) {
         throw new StorageError(500, "unable to create admin account");
       }
     }
@@ -93,7 +89,8 @@ var store = exports.store = async function (account) {
     // pattern not used with primary key
   }
 
-  let results = await junction.store(account.encode(), pattern);
+  let construct = account.encode();
+  let results = await junction.store(construct, pattern);
   return results;
 };
 
