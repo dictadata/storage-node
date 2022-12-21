@@ -7,17 +7,17 @@ const express = require('express');
 const url = require('url');
 const logger = require('../storage/utils/logger');
 const authorize = require('../storage/node/authorize');
-const roles = require('../storage/node/roles');
+const Roles = require('../storage/node/roles');
 
 /**
  * routes
  */
 var router = express.Router();
-router.get('/echo', authorize([roles.Public]), echo);
-router.get('/echo/:param', authorize([roles.User]), echo);
-router.post('/echo', authorize([roles.Public]), echo);
-router.post('/echo/:param', authorize([roles.User]), echo);
-router.get('/flasher', authorize([roles.Public]), flasher);
+router.get('/echo', authorize([Roles.Public]), echo);
+router.get('/echo/:param', authorize([Roles.User]), echo);
+router.post('/echo', authorize([Roles.Public]), echo);
+router.post('/echo/:param', authorize([Roles.User]), echo);
+router.get('/flasher', authorize([Roles.Public]), flasher);
 module.exports = router;
 
 

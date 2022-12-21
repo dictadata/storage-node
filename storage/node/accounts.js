@@ -9,7 +9,7 @@
 const storage = require('@dictadata/storage-junctions');
 const { StorageError } = require('@dictadata/storage-junctions/types');
 const Account = require('./account');
-const roles = require('./roles');
+const Roles = require('./roles');
 const config = require('./config');
 const logger = require("../utils/logger");
 const fs = require("fs/promises");
@@ -28,7 +28,7 @@ exports.startup = async (config) => {
   var junction;
   try {
     // add any app/api roles
-    Object.assign(roles, config.roles);
+    Object.assign(Roles, config.roles);
 
     accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts_encoding.json')));
 
@@ -40,7 +40,7 @@ exports.startup = async (config) => {
       logger.info("creating admin account");
       let account = new Account('admin');
       account.password = Account.hashPwd('admin');
-      account.roles = [ roles.User, roles.Admin ];
+      account.roles = [ Roles.User, Roles.Admin ];
       results = await store(account);
       if (results.resultCode !== 0 && results.resultCode !== 201) {
         throw new StorageError(500, "unable to create admin account");

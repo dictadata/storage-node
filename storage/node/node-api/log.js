@@ -7,7 +7,7 @@ const { StorageResults, StorageError } = require("@dictadata/storage-junctions/t
 const express = require("express");
 const accounts = require("../accounts");
 const authorize = require("../authorize");
-const roles = require("../roles");
+const Roles = require("../roles");
 const logger = require("../../utils/logger");
 
 /**
@@ -15,7 +15,7 @@ const logger = require("../../utils/logger");
  */
 var router = module.exports = exports = express.Router();
 
-router.post("/log", authorize([ roles.User ]), logEvent); // /log is probably not used
+router.post("/log", authorize([ Roles.User ]), logEvent); // /log is probably not used
 
 /**
  * Log a user event.
@@ -25,7 +25,7 @@ async function logEvent(req, res) {
 
   try {
     let event = req.body.event || req.body || {};
-    let superman = req.user.roles.includes(roles.Super);
+    let superman = req.user.roles.includes(Roles.Super);
     if (!superman && (req.user.userid !== event.userid))
       throw new StorageError(401, "invalid userid/password");
 

@@ -5,7 +5,7 @@
 
 const express = require('express');
 const authorize = require("../authorize");
-const roles = require("../roles");
+const Roles = require("../roles");
 const config = require("../config.js");
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
@@ -17,38 +17,38 @@ const { typeOf } = require('@dictadata/storage-junctions/utils');
  */
 
 var router = express.Router();
-router.get('/list/:SMT', authorize([ roles.Public ]), list);
-router.post('/list/:SMT', authorize([ roles.Public ]), list);
-router.post('/list', authorize([ roles.Public ]), list);
+router.get('/list/:SMT', authorize([ Roles.Public ]), list);
+router.post('/list/:SMT', authorize([ Roles.Public ]), list);
+router.post('/list', authorize([ Roles.Public ]), list);
 
-router.put('/schema/:SMT', authorize([ roles.Coder ]), createSchema);
-router.put('/schema', authorize([ roles.Coder ]), createSchema);
+router.put('/schema/:SMT', authorize([ Roles.Coder ]), createSchema);
+router.put('/schema', authorize([ Roles.Coder ]), createSchema);
 
-router.delete('/schema/:SMT', authorize([ roles.Coder ]), dullSchema);
-router.delete('/schema', authorize([ roles.Coder ]), dullSchema);
+router.delete('/schema/:SMT', authorize([ Roles.Coder ]), dullSchema);
+router.delete('/schema', authorize([ Roles.Coder ]), dullSchema);
 
-router.get('/schema/:SMT', authorize([ roles.Public ]), getEncoding);
-router.post('/schema/:SMT', authorize([ roles.Public ]), getEncoding);
-router.post('/schema', authorize([ roles.Public ]), getEncoding);
+router.get('/schema/:SMT', authorize([ Roles.Public ]), getEncoding);
+router.post('/schema/:SMT', authorize([ Roles.Public ]), getEncoding);
+router.post('/schema', authorize([ Roles.Public ]), getEncoding);
 
-router.get('/encoding/:SMT', authorize([ roles.Public ]), getEncoding);
-router.post('/encoding/:SMT', authorize([ roles.Public ]), getEncoding);
-router.post('/encoding', authorize([ roles.Public ]), getEncoding);
+router.get('/encoding/:SMT', authorize([ Roles.Public ]), getEncoding);
+router.post('/encoding/:SMT', authorize([ Roles.Public ]), getEncoding);
+router.post('/encoding', authorize([ Roles.Public ]), getEncoding);
 
-router.put('/store/:SMT', authorize([ roles.User ]), store);
-router.put('/store', authorize([ roles.User ]), store);
+router.put('/store/:SMT', authorize([ Roles.User ]), store);
+router.put('/store', authorize([ Roles.User ]), store);
 
-router.delete('/dull/:SMT', authorize([ roles.User ]), dull);
-router.post('/dull/:SMT', authorize([ roles.User ]), dull);
-router.post('/dull', authorize([ roles.User ]), dull);
+router.delete('/dull/:SMT', authorize([ Roles.User ]), dull);
+router.post('/dull/:SMT', authorize([ Roles.User ]), dull);
+router.post('/dull', authorize([ Roles.User ]), dull);
 
-router.get('/recall/:SMT', authorize([ roles.Public ]), recall);
-router.post('/recall/:SMT', authorize([ roles.Public ]), recall);
-router.post('/recall', authorize([ roles.Public ]), recall);
+router.get('/recall/:SMT', authorize([ Roles.Public ]), recall);
+router.post('/recall/:SMT', authorize([ Roles.Public ]), recall);
+router.post('/recall', authorize([ Roles.Public ]), recall);
 
-router.get('/retrieve/:SMT', authorize([ roles.Public ]), retrieve);
-router.post('/retrieve/:SMT', authorize([ roles.Public ]), retrieve);
-router.post('/retrieve', authorize([ roles.Public ]), retrieve);
+router.get('/retrieve/:SMT', authorize([ Roles.Public ]), retrieve);
+router.post('/retrieve/:SMT', authorize([ Roles.Public ]), retrieve);
+router.post('/retrieve', authorize([ Roles.Public ]), retrieve);
 
 module.exports = router;
 

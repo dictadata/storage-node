@@ -7,14 +7,14 @@
  * Enumeration of standard roles.
  *
  * Example:
- *    user.roles = [ roles.User, "Coder", "MyRole" ]*
+ *    user.roles = [ Roles.User, "Coder", "MyRole" ]*
  *
  * Note: Additional roles can be added to the storage-node.config.json file,
  *   but they won't be available to module level (global) code,
  *   because modules load before config file is read.
  *   e.g. when defining Express router routes.
  */
-const roles = {
+const Roles = {
   // public routes
   Public: 'Public',   // authorizes routes for all requests, use ONLY for routes
 
@@ -33,4 +33,4 @@ const roles = {
   Super: 'Super',     // god mode, authorized for all routes
 };
 
-module.exports = roles;
+module.exports = Roles;

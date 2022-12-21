@@ -5,7 +5,7 @@
 
 const express = require('express');
 const authorize = require('../authorize');
-const roles = require('../roles');
+const Roles = require('../roles');
 const config = require('../config');
 const storage = require('@dictadata/storage-junctions');
 const { StorageResults, StorageError } = require("@dictadata/storage-junctions/types");
@@ -16,8 +16,8 @@ const logger = require('../../utils/logger');
  * status routes
  */
 var router = express.Router();
-router.get('/status', authorize([ roles.Public, roles.Monitor ]), status);
-router.get('/status/:SMT', authorize([ roles.User, roles.Monitor ]), smt_status);
+router.get('/status', authorize([ Roles.Public, Roles.Monitor ]), status);
+router.get('/status/:SMT', authorize([ Roles.User, Roles.Monitor ]), smt_status);
 module.exports = router;
 
 /**

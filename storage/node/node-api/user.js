@@ -8,7 +8,7 @@ const express = require("express");
 const accounts = require("../accounts");
 const Account = require('../account');
 const authorize = require("../authorize");
-const roles = require("../roles");
+const Roles = require("../roles");
 const logger = require("../../utils/logger");
 
 /**
@@ -16,10 +16,10 @@ const logger = require("../../utils/logger");
  */
 var router = module.exports = exports = express.Router();
 
-router.post("/login", authorize([ roles.Public ]), login);
-router.post("/logout", authorize([ roles.Guest, roles.User ]), logout);
-router.post("/register", authorize([roles.Public]), register);
-router.put("/user", authorize([ roles.User ]), update);
+router.post("/login", authorize([ Roles.Public ]), login);
+router.post("/logout", authorize([ Roles.Guest, Roles.User ]), logout);
+router.post("/register", authorize([Roles.Public]), register);
+router.put("/user", authorize([ Roles.User ]), update);
 
 /**
  * Retrieve account record from data store.
@@ -117,7 +117,7 @@ async function register(req, res) {
     let newAccount = new Account(reqAccount.userid);
     newAccount.update(reqAccount);
     newAccount.password = Account.hashPwd(reqAccount.password);
-    newAccount.roles = [ roles.User ];        // should be Guest until user verifies email address
+    newAccount.roles = [ Roles.User ];        // should be Guest until user verifies email address
     newAccount.dateCreated = new Date().toISOString();
     newAccount.dateUpdated = new Date().toISOString();
     newAccount.lastLogin = new Date().toISOString();

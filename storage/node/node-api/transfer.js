@@ -7,7 +7,7 @@
 
 const express = require('express');
 const authorize = require("../authorize");
-const roles = require("../roles");
+const Roles = require("../roles");
 const logger = require('../../utils/logger');
 const Storage = require('@dictadata/storage-junctions');
 const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
@@ -18,7 +18,7 @@ const stream = require('stream').promises;
  * transfer routes
  */
 var router = express.Router();
-router.post('/transfer', authorize([ roles.User ]), transfer);
+router.post('/transfer', authorize([ Roles.User ]), transfer);
 module.exports = router;
 
 /**

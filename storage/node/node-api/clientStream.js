@@ -11,7 +11,7 @@
 
 const express = require('express');
 const authorize = require("../authorize");
-const roles = require("../roles");
+const Roles = require("../roles");
 const config = require('../config');
 const logger = require('../../utils/logger');
 const formidable = require('formidable');
@@ -28,9 +28,9 @@ const { StorageError } = require("@dictadata/storage-junctions/types");
  * upload routes
  */
 var router = express.Router();
-router.get('/export/:filename', authorize([ roles.ETL ]), exportData);
-router.put('/import/:filename', authorize([ roles.ETL ]), importData);
-router.post('/upload', authorize([ roles.ETL ]), uploadFiles);
+router.get('/export/:filename', authorize([ Roles.ETL ]), exportData);
+router.put('/import/:filename', authorize([ Roles.ETL ]), importData);
+router.post('/upload', authorize([ Roles.ETL ]), uploadFiles);
 module.exports = router;
 
 /**

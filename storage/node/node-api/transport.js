@@ -11,7 +11,7 @@
 
 const express = require('express');
 const authorize = require("../authorize");
-const roles = require("../roles");
+const Roles = require("../roles");
 const config = require('../config');
 const logger = require('../../utils/logger');
 const storage = require('@dictadata/storage-junctions');
@@ -22,7 +22,7 @@ const stream = require('stream').promises;
  * transfer routes
  */
 var router = express.Router();
-router.post('/transport', authorize([ roles.ETL ]), transport);
+router.post('/transport', authorize([ Roles.ETL ]), transport);
 module.exports = router;
 
 /**

@@ -9,7 +9,7 @@ const app = require('./node/app');
 const config = require('./node/config');
 const authenticate = require('./node/authenticate');
 const authorize = require('./node/authorize');
-const roles = require('./node/roles');
+const Roles = require('./node/roles');
 const Account = require('./node/account');
 
 const startup = require('./node/startup');
@@ -21,7 +21,7 @@ exports.config = config;
 
 exports.authenticate = authenticate;
 exports.authorize = authorize;
-exports.roles = roles;
+exports.Roles = Roles;
 exports.Account = Account;
 
 exports.startup = startup;

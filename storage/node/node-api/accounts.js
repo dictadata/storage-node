@@ -8,7 +8,7 @@ const express = require("express");
 const accounts = require("../accounts");
 const Account = require('../account');
 const authorize = require("../authorize");
-const roles = require("../roles");
+const Roles = require("../roles");
 const logger = require("../../utils/logger");
 
 /**
@@ -17,16 +17,16 @@ const logger = require("../../utils/logger");
 var router = module.exports = exports = express.Router();
 
 // account requests
-router.get("/accounts", authorize([roles.User]), recall);
-router.get("/accounts/:userid", authorize([roles.Admin]), recall);
+router.get("/accounts", authorize([Roles.User]), recall);
+router.get("/accounts/:userid", authorize([Roles.Admin]), recall);
 
-router.put("/accounts", authorize([roles.User]), store);
-router.put("/accounts/:userid", authorize([roles.Admin]), store);
+router.put("/accounts", authorize([Roles.User]), store);
+router.put("/accounts/:userid", authorize([Roles.Admin]), store);
 
-router.delete("/accounts", authorize([roles.User]), dull);
-router.delete("/accounts/:userid", authorize([roles.Admin]), dull);
+router.delete("/accounts", authorize([Roles.User]), dull);
+router.delete("/accounts/:userid", authorize([Roles.Admin]), dull);
 
-router.post("/accounts", authorize([ roles.Admin ]), retrieve);
+router.post("/accounts", authorize([ Roles.Admin ]), retrieve);
 
 /**
  * Update account record in data store. Inserts if it doesn't exist.
@@ -37,7 +37,7 @@ async function store(req, res) {
   try {
     let reqAccount = req.body.account || {};
     let userid = req.params[ "userid" ] || req.query[ "userid" ] || reqAccount.userid || req.user.userid;
-    let admin = req.user.roles.includes(roles.Admin);
+    let admin = req.user.roles.includes(Roles.Admin);
 
     if (!admin && (req.user.userid !== reqAccount.userid))
       throw new StorageError(401, "invalid userid/password");
@@ -90,7 +90,7 @@ async function dull(req, res) {
   try {
     let user = req.body.account || req.body;
     let userid = req.params[ "userid" ] || req.query[ "userid" ] || user.userid || req.user.userid;
-    let admin = req.user.roles.includes(roles.Admin);
+    let admin = req.user.roles.includes(Roles.Admin);
 
     if (!admin && (req.user.userid !== userid))
       throw new StorageError(401, "invalid userid/password");
@@ -126,7 +126,7 @@ async function recall(req, res) {
 
   try {
     let userid = req.params[ "userid" ] || req.query[ "userid" ] || req.user.userid;
-    let admin = req.user.roles.includes(roles.Admin);
+    let admin = req.user.roles.includes(Roles.Admin);
 
     if (!admin && (req.user.userid !== userid))
       throw new StorageError(401, "invalid userid/password");
@@ -162,7 +162,7 @@ async function retrieve(req, res) {
 
   var junction;
   try {
-    let admin = req.user.roles.includes(roles.Admin);
+    let admin = req.user.roles.includes(Roles.Admin);
     if (!admin)
       throw new StorageError(401, "invalid userid/password");
 
