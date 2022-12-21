@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.61
+  - update Role authorization logic
 - version 0.9.60
   - default user role is Guest
   - update account defaults for profile and settings
