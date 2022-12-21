@@ -3,7 +3,7 @@
  */
 "use strict";
 
-const roles = require('./roles');
+const Roles = require('./roles');
 const crypto = require("crypto");
 
 module.exports = class Account {
@@ -24,7 +24,7 @@ module.exports = class Account {
     // default properties for a new account
     this.userid = '';
     this.password = '';
-    this.roles = [ roles.Guest ];
+    this.roles = [ Roles.Guest ];
 
     this.dateCreated = null;
     this.dateUpdated = null;
@@ -82,13 +82,18 @@ module.exports = class Account {
    * @param {*} role as a string or array of strings
    */
   isAuthorized(roles) {
-    if (Array.isArray(roles)) {
-      for (let i = 0; i < roles.length; i++)
-        if (this.roles.includes(roles[i]))
-          return true;
-    } else if (roles)
-      return this.roles.includes(roles);
+    if (this.roles.includes(Roles.Super))
+      return true;
 
+    if (typeof roles === "string") {
+      return roles === Roles.Public || this.roles.includes(roles);
+    }
+    else if (Array.isArray(roles)) {
+      if (roles.includes(Roles.Public))
+        return true;
+
+      return roles.some(role => this.roles.includes(role));
+    }
     return false;
   }
 

@@ -27,17 +27,9 @@ function authorize(roles = []) {
 
       if (!authorized && req.user) {
         // check if user is Superman
-        authorized = req.user.roles.includes(Roles.Super);
-
-        if (!authorized) {
-          // check if user has a role that matches an interface role
-          for (let i = 0; i < roles.length; i++) {
-            if (req.user.roles.includes(roles[ i ])) {
-              authorized = true;
-              break;
-            }
-          }
-        }
+        // or user has at least one matching role
+        authorized = req.user.roles.includes(Roles.Super) ||
+          roles.some(role => req.user.roles.includes(role));
       }
 
       if (authorized) {
