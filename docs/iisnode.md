@@ -2,17 +2,17 @@
 
 ## Install iisnode
 
-Download .msi from [Azure/iisnode](https://github.com/Azure/iisnode). 
+Download .msi from [Azure/iisnode](https://github.com/Azure/iisnode).
 Running the MSI will install **iisnode** module into IIS.
 
 ## Deploy Node Application
 
-Create a folder under C:\inetpub, or your desired location, and copy your node application there. 
+Create a folder under C:\inetpub, or your desired location, and copy your node application there.
 Run "npm i" to install the node_modules dependencies.
 
 ## Create IIS Application
 
-In Internet Service Manager create a website or virtual application under an existing website.  
+In Internet Service Manager create a website or virtual application under an existing website.
 The path for virtual applications should be /node unless you've changed the path in your API.
 The web.config copied with your node application should handle the rest.
 
@@ -31,8 +31,8 @@ In Internet Service Manager check the following for the web site or application.
 
 ## Enable Handler Mappings for IIS Application
 
-You may see an error message in Internet Service Manager when clicking "Handler Mappings" stating some about **overrideMode="Deny"**.  
-If you browse to the app you will see a 501.19 error with the same **overrideMode="Deny"** message.  
+You may see an error message in Internet Service Manager when clicking "Handler Mappings" stating some about **overrideMode="Deny"**.
+If you browse to the app you will see a 501.19 error with the same **overrideMode="Deny"** message.
 
 Follow the below steps to unlock the handlers at the parent level:
 
@@ -43,3 +43,12 @@ Follow the below steps to unlock the handlers at the parent level:
 * On the right side, there is another drop down. Choose _"ApplicationHost.Config"_
 * On the right most pane, you will find _"Section"_ heading. Click on **"Unlock Section"** under that.
 * Once the handlers at the ApplicationHost.Config is unlocked, your website should run fine.
+
+## data Virtual Directory
+
+When creating a virtual /data directory under a storage-node web site update the following IIS web configuration settings.  See the
+web.config in C:/var/data.
+
+* Enable directory browsing.
+* Remove URL-Rewrite module "storage-node", otherwise all requests are routed to iisnode.
+* Remove Handler module "Javascript", not needed.
