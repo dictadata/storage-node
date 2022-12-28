@@ -57,11 +57,11 @@ async function smt_status(req, res) {
 
     let results = await junction.list();
 
-    res.status(results.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
   }
   catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)

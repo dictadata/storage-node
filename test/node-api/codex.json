@@ -7,7 +7,7 @@
   },
   "expected": {
     "statusCode": 200,
-    "resultCode": 0
+    "status": 0
   },
   "queries": [
     {
@@ -52,7 +52,7 @@
           200,
           201
         ],
-        "resultCode": 0,
+        "status": 0,
         "compareValues": 0
       }
     },
@@ -127,7 +127,7 @@
           200,
           201
         ],
-        "resultCode": 0
+        "status": 0
       }
     },
     {

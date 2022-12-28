@@ -26,7 +26,7 @@ module.exports = router;
  */
 async function transfer(req, res) {
   logger.verbose('/transfer');
-  logger.debug(req.body);
+  logger.debug(JSON.stringify(req.body));
 
   const tract = req.body.tract || req.body;
   const origin = tract.origin || {};
@@ -100,7 +100,7 @@ async function transfer(req, res) {
       throw new StorageError(400, "invalid terminal encoding");
 
     //logger.debug("encoding results");
-    //logger.debug(encoding);
+    //logger.debug(JSON.stringify(encoding));
     //logger.debug(JSON.stringify(encoding.fields));
 
     /// create terminal junction
@@ -111,8 +111,8 @@ async function transfer(req, res) {
     if (jt.capabilities.encoding && !terminal.options.append) {
       let results = await jt.createSchema();
       logger.verbose(">>> createSchema");
-      if (results.resultCode !== 0)
-        logger.info("could not create storage schema: " + results.resultMessage);
+      if (results.status !== 0)
+        logger.info("could not create storage schema: " + results.message);
     }
 
     /// setup pipeline
@@ -155,9 +155,9 @@ async function transfer(req, res) {
     }
   }
   catch (err) {
-    logger.error(err);
-    let response = new StorageError(err.resultCode, err.message);
-    res.status(err.resultCode || 500).jsonp(response);
+    logger.error(err.message);
+    let response = new StorageError(err.status, err.message);
+    res.status(err.status || 500).jsonp(response);
   }
   finally {
     if (jo)

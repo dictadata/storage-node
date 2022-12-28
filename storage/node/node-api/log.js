@@ -34,13 +34,13 @@ async function logEvent(req, res) {
 
     // return "ok"
     let results = new StorageResults(0);
-    res.status(results.resultCode || 200).set("Cache-Control", "no-store").jsonp(results);
+    res.status(results.status || 200).set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 401)
+    if (error.status && error.status === 401)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }

@@ -46,9 +46,9 @@ async function store(req, res) {
     let results = await accounts.recall(reqAccount.userid);
 
     let oldAccount;
-    if (results.resultCode === 0)
+    if (results.status === 0)
       oldAccount = results.data[ reqAccount.userid ];
-    else if (results.resultCode === 404)
+    else if (results.status === 404)
       oldAccount = { userid, password: req.user.password };
     else
       throw results;  // results should be a StorageError
@@ -70,14 +70,14 @@ async function store(req, res) {
     // return user's record
     results2.type = "map";
     results2.data[modAccount.userid] = modAccount.sanitize(); // remove sensitive fields like password
-    res.status(results2.resultCode || 200).set("Cache-Control", "no-store").jsonp(results2);
+    res.status(results2.status || 200).set("Cache-Control", "no-store").jsonp(results2);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 401)
+    if (error.status && error.status === 401)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }
 
@@ -97,7 +97,7 @@ async function dull(req, res) {
 
     // find the user's account
     let results = await accounts.recall(userid);
-    if (results.resultCode !== 0)
+    if (results.status !== 0)
       throw results;  // results should be a StorageError
     let account = results.data[ userid ];
 
@@ -107,14 +107,14 @@ async function dull(req, res) {
     // delete user account
     let results2 = await accounts.dull(userid);
 
-    res.status(results2.resultCode || 200).set("Cache-Control", "no-store").jsonp(results2);
+    res.status(results2.status || 200).set("Cache-Control", "no-store").jsonp(results2);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 401)
+    if (error.status && error.status === 401)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }
 
@@ -132,7 +132,7 @@ async function recall(req, res) {
       throw new StorageError(401, "invalid userid/password");
 
     let results = await accounts.recall(userid);
-    if (results.resultCode !== 0)
+    if (results.status !== 0)
       throw results;  // results should be a StorageError
     let account = new Account(results.data[ userid ]);
 
@@ -141,14 +141,14 @@ async function recall(req, res) {
 
     // return account record
     results.data[userid] = account.sanitize();  // remove sensitive fields like password
-    res.status(results.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
+    res.status(results.status || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 401)
+    if (error.status && error.status === 401)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).send(error.message);
   }
 }
 
@@ -173,19 +173,19 @@ async function retrieve(req, res) {
     // retrieve accounts
     let results = await accounts.retrieve(pattern);
 
-    if (results.resultCode === 0) {
+    if (results.status === 0) {
       for (let [ userid, account ] of Object.entries(results.data)) {
         // remove sensitive fields like password
         results.data[ userid ] = new Account(account).sanitize();
       }
     }
 
-    res.status(results.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
     res.jsonp(results);
   }
   catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)

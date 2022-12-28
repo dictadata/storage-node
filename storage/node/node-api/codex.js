@@ -58,12 +58,12 @@ async function store(req, res) {
 
     let results = await Storage.codex.store(engram);
 
-    res.status(results.resultCode || 200)
+    res.status(results.status || 200)
       .set("Cache-Control", "no-store")
       .jsonp(results);
   }
   catch (err) {
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }
 
@@ -90,13 +90,13 @@ async function recall(req, res) {
     else
       results = await Storage.codex.recall({ domain: domain, name: name, resolve: resolve });
 
-    res.status(results.resultCode || 200)
+    res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
       .jsonp(results);
   }
   catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500)
+    logger.error(err.message);
+    res.status(err.status || 500)
       .set('Content-Type', 'text/plain')
       .send(err.message);
   }
@@ -124,13 +124,13 @@ async function dull(req, res) {
     else
       results = await Storage.codex.dull({ domain: domain, name: name });
 
-    res.status(results.resultCode || 200)
+    res.status(results.status || 200)
       .set("Cache-Control", "no-store")
       .jsonp(results);
   }
   catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }
 
@@ -146,11 +146,11 @@ async function retrieve(req, res) {
 
   try {
     let results = await Storage.codex.retrieve(pattern);
-    res.status(results.resultCode || 200)
+    res.status(results.status || 200)
       .set("Cache-Control", "no-store")
       .jsonp(results);
   }
   catch (err) {
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
 }

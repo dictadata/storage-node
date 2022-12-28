@@ -32,7 +32,7 @@ async function login(req, res) {
   try {
     // retrieve user account
     let results = await accounts.recall(req.user.userid);
-    if (results.resultCode !== 0)
+    if (results.status !== 0)
       throw results;  // results should be a StorageError
     let account = new Account(results.data[ req.user.userid ]);
 
@@ -46,14 +46,14 @@ async function login(req, res) {
     // return account record
     results2.type = "map";
     results2.data[req.user.userid] = account.sanitize();
-    res.status(results2.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results2);
+    res.status(results2.status || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results2);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 401)
+    if (error.status && error.status === 401)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).send(error.message);
   }
 }
 
@@ -67,7 +67,7 @@ async function logout(req, res) {
   try {
     // retrieve user account
     let results = await accounts.recall(req.user.userid);
-    if (results.resultCode !== 0)
+    if (results.status !== 0)
       throw results;  // results should be a StorageError
     let account = results.data[ req.user.userid ];
 
@@ -80,14 +80,14 @@ async function logout(req, res) {
 
     // return results
     results = new StorageResults(0, "OK");
-    res.status(results.resultCode || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
+    res.status(results.status || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 401)
+    if (error.status && error.status === 401)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).send(error.message);
   }
 }
 
@@ -105,7 +105,7 @@ async function register(req, res) {
 
     // try to recall account
     let results = await accounts.recall(reqAccount.userid);
-    if (results.resultCode !== 404)
+    if (results.status !== 404)
       throw new StorageError(409, "account already exists");
 
     if (req.user.password !== reqAccount.password) {
@@ -127,14 +127,14 @@ async function register(req, res) {
     // return user's record
     results2.type = "map";
     results2.data[newAccount.userid] = newAccount.sanitize();
-    res.status(results2.resultCode || 201).set("Cache-Control", "no-store").jsonp(results2);
+    res.status(results2.status || 201).set("Cache-Control", "no-store").jsonp(results2);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 409)
+    if (error.status && error.status === 409)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }
 
@@ -153,7 +153,7 @@ async function update(req, res) {
 
     // find the user's account
     let results = await accounts.recall(reqAccount.userid);
-    if (results.resultCode !== 0)
+    if (results.status !== 0)
       throw results;  // results should be a StorageError
 
     let oldAccount = results.data[ reqAccount.userid ];
@@ -172,13 +172,13 @@ async function update(req, res) {
     // return user's record
     results2.type = "map";
     results2.data[modAccount.userid] = modAccount.sanitize(); // remove sensitive fields like password
-    res.status(results2.resultCode || 200).set("Cache-Control", "no-store").jsonp(results2);
+    res.status(results2.status || 200).set("Cache-Control", "no-store").jsonp(results2);
   }
   catch(error) {
-    if (error.resultCode && error.resultCode === 401)
+    if (error.status && error.status === 401)
       logger.warn(error.message);
     else
-      logger.error(error);
-    res.status(error.resultCode || 500).set('Content-Type', 'text/plain').send(error.message);
+      logger.error(error.message);
+    res.status(error.status || 500).set('Content-Type', 'text/plain').send(error.message);
   }
 }

@@ -35,9 +35,9 @@ exports.basic = async function (userid, password, done) {
     let reqAccount = new Account({ userid, password }); // Roles.Guest, state !isAuthenticated
 
     let results = await accounts.recall(userid);
-    if (results.resultCode === 404)
+    if (results.status === 404)
       return done(null, reqAccount);  // not found
-    else if (results.resultCode !== 0)
+    else if (results.status !== 0)
       throw results;  // results should be a StorageError
 
     let account = new Account(results.data[ userid ]);
@@ -64,7 +64,7 @@ exports.digest = async function(userid, done) {
 
   try {
     let results = await accounts.recall(userid);
-    if (results.resultCode !== 0)
+    if (results.status !== 0)
       return done(null, false);  // not found, reject request
 
     let account = new Account(results.data[ userid ]);

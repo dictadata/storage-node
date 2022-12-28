@@ -35,18 +35,18 @@ exports.startup = async (config) => {
     junction = await storage.activate(config.$_accounts, { encoding: accountsEncoding });
     // attempt to create accounts schema
     let results = await junction.createSchema();
-    if (results.resultCode === 0) {
+    if (results.status === 0) {
       logger.info("created accounts schema");
       logger.info("creating admin account");
       let account = new Account('admin');
       account.password = Account.hashPwd('admin');
       account.roles = [ Roles.User, Roles.Admin ];
       results = await store(account);
-      if (results.resultCode !== 0 && results.resultCode !== 201) {
+      if (results.status !== 0 && results.status !== 201) {
         throw new StorageError(500, "unable to create admin account");
       }
     }
-    else if (results.resultCode === 409) {
+    else if (results.status === 409) {
       logger.verbose("accounts schema exists");
     }
     else {
@@ -134,7 +134,7 @@ exports.recall = async function (userid) {
 
   let results = await junction.recall(pattern);
   /*
-  if (results.resultCode === 0) {
+  if (results.status === 0) {
     account = new Account();
     if (junction.engram.keyof === 'key')
       account.copy(results.data[ userid ]);
@@ -162,7 +162,7 @@ exports.retrieve = async function (pattern) {
 
   let results = await junction.retrieve(pattern);
   /*
-  if (results.resultCode === 0) {
+  if (results.status === 0) {
     let keys = Object.keys(results.data);
     let account = new Account();
     account.copy(results.data[ keys[ 0 ] ]);

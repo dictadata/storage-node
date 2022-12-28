@@ -31,7 +31,7 @@ module.exports = router;
 
 async function transport(req, res) {
   logger.verbose('/transport');
-  logger.debug(req.body);
+  logger.debug(JSON.stringify(req.body));
 
   var tract = req.body.tract || req.body;
   var origin = tract.origin || {};
@@ -67,14 +67,14 @@ async function transport(req, res) {
     encoding = await cf.encoding;
 
     logger.debug("encoding results");
-    logger.debug(encoding);
+    logger.debug(JSON.stringify(encoding));
     logger.debug(JSON.stringify(encoding.fields));
 
     logger.debug("put terminal encoding");
     jt.encoding = encoding;
     if (jt.capabilities.encoding) {
       let results = await jt.createSchema();
-      let dest_mode = (results.resultCode === 0) ? "created" : "append";
+      let dest_mode = (results.status === 0) ? "created" : "append";
     }
 
     logger.debug("build pipeline");
@@ -94,8 +94,8 @@ async function transport(req, res) {
     res.jsonp(response);
   }
   catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (jo)

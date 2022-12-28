@@ -92,10 +92,10 @@ async function submitQuery(request, expected, outputFile) {
       console.log("  FAILED statusCode ".bgRed + response.statusCode + " " + response.data + ", expected " + expected.statusCode);
       retCode = 1;
     }
-    // test query resultCode against expected
-    if (expected.resultCode) {
-      if (Array.isArray(expected.resultCode) ? !expected.resultCode.includes(results.resultCode) : results.resultCode !== expected.resultCode) {
-        console.log("  FAILED resultCode ".bgRed + results.resultCode + ", expected " + expected.resultCode);
+    // test query status against expected
+    if (expected.status) {
+      if (Array.isArray(expected.status) ? !expected.status.includes(results.status) : results.status !== expected.status) {
+        console.log("  FAILED status ".bgRed + results.status + ", expected " + expected.status);
         retCode = 1;
       }
     }
