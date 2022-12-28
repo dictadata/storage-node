@@ -85,7 +85,7 @@ function importData(req, res) {
  */
 async function uploadFiles(req, res) {
   logger.verbose('/transfer import');
-  logger.debug(req.body);
+  logger.debug(JSON.stringify(req.body));
 
   let form = new formidable.IncomingForm();
   form.encoding = 'utf-8';
@@ -97,8 +97,8 @@ async function uploadFiles(req, res) {
   // parse req.body into inputs (form fields) and files
   form.parse(req, async function (err, fields, files) {
     logger.debug('formidable parse')
-    logger.debug(fields);
-    logger.debug(files);
+    logger.debug(JSON.stringify(fields));
+    logger.debugJSON.stringify((files));
 
     let importList = JSON.parse(fields.importList);
     logger.debug("importList length " + importList.length);
@@ -112,8 +112,8 @@ async function uploadFiles(req, res) {
 
     if (importList.length != fileList.length) {
       let err = new StorageError(400, 'Invalid input values');
-      logger.error(err);
-      res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+      logger.error(err.message);
+      res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
       return;
     }
 
@@ -124,11 +124,11 @@ async function uploadFiles(req, res) {
 
     // move files to upload directory
     for (let i = 0; i < fileList.length; i++) {
-      logger.debug(i, importList[ i ]);
+      logger.debug("i: " + i + " " + importList[ i ]);
       let filename = uploadDir + fileList[ i ].name;
       importList[ i ].filename = filename;
-      logger.debug('src: ', fileList[ i ].path);
-      logger.debug('dst: ', filename);
+      logger.debug('src: ' + fileList[ i ].path);
+      logger.debug('dst: ' + filename);
       try {
         if (fs.existsSync(filename)) {
           logger.warn("dst exists");
@@ -137,11 +137,11 @@ async function uploadFiles(req, res) {
         await fs.promises.rename(fileList[ i ].path, filename);
       }
       catch (err) {
-        logger.error(err);
+        logger.error(err.message);
       }
     }
 
-    logger.debug(importList);
+    logger.debug(JSON.stringify(importList));
     for (let i = 0; i < importList.length; i++) {
       let index = fields.prefix + '_' + importList[ i ].container;
 
@@ -156,20 +156,20 @@ async function uploadFiles(req, res) {
         // examine file for encodings
         let numLines = -1;
         let results = await reader.codify(numLines);
-        logger.debug(results);
+        logger.debug(JSON.stringify(results));
 
         // update terminal encodings
         writer.encoding = reader.encoding;
 
         // read csv records and import to Elasticsearch
         await stream.pipeline(reader, writer);
-        logger.debug(results);
+        logger.debug(JSON.stringify(results));
 
         res.set("Cache-Control", "public, max-age=60, s-maxage=60").jsonp(results);
       }
       catch (err) {
-        logger.error(err);
-        res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+        logger.error(err.message);
+        res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
       }
       finally {
         if (jo)

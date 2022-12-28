@@ -20,7 +20,8 @@ function authorize(roles = []) {
   return [
     (req, res, next) => {
       logger.verbose("authorize");
-      logger.debug(roles, (req.user && req.user.roles));
+      logger.debug("roles: " + JSON.stringify(roles));
+      logger.debug("users: " + JSON.stringify(req.user.roles));
 
       // check if route is public
       let authorized = (roles.includes(Roles.Public));

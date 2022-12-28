@@ -70,15 +70,15 @@ async function list(req, res) {
 
     let schema = req.query[ 'schema' ] || (req.body && req.body.schema) || junction.smt.schema || '*';
 
-    let response = await junction.list({ schema: schema });
-    logger.debug(response);
+    let results = await junction.list({ schema: schema });
+    logger.debug(JSON.stringify(results));
 
-    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response);
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.jsonp(results);
   }
   catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -107,14 +107,14 @@ async function createSchema(req, res) {
       throw new StorageError(405);
 
     let results = await junction.createSchema();
-    logger.debug(results);
-    res.status(results.resultCode || 200)
+    logger.debug(JSON.stringify(results));
+    res.status(results.status || 200)
       .set("Cache-Control", "no-store").jsonp(results);
   }
   catch (err) {
-    if (err.resultCode !== 400 && err.resultCode !== 409)
-      logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    if (err.status !== 400 && err.status !== 409)
+      logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -139,14 +139,14 @@ async function dullSchema(req, res) {
     junction = await storage.activate(smtname);
 
     let results = await junction.dullSchema();
-    logger.debug(results);
-    res.status(results.resultCode || 200)
+    logger.debug(JSON.stringify(results));
+    res.status(results.status || 200)
       .set("Cache-Control", "no-store").jsonp(results);
   }
   catch (err) {
-    if (err.resultCode !== 400)
-      logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    if (err.status !== 400)
+      logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -172,16 +172,16 @@ async function getEncoding(req, res) {
     if (!junction.capabilities.encoding)
       throw new StorageError(405);
 
-    let response = await junction.getEncoding();
-    logger.debug(response);
+    let results = await junction.getEncoding();
+    logger.debug(JSON.stringify(results));
 
-    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response);
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.jsonp(results);
   }
   catch (err) {
-    if (err.resultCode !== 400 && err.resultCode !== 404)
-      logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    if (err.status !== 400 && err.status !== 404)
+      logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -213,39 +213,39 @@ async function store(req, res) {
     if (junction.capabilities.encoding && !junction.engram.isDefined)
       await junction.getEncoding();
 
-    var response = new StorageResults(0);
+    var results = new StorageResults(0);
 
     // body will be an object/map of key:constructs
     if (Array.isArray(req.body)) {
       for (let construct of req.body) {
-        let results = await junction.store(construct);
-        let [key, value] = Object.entries(results.data)[ 0 ];
-        response.add(value, (results.resultCode === 0 && key) ? key : junction.engram.get_uid(construct));
-        if (results.resultCode !== 0) {
-          response.resultCode = results.resultCode;
-          response.resultMessage = results.resultMessage;
+        let st_results = await junction.store(construct);
+        let [key, value] = Object.entries(st_results.data)[ 0 ];
+        results.add(value, (st_results.status === 0 && key) ? key : junction.engram.get_uid(construct));
+        if (st_results.status !== 0) {
+          results.status = st_results.status;
+          results.message = st_results.message;
         }
       }
     }
     else {
       // object/map of key:construct
       for (let [ key, construct ] of Object.entries(req.body)) {
-        let results = await junction.store(construct, { "key": key });
-        response.add((results.resultCode === 0 && results.data) ? Object.values(results.data)[ 0 ] : results.resultMessage, key);
-        if (results.resultCode !== 0) {
-          response.resultCode = results.resultCode;
-          response.resultMessage = results.resultMessage;
+        let st_results = await junction.store(construct, { "key": key });
+        results.add((st_results.status === 0 && st_results.data) ? Object.values(st_results.data)[ 0 ] : st_results.message, key);
+        if (st_results.status !== 0) {
+          results.status = st_results.status;
+          results.message = st_results.message;
         }
       }
     }
 
-    logger.debug(response);
+    logger.debug(JSON.stringify(results));
 
-    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response);
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.jsonp(results);
   }
   catch (err) {
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -271,14 +271,14 @@ async function recall(req, res) {
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
-    let response = await junction.recall(pattern);
-    logger.debug(response);
+    let results = await junction.recall(pattern);
+    logger.debug(JSON.stringify(results));
 
-    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response);
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.jsonp(results);
   }
   catch (err) {
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -304,15 +304,15 @@ async function retrieve(req, res) {
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
-    let response = await junction.retrieve(pattern);
-    logger.debug(response);
+    let results = await junction.retrieve(pattern);
+    logger.debug(JSON.stringify(results));
 
-    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response);
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.jsonp(results);
   }
   catch (err) {
-    logger.error(err);
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    logger.error(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
@@ -338,14 +338,14 @@ async function dull(req, res) {
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
-    let response = await junction.dull(pattern);
-    logger.debug(response);
+    let results = await junction.dull(pattern);
+    logger.debug(JSON.stringify(results));
 
-    res.status(response.resultCode || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
-    res.jsonp(response);
+    res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.jsonp(results);
   }
   catch (err) {
-    res.status(err.resultCode || 500).set('Content-Type', 'text/plain').send(err.message);
+    res.status(err.status || 500).set('Content-Type', 'text/plain').send(err.message);
   }
   finally {
     if (junction)
