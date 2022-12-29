@@ -1,5 +1,10 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.62
+  - refactor: don't log objects, use JSON.stringify
+  - updated: @dictadata/storage-junctions@0.9.88
+  - refactor: refactor StorageResults properties
+  - bug fix: CSVReader, JSONReader destroy stream on error or count > max
 - version 0.9.61
   - update Role authorization logic
 - version 0.9.60
