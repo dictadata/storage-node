@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.63
+  - enhancement: read and merge config file from ~/.dictadata
 - version 0.9.62
   - refactor: don't log objects, use JSON.stringify
   - updated: @dictadata/storage-junctions@0.9.88
