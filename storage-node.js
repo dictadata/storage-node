@@ -1,22 +1,23 @@
 /**
  * @dictadata/storage-node
- * example main file for servers derived from storage-node
+ * EXAMPLE main file for servers derived from storage-node
  */
 "use strict";
 
-const StorageNode = require('@dictadata/storage-node');
-const myapi = require('../storage');
+const server = require('@dictadata/storage-node');
+const storage_node = require('./storage/node');
 
 // init module startup, if needed
-StorageNode.startup.add(myapi.module1.startup);
-StorageNode.startup.add(myapi.module2.startup);
+server.startup.add(storage_node.module1.startup);
+server.startup.add(storage_node.module2.startup);
 
+// override config
 // add api routes
-let config_options = {
+let config = {
   routes: {
-    '/my-api': myapi.myrouter
+    '/myapi': storage_node.myApi
   }
 };
 
 // start server
-StorageNode.start(config_options);
+server.start(config);

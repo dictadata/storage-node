@@ -3,13 +3,15 @@
  */
 "use strict";
 
-const StorageNode = require('../storage');
-const router = require('./test-routes');
+const server = require('../storage');
+const testApi = require('./test-api');
 
-let config_options = {
+// override config
+// add api routes
+let config = {
   routes: {
-    "/test": router
+    "/test": testApi
   }
 };
 
-StorageNode.start(config_options);
+server.start(config);
