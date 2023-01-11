@@ -107,14 +107,25 @@ module.exports = _config;
 _config.init = (options) => {
   try {
     // read config file from working directory
-    let text = fs.readFileSync("storage-node.config.json", 'utf-8');
-    let cfg = JSON.parse(text);
-    _merge(_config, cfg);
+    let config_file = fs.readFileSync("storage-node.config.json", 'utf-8');
+    let config_obj = JSON.parse(config_file);
+    _merge(_config, config_obj);
+
+    // read config file from user directory
+    try {
+      let user_file = process.env[ "HOMEPATH" ] + "/.dictadata/storage-node.config.json";
+      let user_config = JSON.parse(fs.readFileSync(user_file, 'utf-8'));
+      _merge(_config, user_config);
+    }
+    catch (error) {
+      logger.warn(error.message);
+    }
+
     if (options)
       _merge(_config, options);
   }
   catch (err) {
-    console.verbose(err.message);
+    console.error(err.message);
   }
 };
 
