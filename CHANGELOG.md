@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.64
+  - bug fix: logger not initialized when reading config, use console
 - version 0.9.63
   - enhancement: read and merge config file from ~/.dictadata
 - version 0.9.62
