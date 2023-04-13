@@ -1,6 +1,6 @@
 
 ### dullboy, not authorized
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/accounts HTTP/1.1
 Authorization: Basic dullboy dullboy
 Content-Type: application/json; charset=utf-8
 
@@ -18,7 +18,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### dullboy by admin
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -36,7 +36,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### guest
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -53,7 +53,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### user
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -66,7 +66,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### admin - change password
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/accounts HTTP/1.1
 Authorization: Basic admin admin
 Content-Type: application/json; charset=utf-8
 
@@ -78,7 +78,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### admin - change it back
-PUT http://dev.dictadata.org:8089/node/accounts HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/accounts HTTP/1.1
 Authorization: Basic admin dictadata
 Content-Type: application/json; charset=utf-8
 

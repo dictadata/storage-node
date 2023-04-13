@@ -1,7 +1,7 @@
 
 
 ### dullboy, cannot modify own roles
-PUT http://dev.dictadata.org:8089/node/user HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/user HTTP/1.1
 Authorization: Basic dullboy dullboy
 Content-Type: application/json; charset=utf-8
 
@@ -19,7 +19,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### guest:guest - guest does not have User rights
-PUT http://dev.dictadata.org:8089/node/user HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/user HTTP/1.1
 Authorization: Basic guest guest
 Content-Type: application/json; charset=utf-8
 
@@ -36,7 +36,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### user - changed by user, cannot change own roles
-PUT http://dev.dictadata.org:8089/node/user HTTP/1.1
+PUT http://dev.dictadata.net:8089/node/user HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

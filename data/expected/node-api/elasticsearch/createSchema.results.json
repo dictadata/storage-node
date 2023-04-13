@@ -7,7 +7,7 @@
     "name": "foo_schema_x",
     "smt": {
       "model": "elasticsearch",
-      "locus": "http://dev.dictadata.org:9200",
+      "locus": "http://dev.dictadata.net:9200",
       "schema": "foo_schema_x",
       "key": "!Foo"
     },

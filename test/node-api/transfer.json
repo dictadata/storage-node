@@ -2,7 +2,7 @@
   "name": "transfers",
   "request": {
     "method": "POST",
-    "base": "http://dev.dictadata.org:8089/node/transfer/",
+    "base": "http://dev.dictadata.net:8089/node/transfer/",
     "auth": "user:user",
     "timeout": 90000
   },

@@ -2,7 +2,7 @@
   "name": "codex",
   "request": {
     "method": "GET",
-    "base": "http://dev.dictadata.org:8089/node/codex/",
+    "base": "http://dev.dictadata.net:8089/node/codex/",
     "auth": "user:user"
   },
   "expected": {

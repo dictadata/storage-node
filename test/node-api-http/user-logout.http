@@ -1,22 +1,22 @@
 ### dullboy
-POST http://dev.dictadata.org:8089/node/logout HTTP/1.1
+POST http://dev.dictadata.net:8089/node/logout HTTP/1.1
 Authorization: Basic dullboy dullboy
 
 ### no user
-POST http://dev.dictadata.org:8089/node/logout HTTP/1.1
+POST http://dev.dictadata.net:8089/node/logout HTTP/1.1
 
 ### unregistered user
-POST http://dev.dictadata.org:8089/node/logout HTTP/1.1
+POST http://dev.dictadata.net:8089/node/logout HTTP/1.1
 Authorization: Basic aladdin opensesame
 
 ### guest
-POST http://dev.dictadata.org:8089/node/logout HTTP/1.1
+POST http://dev.dictadata.net:8089/node/logout HTTP/1.1
 Authorization: Basic guest guest
 
 ### user
-POST http://dev.dictadata.org:8089/node/logout HTTP/1.1
+POST http://dev.dictadata.net:8089/node/logout HTTP/1.1
 Authorization: Basic user user
 
 ### admin
-POST http://dev.dictadata.org:8089/node/logout HTTP/1.1
+POST http://dev.dictadata.net:8089/node/logout HTTP/1.1
 Authorization: Basic admin admin

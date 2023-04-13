@@ -27,7 +27,7 @@ var request_defaults = {
     'User-Agent': "@dictadata storage client"
   }
 };
-  // origin: "http://dev.dictadata.org:8089",
+  // origin: "http://dev.dictadata.net:8089",
 
 (async () => {
   console.log((testFile + "  " + testName).blue);

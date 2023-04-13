@@ -2,7 +2,7 @@
   "name": "public",
   "request": {
     "method": "GET",
-    "base": "http://dev.dictadata.org:8089/",
+    "base": "http://dev.dictadata.net:8089/",
     "url": "index.html"
   },
   "expected": {

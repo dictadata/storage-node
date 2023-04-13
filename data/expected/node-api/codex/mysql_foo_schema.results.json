@@ -8,7 +8,7 @@
       "name": "mysql_foo_schema",
       "smt": {
         "model": "mysql",
-        "locus": "host=dev.dictadata.org;database=storage_node",
+        "locus": "host=dev.dictadata.net;database=storage_node",
         "schema": "foo_schema",
         "key": "=Foo"
       },

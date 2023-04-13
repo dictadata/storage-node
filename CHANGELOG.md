@@ -61,7 +61,7 @@
   - refactor: Codex key replace smt_id with smt_urn
 - version 2.4.1
   - feature: authStash for storing username, password, apiKey, etc.
-  - testing: use dev.dictadata.org instead of localhost
+  - testing: use dev.dictadata.net instead of localhost
   - update to @dictadata/storage-junctions 2.4.1
 - version 2.4.0
   - feature: smt_id used as key for codex directory

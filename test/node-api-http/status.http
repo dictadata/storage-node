@@ -1,18 +1,18 @@
 ### no Authorization header: unauthorized
-GET http://dev.dictadata.org:8089/node/status HTTP/1.1
+GET http://dev.dictadata.net:8089/node/status HTTP/1.1
 
 ### unregistered  Public
-GET http://dev.dictadata.org:8089/node/status HTTP/1.1
+GET http://dev.dictadata.net:8089/node/status HTTP/1.1
 Authorization: Basic Aladdin opensesame
 
 ### guest  Public
-GET http://dev.dictadata.org:8089/node/status HTTP/1.1
+GET http://dev.dictadata.net:8089/node/status HTTP/1.1
 Authorization: Basic guest guest
 
 ### user  User
-GET http://dev.dictadata.org:8089/node/status HTTP/1.1
+GET http://dev.dictadata.net:8089/node/status HTTP/1.1
 Authorization: Basic user user
 
 ### admin  Admin
-GET http://dev.dictadata.org:8089/node/status HTTP/1.1
+GET http://dev.dictadata.net:8089/node/status HTTP/1.1
 Authorization: Basic admin admin

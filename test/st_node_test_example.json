@@ -3,7 +3,7 @@
   "type": "HTTP/1.1",
   "request": {
     "method": "GET",
-    "base": "http://dev.dictadata.org:8089/node-api/"
+    "base": "http://dev.dictadata.net:8089/node-api/"
     "auth": "janedoe:s00pers3cret",
     "withCredentials": true,
     "timeout": 1000

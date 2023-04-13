@@ -1,7 +1,7 @@
 {
   "name": "user",
   "request": {
-    "base": "http://dev.dictadata.org:8089/node/",
+    "base": "http://dev.dictadata.net:8089/node/",
     "auth": "dullboy:dullboy"
   },
   "expected": {

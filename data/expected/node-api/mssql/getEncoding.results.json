@@ -7,7 +7,7 @@
     "name": "foo_schema_x",
     "smt": {
       "model": "mssql",
-      "locus": "server=dev.dictadata.org;database=storage_node",
+      "locus": "server=dev.dictadata.net;database=storage_node",
       "schema": "foo_schema_x",
       "key": "=Foo"
     },

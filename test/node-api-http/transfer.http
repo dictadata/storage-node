@@ -1,5 +1,5 @@
 ### json_foofile > es_foo_schema_pk
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -17,7 +17,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### csv_foofile => mysql_foo_schema
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -35,7 +35,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### mysql_foo_schema => es_foo_transfer
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -51,7 +51,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### es_foo_schema_pk => mysql_foo_transfer
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -79,7 +79,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### rest_weather_forecast => es_weather_forecast
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -89,7 +89,7 @@ Content-Type: application/json; charset=utf-8
     "options": {
         "headers": {
           "Accept": "application/ld+json",
-          "User-Agent": "@dictadata.org/storage-node contact:info@dictadata.org"
+          "User-Agent": "@dictadata.net/storage-node contact:info@dictadata.net"
         },
         "reader": {
           "extract": {
@@ -106,7 +106,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### rest_weather_forecast => mssql_weather_forecast
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -116,7 +116,7 @@ Content-Type: application/json; charset=utf-8
     "options": {
         "headers": {
           "Accept": "application/ld+json",
-          "User-Agent": "@dictadata.org/storage-node contact:info@dictadata.org"
+          "User-Agent": "@dictadata.net/storage-node contact:info@dictadata.net"
         },
         "reader": {
           "extract": {
@@ -133,7 +133,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### rest_weather_forecast => mysql_weather_forecast
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -143,7 +143,7 @@ Content-Type: application/json; charset=utf-8
     "options": {
         "headers": {
           "Accept": "application/ld+json",
-          "User-Agent": "@dictadata.org/storage-node contact:info@dictadata.org"
+          "User-Agent": "@dictadata.net/storage-node contact:info@dictadata.net"
         },
         "reader": {
           "extract": {
@@ -161,7 +161,7 @@ Content-Type: application/json; charset=utf-8
 
 
 ### rest_weather_forecast => oracle_weather_forecast
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -171,7 +171,7 @@ Content-Type: application/json; charset=utf-8
     "options": {
         "headers": {
           "Accept": "application/ld+json",
-          "User-Agent": "@dictadata.org/storage-node contact:info@dictadata.org"
+          "User-Agent": "@dictadata.net/storage-node contact:info@dictadata.net"
         },
         "reader": {
           "extract": {
@@ -188,7 +188,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### transfer geometry query
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user:user
 Content-Type: application/json
 

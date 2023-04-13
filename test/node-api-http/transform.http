@@ -1,5 +1,5 @@
 ### mysql_foo_schema => es_foo_transform
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -35,7 +35,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### es_foo_schema_pk => mssql_foo_transform
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -71,7 +71,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### es_foo_schema_pk => mysql_foo_transform
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -107,7 +107,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### es_foo_schema_pk => oracle_foo_transform
-POST http://dev.dictadata.org:8089/node/transfer HTTP/1.1
+POST http://dev.dictadata.net:8089/node/transfer HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
