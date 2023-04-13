@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@dictadata/storage-junctions": "^0.9.88",
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
@@ -35,17 +35,17 @@
     "passport": "^0.6.0",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
-    "rotating-file-stream": "^3.0.4",
+    "rotating-file-stream": "^3.1.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
     "colors": "^1.4.0",
-    "eslint": "^8.30.0",
+    "eslint": "^8.38.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-vue": "^9.8.0",
-    "espree": "^9.4.1"
+    "eslint-plugin-vue": "^9.10.0",
+    "espree": "^9.5.1"
   }
 }
