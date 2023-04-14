@@ -6,10 +6,6 @@ Authorization: Basic dullboy dullboy
 GET http://dev.dictadata.net:8089/node/accounts/dullboy HTTP/1.1
 Authorization: Basic admin admin
 
-### dicta
-GET http://dev.dictadata.net:8089/node/accounts/dicta HTTP/1.1
-Authorization: Basic admin admin
-
 ### user
 GET http://dev.dictadata.net:8089/node/accounts/user HTTP/1.1
 Authorization: Basic admin admin

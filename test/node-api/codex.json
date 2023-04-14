@@ -15,6 +15,10 @@
       "request": {
         "method": "GET",
         "url": "foo:foo_schema"
+      },
+      "expected": {
+        "statusCode": 404,
+        "compareValues": 0
       }
     },
     {
@@ -106,6 +110,10 @@
             }
           }
         }
+      },
+      "expected": {
+        "statusCode": 404,
+        "compareValues": 0
       }
     },
     {

@@ -52,6 +52,7 @@ exports.startup = async (config) => {
             // assume entry is an engram object
             let engram = new Engram(entry.smt);
             engram.name = entry.name || name;
+
             if (entry.options) {
               engram.options = entry.options;
             }
@@ -62,6 +63,7 @@ exports.startup = async (config) => {
               else
                 engram.encoding = entry.encoding;
             }
+
             await codex.store(engram);
           }
         }

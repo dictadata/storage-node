@@ -14,7 +14,7 @@ var _config = {
 
   // port for client connections
   serverPort: '8080',
-  // used for routes and prefixing storage container names, e.g. realm_accounts
+  // used for HTTP authentication realm, data directory, and log prefix
   realm: 'node-api',
 
   // path to log files
