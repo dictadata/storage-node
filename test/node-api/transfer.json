@@ -55,7 +55,7 @@
         },
         "data": {
           "origin": {
-            "smt": "legis.iowa.gov:bl_YYYY_ia_congress",
+            "smt": ":tiger2020",
             "pattern": {
               "match": {
                 "geometry": {

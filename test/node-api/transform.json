@@ -49,64 +49,6 @@
           }
         }
       }
-    },
-    {
-      "name": "ia_voters_rows",
-      "request": {
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "data": {
-          "tract": {
-            "origin": {
-              "smt": "sos.iowa.gov:voter_registration_totals_county",
-              "options": {}
-            },
-            "terminal": {
-              "smt": "json|file:../data/output/transforms/|ia_voters_rows.json|*",
-              "options": {}
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "ia_voters",
-      "request": {
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "data": {
-          "tract": {
-            "origin": {
-              "smt": "sos.iowa.gov:voter_registration_totals_county",
-              "options": {}
-            },
-            "transform": {
-              "mutate": {
-                "map": {
-                  "County": "County",
-                  "Democratic Active": "Active.Democratic",
-                  "Republican Active": "Active.Republican",
-                  "No Party Active": "Active.No Party",
-                  "Other Active": "Active.Other",
-                  "Total Active": "Active.Total",
-                  "Democratic Inactive": "Inactive.Democratic",
-                  "Republican Inactive": "Inactive.Republican",
-                  "No Party Inactive": "Inactive.No Party",
-                  "Other Inactive": "Inactive.Other",
-                  "Total Inactive": "Inactive.Total",
-                  "Grand Total": "Total"
-                }
-              }
-            },
-            "terminal": {
-              "smt": "json|stream:*|*|*",
-              "options": {}
-            }
-          }
-        }
-      }
     }
   ]
 }
