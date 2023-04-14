@@ -1,4 +1,5 @@
 {
+  "realm": "node-api",
   "serverPort": "8089",
   "logPath": "../log/",
   "logPrefix": "storage-node",
@@ -8,7 +9,7 @@
     "useTransport": true
   },
   "codex": {
-    "smt": "elasticsearch|http://dev.dictadata.net:9200|dicta_codex|*",
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_codex|*",
     "options": {
       "refresh": true
     },
@@ -43,6 +44,12 @@
       },
       "es_foo_transfer": "elasticsearch|http://dev.dictadata.net:9200|foo_transfer|=Foo",
       "es_foo_transform": "elasticsearch|http://dev.dictadata.net:9200|foo_transform|=Foo",
+      "es_foo_schema_origin": {
+        "smt": "elasticsearch|https://data-origin.dictadata.net:9200|foo_schema|!Foo",
+        "options": {
+          "refresh": true
+        }
+      },
       "mssql_foo_schema": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
       "mssql_foo_schema_x": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
       "mssql_foo_transfer": "mssql|server=dev.dictadata.net;database=storage_node|foo_transfer|=Foo",
@@ -51,6 +58,7 @@
       "mysql_foo_schema_x": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
       "mysql_foo_transfer": "mysql|host=dev.dictadata.net;database=storage_node|foo_transfer|=Foo",
       "mysql_foo_transform": "mysql|host=dev.dictadata.net;database=storage_node|foo_transform|=Foo",
+      "mysql_foo_schema_origin": "mysql|host=data-origin.dictadata.net;database=storage_node|foo_schema|=Foo",
       "oracle_foo_schema": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_schema|=Foo",
       "oracle_foo_schema_x": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_schema_x|=Foo",
       "oracle_foo_transfer": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_transfer|=Foo",
