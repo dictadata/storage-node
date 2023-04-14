@@ -21,7 +21,7 @@
     "node": ">=17.0.0"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^0.9.88",
+    "@dictadata/storage-junctions": "^0.9.89",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
