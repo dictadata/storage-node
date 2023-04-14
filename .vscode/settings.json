@@ -1,13 +1,2 @@
 {
-  "sqltools.connections": [
-    {
-      "database": "storage_node",
-      "dialect": "MySQL",
-      "name": "local mysql",
-      "password": "dicta",
-      "port": 3306,
-      "server": "dev.dictadata.net",
-      "username": "dicta"
-    }
-  ]
 }
