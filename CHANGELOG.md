@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.66
+  - refactor: rebrand as dictadata.net
+  - feature: TLS connections to Elasticsearch and MySQL
+  - updated: @dictadata/storage-junctions@0.9.89
 - version 0.9.65
   - refactor: cleanup main program entry and adding API routes
 - version 0.9.64
