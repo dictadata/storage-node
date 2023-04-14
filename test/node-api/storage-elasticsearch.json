@@ -10,6 +10,24 @@
   },
   "queries": [
     {
+      "name": "status_origin",
+      "request": {
+        "url": "status/:es_foo_schema_origin"
+      }
+    },
+    {
+      "name": "list_origin",
+      "request": {
+        "url": "list/:es_foo_schema_origin",
+        "params": {
+          "schema": "foo*"
+        }
+      },
+      "expected": {
+        "compareValues": 1
+      }
+    },
+    {
       "name": "status",
       "request": {
         "method": "GET",
