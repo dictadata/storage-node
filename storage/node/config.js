@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const Package = require('../../package.json');
 const { typeOf } = require("@dictadata/storage-junctions/utils");
+const homedir = process.env[ "HOMEPATH" ] || require('os').homedir();
 
 var _config = {
   name: Package.name,
@@ -114,7 +115,7 @@ _config.init = (options) => {
 
     // read config file from user directory
     try {
-      let user_file = process.env[ "HOMEPATH" ] + "/.dictadata/storage-node.config.json";
+      let user_file = homedir + "/.dictadata/storage-node.config.json";
       console.log("reading " + user_file);
       let user_config = JSON.parse(fs.readFileSync(user_file, 'utf-8'));
       _merge(_config, user_config);

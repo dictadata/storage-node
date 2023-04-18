@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.67
+  - bug fix: have process.env.HOMEPATH take precedence over os.homedir()
+  - updated: @dictadata/storage-junctions@0.9.92
 - version 0.9.66
   - refactor: rebrand as dictadata.net
   - feature: TLS connections to Elasticsearch and MySQL
