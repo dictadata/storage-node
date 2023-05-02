@@ -58,6 +58,7 @@ async function transfer(req, res) {
     /// determine terminal encoding
     logger.verbose(">>> determine terminal encoding");
     if (terminal.options && terminal.options.encoding) {
+      // terminal encoding defined in tract
       if (typeof terminal.options.encoding === "string") {
         // read encoding from file
         let filename = terminal.options.encoding;
@@ -140,7 +141,7 @@ async function transfer(req, res) {
     });
     pipes.push(writer);
 
-    // transfer data
+    // start the data transfer
     logger.debug(">>> start transfer");
     if (jt.smt.locus.startsWith('stream:'))
       res.type('json');
