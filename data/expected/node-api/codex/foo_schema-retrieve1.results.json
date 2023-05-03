@@ -7,7 +7,7 @@
       "name": "foo_schema_XYZ",
       "type": "engram",
       "domain": "foo",
-      "source": "file:./data/input/foo_schema_XYZ.encoding.json",
+      "source": "file:./data/input/encodings/foo_schema_XYZ.encoding.json",
       "title": "foo_schema encoding",
       "description": "test input for foo_schema_XYZ encoding",
       "tags": [

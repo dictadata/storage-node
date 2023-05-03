@@ -9,7 +9,7 @@
       "domain": "foo",
       "title": "foo_schema encoding",
       "description": "test input for foo_schema encoding",
-      "source": "file:./data/input/foo_schema.encoding.json",
+      "source": "file:./data/input/encodings/foo_schema.encoding.json",
       "tags": [
         "foo"
       ],
