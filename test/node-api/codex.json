@@ -49,7 +49,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./data/input/foo_schema_XYZ.encoding.json"
+        "data": "./data/input/encodings/foo_schema_XYZ.encoding.json"
       },
       "expected": {
         "statusCode": [
