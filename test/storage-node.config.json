@@ -14,7 +14,7 @@
       "refresh": true
     },
     "auth_stash": "storage-node.auth.json",
-    "engrams": {
+    "engrams_cache": {
       "accounts": "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
       "csv_foofile": "csv|../data/input/|foofile.csv|*",
       "json_foofile": "json|../data/input/|foofile.json|*",
@@ -73,5 +73,12 @@
   },
   "roles": {
     "Tester": "Tester"
+  },
+  "tracts": {
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
+    "options": {
+      "refresh": true
+    },
+    "tracts_cache": {}
   }
 }

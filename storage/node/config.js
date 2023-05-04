@@ -38,16 +38,17 @@ var _config = {
 
   codex: {
     smt: "memory|dictadata|codex|*",
+    options: {},
 
-    // application smt entries to be added to codex at startup
-    engrams: {
+    // at startup, these entries will be added to codex local cache
+    engrams_cache: {
       // format
       //   <name>: <smt string>
+      // or
       //   <name>: {
       //     smt: <smt string> | <smt object>,
       //     options: {
-      //       encoding: "<filename.encoding.json>" | {...}
-      //       <other junction options ...>
+      //       <junction options ...>
       //     }
       //   }
     }
@@ -87,9 +88,7 @@ var _config = {
 
   // enable node-api route handlers
   "node-api": {
-    useAccounts: true,
     useLog: false,
-    useTransfer: true,
     useClientStream: false,  // TBD not fully implemented
     useTransport: false      // TBD not fully implemented
   },
@@ -100,7 +99,25 @@ var _config = {
   // CORS options for Express plugin
   cors: {
     allowedHeaders: [ 'Origin', 'X-Requested-With', 'Content-Type', 'Accept' ]
+  },
+
+  tracts: {
+    smt: "memory|dictadata|tracts|*",
+    options: {},
+
+    // at startup, these entries will be added to tracts local cache
+    tracts_cache: {
+      // format
+      //   <name>: {
+      //     smt: <smt string> | <smt object>,
+      //     options: {
+      //       <junction options ...>
+      //     }
+      //   }
+    }
+
   }
+
 };
 
 module.exports = _config;

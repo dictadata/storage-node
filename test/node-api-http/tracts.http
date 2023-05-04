@@ -1,0 +1,63 @@
+### not found
+GET http://dev.dictadata.net:8089/node/tracts/foo_transfer
+Authorization: Basic user user
+
+### not found
+GET http://dev.dictadata.net:8089/node/tracts/:foo_transfer
+Authorization: Basic user user
+
+### OK
+GET http://dev.dictadata.net:8089/node/tracts/foo:foo_transfer
+Authorization: Basic user user
+
+###
+POST http://dev.dictadata.net:8089/node/tracts
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+{
+  "pattern": {
+    "match": {
+      "name": {
+        "wc": "foo_transfer*"
+      }
+    }
+  }
+}
+
+###
+POST http://dev.dictadata.net:8089/node/tracts
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+{
+  "pattern": {
+    "match": {
+      "name": {
+        "eq": "tigerline"
+      }
+    }
+  }
+}
+
+###
+DELETE http://dev.dictadata.net:8089/node/tracts/foo:foo_transfer_XYZ
+Authorization: Basic user user
+
+###
+PUT http://dev.dictadata.net:8089/node/tracts
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+{
+  "domain": "foo",
+  "name": "foo_transfer_XYZ",
+  "type": "engram",
+  "title": "foo_transfer encoding",
+  "description": "test input for foo_transfer_XYZ encoding",
+  "source": "file:./data/input/encodings/foo_transfer_XYZ.encoding.json",
+  "tags": [
+    "foo"
+  ],
+  "tracts": {}
+}

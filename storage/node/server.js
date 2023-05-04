@@ -3,7 +3,6 @@
  */
 "use strict";
 
-const http = require('http');
 const app = require('./app');
 const config = require('./config');
 const logger = require('../utils/logger');
@@ -11,7 +10,11 @@ const startup = require('./startup');
 const codex = require('./codex');
 const accounts = require('./accounts');
 const datapath = require('./datapath');
+const tracts = require('./tracts');
+
+const http = require('http');
 const { StorageError } = require("@dictadata/storage-junctions/types");
+
 var httpPort = 0;
 var httpServer = null;
 
@@ -19,6 +22,7 @@ var httpServer = null;
 startup.add(codex.startup);
 startup.add(accounts.startup);
 startup.add(datapath.startup);
+startup.add(tracts.startup);
 // app.startup is last
 startup.add(app.startup);
 

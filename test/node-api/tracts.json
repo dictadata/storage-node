@@ -1,0 +1,174 @@
+{
+  "name": "tracts",
+  "request": {
+    "method": "GET",
+    "base": "http://dev.dictadata.net:8089/node/tracts/",
+    "auth": "user:user"
+  },
+  "expected": {
+    "statusCode": 200,
+    "status": 0
+  },
+  "queries": [
+    {
+      "name": "foo_transfer-store",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": "./data/input/tracts/foo_transfer.tract.json"
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ],
+        "status": 0,
+        "compareValues": 1
+      }
+    },
+    {
+      "name": "foo_transfer_recall",
+      "request": {
+        "method": "GET",
+        "url": "foo:foo_transfer"
+      },
+      "expected": {
+        "statusCode": 200,
+        "compareValues": 2
+      }
+    },
+    {
+      "name": "foo_transfer_two-store",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": "./data/input/tracts/foo_transfer_two.tract.json"
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ],
+        "status": 0,
+        "compareValues": 1
+      }
+    },
+    {
+      "name": "foo_transfer_two-recall",
+      "request": {
+        "method": "GET",
+        "url": "foo:foo_transfer_two"
+      }
+    },
+    {
+      "name": "foo_transfer-retrieve1",
+      "request": {
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "pattern": {
+            "match": {
+              "type": "tract",
+              "name": {
+                "wc": "foo_transfer_two*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "foo_transfer_two-dull",
+      "request": {
+        "method": "DELETE",
+        "url": "foo:foo_transfer_two"
+      }
+    },
+    {
+      "name": "foo_transfer-retrieve2",
+      "request": {
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "pattern": {
+            "match": {
+              "type": "tract",
+              "name": {
+                "wc": "foo_transfer_two*"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "statusCode": 404,
+        "compareValues": 0
+      }
+    },
+    {
+      "name": "foo_alias-store",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "domain": "foo",
+          "name": "foo_alias",
+          "type": "alias",
+          "source": "foo:foo_transfer"
+        }
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ],
+        "status": 0,
+        "compareValues": 1
+      }
+    },
+    {
+      "name": "foo_alias-recall",
+      "request": {
+        "method": "GET",
+        "url": "foo:foo_alias"
+      }
+    },
+    {
+      "name": "foo_alias-resolve",
+      "request": {
+        "method": "GET",
+        "url": "foo:foo_alias",
+        "params": {
+          "resolve": "true"
+        }
+      }
+    },
+    {
+      "name": "foo_alias-retrieve1",
+      "request": {
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": {
+          "match": {
+            "type": "alias",
+            "name": {
+              "wc": "foo_alias*"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

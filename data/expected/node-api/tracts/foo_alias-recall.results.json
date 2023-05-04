@@ -1,0 +1,13 @@
+{
+  "status": 0,
+  "message": "OK",
+  "type": "map",
+  "data": {
+    "foo:foo_alias": {
+      "domain": "foo",
+      "name": "foo_alias",
+      "type": "alias",
+      "source": "foo:foo_transfer"
+    }
+  }
+}
