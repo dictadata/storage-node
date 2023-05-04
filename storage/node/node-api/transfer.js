@@ -57,7 +57,7 @@ async function transfer(req, res) {
 
     /// determine terminal encoding
     logger.verbose(">>> determine terminal encoding");
-    if (terminal.options && terminal.options.encoding) {
+    if (terminal.options?.encoding) {
       // terminal encoding defined in tract
       if (typeof terminal.options.encoding === "string") {
         // read encoding from file
@@ -74,7 +74,7 @@ async function transfer(req, res) {
       let pipes = [];
 
       let options = {
-        max_read: (origin.options && origin.options.max_read) || 100,
+        max_read: origin.options?.max_read || 100,
         pattern: origin.pattern,
         reader: req
       };

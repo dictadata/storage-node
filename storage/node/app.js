@@ -54,7 +54,7 @@ app.startup = function (config) {
 
   // HTTP message processing
   app.options('*', cors());  // enable pre-flight across-the-board
-  app.use(cors(config && config.cors));
+  app.use(cors(config?.cors));
 
   app.use(compression({ threshold: 2048 }));
   app.use(bodyParser.urlencoded({ extended: false }));

@@ -38,7 +38,7 @@ async function logEvent(req, res) {
     res.status(results.status || 200).set("Cache-Control", "no-store").jsonp(results);
   }
   catch(error) {
-    if (error.status && error.status === 401)
+    if (error?.status === 401)
       logger.warn(error.message);
     else
       logger.error(error.message);

@@ -73,7 +73,7 @@ async function store(req, res) {
     res.status(results2.status || 200).set("Cache-Control", "no-store").jsonp(results2);
   }
   catch(error) {
-    if (error.status && error.status === 401)
+    if (error?.status === 401)
       logger.warn(error.message);
     else
       logger.error(error.message);
@@ -110,7 +110,7 @@ async function dull(req, res) {
     res.status(results2.status || 200).set("Cache-Control", "no-store").jsonp(results2);
   }
   catch(error) {
-    if (error.status && error.status === 401)
+    if (error?.status === 401)
       logger.warn(error.message);
     else
       logger.error(error.message);
@@ -144,7 +144,7 @@ async function recall(req, res) {
     res.status(results.status || 200).set("Cache-Control", "private, max-age=5, s-maxage=5").jsonp(results);
   }
   catch(error) {
-    if (error.status && error.status === 401)
+    if (error?.status === 401)
       logger.warn(error.message);
     else
       logger.error(error.message);

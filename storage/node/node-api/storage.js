@@ -62,13 +62,13 @@ async function list(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$")
       throw new StorageError(400, "invalid SMT name");
 
     junction = await storage.activate(smtname);
 
-    let schema = req.query[ 'schema' ] || (req.body && req.body.schema) || junction.smt.schema || '*';
+    let schema = req.query[ 'schema' ] || req.body?.schema || junction.smt.schema || '*';
 
     let results = await junction.list({ schema: schema });
     logger.debug(JSON.stringify(results));
@@ -96,7 +96,7 @@ async function createSchema(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -132,7 +132,7 @@ async function dullSchema(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -164,7 +164,7 @@ async function getEncoding(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -202,7 +202,7 @@ async function store(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -263,7 +263,7 @@ async function recall(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -296,7 +296,7 @@ async function retrieve(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -330,7 +330,7 @@ async function dull(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || (req.body && req.body.SMT);
+    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 

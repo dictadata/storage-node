@@ -1,5 +1,5 @@
 /**
- * storage-node/storage.js
+ * storage/node/node-api/codex
 */
 "use strict";
 
@@ -17,7 +17,7 @@ var router = express.Router();
 
 // Public role
 router.get('/codex', authorize([ Roles.Public, Roles.Coder ]), recall);
-router.get('/codex/:smt_urn', authorize([ Roles.Public, Roles.Coder ]), recall);
+router.get('/codex/:urn', authorize([ Roles.Public, Roles.Coder ]), recall);
 
 // User role
 router.post('/codex', authorize([ Roles.User, Roles.Coder ]), retrieve);
@@ -26,7 +26,7 @@ router.post('/codex', authorize([ Roles.User, Roles.Coder ]), retrieve);
 router.put('/codex', authorize([ Roles.Coder ]), store);
 
 router.delete('/codex', authorize([ Roles.Coder ]), dull);
-router.delete('/codex/:smt_urn', authorize([ Roles.Coder ]), dull);
+router.delete('/codex/:urn', authorize([ Roles.Coder ]), dull);
 
 
 module.exports = router;
@@ -39,24 +39,23 @@ module.exports = router;
 async function store(req, res) {
   logger.verbose('/codex/store');
 
-  var entry = req.body.codex || req.body;
+  var entry = req.body;
 
   try {
+    let results;
     let engram;
+
     switch (entry.type) {
       case "engram":
         engram = new Engram(entry);
+        results = await Storage.codex.store(engram);
         break;
       case "alias":
-      case "tract":
-        // need to do some type validation like Engram above
-        engram = entry;
+        results = await Storage.codex.store(entry);
         break;
       default:
         throw new StorageError(400, "invalid codex type");
     }
-
-    let results = await Storage.codex.store(engram);
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -75,18 +74,18 @@ async function store(req, res) {
 async function recall(req, res) {
   logger.verbose('/codex/recall');
 
-  var smt_urn = req.params[ "smt_urn" ] || req.query[ "smt_urn" ];
+  var urn = req.params[ "urn" ] || req.query[ "urn" ];
   var domain = req.query[ "domain" ];
   var name = req.query[ "name" ];
   var resolve = req.query[ "resolve" ];
 
-  if ((!smt_urn || smt_urn[ 0 ] === "$") && !name)
+  if ((!urn || urn[ 0 ] === "$") && !name)
     throw new StorageError(400, "invalid Codex name");
 
   try {
     let results;
-    if (smt_urn)
-      results = await Storage.codex.recall({ key: smt_urn, resolve: resolve });
+    if (urn)
+      results = await Storage.codex.recall({ key: urn, resolve: resolve });
     else
       results = await Storage.codex.recall({ domain: domain, name: name, resolve: resolve });
 
@@ -110,17 +109,17 @@ async function recall(req, res) {
 async function dull(req, res) {
   logger.verbose('/codex/dull');
 
-  var smt_urn = req.params[ "smt_urn" ] || req.query[ "smt_urn" ] || (req.body && req.body.smt_urn);
-  var domain = req.query[ "domain" ] || (req.body && req.body.domain);
-  var name = req.query[ "name" ] || (req.body && req.body.name);
+  var urn = req.params[ "urn" ] || req.query[ "urn" ] || req.body?.urn;
+  var domain = req.query[ "domain" ] || req.body?.domain;
+  var name = req.query[ "name" ] || req.body?.name;
 
-  if ((!smt_urn || smt_urn[ 0 ] === "$") && !name)
+  if ((!urn || urn[ 0 ] === "$") && !name)
     throw new StorageError(400, "invalid Codex name");
 
   try {
     let results;
-    if (smt_urn)
-      results = await Storage.codex.dull(smt_urn);
+    if (urn)
+      results = await Storage.codex.dull(urn);
     else
       results = await Storage.codex.dull({ domain: domain, name: name });
 
