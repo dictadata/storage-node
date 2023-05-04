@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.68
+  - feature: Tracts storage
+  - updated: @dictadata/storage-junctions@0.9.93
 - version 0.9.67
   - bug fix: have process.env.HOMEPATH take precedence over os.homedir()
   - updated: @dictadata/storage-junctions@0.9.92
