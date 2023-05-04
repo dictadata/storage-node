@@ -35,39 +35,11 @@ exports.startup = async (config) => {
     if (codex) {
       // activate codex junction
       await codex.activate();
+
       // use codex for SMT name lookup
       Storage.codex = codex;
 
-      if (config.codex.engrams) {
-        // adds config.codex.engrams to codex cache
-        // because codex's junction is not activated yet.
-        for (let [ name, entry ] of Object.entries(config.codex.engrams)) {
-          if (typeof entry === "string") {
-            // assume entry is an SMT string
-            let engram = new Engram(entry);
-            engram.name = name;
-            await codex.store(engram);
-          }
-          else {
-            // assume entry is an engram object
-            let engram = new Engram(entry.smt);
-            engram.name = entry.name || name;
-
-            if (entry.options) {
-              engram.options = entry.options;
-            }
-            if (entry.encoding) {
-              if (typeof entry.encoding === "string")
-                // read encoding from file
-                engram.encoding = JSON.parse(fs.readFileSync(entry.encoding, 'utf-8'));
-              else
-                engram.encoding = entry.encoding;
-            }
-
-            await codex.store(engram);
-          }
-        }
-      }
+      await addEngrams(config.codex.engrams_cache);
     }
   }
   catch (err) {
@@ -77,3 +49,35 @@ exports.startup = async (config) => {
 
   return exitCode;
 };
+
+// add codex entries from config.codex.engrams (local cache only)
+async function addEngrams(engrams_cache) {
+  if (engrams_cache) {
+    for (let [ name, entry ] of Object.entries(engrams_cache)) {
+      if (typeof entry === "string") {
+        // assume entry is an SMT string
+        let engram = new Engram(entry);
+        engram.name = name;
+        await codex.store(engram);
+      }
+      else {
+        // assume entry is an engram object
+        let engram = new Engram(entry.smt);
+        engram.name = entry.name || name;
+
+        if (entry.options) {
+          engram.options = entry.options;
+        }
+        if (entry.encoding) {
+          if (typeof entry.encoding === "string")
+            // read encoding from file
+            engram.encoding = JSON.parse(fs.readFileSync(entry.encoding, 'utf-8'));
+          else
+            engram.encoding = entry.encoding;
+        }
+
+        await codex.store(engram);
+      }
+    }
+  }
+}

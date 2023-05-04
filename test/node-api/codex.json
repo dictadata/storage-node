@@ -11,14 +11,28 @@
   },
   "queries": [
     {
+      "name": "foo_schema-store",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": "./data/input/encodings/foo_schema.encoding.json"
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ],
+        "status": 0,
+        "compareValues": 1
+      }
+    },
+    {
       "name": "foo_schema",
       "request": {
         "method": "GET",
         "url": "foo:foo_schema"
-      },
-      "expected": {
-        "statusCode": 404,
-        "compareValues": 0
       }
     },
     {
@@ -57,7 +71,7 @@
           201
         ],
         "status": 0,
-        "compareValues": 0
+        "compareValues": 1
       }
     },
     {
@@ -79,7 +93,7 @@
             "match": {
               "type": "engram",
               "name": {
-                "wc": "foo_schema*"
+                "wc": "foo_schema_*"
               }
             }
           }
@@ -105,7 +119,7 @@
             "match": {
               "type": "engram",
               "name": {
-                "wc": "foo_schema*"
+                "wc": "foo_schema_*"
               }
             }
           }
@@ -135,7 +149,8 @@
           200,
           201
         ],
-        "status": 0
+        "status": 0,
+        "compareValues": 1
       }
     },
     {
@@ -143,6 +158,16 @@
       "request": {
         "method": "GET",
         "url": "foo:foo_alias"
+      }
+    },
+    {
+      "name": "foo_alias-resolve",
+      "request": {
+        "method": "GET",
+        "url": "foo:foo_alias",
+        "params": {
+          "resolve": true
+        }
       }
     },
     {
