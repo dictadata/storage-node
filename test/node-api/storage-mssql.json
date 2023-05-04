@@ -91,11 +91,11 @@
         "data": [
           {
             "Foo": "ten",
-            "Bar": "row",
+            "Bar": "Hamilton",
             "Baz": 10,
-            "Fobe": 10.10,
-            "Dt Test": "10/27/2018",
-            "enabled": true
+            "Fobe": 0.10,
+            "Dt Test": "2020-10-07T00:00:00.000Z",
+            "enabled": false
           }
         ]
       }
@@ -270,7 +270,7 @@
         "method": "DELETE",
         "url": "dull/:mssql_foo_schema",
         "params": {
-          "Foo": "ten"
+          "Foo": "fifty"
         }
       }
     },

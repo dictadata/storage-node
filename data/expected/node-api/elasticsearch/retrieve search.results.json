@@ -11,14 +11,6 @@
       "Dt Test": "2018-10-07T00:00:00.000Z",
       "enabled": true
     },
-    "ten": {
-      "Foo": "ten",
-      "Bar": "row",
-      "Baz": 10,
-      "Fobe": 10.1,
-      "Dt Test": "2018-10-27T05:00:00.000Z",
-      "enabled": true
-    },
     "second": {
       "Foo": "second",
       "Bar": "row",

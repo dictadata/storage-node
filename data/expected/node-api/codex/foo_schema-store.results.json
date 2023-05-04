@@ -3,6 +3,6 @@
   "message": "OK",
   "type": "message",
   "data": {
-    "foo:foo_schema_XYZ": "created"
+    "foo:foo_schema": "created"
   }
 }

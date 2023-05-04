@@ -4,10 +4,10 @@
   "type": "construct",
   "data": {
     "Foo": "ten",
-    "Bar": "row",
+    "Bar": "Hamilton",
     "Baz": 10,
-    "Fobe": 10.1,
-    "Dt Test": "2018-10-27T00:00:00.000Z",
-    "enabled": true
+    "Fobe": 0.1,
+    "Dt Test": "2020-10-07T00:00:00.000Z",
+    "enabled": false
   }
 }
