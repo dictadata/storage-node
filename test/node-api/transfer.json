@@ -72,6 +72,12 @@
           }
         }
       }
+    },
+    {
+      "name": "foo_transfer alias",
+      "request": {
+        "url": "foo:foo_alias"
+      }
     }
   ]
 }

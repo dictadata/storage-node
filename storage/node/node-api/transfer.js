@@ -10,7 +10,7 @@ const authorize = require("../authorize");
 const Roles = require("../roles");
 const logger = require('../../utils/logger');
 const Storage = require('@dictadata/storage-junctions');
-const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
+const { SMT, StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
 const fs = require('fs');
 const stream = require('stream').promises;
 
@@ -19,6 +19,7 @@ const stream = require('stream').promises;
  */
 var router = express.Router();
 router.post('/transfer', authorize([ Roles.User ]), transfer);
+router.post('/transfer/:urn', authorize([ Roles.User ]), transfer);
 module.exports = router;
 
 /**
@@ -28,15 +29,33 @@ async function transfer(req, res) {
   logger.verbose('/transfer');
   logger.debug(JSON.stringify(req.body));
 
-  const tract = req.body.tract || req.body;
-  const origin = tract.origin || {};
-  const terminal = tract.terminal || {};
-  const transforms = tract.transform || tract.transforms || {};
-  if (!origin.options) origin.options = {};
-  if (!terminal.options) terminal.options = {};
-
+  let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || req.body?.urn;
+  let tract;
   var jo, jt; // junctions origin, terminal
+
   try {
+    if (urn) {
+      let results = await Storage.tracts.recall({ key: urn, resolve: true });
+      tract = results.data[ urn ].tracts[ 0 ];
+
+      // TBD: use query string parameters and replace variables in tract
+    }
+    else {
+      tract = req.body.tract || req.body;
+    }
+
+    const origin = tract.origin || {};
+    const terminal = tract.terminal || {};
+    const transforms = tract.transform || tract.transforms || {};
+    if (!origin.options)
+      origin.options = {};
+    if (!terminal.options)
+      terminal.options = {};
+    if (typeof origin.smt === "string" && origin.smt.includes("|"))
+      origin.smt = new SMT(origin.smt);
+    if (typeof terminal.smt === "string" && terminal.smt.includes("|"))
+      terminal.smt = new SMT(terminal.smt);
+
     /// validate parameters
     if (!origin.smt || origin.smt[ 0 ] === '$')
       throw new StorageError(400, "invalid origin smt name: " + origin.smt);

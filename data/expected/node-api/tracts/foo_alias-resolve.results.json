@@ -21,16 +21,10 @@
           "action": "transfer",
           "description": "transfer foo from json to json",
           "origin": {
-            "smt": "json|./data/input/|foofile.json|*"
+            "smt": "json|../data/input/|foofile.json|*"
           },
           "terminal": {
-            "smt": {
-              "model": "json",
-              "locus": "./data/output/tracts/",
-              "schema": "transfer_foofile.json",
-              "key": "*"
-            },
-            "output": "./data/output/tracts/tracts_foofile.json"
+            "smt": "json|stream:*|*|*"
           }
         }
       ]
