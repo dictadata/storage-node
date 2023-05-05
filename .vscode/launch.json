@@ -168,6 +168,20 @@
       "outputCapture": "std"
     },
     {
+      "name": "node-api tracts",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "args": [
+        "${workspaceFolder}/test/node-api/tracts.json"
+      ],
+      "envFile": "${workspaceFolder}/.env.development",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "outputCapture": "std"
+    },
+    {
       "name": "node-api transfer",
       "type": "node",
       "request": "launch",
@@ -188,20 +202,6 @@
       "program": "${workspaceFolder}/test/st_node_test_client.js",
       "args": [
         "${workspaceFolder}/test/node-api/transform.json"
-      ],
-      "envFile": "${workspaceFolder}/.env.development",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "outputCapture": "std"
-    },
-    {
-      "name": "node-api tracts",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": [
-        "${workspaceFolder}/test/node-api/tracts.json"
       ],
       "envFile": "${workspaceFolder}/.env.development",
       "skipFiles": [
