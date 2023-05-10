@@ -101,12 +101,12 @@ var _config = {
     allowedHeaders: [ 'Origin', 'X-Requested-With', 'Content-Type', 'Accept' ]
   },
 
-  tracts: {
-    smt: "memory|dictadata|tracts|*",
+  cortex: {
+    smt: "memory|dictadata|cortex|*",
     options: {},
 
-    // at startup, these entries will be added to tracts local cache
-    tracts_cache: {
+    // at startup, these entries will be added to cortex local cache
+    cortex_cache: {
       // format
       //   <name>: {
       //     smt: <smt string> | <smt object>,

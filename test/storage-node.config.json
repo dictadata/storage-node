@@ -74,11 +74,11 @@
   "roles": {
     "Tester": "Tester"
   },
-  "tracts": {
-    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
+  "cortex": {
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_cortex|*",
     "options": {
       "refresh": true
     },
-    "tracts_cache": {}
+    "cortex_cache": {}
   }
 }

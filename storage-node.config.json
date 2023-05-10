@@ -14,9 +14,9 @@
     "auth_stash": "storage-node.auth.json",
     "engrams_cache": {}
   },
-  "tracts": {
-    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
+  "cortex": {
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_cortex|*",
     "options": {},
-    "tracts_cache": {}
+    "cortex_cache": {}
   }
 }

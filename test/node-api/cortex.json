@@ -1,8 +1,8 @@
 {
-  "name": "tracts",
+  "name": "cortex",
   "request": {
     "method": "GET",
-    "base": "http://dev.dictadata.net:8089/node/tracts/",
+    "base": "http://dev.dictadata.net:8089/node/cortex/",
     "auth": "user:user"
   },
   "expected": {

@@ -1,5 +1,5 @@
 /**
- * storage/node/node-api/tracts
+ * storage/node/node-api/cortex
 */
 "use strict";
 
@@ -16,17 +16,17 @@ const { StorageError } = require('@dictadata/storage-junctions/types');
 var router = express.Router();
 
 // Public role
-router.get('/tracts', authorize([ Roles.Public, Roles.Coder ]), recall);
-router.get('/tracts/:urn', authorize([ Roles.Public, Roles.Coder ]), recall);
+router.get('/cortex', authorize([ Roles.Public, Roles.Coder ]), recall);
+router.get('/cortex/:urn', authorize([ Roles.Public, Roles.Coder ]), recall);
 
 // User role
-router.post('/tracts', authorize([ Roles.User, Roles.Coder ]), retrieve);
+router.post('/cortex', authorize([ Roles.User, Roles.Coder ]), retrieve);
 
 // Coder role
-router.put('/tracts', authorize([ Roles.Coder ]), store);
+router.put('/cortex', authorize([ Roles.Coder ]), store);
 
-router.delete('/tracts', authorize([ Roles.Coder ]), dull);
-router.delete('/tracts/:urn', authorize([ Roles.Coder ]), dull);
+router.delete('/cortex', authorize([ Roles.Coder ]), dull);
+router.delete('/cortex/:urn', authorize([ Roles.Coder ]), dull);
 
 
 module.exports = router;
@@ -37,14 +37,14 @@ module.exports = router;
  * @param {*} res
  */
 async function store(req, res) {
-  logger.verbose('/tracts/store');
+  logger.verbose('/cortex/store');
 
   var entry = req.body;
 
   try {
     let results;
 
-    results = await Storage.tracts.store(entry);
+    results = await Storage.cortex.store(entry);
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -61,7 +61,7 @@ async function store(req, res) {
  * @param {*} res
  */
 async function recall(req, res) {
-  logger.verbose('/tracts/recall');
+  logger.verbose('/cortex/recall');
 
   var urn = req.params[ "urn" ] || req.query[ "urn" ];
   var domain = req.query[ "domain" ];
@@ -69,14 +69,14 @@ async function recall(req, res) {
   var resolve = req.query[ "resolve" ];
 
   if ((!urn || urn[ 0 ] === "$") && !name)
-    throw new StorageError(400, "invalid Tracts name");
+    throw new StorageError(400, "invalid Cortex name");
 
   try {
     let results;
     if (urn)
-      results = await Storage.tracts.recall({ key: urn, resolve: resolve });
+      results = await Storage.cortex.recall({ key: urn, resolve: resolve });
     else
-      results = await Storage.tracts.recall({ domain: domain, name: name, resolve: resolve });
+      results = await Storage.cortex.recall({ domain: domain, name: name, resolve: resolve });
 
     res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
@@ -96,21 +96,21 @@ async function recall(req, res) {
  * @param {*} res
  */
 async function dull(req, res) {
-  logger.verbose('/tracts/dull');
+  logger.verbose('/cortex/dull');
 
   var urn = req.params[ "urn" ] || req.query[ "urn" ] || req.body?.urn;
   var domain = req.query[ "domain" ] || req.body?.domain;
   var name = req.query[ "name" ] || req.body?.name;
 
   if ((!urn || urn[ 0 ] === "$") && !name)
-    throw new StorageError(400, "invalid Tracts name");
+    throw new StorageError(400, "invalid Cortex name");
 
   try {
     let results;
     if (urn)
-      results = await Storage.tracts.dull(urn);
+      results = await Storage.cortex.dull(urn);
     else
-      results = await Storage.tracts.dull({ domain: domain, name: name });
+      results = await Storage.cortex.dull({ domain: domain, name: name });
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -128,12 +128,12 @@ async function dull(req, res) {
  * @param {*} res
  */
 async function retrieve(req, res) {
-  logger.verbose('/tracts/retrieve');
+  logger.verbose('/cortex/retrieve');
 
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = await Storage.tracts.retrieve(pattern);
+    let results = await Storage.cortex.retrieve(pattern);
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
       .jsonp(results);

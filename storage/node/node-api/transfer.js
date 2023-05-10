@@ -35,7 +35,7 @@ async function transfer(req, res) {
 
   try {
     if (urn) {
-      let results = await Storage.tracts.recall({ key: urn, resolve: true });
+      let results = await Storage.cortex.recall({ key: urn, resolve: true });
       tract = results.data[ urn ].tracts[ 0 ];
 
       // TBD: use query string parameters and replace variables in tract

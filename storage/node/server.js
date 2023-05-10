@@ -10,7 +10,7 @@ const startup = require('./startup');
 const codex = require('./codex');
 const accounts = require('./accounts');
 const datapath = require('./datapath');
-const tracts = require('./tracts');
+const cortex = require('./cortex');
 
 const http = require('http');
 const { StorageError } = require("@dictadata/storage-junctions/types");
@@ -22,7 +22,7 @@ var httpServer = null;
 startup.add(codex.startup);
 startup.add(accounts.startup);
 startup.add(datapath.startup);
-startup.add(tracts.startup);
+startup.add(cortex.startup);
 // app.startup is last
 startup.add(app.startup);
 
