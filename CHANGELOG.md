@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.70
+  - refactor: rename storage-junctions Campus and Cortex classes
+  - updated: @dictadata/storage-junctions@0.9.95
 - version 0.9.69
   - bug fix: coerce smt to strings in cortex entries
   - updated: @dictadata/storage-junctions@0.9.94
