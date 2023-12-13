@@ -35,7 +35,7 @@ var request_defaults = {
   let tf = fs.readFileSync(testFile, "utf-8");
   let testQueries = JSON.parse(tf);
 
-  let outputDir = path.dirname(testFile).replace("/test/", "/data/output/") + testName + "/" + testQueries.name + "/";
+  let outputDir = path.dirname(testFile).replace("/test/", "/test/data/output/") + testName + "/" + testQueries.name + "/";
   fs.mkdirSync(outputDir, { recursive: true });
 
   let exitCode = 0;

@@ -45,7 +45,9 @@ async function transport(req, res) {
 
   var jo, jt;
   try {
+    origin.options[ "dataPath" ] = config.dataPath;
     jo = await storage.activate(origin.smt, origin.options);
+    terminal.options[ "dataPath" ] = config.dataPath;
     jt = await storage.activate(terminal.smt, terminal.options);
 
     let encoding;

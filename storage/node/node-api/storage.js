@@ -66,7 +66,7 @@ async function list(req, res) {
     if (!smtname || smtname[ 0 ] === "$")
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await storage.activate(smtname, { dataPath: config.dataPath });
 
     let schema = req.query[ 'schema' ] || req.body?.schema || junction.smt.schema || '*';
 
@@ -102,7 +102,7 @@ async function createSchema(req, res) {
 
     let newEncoding = req.body.encoding || req.body;
 
-    junction = await storage.activate(smtname, { encoding: newEncoding });
+    junction = await storage.activate(smtname, { dataPath: config.dataPath, encoding: newEncoding });
     if (!junction.capabilities.encoding)
       throw new StorageError(405);
 
@@ -136,7 +136,7 @@ async function dullSchema(req, res) {
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await storage.activate(smtname, { dataPath: config.dataPath });
 
     let results = await junction.dullSchema();
     logger.debug(JSON.stringify(results));
@@ -168,7 +168,7 @@ async function getEncoding(req, res) {
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await storage.activate(smtname, { dataPath: config.dataPath });
     if (!junction.capabilities.encoding)
       throw new StorageError(405);
 
@@ -206,7 +206,7 @@ async function store(req, res) {
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await storage.activate(smtname, { dataPath: config.dataPath });
     if (!junction.capabilities.store)
       throw new StorageError(405);
 
@@ -267,7 +267,7 @@ async function recall(req, res) {
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await storage.activate(smtname, { dataPath: config.dataPath });
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
@@ -300,7 +300,7 @@ async function retrieve(req, res) {
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await storage.activate(smtname, { dataPath: config.dataPath });
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 
@@ -334,7 +334,7 @@ async function dull(req, res) {
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await storage.activate(smtname, { dataPath: config.dataPath });
 
     var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
 

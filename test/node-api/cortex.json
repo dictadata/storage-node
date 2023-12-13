@@ -17,7 +17,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./data/input/tracts/foo_transfer.tract.json"
+        "data": "./test/data/input/tracts/foo_transfer.tract.json"
       },
       "expected": {
         "statusCode": [
@@ -46,7 +46,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./data/input/tracts/foo_transfer_two.tract.json"
+        "data": "./test/data/input/tracts/foo_transfer_two.tract.json"
       },
       "expected": {
         "statusCode": [

@@ -16,8 +16,8 @@
     "auth_stash": "storage-node.auth.json",
     "engrams_cache": {
       "accounts": "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
-      "csv_foofile": "csv|../data/input/|foofile.csv|*",
-      "json_foofile": "json|../data/input/|foofile.json|*",
+      "csv_foofile": "csv|../test/data/input/|foofile.csv|*",
+      "json_foofile": "json|../test/data/input/|foofile.json|*",
       "es_foo_schema": {
         "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|!Foo",
         "options": {

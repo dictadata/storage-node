@@ -55,7 +55,7 @@ Content-Type: application/json; charset=utf-8
   "type": "engram",
   "title": "foo_transfer encoding",
   "description": "test input for foo_transfer_XYZ encoding",
-  "source": "file:./data/input/encodings/foo_transfer_XYZ.encoding.json",
+  "source": "file:./test/data/input/encodings/foo_transfer_XYZ.encoding.json",
   "tags": [
     "foo"
   ],

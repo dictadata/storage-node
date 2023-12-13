@@ -1,15 +1,14 @@
 "use strict";
 /**
- * storage-node/status
+ * storage/node/node-api/status
  */
 
 const express = require('express');
 const authorize = require('../authorize');
 const Roles = require('../roles');
 const config = require('../config');
-const storage = require('@dictadata/storage-junctions');
+const Storage = require('@dictadata/storage-junctions');
 const { StorageResults, StorageError } = require("@dictadata/storage-junctions/types");
-const { typeOf } = require('@dictadata/storage-junctions/utils');
 const logger = require('../../utils/logger');
 
 /**
@@ -53,7 +52,7 @@ async function smt_status(req, res) {
     if (!smtname)
       throw new StorageError(400, "invalid SMT name");
 
-    junction = await storage.activate(smtname);
+    junction = await Storage.activate(smtname, { dataPath: config.dataPath });
 
     let results = await junction.list();
 

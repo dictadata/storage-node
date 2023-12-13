@@ -11,6 +11,7 @@ const Roles = require("../roles");
 const logger = require('../../utils/logger');
 const Storage = require('@dictadata/storage-junctions');
 const { SMT, StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
+const config = require("../config.js");
 const fs = require('fs');
 const stream = require('stream').promises;
 
@@ -64,6 +65,7 @@ async function transfer(req, res) {
 
     /// create origin junction
     logger.debug("create origin junction");
+    origin.options[ "dataPath" ] = config.dataPath;
     jo = await Storage.activate(origin.smt, origin.options);
 
     /// get origin encoding
@@ -125,6 +127,7 @@ async function transfer(req, res) {
 
     /// create terminal junction
     logger.debug("create terminal junction");
+    terminal.options[ "dataPath" ] = config.dataPath;
     jt = await Storage.activate(terminal.smt, terminal.options);
 
     logger.debug("create terminal schema");
@@ -165,6 +168,7 @@ async function transfer(req, res) {
     if (jt.smt.locus.startsWith('stream:'))
       res.type('json');
     res.set("Cache-Control", "public, max-age=60, s-maxage=60");
+
     await stream.pipeline(pipes);
 
     if (jt.smt.locus.startsWith('stream:'))

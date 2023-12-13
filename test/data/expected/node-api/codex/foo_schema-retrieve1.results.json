@@ -3,13 +3,13 @@
   "message": "OK",
   "type": "map",
   "data": {
-    "foo:foo_schema": {
-      "name": "foo_schema",
+    "foo:foo_schema_XYZ": {
+      "name": "foo_schema_XYZ",
       "type": "engram",
       "domain": "foo",
+      "source": "file:./test/data/input/encodings/foo_schema_XYZ.encoding.json",
       "title": "foo_schema encoding",
-      "description": "test input for foo_schema encoding",
-      "source": "file:./data/input/encodings/foo_schema.encoding.json",
+      "description": "test input for foo_schema_XYZ encoding",
       "tags": [
         "foo"
       ],
