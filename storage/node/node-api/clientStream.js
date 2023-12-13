@@ -148,7 +148,7 @@ async function uploadFiles(req, res) {
       var jo, jt;
       try {
         jo = await storage.activate("csv|.|input.csv|*", { filename: importList[ i ].filename, header: true });
-        jt = await storage.activate("elasticsearch|./test/data/output/stream/|testoutput.csv|*");
+        jt = await storage.activate("elasticsearch|./output/stream/|testoutput.csv|*");
 
         var reader = jo.createReader();
         var writer = jt.createWriter();
