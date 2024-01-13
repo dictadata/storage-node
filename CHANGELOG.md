@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.71
+  - updated: @dictadata/storage-junctions@0.9.96
+  - refactor: improved, consistent error handling
 - version 0.9.70
   - refactor: rename storage-junctions Campus and Cortex classes
   - updated: @dictadata/storage-junctions@0.9.95
