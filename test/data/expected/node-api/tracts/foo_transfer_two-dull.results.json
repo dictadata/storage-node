@@ -3,6 +3,6 @@
   "message": "OK",
   "type": "message",
   "data": {
-    "foo:foo_transfer": "updated"
+    "foo:foo_transfer_two": "deleted"
   }
 }

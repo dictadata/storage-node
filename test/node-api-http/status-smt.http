@@ -24,3 +24,11 @@ Authorization: Basic user user
 ### admin  Admin
 GET http://dev.dictadata.net:8089/node/status/:mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin
+
+### user
+GET http://dev.dictadata.net:8089/node/status/:es_foo_schema_origin HTTP/1.1
+Authorization: Basic user user
+
+### user
+GET http://dev.dictadata.net:8089/node/status/:mysql_foo_schema_origin HTTP/1.1
+Authorization: Basic user user

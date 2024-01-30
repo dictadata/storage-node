@@ -10,21 +10,6 @@
   },
   "queries": [
     {
-      "name": "status_origin",
-      "request": {
-        "url": "status/:mysql_foo_schema_origin"
-      }
-    },
-    {
-      "name": "list_origin",
-      "request": {
-        "url": "list/:mysql_foo_schema_origin",
-        "params": {
-          "schema": "foo*"
-        }
-      }
-    },
-    {
       "name": "status",
       "request": {
         "method": "GET",

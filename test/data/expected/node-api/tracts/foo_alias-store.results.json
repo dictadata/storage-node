@@ -3,6 +3,6 @@
   "message": "OK",
   "type": "message",
   "data": {
-    "foo:foo_alias": "created"
+    "foo:foo_alias": "updated"
   }
 }

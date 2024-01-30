@@ -4,13 +4,13 @@
   - updated: @dictadata/storage-junctions@0.9.96
   - refactor: improved, consistent error handling
 - version 0.9.70
-  - refactor: rename storage-junctions Campus and Cortex classes
+  - refactor: rename storage-junctions Storage and Tracts classes
   - updated: @dictadata/storage-junctions@0.9.95
 - version 0.9.69
-  - bug fix: coerce smt to strings in cortex entries
+  - bug fix: coerce smt to strings in tracts entries
   - updated: @dictadata/storage-junctions@0.9.94
 - version 0.9.68
-  - feature: Cortex storage
+  - feature: Tracts storage
   - updated: @dictadata/storage-junctions@0.9.93
 - version 0.9.67
   - bug fix: have process.env.HOMEPATH take precedence over os.homedir()
@@ -140,7 +140,7 @@
   - bug fix: for codex calls
 - version 2.1.0
   - update to @dictadata/storage-junctions 2.1.2
-  - refactor: Storage module, Cortex class, remove Codex class
+  - refactor: Storage module, Tracts class, remove Codex class
 - version 2.0.9
   - refactor main, config and startup
   - codex entries in config only stored in codex cache

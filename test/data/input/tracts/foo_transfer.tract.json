@@ -16,7 +16,7 @@
       "action": "transfer",
       "description": "transfer foo from json to json",
       "origin": {
-        "smt": "json|./input/|foofile.json|*"
+        "smt": "json|./foo/input/|foofile.json|*"
       },
       "terminal": {
         "smt": "json|stream:*|*|*"

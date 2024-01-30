@@ -1,56 +1,47 @@
 /**
- * storage/node/codex.js
+ * storage/node/engrams.js
  *
  * Return a method used for Passport authentication.
  *
  */
 "use strict";
 
-const logger = require("../utils/logger");
-const Storage = require("@dictadata/storage-junctions");
+const { Codex } = require("@dictadata/storage-junctions");
 const { Engram } = require("@dictadata/storage-junctions/types");
+const logger = require("../utils/logger");
 const fs = require("fs");
-
-var codex;
 
 /**
  * wait until server config is updated before initializing
  */
 exports.startup = async (config) => {
-  logger.info("codex startup");
-  logger.verbose("codex SMT: " + JSON.stringify(config.codex.smt));
+  logger.info("engrams startup");
+  logger.verbose("engrams SMT: " + JSON.stringify(config.codex.engrams.smt));
 
   var exitCode = 0;
 
   try {
     // load auth_stash
-    if (config.codex.auth_stash)
-      Storage.authStash.load(config.codex.auth_stash);
+    if (config.codex.auth.auth_file)
+      Codex.auth.load(config.codex.auth.auth_file);
 
-    if (config.codex) {
-      // create codex
-      codex = new Storage.Codex(config.codex.smt, config.codex.options);
-    }
+    if (config.codex.engrams) {
+      // create engrams junction
+      let engrams = Codex.use("engram", config.codex.engrams.smt, config.codex.engrams.options);
+      await engrams.activate();
 
-    if (codex) {
-      // activate codex junction
-      await codex.activate();
-
-      // use codex for SMT name lookup
-      Storage.codex = codex;
-
-      await addEngrams(config.codex.engrams_cache);
+      await addEngrams(config.codex.engrams.engrams_cache);
     }
   }
   catch (err) {
-    logger.error('codex startup failed: ', err);
+    logger.error('engrams startup failed: ', err);
     exitCode = 2; // startup failure
   }
 
   return exitCode;
 };
 
-// add codex entries from config.codex.engrams (local cache only)
+// add engrams entries from config.codex.engrams (local cache only)
 async function addEngrams(engrams_cache) {
   if (engrams_cache) {
     for (let [ name, entry ] of Object.entries(engrams_cache)) {
@@ -58,7 +49,7 @@ async function addEngrams(engrams_cache) {
         // assume entry is an SMT string
         let engram = new Engram(entry);
         engram.name = name;
-        await codex.store(engram);
+        await Codex.engrams.store(engram);
       }
       else {
         // assume entry is an engram object
@@ -76,7 +67,7 @@ async function addEngrams(engrams_cache) {
             engram.encoding = entry.encoding;
         }
 
-        await codex.store(engram);
+        await Codex.engrams.store(engram);
       }
     }
   }

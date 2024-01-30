@@ -16,12 +16,12 @@
       "action": "transfer",
       "description": "transfer foo from JSON to JSON",
       "origin": {
-        "smt": "json|./input/|foofile_two.json|*"
+        "smt": "json|./foo/input/|foofile_two.json|*"
       },
       "terminal": {
         "smt": {
           "model": "json",
-          "locus": "./output/cortex/",
+          "locus": "./foo/output/",
           "schema": "transfer_foofile_two.json",
           "key": "*"
         }

@@ -36,25 +36,6 @@ var _config = {
   roles: {
   },
 
-  codex: {
-    smt: "memory|dictadata|codex|*",
-    options: {},
-
-    // at startup, these entries will be added to codex local cache
-    engrams_cache: {
-      // format
-      //   <name>: <smt string>
-      // or
-      //   <name>: {
-      //     smt: <smt string> | <smt object>,
-      //     options: {
-      //       <junction options ...>
-      //     }
-      //   }
-    }
-
-  },
-
   // storage-node API authentication
   $_accounts: "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
   //$_accounts: "mssql|server=dev.dictadata.net;database=storage_node|node_accounts|=userid",
@@ -101,23 +82,43 @@ var _config = {
     allowedHeaders: [ 'Origin', 'X-Requested-With', 'Content-Type', 'Accept' ]
   },
 
-  cortex: {
-    smt: "memory|dictadata|cortex|*",
-    options: {},
+  codex: {
+    "engrams": {
+      smt: "memory|dictadata|codex|*",
+      options: {},
 
-    // at startup, these entries will be added to cortex local cache
-    cortex_cache: {
-      // format
-      //   <name>: {
-      //     smt: <smt string> | <smt object>,
-      //     options: {
-      //       <junction options ...>
-      //     }
-      //   }
+      // at startup, these entries will be added to codex local cache
+      engrams_cache: {
+        // format
+        //   <name>: <smt string>
+        // or
+        //   <name>: {
+        //     smt: <smt string> | <smt object>,
+        //     options: {
+        //       <junction options ...>
+        //     }
+        //   }
+      }
+
+    },
+
+    tracts: {
+      smt: "memory|dictadata|tracts|*",
+      options: {},
+
+      // at startup, these entries will be added to tracts local cache
+      tracts_cache: {
+        // format
+        //   <name>: {
+        //     smt: <smt string> | <smt object>,
+        //     options: {
+        //       <junction options ...>
+        //     }
+        //   }
+      }
+
     }
-
   }
-
 };
 
 module.exports = _config;

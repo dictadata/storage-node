@@ -3,9 +3,9 @@
   "message": "OK",
   "type": "map",
   "data": {
-    "foo:foo_transfer_two": {
+    "foo:foo_alias": {
       "domain": "foo",
-      "name": "foo_transfer_two",
+      "name": "foo_transfer",
       "type": "tract",
       "title": "JSON to JSON",
       "description": "JSON to JSON transfer tract.",
@@ -19,12 +19,12 @@
         {
           "name": "json-json",
           "action": "transfer",
-          "description": "transfer foo from JSON to JSON",
+          "description": "transfer foo from json to json",
           "origin": {
-            "smt": "json|./input/|foofile_two.json|*"
+            "smt": "json|./foo/input/|foofile.json|*"
           },
           "terminal": {
-            "smt": "json|./output/cortex/|transfer_foofile_two.json|*"
+            "smt": "json|stream:*|*|*"
           }
         }
       ]

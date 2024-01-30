@@ -1,5 +1,5 @@
 /**
- * storage-node/clientStream
+ * storage/node/clientStream
  *
  * !!!!! work in progress !!!!!
  * !!!!! not tested recently !!!!!
@@ -20,7 +20,7 @@ const stream = require('stream').promises;
 const util = require('util');
 const path = require('path');
 
-const storage = require('@dictadata/storage-junctions');
+const { Storage } = require('@dictadata/storage-junctions');
 const { StorageError } = require("@dictadata/storage-junctions/types");
 
 
@@ -147,8 +147,8 @@ async function uploadFiles(req, res) {
 
       var jo, jt;
       try {
-        jo = await storage.activate("csv|.|input.csv|*", { filename: importList[ i ].filename, header: true });
-        jt = await storage.activate("elasticsearch|./output/stream/|testoutput.csv|*");
+        jo = await Storage.activate("csv|.|input.csv|*", { filename: importList[ i ].filename, header: true });
+        jt = await Storage.activate("elasticsearch|./output/stream/|testoutput.csv|*");
 
         var reader = jo.createReader();
         var writer = jt.createWriter();

@@ -6,7 +6,7 @@
  */
 "use strict";
 
-const storage = require('@dictadata/storage-junctions');
+const { Storage } = require('@dictadata/storage-junctions');
 const { StorageError } = require('@dictadata/storage-junctions/types');
 const Account = require('./account');
 const Roles = require('./roles');
@@ -32,7 +32,7 @@ exports.startup = async (config) => {
 
     accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts_encoding.json')));
 
-    junction = await storage.activate(config.$_accounts, { encoding: accountsEncoding });
+    junction = await Storage.activate(config.$_accounts, { encoding: accountsEncoding });
     // attempt to create accounts schema
     let results = await junction.createSchema();
     if (results.status === 0) {
@@ -72,7 +72,7 @@ exports.startup = async (config) => {
 var store = exports.store = async function (account) {
 
   let smt = config.$_accounts;
-  let junction = await storage.activate(smt);
+  let junction = await Storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
   account.dateUpdated = new Date().toISOString();
@@ -101,7 +101,7 @@ var store = exports.store = async function (account) {
 exports.dull = async function (userid) {
 
   let smt = config.$_accounts;
-  let junction = await storage.activate(smt);
+  let junction = await Storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
   let pattern = {};
@@ -123,7 +123,7 @@ exports.recall = async function (userid) {
   //let account = null;
 
   let smt = config.$_accounts;
-  let junction = await storage.activate(smt);
+  let junction = await Storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding overlay
 
   let pattern = {};
@@ -157,7 +157,7 @@ exports.retrieve = async function (pattern) {
 
   let smt = config.$_accounts;
 
-  let junction = await storage.activate(smt);
+  let junction = await Storage.activate(smt);
   junction.encoding = accountsEncoding;  // overlay encoding
 
   let results = await junction.retrieve(pattern);

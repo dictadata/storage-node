@@ -9,7 +9,7 @@ const express = require('express');
 const authorize = require("../authorize");
 const Roles = require("../roles");
 const logger = require('../../utils/logger');
-const Storage = require('@dictadata/storage-junctions');
+const { Storage, Codex } = require('@dictadata/storage-junctions');
 const { SMT, StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
 const config = require("../config.js");
 const fs = require('fs');
@@ -36,7 +36,7 @@ async function transfer(req, res) {
 
   try {
     if (urn) {
-      let results = await Storage.cortex.recall({ key: urn, resolve: true });
+      let results = await Codex.tracts.recall({ key: urn, resolve: true });
       tract = results.data[ urn ].tracts[ 0 ];
 
       // TBD: use query string parameters and replace variables in tract

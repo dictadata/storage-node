@@ -1,17 +1,17 @@
 ### not found
-GET http://dev.dictadata.net:8089/node/codex/foo_schema
+GET http://dev.dictadata.net:8089/node/engrams/foo_schema
 Authorization: Basic user user
 
 ### not found
-GET http://dev.dictadata.net:8089/node/codex/:foo_schema
+GET http://dev.dictadata.net:8089/node/engrams/:foo_schema
 Authorization: Basic user user
 
 ### OK
-GET http://dev.dictadata.net:8089/node/codex/foo:foo_schema
+GET http://dev.dictadata.net:8089/node/engrams/foo:foo_schema
 Authorization: Basic user user
 
 ###
-POST http://dev.dictadata.net:8089/node/codex
+POST http://dev.dictadata.net:8089/node/tracts
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -26,7 +26,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ###
-POST http://dev.dictadata.net:8089/node/codex
+POST http://dev.dictadata.net:8089/node/tracts
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
@@ -41,11 +41,11 @@ Content-Type: application/json; charset=utf-8
 }
 
 ###
-DELETE http://dev.dictadata.net:8089/node/codex/foo:foo_schema_XYZ
+DELETE http://dev.dictadata.net:8089/node/engrams/foo:foo_schema_XYZ
 Authorization: Basic user user
 
 ###
-PUT http://dev.dictadata.net:8089/node/codex
+PUT http://dev.dictadata.net:8089/node/tracts
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

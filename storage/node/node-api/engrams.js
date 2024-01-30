@@ -1,5 +1,5 @@
 /**
- * storage/node/node-api/cortex
+ * storage/node/node-api/engrams
 */
 "use strict";
 
@@ -7,8 +7,8 @@ const express = require('express');
 const authorize = require("../authorize");
 const Roles = require("../roles");
 const logger = require('../../utils/logger');
-const Storage = require('@dictadata/storage-junctions');
-const { StorageError } = require('@dictadata/storage-junctions/types');
+const { Codex } = require('@dictadata/storage-junctions');
+const { Engram, StorageError } = require('@dictadata/storage-junctions/types');
 
 /**
  * Express routes
@@ -16,17 +16,17 @@ const { StorageError } = require('@dictadata/storage-junctions/types');
 var router = express.Router();
 
 // Public role
-router.get('/cortex', authorize([ Roles.Public, Roles.Coder ]), recall);
-router.get('/cortex/:urn', authorize([ Roles.Public, Roles.Coder ]), recall);
+router.get('/engrams', authorize([ Roles.Public, Roles.Coder ]), recall);
+router.get('/engrams/:urn', authorize([ Roles.Public, Roles.Coder ]), recall);
 
 // User role
-router.post('/cortex', authorize([ Roles.User, Roles.Coder ]), retrieve);
+router.post('/engrams', authorize([ Roles.User, Roles.Coder ]), retrieve);
 
 // Coder role
-router.put('/cortex', authorize([ Roles.Coder ]), store);
+router.put('/engrams', authorize([ Roles.Coder ]), store);
 
-router.delete('/cortex', authorize([ Roles.Coder ]), dull);
-router.delete('/cortex/:urn', authorize([ Roles.Coder ]), dull);
+router.delete('/engrams', authorize([ Roles.Coder ]), dull);
+router.delete('/engrams/:urn', authorize([ Roles.Coder ]), dull);
 
 
 module.exports = router;
@@ -37,14 +37,25 @@ module.exports = router;
  * @param {*} res
  */
 async function store(req, res) {
-  logger.verbose('/cortex/store');
+  logger.verbose('/engrams/store');
 
   var entry = req.body;
 
   try {
     let results;
+    let engram;
 
-    results = await Storage.cortex.store(entry);
+    switch (entry.type) {
+      case "engram":
+        engram = new Engram(entry);
+        results = await Codex.engrams.store(engram);
+        break;
+      case "alias":
+        results = await Codex.engrams.store(entry);
+        break;
+      default:
+        throw new StorageError(400, "invalid engrams type");
+    }
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -61,7 +72,7 @@ async function store(req, res) {
  * @param {*} res
  */
 async function recall(req, res) {
-  logger.verbose('/cortex/recall');
+  logger.verbose('/engrams/recall');
 
   var urn = req.params[ "urn" ] || req.query[ "urn" ];
   var domain = req.query[ "domain" ];
@@ -69,14 +80,14 @@ async function recall(req, res) {
   var resolve = req.query[ "resolve" ];
 
   if ((!urn || urn[ 0 ] === "$") && !name)
-    throw new StorageError(400, "invalid Cortex name");
+    throw new StorageError(400, "invalid Codex name");
 
   try {
     let results;
     if (urn)
-      results = await Storage.cortex.recall({ key: urn, resolve: resolve });
+      results = await Codex.engrams.recall({ key: urn, resolve: resolve });
     else
-      results = await Storage.cortex.recall({ domain: domain, name: name, resolve: resolve });
+      results = await Codex.engrams.recall({ domain: domain, name: name, resolve: resolve });
 
     res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
@@ -96,21 +107,21 @@ async function recall(req, res) {
  * @param {*} res
  */
 async function dull(req, res) {
-  logger.verbose('/cortex/dull');
+  logger.verbose('/engrams/dull');
 
   var urn = req.params[ "urn" ] || req.query[ "urn" ] || req.body?.urn;
   var domain = req.query[ "domain" ] || req.body?.domain;
   var name = req.query[ "name" ] || req.body?.name;
 
   if ((!urn || urn[ 0 ] === "$") && !name)
-    throw new StorageError(400, "invalid Cortex name");
+    throw new StorageError(400, "invalid Codex name");
 
   try {
     let results;
     if (urn)
-      results = await Storage.cortex.dull(urn);
+      results = await Codex.engrams.dull(urn);
     else
-      results = await Storage.cortex.dull({ domain: domain, name: name });
+      results = await Codex.engrams.dull({ domain: domain, name: name });
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -128,12 +139,12 @@ async function dull(req, res) {
  * @param {*} res
  */
 async function retrieve(req, res) {
-  logger.verbose('/cortex/retrieve');
+  logger.verbose('/engrams/retrieve');
 
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = await Storage.cortex.retrieve(pattern);
+    let results = await Codex.engrams.retrieve(pattern);
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
       .jsonp(results);

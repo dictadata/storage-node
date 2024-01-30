@@ -9,14 +9,18 @@
     "useTransport": false
   },
   "codex": {
-    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_codex|*",
-    "options": {},
-    "auth_stash": "storage-node.auth.json",
-    "engrams_cache": {}
-  },
-  "cortex": {
-    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_cortex|*",
-    "options": {},
-    "cortex_cache": {}
+    "auth": {
+      "auth_file": "storage-node.auth.json"
+    },
+    "engrams": {
+      "smt": "elasticsearch|http://dev.dictadata.net:9200|node_engrams|*",
+      "options": {},
+      "engrams_cache": {}
+    },
+    "tracts": {
+      "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
+      "options": {},
+      "tracts_cache": {}
+    }
   }
 }

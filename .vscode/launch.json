@@ -78,12 +78,12 @@
       "outputCapture": "std"
     },
     {
-      "name": "node-api codex",
+      "name": "node-api engrams",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
       "args": [
-        "${workspaceFolder}/test/node-api/codex.json"
+        "${workspaceFolder}/test/node-api/engrams.json"
       ],
       "envFile": "${workspaceFolder}/.env.development",
       "skipFiles": [
@@ -168,12 +168,12 @@
       "outputCapture": "std"
     },
     {
-      "name": "node-api cortex",
+      "name": "node-api tracts",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
       "args": [
-        "${workspaceFolder}/test/node-api/cortex.json"
+        "${workspaceFolder}/test/node-api/tracts.json"
       ],
       "envFile": "${workspaceFolder}/.env.development",
       "skipFiles": [

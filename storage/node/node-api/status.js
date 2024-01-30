@@ -7,7 +7,7 @@ const express = require('express');
 const authorize = require('../authorize');
 const Roles = require('../roles');
 const config = require('../config');
-const Storage = require('@dictadata/storage-junctions');
+const { Storage } = require('@dictadata/storage-junctions');
 const { StorageResults, StorageError } = require("@dictadata/storage-junctions/types");
 const logger = require('../../utils/logger');
 

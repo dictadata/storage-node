@@ -1,8 +1,8 @@
 {
-  "name": "cortex",
+  "name": "engrams",
   "request": {
     "method": "GET",
-    "base": "http://dev.dictadata.net:8089/node/cortex/",
+    "base": "http://dev.dictadata.net:8089/node/engrams/",
     "auth": "user:user"
   },
   "expected": {
@@ -11,13 +11,13 @@
   },
   "queries": [
     {
-      "name": "foo_transfer-store",
+      "name": "foo_schema-store",
       "request": {
         "method": "PUT",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/foo_transfer.tract.json"
+        "data": "./test/data/input/encodings/foo_schema.encoding.json"
       },
       "expected": {
         "statusCode": [
@@ -29,24 +29,41 @@
       }
     },
     {
-      "name": "foo_transfer_recall",
+      "name": "foo_schema",
       "request": {
         "method": "GET",
-        "url": "foo:foo_transfer"
-      },
-      "expected": {
-        "statusCode": 200,
-        "compareValues": 2
+        "url": "foo:foo_schema"
       }
     },
     {
-      "name": "foo_transfer_two-store",
+      "name": "es_foo_schema",
+      "request": {
+        "method": "GET",
+        "url": ":es_foo_schema"
+      }
+    },
+    {
+      "name": "mssql_foo_schema",
+      "request": {
+        "method": "GET",
+        "url": ":mssql_foo_schema"
+      }
+    },
+    {
+      "name": "mysql_foo_schema",
+      "request": {
+        "method": "GET",
+        "url": ":mysql_foo_schema"
+      }
+    },
+    {
+      "name": "foo_schema_XYZ-store",
       "request": {
         "method": "PUT",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/foo_transfer_two.tract.json"
+        "data": "./test/data/input/encodings/foo_schema_XYZ.encoding.json"
       },
       "expected": {
         "statusCode": [
@@ -58,14 +75,14 @@
       }
     },
     {
-      "name": "foo_transfer_two-recall",
+      "name": "foo_schema_XYZ-recall",
       "request": {
         "method": "GET",
-        "url": "foo:foo_transfer_two"
+        "url": "foo:foo_schema_XYZ"
       }
     },
     {
-      "name": "foo_transfer-retrieve1",
+      "name": "foo_schema-retrieve1",
       "request": {
         "method": "POST",
         "headers": {
@@ -74,9 +91,9 @@
         "data": {
           "pattern": {
             "match": {
-              "type": "tract",
+              "type": "engram",
               "name": {
-                "wc": "foo_transfer_two*"
+                "wc": "foo_schema_*"
               }
             }
           }
@@ -84,14 +101,14 @@
       }
     },
     {
-      "name": "foo_transfer_two-dull",
+      "name": "foo_schema_XYZ-dull",
       "request": {
         "method": "DELETE",
-        "url": "foo:foo_transfer_two"
+        "url": "foo:foo_schema_XYZ"
       }
     },
     {
-      "name": "foo_transfer-retrieve2",
+      "name": "foo_schema-retrieve2",
       "request": {
         "method": "POST",
         "headers": {
@@ -100,9 +117,9 @@
         "data": {
           "pattern": {
             "match": {
-              "type": "tract",
+              "type": "engram",
               "name": {
-                "wc": "foo_transfer_two*"
+                "wc": "foo_schema_*"
               }
             }
           }
@@ -124,7 +141,7 @@
           "domain": "foo",
           "name": "foo_alias",
           "type": "alias",
-          "source": "foo:foo_transfer"
+          "source": "foo:foo_schema"
         }
       },
       "expected": {
@@ -149,7 +166,7 @@
         "method": "GET",
         "url": "foo:foo_alias",
         "params": {
-          "resolve": "true"
+          "resolve": true
         }
       }
     },
