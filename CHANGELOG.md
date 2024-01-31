@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.72
+  - updated: @dictadata/storage-junctions@0.9.97
+  - refactor: change Storage to be part of library interface
+  - refactor: revamp Codex API for engrams, tracts
 - version 0.9.71
   - updated: @dictadata/storage-junctions@0.9.96
   - refactor: improved, consistent error handling
