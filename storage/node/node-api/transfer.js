@@ -40,6 +40,7 @@ async function transfer(req, res) {
       tract = results.data[ urn ].tracts[ 0 ];
 
       // TBD: use query string parameters and replace variables in tract
+
     }
     else {
       tract = req.body.tract || req.body;
@@ -50,10 +51,10 @@ async function transfer(req, res) {
     const transforms = tract.transform || tract.transforms || {};
     if (!origin.options)
       origin.options = {};
-    if (!terminal.options)
-      terminal.options = {};
     if (typeof origin.smt === "string" && origin.smt.includes("|"))
       origin.smt = new SMT(origin.smt);
+    if (!terminal.options)
+      terminal.options = {};
     if (typeof terminal.smt === "string" && terminal.smt.includes("|"))
       terminal.smt = new SMT(terminal.smt);
 
