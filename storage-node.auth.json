@@ -1,6 +1,6 @@
-{
-  "http://server1.net": {
-    "auth": {
-    }
+[
+  {
+    "locus": "http://server1.net",
+    "auth": {}
   }
-}
+]

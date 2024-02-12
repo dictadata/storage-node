@@ -8,19 +8,17 @@
     "useClientStream": false,
     "useTransport": false
   },
-  "codex": {
-    "auth": {
-      "auth_file": "storage-node.auth.json"
-    },
-    "engrams": {
-      "smt": "elasticsearch|http://dev.dictadata.net:9200|node_engrams|*",
-      "options": {},
-      "engrams_cache": {}
-    },
-    "tracts": {
-      "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
-      "options": {},
-      "tracts_cache": {}
-    }
+  "auth": {
+    "auth_file": "storage-node.auth.json"
+  },
+  "engrams": {
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_engrams|*",
+    "options": {},
+    "engrams_cache": {}
+  },
+  "tracts": {
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
+    "options": {},
+    "tracts_cache": {}
   }
 }

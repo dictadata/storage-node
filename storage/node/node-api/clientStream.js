@@ -20,7 +20,7 @@ const stream = require('stream').promises;
 const util = require('util');
 const path = require('path');
 
-const { Storage } = require('@dictadata/storage-junctions');
+const { Storage } = require('@dictadata/storage-tracts');
 const { StorageError } = require("@dictadata/storage-junctions/types");
 
 

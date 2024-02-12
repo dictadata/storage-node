@@ -7,8 +7,9 @@ const express = require('express');
 const authorize = require("../authorize");
 const Roles = require("../roles");
 const logger = require('../../utils/logger');
-const { Codex } = require('@dictadata/storage-junctions');
-const { Engram, StorageError } = require('@dictadata/storage-junctions/types');
+const { Storage } = require('@dictadata/storage-tracts');
+const { Engram } = require('@dictadata/storage-tracts/types');
+const { StorageError } = require('@dictadata/storage-junctions/types');
 
 /**
  * Express routes
@@ -48,10 +49,10 @@ async function store(req, res) {
     switch (entry.type) {
       case "engram":
         engram = new Engram(entry);
-        results = await Codex.engrams.store(engram);
+        results = await Storage.engrams.store(engram);
         break;
       case "alias":
-        results = await Codex.engrams.store(entry);
+        results = await Storage.engrams.store(entry);
         break;
       default:
         throw new StorageError(400, "invalid engrams type");
@@ -85,9 +86,9 @@ async function recall(req, res) {
   try {
     let results;
     if (urn)
-      results = await Codex.engrams.recall({ key: urn, resolve: resolve });
+      results = await Storage.engrams.recall({ key: urn, resolve: resolve });
     else
-      results = await Codex.engrams.recall({ domain: domain, name: name, resolve: resolve });
+      results = await Storage.engrams.recall({ domain: domain, name: name, resolve: resolve });
 
     res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
@@ -119,9 +120,9 @@ async function dull(req, res) {
   try {
     let results;
     if (urn)
-      results = await Codex.engrams.dull(urn);
+      results = await Storage.engrams.dull(urn);
     else
-      results = await Codex.engrams.dull({ domain: domain, name: name });
+      results = await Storage.engrams.dull({ domain: domain, name: name });
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -144,7 +145,7 @@ async function retrieve(req, res) {
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = await Codex.engrams.retrieve(pattern);
+    let results = await Storage.engrams.retrieve(pattern);
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
       .jsonp(results);

@@ -25,7 +25,7 @@ const Roles = {
   // advanced user route roles
   // only Admin can assign advanced roles
   Admin: 'Admin',     // accounts administrator
-  Coder: 'Coder',     // codex editor
+  Coder: 'Coder',     // Engrams and Tracts editor
   ETL: 'ETL',         // transfer user
   Monitor: 'Monitor', // status API's only
 

@@ -82,43 +82,43 @@ var _config = {
     allowedHeaders: [ 'Origin', 'X-Requested-With', 'Content-Type', 'Accept' ]
   },
 
-  codex: {
-    "engrams": {
-      smt: "memory|dictadata|codex|*",
-      options: {},
 
-      // at startup, these entries will be added to codex local cache
-      engrams_cache: {
-        // format
-        //   <name>: <smt string>
-        // or
-        //   <name>: {
-        //     smt: <smt string> | <smt object>,
-        //     options: {
-        //       <junction options ...>
-        //     }
-        //   }
-      }
+  engrams: {
+    smt: "memory|dictadata|engrams|*",
+    options: {},
 
-    },
-
-    tracts: {
-      smt: "memory|dictadata|tracts|*",
-      options: {},
-
-      // at startup, these entries will be added to tracts local cache
-      tracts_cache: {
-        // format
-        //   <name>: {
-        //     smt: <smt string> | <smt object>,
-        //     options: {
-        //       <junction options ...>
-        //     }
-        //   }
-      }
-
+    // at startup, these entries will be added to engrams local cache
+    engrams_cache: {
+      // format
+      //   <name>: <smt string>
+      // or
+      //   <name>: {
+      //     smt: <smt string> | <smt object>,
+      //     options: {
+      //       <junction options ...>
+      //     }
+      //   }
     }
+
+  },
+
+  tracts: {
+    smt: "memory|dictadata|tracts|*",
+    options: {},
+
+    // at startup, these entries will be added to tracts local cache
+    tracts_cache: {
+      // format
+      //   <name>: {
+      //     smt: <smt string> | <smt object>,
+      //     options: {
+      //       <junction options ...>
+      //     }
+      //   }
+    }
+
   }
+
 };
 
 module.exports = _config;

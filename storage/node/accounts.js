@@ -6,7 +6,7 @@
  */
 "use strict";
 
-const { Storage } = require('@dictadata/storage-junctions');
+const { Storage } = require('@dictadata/storage-tracts');
 const { StorageError } = require('@dictadata/storage-junctions/types');
 const Account = require('./account');
 const Roles = require('./roles');

@@ -7,7 +7,7 @@ const express = require('express');
 const authorize = require("../authorize");
 const Roles = require("../roles");
 const logger = require('../../utils/logger');
-const { Codex } = require('@dictadata/storage-junctions');
+const { Storage } = require('@dictadata/storage-tracts');
 const { StorageError } = require('@dictadata/storage-junctions/types');
 
 /**
@@ -44,7 +44,7 @@ async function store(req, res) {
   try {
     let results;
 
-    results = await Codex.tracts.store(entry);
+    results = await Storage.tracts.store(entry);
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -74,9 +74,9 @@ async function recall(req, res) {
   try {
     let results;
     if (urn)
-      results = await Codex.tracts.recall({ key: urn, resolve: resolve });
+      results = await Storage.tracts.recall({ key: urn, resolve: resolve });
     else
-      results = await Codex.tracts.recall({ domain: domain, name: name, resolve: resolve });
+      results = await Storage.tracts.recall({ domain: domain, name: name, resolve: resolve });
 
     res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
@@ -108,9 +108,9 @@ async function dull(req, res) {
   try {
     let results;
     if (urn)
-      results = await Codex.tracts.dull(urn);
+      results = await Storage.tracts.dull(urn);
     else
-      results = await Codex.tracts.dull({ domain: domain, name: name });
+      results = await Storage.tracts.dull({ domain: domain, name: name });
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
@@ -133,7 +133,7 @@ async function retrieve(req, res) {
   var pattern = req.body.pattern || req.body;
 
   try {
-    let results = await Codex.tracts.retrieve(pattern);
+    let results = await Storage.tracts.retrieve(pattern);
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")
       .jsonp(results);

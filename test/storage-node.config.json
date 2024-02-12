@@ -11,78 +11,76 @@
   "roles": {
     "Tester": "Tester"
   },
-  "codex": {
-    "auth": {
-      "auth_file": "storage-node.auth.json"
+  "auth": {
+    "auth_file": "storage-node.auth.json"
+  },
+  "engrams": {
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_engrams|*",
+    "options": {
+      "refresh": true
     },
-    "engrams": {
-      "smt": "elasticsearch|http://dev.dictadata.net:9200|node_engrams|*",
-      "options": {
-        "refresh": true
+    "engrams_cache": {
+      "accounts": "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
+      "csv_foofile": "csv|./foo/input/|foofile.csv|*",
+      "json_foofile": "json|./foo/input/|foofile.json|*",
+      "es_foo_schema": {
+        "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|!Foo",
+        "options": {
+          "refresh": true
+        }
       },
-      "engrams_cache": {
-        "accounts": "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
-        "csv_foofile": "csv|./foo/input/|foofile.csv|*",
-        "json_foofile": "json|./foo/input/|foofile.json|*",
-        "es_foo_schema": {
-          "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|!Foo",
-          "options": {
-            "refresh": true
-          }
-        },
-        "es_foo_schema_id": {
-          "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|ten",
-          "options": {
-            "refresh": true
-          }
-        },
-        "es_foo_schema_pk": {
-          "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema_pk|=Foo",
-          "options": {
-            "refresh": true
-          }
-        },
-        "es_foo_schema_x": {
-          "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema_x|!Foo",
-          "options": {
-            "refresh": true
-          }
-        },
-        "es_foo_transfer": "elasticsearch|http://dev.dictadata.net:9200|foo_transfer|=Foo",
-        "es_foo_transform": "elasticsearch|http://dev.dictadata.net:9200|foo_transform|=Foo",
-        "es_foo_schema_origin": {
-          "smt": "elasticsearch|https://data-origin.dictadata.net:9200|foo_schema|!Foo",
-          "options": {
-            "refresh": true
-          }
-        },
-        "mssql_foo_schema": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
-        "mssql_foo_schema_x": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
-        "mssql_foo_transfer": "mssql|server=dev.dictadata.net;database=storage_node|foo_transfer|=Foo",
-        "mssql_foo_transform": "mssql|server=dev.dictadata.net;database=storage_node|foo_transform|=Foo",
-        "mysql_foo_schema": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
-        "mysql_foo_schema_x": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
-        "mysql_foo_transfer": "mysql|host=dev.dictadata.net;database=storage_node|foo_transfer|=Foo",
-        "mysql_foo_transform": "mysql|host=dev.dictadata.net;database=storage_node|foo_transform|=Foo",
-        "mysql_foo_schema_origin": "mysql|host=data-origin.dictadata.net;database=storage_node|foo_schema|=Foo",
-        "oracle_foo_schema": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_schema|=Foo",
-        "oracle_foo_schema_x": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_schema_x|=Foo",
-        "oracle_foo_transfer": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_transfer|=Foo",
-        "oracle_foo_transform": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_transform|=Foo",
-        "rest_weather_forecast": "rest|https://api.weather.gov/gridpoints/DVN/34;71/|forecast|*",
-        "es_weather_forecast": "elasticsearch|http://dev.dictadata.net:9200|weather_forecast|*",
-        "mssql_weather_forecast": "mssql|server=dev.dictadata.net;database=storage_node|weather_forecast|*",
-        "mysql_weather_forecast": "mysql|host=dev.dictadata.net;database=storage_node|weather_forecast|*",
-        "oracle_weather_forecast": "oracledb|connectString=dev.dictadata.net/xepdb1|weather_forecast|*",
-        "tiger2020": "elasticsearch|http://dev.dictadata.net:9200|tl_2020_us_state|!"
-      }
-    },
-    "tracts": {
-      "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
-      "options": {
-        "refresh": true
+      "es_foo_schema_id": {
+        "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|ten",
+        "options": {
+          "refresh": true
+        }
       },
-      "tracts_cache": {}
+      "es_foo_schema_pk": {
+        "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema_pk|=Foo",
+        "options": {
+          "refresh": true
+        }
+      },
+      "es_foo_schema_x": {
+        "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema_x|!Foo",
+        "options": {
+          "refresh": true
+        }
+      },
+      "es_foo_transfer": "elasticsearch|http://dev.dictadata.net:9200|foo_transfer|=Foo",
+      "es_foo_transform": "elasticsearch|http://dev.dictadata.net:9200|foo_transform|=Foo",
+      "es_foo_schema_origin": {
+        "smt": "elasticsearch|https://data-origin.dictadata.net:9200|foo_schema|!Foo",
+        "options": {
+          "refresh": true
+        }
+      },
+      "mssql_foo_schema": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
+      "mssql_foo_schema_x": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
+      "mssql_foo_transfer": "mssql|server=dev.dictadata.net;database=storage_node|foo_transfer|=Foo",
+      "mssql_foo_transform": "mssql|server=dev.dictadata.net;database=storage_node|foo_transform|=Foo",
+      "mysql_foo_schema": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
+      "mysql_foo_schema_x": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
+      "mysql_foo_transfer": "mysql|host=dev.dictadata.net;database=storage_node|foo_transfer|=Foo",
+      "mysql_foo_transform": "mysql|host=dev.dictadata.net;database=storage_node|foo_transform|=Foo",
+      "mysql_foo_schema_origin": "mysql|host=data-origin.dictadata.net;database=storage_node|foo_schema|=Foo",
+      "oracle_foo_schema": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_schema|=Foo",
+      "oracle_foo_schema_x": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_schema_x|=Foo",
+      "oracle_foo_transfer": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_transfer|=Foo",
+      "oracle_foo_transform": "oracledb|connectString=dev.dictadata.net/xepdb1|foo_transform|=Foo",
+      "rest_weather_forecast": "rest|https://api.weather.gov/gridpoints/DVN/34;71/|forecast|*",
+      "es_weather_forecast": "elasticsearch|http://dev.dictadata.net:9200|weather_forecast|*",
+      "mssql_weather_forecast": "mssql|server=dev.dictadata.net;database=storage_node|weather_forecast|*",
+      "mysql_weather_forecast": "mysql|host=dev.dictadata.net;database=storage_node|weather_forecast|*",
+      "oracle_weather_forecast": "oracledb|connectString=dev.dictadata.net/xepdb1|weather_forecast|*",
+      "tiger2020": "elasticsearch|http://dev.dictadata.net:9200|tl_2020_us_state|!"
     }
+  },
+  "tracts": {
+    "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
+    "options": {
+      "refresh": true
+    },
+    "tracts_cache": {}
   }
 }

@@ -6,8 +6,8 @@
  */
 "use strict";
 
-const { Codex } = require("@dictadata/storage-junctions");
-const { Engram } = require("@dictadata/storage-junctions/types");
+const { Storage } = require("@dictadata/storage-tracts");
+const { Engram } = require("@dictadata/storage-tracts/types");
 const logger = require("../utils/logger");
 const fs = require("fs");
 
@@ -16,21 +16,19 @@ const fs = require("fs");
  */
 exports.startup = async (config) => {
   logger.info("engrams startup");
-  logger.verbose("engrams SMT: " + JSON.stringify(config.codex.engrams.smt));
+  logger.verbose("engrams SMT: " + JSON.stringify(config.engrams.smt));
 
   var exitCode = 0;
 
   try {
     // load auth_stash
-    if (config.codex.auth.auth_file)
-      Codex.auth.load(config.codex.auth.auth_file);
+    if (config.auth?.auth_file)
+      Storage.auth.load(config.auth.auth_file);
 
-    if (config.codex.engrams) {
+    if (config.engrams) {
       // create engrams junction
-      let engrams = Codex.use("engram", config.codex.engrams.smt, config.codex.engrams.options);
-      await engrams.activate();
-
-      await addEngrams(config.codex.engrams.engrams_cache);
+      await Storage.engrams.activate(config.engrams.smt, config.engrams.options);
+      await addEngrams(config.engrams.engrams_cache);
     }
   }
   catch (err) {
@@ -41,7 +39,7 @@ exports.startup = async (config) => {
   return exitCode;
 };
 
-// add engrams entries from config.codex.engrams (local cache only)
+// add engrams entries from config.engrams (local cache only)
 async function addEngrams(engrams_cache) {
   if (engrams_cache) {
     for (let [ name, entry ] of Object.entries(engrams_cache)) {
@@ -49,7 +47,7 @@ async function addEngrams(engrams_cache) {
         // assume entry is an SMT string
         let engram = new Engram(entry);
         engram.name = name;
-        await Codex.engrams.store(engram);
+        await Storage.engrams.store(engram);
       }
       else {
         // assume entry is an engram object
@@ -67,7 +65,7 @@ async function addEngrams(engrams_cache) {
             engram.encoding = entry.encoding;
         }
 
-        await Codex.engrams.store(engram);
+        await Storage.engrams.store(engram);
       }
     }
   }
