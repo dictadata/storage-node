@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.75
+  - refactor: refactor tract.transforms to array
+  - updated: @dictadata/storage-junctions@0.9.100
+  - updated: @dictadata/storage-tracts@0.9.73
 - version 0.9.74
   - republish
 - version 0.9.73
