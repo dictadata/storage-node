@@ -159,12 +159,13 @@
       "name": "transfer",
       "request": {
         "method": "POST",
-        "url": "transfer",
+        "url": "etl",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
           "tract": {
+            "action": "transfer",
             "origin": {
               "smt": ":json_foofile"
             },

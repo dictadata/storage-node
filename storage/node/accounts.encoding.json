@@ -1,8 +1,10 @@
 {
-  "model": "*",
-  "locus": "*",
-  "schema": "realm_accounts",
-  "key": "=userid",
+  "smt": {
+    "model": "*",
+    "locus": "*",
+    "schema": "realm_accounts",
+    "key": "=userid"
+  },
   "fields": [
     {
       "name": "userid",
@@ -76,14 +78,12 @@
     {
       "name": "profile",
       "type": "map",
-      "fields": {
-      }
+      "fields": {}
     },
     {
       "name": "settings",
       "type": "map",
-      "fields": {
-      }
+      "fields": {}
     }
   ]
 }

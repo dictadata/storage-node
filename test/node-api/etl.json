@@ -1,8 +1,8 @@
 {
-  "name": "transfers",
+  "name": "etl",
   "request": {
     "method": "POST",
-    "base": "http://dev.dictadata.net:8089/node/transfer/",
+    "base": "http://dev.dictadata.net:8089/node/etl/",
     "auth": "user:user",
     "timeout": 90000
   },
@@ -19,6 +19,7 @@
         },
         "data": {
           "tract": {
+            "action": "transfer",
             "origin": {
               "smt": ":mssql_foo_transfer"
             },
@@ -37,6 +38,7 @@
         },
         "data": {
           "tract": {
+            "action": "transfer",
             "origin": {
               "smt": ":json_foofile"
             },
@@ -54,6 +56,7 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
+          "action": "transfer",
           "origin": {
             "smt": ":tiger2020",
             "pattern": {

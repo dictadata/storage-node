@@ -4,10 +4,6 @@
   "logPath": "/var/log/node",
   "logPrefix": "storage-node",
   "logLevel": "info",
-  "node-api": {
-    "useClientStream": false,
-    "useTransport": false
-  },
   "auth": {
     "auth_file": "storage-node.auth.json"
   },

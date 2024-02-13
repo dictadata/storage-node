@@ -4,10 +4,6 @@
   "logPath": "../log/",
   "logPrefix": "storage-node",
   "logLevel": "verbose",
-  "node-api": {
-    "useClientStream": true,
-    "useTransport": true
-  },
   "roles": {
     "Tester": "Tester"
   },
@@ -21,8 +17,8 @@
     },
     "engrams_cache": {
       "accounts": "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
-      "csv_foofile": "csv|./foo/input/|foofile.csv|*",
-      "json_foofile": "json|./foo/input/|foofile.json|*",
+      "csv_foofile": "csv|./data/input/|foofile.csv|*",
+      "json_foofile": "json|./data/input/|foofile.json|*",
       "es_foo_schema": {
         "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|!Foo",
         "options": {

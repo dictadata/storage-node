@@ -12,9 +12,8 @@ const user = require('./user');
 const engrams = require('./engrams');
 const tracts = require('./tracts');
 const storage = require('./storage');
-const transfer = require('./transfer');
-const clientStream = require('./clientStream');
-const transport = require('./transfer');
+const etl = require('./etl');
+const webdata = require('./webdata');
 const log = require('./log');
 
 /**
@@ -26,9 +25,9 @@ router.use('/', user);
 router.use('/', accounts);
 router.use('/', engrams);
 router.use('/', storage);
-router.use('/', transfer);
+router.use('/', etl);
 router.use('/', tracts);
-if (config[ "node-api" ].useLog) router.use('/', log);
-if (config[ "node-api" ].useClientStream) router.use('/', clientStream);
-if (config[ "node-api" ].useTransport) router.use('/', transport);
+router.use('/', log);
+router.use('/', webdata);
+
 module.exports = router;

@@ -1,10 +1,10 @@
 /**
- * storage/node/clientStream
+ * storage/node/webdata
  *
  * !!!!! work in progress !!!!!
  * !!!!! not tested recently !!!!!
  *
- * transfers between:
+ * transfer HTML data:
  *  client and storage-node
  */
 "use strict";
@@ -39,7 +39,7 @@ module.exports = router;
  * @param {*} res
  */
 function exportData(req, res) {
-  logger.verbose('/clientStream export');
+  logger.verbose('/webdata export');
   res.status(200).set('content-type', 'text/plain');
 
   let dp = config.dataPath || path.join(__dirname, '../data');
@@ -57,7 +57,7 @@ function exportData(req, res) {
  * @param {*} res
  */
 function importData(req, res) {
-  logger.verbose('/clientStream import');
+  logger.verbose('/webdata import');
 
   let dp = config.dataPath || path.join(__dirname, '../data');
   if (config.realm)
@@ -84,7 +84,7 @@ function importData(req, res) {
  * @param {*} res
  */
 async function uploadFiles(req, res) {
-  logger.verbose('/transfer import');
+  logger.verbose('/webdata uploadFiles');
   logger.debug(JSON.stringify(req.body));
 
   let form = new formidable.IncomingForm();

@@ -67,14 +67,7 @@ var _config = {
   maxKeywordLength: 32,
   maxKeywordValues: 128,
 
-  // enable node-api route handlers
-  "node-api": {
-    useLog: false,
-    useClientStream: false,  // TBD not fully implemented
-    useTransport: false      // TBD not fully implemented
-  },
-
-  // clientStream max upload size
+  // webdata max upload size
   maxFileSize: 200 * 1024 * 1024, // 200MB
 
   // CORS options for Express plugin

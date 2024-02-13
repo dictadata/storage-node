@@ -1,32 +1,103 @@
 /**
- * storage/node/node-api/transfer
+ * storage/node/node-api/etl
  *
  * stream data from datastore to client or datastore to datastore
  */
 "use strict";
 
 const express = require('express');
-const authorize = require("../authorize");
-const Roles = require("../roles");
-const logger = require('../../utils/logger');
-const { Storage } = require('@dictadata/storage-tracts');
+const authorize = require("../authorize.js");
+const Roles = require("../roles.js");
+const logger = require('../../utils/logger.js');
+const { Storage, Actions } = require('@dictadata/storage-tracts');
 const { SMT, StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
 const config = require("../config.js");
 const fs = require('fs');
 const stream = require('stream').promises;
 
 /**
- * transfer routes
+ * etl routes
  */
 var router = express.Router();
-router.post('/transfer', authorize([ Roles.User ]), transfer);
-router.post('/transfer/:urn', authorize([ Roles.User ]), transfer);
+router.post('/etl', authorize([ Roles.User ]), etl);
+router.post('/etl/:urn', authorize([ Roles.User ]), etl);
 module.exports = router;
+
+
+/**
+ *  etl handler
+ */
+async function etl(req, res) {
+  logger.verbose('/etl');
+  logger.debug(JSON.stringify(req.body));
+
+  let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || req.body?.urn;
+  let tract;
+  var jo, jt; // junctions origin, terminal
+
+  try {
+    if (urn) {
+      let results = await Storage.tracts.recall({ key: urn, resolve: true });
+      tract = results.data[ urn ].tracts[ 0 ];
+
+      // TBD: use query string parameters and replace variables in tract
+    }
+    else {
+      tract = req.body.tract || req.body;
+    }
+
+    if (!tract.action) tract.action = "transfer";
+
+    // smt urn lookups
+    if (!tract.origin.options) tract.origin.options = {};
+    tract.origin.smt = await Storage.resolve(tract.origin.smt, tract.origin.options);
+    if (!tract.terminal.options) tract.terminal.options = {};
+    tract.terminal.smt = await Storage.resolve(tract.terminal.smt, tract.terminal.options);
+
+    if (tract.origin?.smt.locus.startsWith('stream:')) {
+      if (!tract.origin.options)
+        tract.origin.options = {};
+      tract.origin.options["reader"] = req;
+    }
+
+    let streaming = false;
+    if (tract.terminal?.smt.locus.startsWith('stream:')) {
+      if (!tract.terminal.options)
+        tract.terminal.options = {};
+      tract.terminal.options[ "writer" ] = res;
+      streaming = true;
+      res.type('json');
+    }
+
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60");
+
+    let resultCode = await Actions.perform(tract);
+
+    if (streaming)
+      res.end();
+    else {
+      let response = new StorageResults(resultCode ? 400 : 0);
+      res.jsonp(response);
+    }
+  }
+  catch (err) {
+    logger.error(err.message);
+    let response = new StorageError(err.status, err.message);
+    res.status(err.status || 500).jsonp(response);
+  }
+  finally {
+    if (jo)
+      jo.relax();
+    if (jt)
+      jt.relax();
+  }
+
+}
 
 /**
  *  transfer handler
  */
-async function transfer(req, res) {
+async function transferX(req, res) {
   logger.verbose('/transfer');
   logger.debug(JSON.stringify(req.body));
 

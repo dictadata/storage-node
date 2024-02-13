@@ -2,7 +2,7 @@
   "name": "transforms",
   "request": {
     "method": "POST",
-    "base": "http://dev.dictadata.net:8089/node/transfer",
+    "base": "http://dev.dictadata.net:8089/node/etl",
     "auth": "user:user",
     "timeout": 90000
   },
@@ -18,14 +18,16 @@
         },
         "data": {
           "tract": {
+            "action": "transfer",
             "origin": {
               "smt": ":mysql_foo_schema"
             },
             "terminal": {
               "smt": ":es_foo_transform"
             },
-            "transforms": {
-              "filter": {
+            "transforms": [
+              {
+                "transform": "filter",
                 "match": {
                   "Bar": "row"
                 },
@@ -35,7 +37,8 @@
                   }
                 }
               },
-              "mutate": {
+              {
+                "transform": "mutate",
                 "default": {
                   "Fie": "where's es fum?"
                 },
@@ -45,7 +48,7 @@
                   "Baz": "Bazzy"
                 }
               }
-            }
+            ]
           }
         }
       }

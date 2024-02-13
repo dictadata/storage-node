@@ -182,12 +182,12 @@
       "outputCapture": "std"
     },
     {
-      "name": "node-api transfer",
+      "name": "node-api etl",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/test/st_node_test_client.js",
       "args": [
-        "${workspaceFolder}/test/node-api/transfer.json"
+        "${workspaceFolder}/test/node-api/etl.json"
       ],
       "envFile": "${workspaceFolder}/.env.development",
       "skipFiles": [
