@@ -43,7 +43,7 @@ async function addTracts(tracts_cache) {
       if (typeof entry === "string")
         entry = JSON.parse(fs.readFileSync(entry, 'utf-8'));
 
-      await Codex.tracts.store(entry);
+      await Storage.tracts.store(entry);
     }
   }
   else if (typeof tracts_cache === "object") {
@@ -54,7 +54,7 @@ async function addTracts(tracts_cache) {
       if (typeof tract === "string")
         entry = JSON.parse(fs.readFileSync(entry, 'utf-8'));
 
-      await Codex.tracts.store(entry);
+      await Storage.tracts.store(entry);
     }
   }
 }
