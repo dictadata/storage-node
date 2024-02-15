@@ -10,9 +10,10 @@ const authorize = require("../authorize.js");
 const Roles = require("../roles.js");
 const logger = require('../../utils/logger.js');
 const { Storage, Actions } = require('@dictadata/storage-tracts');
-const { SMT, StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
+const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
 const config = require("../config.js");
 const fs = require('fs');
+const { objCopy, typeOf } = require('@dictadata/storage-junctions/utils.js');
 const stream = require('stream').promises;
 
 /**
@@ -29,52 +30,94 @@ module.exports = router;
  */
 async function etl(req, res) {
   logger.verbose('/etl');
-  logger.debug(JSON.stringify(req.body));
-
-  let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || req.body?.urn;
-  let tract;
-  var jo, jt; // junctions origin, terminal
+  logger.verbose(JSON.stringify(req.body));
 
   try {
+    let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || "";
+    let tractname = req.query[ 'tract' ] || "";
+    let params = objCopy({}, req.query);
+    let tracts;
+    let streaming = false;
+    let resultCode = 0;
+
+    // if URN then recall from tracts
     if (urn) {
-      let results = await Storage.tracts.recall({ key: urn, resolve: true });
-      tract = results.data[ urn ].tracts[ 0 ];
+      // check for tract name in urn; domain:name#tract
+      let u = urn.split('#');
+      urn = u[ 0 ];
+      if (u.length > 1 && !tractname)
+        tractname = u[ 1 ];
+
+      let results = await Storage.tracts.recall(urn, true);
+      tracts = results.data[ urn ];
 
       // TBD: use query string parameters and replace variables in tract
     }
     else {
-      tract = req.body.tract || req.body;
+      tracts = req.body.tracts || req.body;
     }
 
-    if (!tract.action) tract.action = "transfer";
-
-    // smt urn lookups
-    if (!tract.origin.options) tract.origin.options = {};
-    tract.origin.smt = await Storage.resolve(tract.origin.smt, tract.origin.options);
-    if (!tract.terminal.options) tract.terminal.options = {};
-    tract.terminal.smt = await Storage.resolve(tract.terminal.smt, tract.terminal.options);
-
-    if (tract.origin?.smt.locus.startsWith('stream:')) {
-      if (!tract.origin.options)
-        tract.origin.options = {};
-      tract.origin.options["reader"] = req;
+    if (typeOf(tracts) === "object" && typeOf(tracts?.tracts) !== "array") {
+      // reformat tract properties into an array; for backwards compatibility
+      let tt = {
+        "name": tractname,
+        "type": "tract",
+        "tracts": []
+      };
+      for (let [ name, tract ] of Object.entries(tracts)) {
+        if (typeof tract === "object") {
+          tract.name = name
+          tt.tracts.push(objCopy({}, tract));
+        }
+      }
+      tracts = tt;
     }
 
-    let streaming = false;
-    if (tract.terminal?.smt.locus.startsWith('stream:')) {
-      if (!tract.terminal.options)
-        tract.terminal.options = {};
-      tract.terminal.options[ "writer" ] = res;
-      streaming = true;
-      res.type('json');
+    if (!tractname)
+      tractname = tracts.tracts[0].name // default to 1st tract
+
+    // perform tract actions
+    for (const tract of tracts.tracts) {
+      if (tract.name[ 0 ] === "_")
+        continue;
+
+      if (tract.name === tractname || tractname === "all" || tractname === "*") {
+
+        if (!tract.action)
+          tract.action = "transfer";
+
+        ///////// check tracts for stream: in smt.locus (e.g. node server REST API)
+        // check origin
+        if (!tract.origin.options) tract.origin.options = {};
+        tract.origin.smt = await Storage.resolve(tract.origin.smt, tract.origin.options);
+
+        if (tract.origin?.smt.locus.startsWith('stream:')) {
+          tract.origin.options["reader"] = req;
+        }
+
+        // check terminal
+        if (!tract.terminal.options) tract.terminal.options = {};
+        tract.terminal.smt = await Storage.resolve(tract.terminal.smt, tract.terminal.options);
+
+        if (tract.terminal?.smt.locus.startsWith('stream:')) {
+          tract.terminal.options[ "writer" ] = res;
+          streaming = true;
+          res.type('json');
+        }
+
+        // perform the tract
+        res.set("Cache-Control", "public, max-age=60, s-maxage=60");
+        resultCode = await Actions.perform(tract, params);
+
+        if (resultCode) {
+          break;
+        }
+      }
     }
 
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60");
-
-    let resultCode = await Actions.perform(tract);
-
-    if (streaming)
+    if (streaming) {
       res.end();
+    }
     else {
       let response = new StorageResults(resultCode ? 400 : 0);
       res.jsonp(response);
@@ -84,182 +127,6 @@ async function etl(req, res) {
     logger.error(err.message);
     let response = new StorageError(err.status, err.message);
     res.status(err.status || 500).jsonp(response);
-  }
-  finally {
-    if (jo)
-      jo.relax();
-    if (jt)
-      jt.relax();
-  }
-
-}
-
-/**
- *  transfer handler
- */
-async function transferX(req, res) {
-  logger.verbose('/transfer');
-  logger.debug(JSON.stringify(req.body));
-
-  let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || req.body?.urn;
-  let tract;
-  var jo, jt; // junctions origin, terminal
-
-  try {
-    if (urn) {
-      let results = await Storage.tracts.recall({ key: urn, resolve: true });
-      tract = results.data[ urn ].tracts[ 0 ];
-
-      // TBD: use query string parameters and replace variables in tract
-
-    }
-    else {
-      tract = req.body.tract || req.body;
-    }
-
-    const origin = tract.origin || {};
-    const terminal = tract.terminal || {};
-    const transforms = tract.transform || tract.transforms || {};
-    if (!origin.options)
-      origin.options = {};
-    if (typeof origin.smt === "string" && origin.smt.includes("|"))
-      origin.smt = new SMT(origin.smt);
-    if (!terminal.options)
-      terminal.options = {};
-    if (typeof terminal.smt === "string" && terminal.smt.includes("|"))
-      terminal.smt = new SMT(terminal.smt);
-
-    /// validate parameters
-    if (!origin.smt || origin.smt[ 0 ] === '$')
-      throw new StorageError(400, "invalid origin smt name: " + origin.smt);
-    if (!terminal.smt || terminal.smt[ 0 ] === '$')
-      throw new StorageError(400, "invalid terminal smt name: " + terminal.smt);
-
-    /// create origin junction
-    logger.debug("create origin junction");
-    origin.options[ "dataPath" ] = config.dataPath;
-    jo = await Storage.activate(origin.smt, origin.options);
-
-    /// get origin encoding
-    logger.debug(">>> get origin encoding");
-    let encoding = origin.options.encoding;
-    if (!encoding && jo.capabilities.encoding) {
-      let results = await jo.getEncoding();  // load encoding from origin for validation
-      encoding = results.data[ "encoding" ];
-    }
-
-    /// determine terminal encoding
-    logger.verbose(">>> determine terminal encoding");
-    if (terminal.options?.encoding) {
-      // terminal encoding defined in tract
-      if (typeof terminal.options.encoding === "string") {
-        // read encoding from file
-        let filename = terminal.options.encoding;
-        terminal.options.encoding = JSON.parse(fs.readFileSync(filename, "utf8"));
-      }
-      //else if (typeof terminal.options.encoding !== "object") {
-      //  throw "Invalid terminal encoding";
-      //}
-    }
-    else if (!encoding || Object.keys(transforms).length > 0) {
-      // otherwise run some objects through any transforms to get terminal encoding
-      logger.verbose("codify pipeline");
-      let pipes = [];
-
-      let options = {
-        max_read: origin.options?.max_read || 100,
-        pattern: origin.pattern,
-        reader: req
-      };
-      let reader = jo.createReader(options);
-      reader.on('error', (error) => {
-        logger.error("transfer reader: " + error.message);
-      });
-      pipes.push(reader);
-
-      for (let [ tfType, tfOptions ] of Object.entries(transforms))
-        pipes.push(await jo.createTransform(tfType, tfOptions));
-
-      let codify = await jo.createTransform('codify');
-      pipes.push(codify);
-
-      await stream.pipeline(pipes);
-      terminal.options.encoding = codify.encoding;
-    }
-    else
-      // use origin encoding
-      terminal.options.encoding = encoding;
-
-    if (typeof terminal.options.encoding !== "object")
-      throw new StorageError(400, "invalid terminal encoding");
-
-    //logger.debug("encoding results");
-    //logger.debug(JSON.stringify(encoding));
-    //logger.debug(JSON.stringify(encoding.fields));
-
-    /// create terminal junction
-    logger.debug("create terminal junction");
-    terminal.options[ "dataPath" ] = config.dataPath;
-    jt = await Storage.activate(terminal.smt, terminal.options);
-
-    logger.debug("create terminal schema");
-    if (jt.capabilities.encoding && !terminal.options.append) {
-      let results = await jt.createSchema();
-      logger.verbose(">>> createSchema");
-      if (results.status !== 0)
-        logger.info("could not create storage schema: " + results.message);
-    }
-
-    /// setup pipeline
-    logger.debug("transfer pipeline");
-    var pipes = [];
-
-    // reader
-    let options = { pattern: origin.pattern, reader: req };
-    let reader = jo.createReader(options);
-    reader.on('error', (error) => {
-      logger.error("transfer reader: " + error.message);
-    });
-    pipes.push(reader);
-
-    // transforms
-    for (let [ tfName, tfOptions ] of Object.entries(transforms)) {
-      let tfType = tfName.split("-")[ 0 ];
-      pipes.push(await jo.createTransform(tfType, tfOptions));
-    }
-
-    // writer
-    let writer = jt.createWriter({ writer: res });
-    writer.on('error', (error) => {
-      logger.error("transfer writer: " + error.message);
-    });
-    pipes.push(writer);
-
-    // start the data transfer
-    logger.debug(">>> start transfer");
-    if (jt.smt.locus.startsWith('stream:'))
-      res.type('json');
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60");
-
-    await stream.pipeline(pipes);
-
-    if (jt.smt.locus.startsWith('stream:'))
-      res.end();
-    else {
-      let response = new StorageResults(0);
-      res.jsonp(response);
-    }
-  }
-  catch (err) {
-    logger.error(err.message);
-    let response = new StorageError(err.status, err.message);
-    res.status(err.status || 500).jsonp(response);
-  }
-  finally {
-    if (jo)
-      jo.relax();
-    if (jt)
-      jt.relax();
   }
 
 }
