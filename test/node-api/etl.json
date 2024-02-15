@@ -50,6 +50,12 @@
       }
     },
     {
+      "name": "foo_transfer tract",
+      "request": {
+        "url": "foo:foo_transfer"
+      }
+    },
+    {
       "name": "foo_transfer alias",
       "request": {
         "url": "foo:foo_alias"
