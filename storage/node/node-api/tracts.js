@@ -66,7 +66,7 @@ async function recall(req, res) {
   var urn = req.params[ "urn" ] || req.query[ "urn" ];
   var domain = req.query[ "domain" ];
   var name = req.query[ "name" ];
-  var resolve = req.query[ "resolve" ];
+  var resolve = req.query[ "resolve" ] || false;
 
   if ((!urn || urn[ 0 ] === "$") && !name)
     throw new StorageError(400, "invalid Tracts name");
@@ -74,9 +74,9 @@ async function recall(req, res) {
   try {
     let results;
     if (urn)
-      results = await Storage.tracts.recall({ key: urn, resolve: resolve });
+      results = await Storage.tracts.recall(urn, resolve);
     else
-      results = await Storage.tracts.recall({ domain: domain, name: name, resolve: resolve });
+      results = await Storage.tracts.recall({ domain: domain, name: name }, resolve);
 
     res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")

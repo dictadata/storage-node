@@ -4,7 +4,7 @@ Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-  "tract": {
+  "foo_tract": {
     "action": "transfer",
     "origin": {
       "smt": ":json_foofile",
@@ -189,29 +189,10 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### transfer geometry query
-POST http://dev.dictadata.net:8089/node/etl HTTP/1.1
-Authorization: Basic user:user
-Content-Type: application/json
-
-{
-  "tract": {
-    "action": "transfer",
-    "origin": {
-      "smt": ":tiger2020",
-      "pattern": {
-        "match":{
-          "geometry":{
-            "contains": [ -93.5776995, 41.545924 ]
-          }
-        }
-      }
-    },
-    "terminal": {
-      "smt": "json|stream:*|*|*"
-    }
-  }
-}
+### foo:foo_transfer
+POST http://dev.dictadata.net:8089/node/etl/foo:foo_transfer HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
 
 ### foo:foo_alias
 POST http://dev.dictadata.net:8089/node/etl/foo:foo_alias HTTP/1.1

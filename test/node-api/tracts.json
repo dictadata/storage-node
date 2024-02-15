@@ -149,7 +149,7 @@
         "method": "GET",
         "url": "foo:foo_alias",
         "params": {
-          "resolve": "true"
+          "resolve": true
         }
       }
     },

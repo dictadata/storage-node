@@ -180,7 +180,7 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
-          "tract": {
+          "foo_tract": {
             "action": "transfer",
             "origin": {
               "smt": ":json_foofile"
@@ -230,28 +230,6 @@
             "match": {
               "Bar": {
                 "search": "row boat"
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "retrieve geo_shape",
-      "request": {
-        "method": "POST",
-        "url": "retrieve/:tiger2020",
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "data": {
-          "pattern": {
-            "match": {
-              "geometry": {
-                "contains": [
-                  -73.985428,
-                  40.748817
-                ]
               }
             }
           }

@@ -109,7 +109,8 @@ async function createSchema(req, res) {
     let results = await junction.createSchema();
     logger.debug(JSON.stringify(results));
     res.status(results.status || 200)
-      .set("Cache-Control", "no-store").jsonp(results);
+      .set("Cache-Control", "no-store")
+      .jsonp(results);
   }
   catch (err) {
     if (err.status !== 400 && err.status !== 409)

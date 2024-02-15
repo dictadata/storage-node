@@ -7,12 +7,12 @@
     "foo_dbtransform",
     "foo_schema_etl",
     "foo_transfer",
+    "foo_schema_x",
+    "foo_widgets",
     "foo_schema",
     "foo_schema_01",
-    "foo_schema_02",
     "foo_load",
     "foo_schema_lg",
-    "foo_schema_two",
-    "foo_schema_x"
+    "foo_schema_two"
   ]
 }

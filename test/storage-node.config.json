@@ -68,8 +68,7 @@
       "es_weather_forecast": "elasticsearch|http://dev.dictadata.net:9200|weather_forecast|*",
       "mssql_weather_forecast": "mssql|server=dev.dictadata.net;database=storage_node|weather_forecast|*",
       "mysql_weather_forecast": "mysql|host=dev.dictadata.net;database=storage_node|weather_forecast|*",
-      "oracle_weather_forecast": "oracledb|connectString=dev.dictadata.net/xepdb1|weather_forecast|*",
-      "tiger2020": "elasticsearch|http://dev.dictadata.net:9200|tl_2020_us_state|!"
+      "oracle_weather_forecast": "oracledb|connectString=dev.dictadata.net/xepdb1|weather_forecast|*"
     }
   },
   "tracts": {

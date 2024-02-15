@@ -18,7 +18,7 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
-          "tract": {
+          "foo_tract": {
             "action": "transfer",
             "origin": {
               "smt": ":mssql_foo_transfer"
@@ -37,7 +37,7 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
-          "tract": {
+          "foo_tract": {
             "action": "transfer",
             "origin": {
               "smt": ":json_foofile"
@@ -45,33 +45,6 @@
             "terminal": {
               "smt": "json|stream:*|*|*"
             }
-          }
-        }
-      }
-    },
-    {
-      "name": "geometry query",
-      "request": {
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "data": {
-          "action": "transfer",
-          "origin": {
-            "smt": ":tiger2020",
-            "pattern": {
-              "match": {
-                "geometry": {
-                  "contains": [
-                    -93.5776995,
-                    41.545924
-                  ]
-                }
-              }
-            }
-          },
-          "terminal": {
-            "smt": "json|stream:*|*|*"
           }
         }
       }

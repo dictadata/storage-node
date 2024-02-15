@@ -78,17 +78,17 @@ async function recall(req, res) {
   var urn = req.params[ "urn" ] || req.query[ "urn" ];
   var domain = req.query[ "domain" ];
   var name = req.query[ "name" ];
-  var resolve = req.query[ "resolve" ];
+  var resolve = req.query[ "resolve" ] || false;
 
   if ((!urn || urn[ 0 ] === "$") && !name)
-    throw new StorageError(400, "invalid Codex name");
+    throw new StorageError(400, "invalid engrams name");
 
   try {
     let results;
     if (urn)
-      results = await Storage.engrams.recall({ key: urn, resolve: resolve });
+      results = await Storage.engrams.recall(urn, resolve);
     else
-      results = await Storage.engrams.recall({ domain: domain, name: name, resolve: resolve });
+      results = await Storage.engrams.recall({ domain: domain, name: name }, resolve);
 
     res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
@@ -115,7 +115,7 @@ async function dull(req, res) {
   var name = req.query[ "name" ] || req.body?.name;
 
   if ((!urn || urn[ 0 ] === "$") && !name)
-    throw new StorageError(400, "invalid Codex name");
+    throw new StorageError(400, "invalid engrams name");
 
   try {
     let results;

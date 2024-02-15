@@ -4,7 +4,6 @@ The dictadata storage-node project contains the template for create a Storage No
 
 [Configuration](./configuration.md)
 
-[Codex](./codex.md)
 
 ---
 
