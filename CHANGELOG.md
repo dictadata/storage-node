@@ -1,5 +1,10 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.76
+  - feature: ETL parameterized tracts
+  - refactor: HTTP res stream autoClose=false
+  - updated: @dictadata/storage-junctions@0.9.101
+  - updated: @dictadata/storage-tracts@0.9.74
 - version 0.9.75
   - refactor: refactor tract.transforms to array
   - updated: @dictadata/storage-junctions@0.9.100
@@ -13,7 +18,7 @@
 - version 0.9.72
   - updated: @dictadata/storage-junctions@0.9.97
   - refactor: change Storage to be part of library interface
-  - refactor: revamp Codex API for engrams, tracts
+  - refactor: revamp Engrams API for engrams, tracts
 - version 0.9.71
   - updated: @dictadata/storage-junctions@0.9.96
   - refactor: improved, consistent error handling
@@ -84,27 +89,27 @@
     - SelectTransform replaced with MutateTransform
   - enhancement: transfer can use "stream:*" locus to stream data in request/response body
 - version 2.5.0
-  - stable build of codex, smt_urn, auth_stash
+  - stable build of engrams, smt_urn, auth_stash
   - update to @dictadata/storage-junctions 2.5.0
 - version 2.4.4
   - update to @dictadata/storage-junctions 2.4.3
 - version 2.4.3
   - refactor: add auth property to auth_stash objects
 - version 2.4.2
-  - refactor: Codex key replace smt_id with smt_urn
+  - refactor: Engrams key replace smt_id with smt_urn
 - version 2.4.1
   - feature: authStash for storing username, password, apiKey, etc.
   - testing: use dev.dictadata.net instead of localhost
   - update to @dictadata/storage-junctions 2.4.1
 - version 2.4.0
-  - feature: smt_id used as key for codex directory
+  - feature: smt_id used as key for engrams directory
   - update to @dictadata/storage-junctions 2.4.0
 - version 2.3.5
-  - refactor: add domain and roles to codex entry
+  - refactor: add domain and roles to engrams entry
   - update to @dictadata/storage-junctions 2.3.4
 - version 2.3.4
-  - update: Codex.store() validate entry's name and type
-  - refactor: add source and notes to codex entry, remove alias_smt
+  - update: Engrams.store() validate entry's name and type
+  - refactor: add source and notes to engrams entry, remove alias_smt
   - update to @dictadata/storage-junctions 2.3.3
 - version 2.3.3
   - implement full-text search patterns in elasticsearch-junction
@@ -123,7 +128,7 @@
   - testing: fix issue with querystring params
 - version 2.2.6
   - update to @dictadata/storage-junctions 2.2.5
-  - update: Codex alias entries
+  - update: Engrams alias entries
 - version 2.2.5
   - update to @dictadata/storage-junctions 2.2.4
   - testing: minor updates
@@ -131,13 +136,13 @@
   - update to @dictadata/storage-junctions 2.2.3
   - testing: update st_node_test_client to compare query results to expected values
 - version 2.2.3
-  - add User role to codex.retrieve API
+  - add User role to engrams.retrieve API
   - export config module from library
 - version 2.2.2
   - update to @dictadata/storage-junctions 2.2.2
 - version 2.2.1
   - update to @dictadata/storage-junctions 2.2.1
-  - refactor: using Codex
+  - refactor: using Engrams
 - version 2.1.5
   - update to @dictadata/storage-junctions 2.1.6
   - config node engine >= 16.4
@@ -145,31 +150,31 @@
   - update to @dictadata/storage-junctions 2.1.5
   - enhancements for census tiger line shapefiles
 - version 2.1.3
-  - the codex stores engrams.
+  - the engrams stores engrams.
 - version 2.1.2
   - update to @dictadata/storage-junctions 2.1.4
   - bug fix: make type checking storage types case insensitive
 - version 2.1.1
   - update to @dictadata/storage-junctions 2.1.3
-  - bug fix: for codex calls
+  - bug fix: for engrams calls
 - version 2.1.0
   - update to @dictadata/storage-junctions 2.1.2
-  - refactor: Storage module, Tracts class, remove Codex class
+  - refactor: Storage module, Tracts class, remove Engrams class
 - version 2.0.9
   - refactor main, config and startup
-  - codex entries in config only stored in codex cache
+  - engrams entries in config only stored in engrams cache
 - version 2.0.8
   - update to @dictadata/storage-junctions 2.0.8
-  - enhancements to codex/junction options
+  - enhancements to engrams/junction options
   - dependency updates for tedious and elasticsearch client
 - version 2.0.6
   - update to @dictadata/storage-junctions 2.0.6
-  - further codex integration
+  - further engrams integration
   - refactor config and startup
   - read configuration from file "storage-node.config.json"
 - version 2.0.1
   - update to @dictadata/storage-junctions 2.0.1
-  - codex support
+  - engrams support
 - version 1.8.7
   - update to @dictadata/storage-junctions 1.8.6
   - support for Elasticsearch geo_shape queries
