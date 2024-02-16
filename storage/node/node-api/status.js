@@ -16,7 +16,7 @@ const logger = require('../../utils/logger');
  */
 var router = express.Router();
 router.get('/status', authorize([ Roles.Public, Roles.Monitor ]), status);
-router.get('/status/:SMT', authorize([ Roles.User, Roles.Monitor ]), smt_status);
+router.get('/status/:smt', authorize([ Roles.User, Roles.Monitor ]), smt_status);
 module.exports = router;
 
 /**
@@ -48,7 +48,7 @@ async function smt_status(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ];
+    let smtname = req.params[ 'smt' ] || req.query[ "smt" ];
     if (!smtname)
       throw new StorageError(400, "invalid SMT name");
 

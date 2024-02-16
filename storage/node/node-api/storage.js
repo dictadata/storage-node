@@ -17,37 +17,37 @@ const { typeOf } = require('@dictadata/storage-junctions/utils');
  */
 
 var router = express.Router();
-router.get('/list/:SMT', authorize([ Roles.Public ]), list);
-router.post('/list/:SMT', authorize([ Roles.Public ]), list);
+router.get('/list/:smt', authorize([ Roles.Public ]), list);
+router.post('/list/:smt', authorize([ Roles.Public ]), list);
 router.post('/list', authorize([ Roles.Public ]), list);
 
-router.put('/schema/:SMT', authorize([ Roles.Coder ]), createSchema);
+router.put('/schema/:smt', authorize([ Roles.Coder ]), createSchema);
 router.put('/schema', authorize([ Roles.Coder ]), createSchema);
 
-router.delete('/schema/:SMT', authorize([ Roles.Coder ]), dullSchema);
+router.delete('/schema/:smt', authorize([ Roles.Coder ]), dullSchema);
 router.delete('/schema', authorize([ Roles.Coder ]), dullSchema);
 
-router.get('/schema/:SMT', authorize([ Roles.Public ]), getEncoding);
-router.post('/schema/:SMT', authorize([ Roles.Public ]), getEncoding);
+router.get('/schema/:smt', authorize([ Roles.Public ]), getEncoding);
+router.post('/schema/:smt', authorize([ Roles.Public ]), getEncoding);
 router.post('/schema', authorize([ Roles.Public ]), getEncoding);
 
-router.get('/encoding/:SMT', authorize([ Roles.Public ]), getEncoding);
-router.post('/encoding/:SMT', authorize([ Roles.Public ]), getEncoding);
+router.get('/encoding/:smt', authorize([ Roles.Public ]), getEncoding);
+router.post('/encoding/:smt', authorize([ Roles.Public ]), getEncoding);
 router.post('/encoding', authorize([ Roles.Public ]), getEncoding);
 
-router.put('/store/:SMT', authorize([ Roles.User ]), store);
+router.put('/store/:smt', authorize([ Roles.User ]), store);
 router.put('/store', authorize([ Roles.User ]), store);
 
-router.delete('/dull/:SMT', authorize([ Roles.User ]), dull);
-router.post('/dull/:SMT', authorize([ Roles.User ]), dull);
+router.delete('/dull/:smt', authorize([ Roles.User ]), dull);
+router.post('/dull/:smt', authorize([ Roles.User ]), dull);
 router.post('/dull', authorize([ Roles.User ]), dull);
 
-router.get('/recall/:SMT', authorize([ Roles.Public ]), recall);
-router.post('/recall/:SMT', authorize([ Roles.Public ]), recall);
+router.get('/recall/:smt', authorize([ Roles.Public ]), recall);
+router.post('/recall/:smt', authorize([ Roles.Public ]), recall);
 router.post('/recall', authorize([ Roles.Public ]), recall);
 
-router.get('/retrieve/:SMT', authorize([ Roles.Public ]), retrieve);
-router.post('/retrieve/:SMT', authorize([ Roles.Public ]), retrieve);
+router.get('/retrieve/:smt', authorize([ Roles.Public ]), retrieve);
+router.post('/retrieve/:smt', authorize([ Roles.Public ]), retrieve);
 router.post('/retrieve', authorize([ Roles.Public ]), retrieve);
 
 module.exports = router;
@@ -62,7 +62,7 @@ async function list(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ 'smt' ] || req.body?.[ 'smt' ];
     if (!smtname || smtname[ 0 ] === "$")
       throw new StorageError(400, "invalid SMT name");
 
@@ -96,7 +96,7 @@ async function createSchema(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ "smt" ] || req.body?.smt;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -133,7 +133,7 @@ async function dullSchema(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ "smt" ] || req.body?.smt;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -165,7 +165,7 @@ async function getEncoding(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ "SMT" ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ "smt" ] || req.body?.smt;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -203,7 +203,7 @@ async function store(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ 'smt' ] || req.body?.smt;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -264,7 +264,7 @@ async function recall(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ 'smt' ] || req.body?.smt;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -297,7 +297,7 @@ async function retrieve(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ 'smt' ] || req.body?.smt;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
@@ -331,7 +331,7 @@ async function dull(req, res) {
 
   var junction;
   try {
-    let smtname = req.params[ 'SMT' ] || req.query[ 'SMT' ] || req.body?.SMT;
+    let smtname = req.params[ 'smt' ] || req.query[ 'smt' ] || req.body?.smt;
     if (!smtname || smtname[ 0 ] === "$" || !smtname)
       throw new StorageError(400, "invalid SMT name");
 
