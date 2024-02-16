@@ -88,19 +88,24 @@ async function etl(req, res) {
 
         ///////// check tracts for stream: in smt.locus (e.g. node server REST API)
         // check origin
-        if (!tract.origin.options) tract.origin.options = {};
-        tract.origin.smt = await Storage.resolve(tract.origin.smt, tract.origin.options);
+        if (!tract.origin.options)
+          tract.origin.options = {};
+        let results = await Storage.resolve(tract.origin.smt, tract.origin.options);
+        tract.origin.smt = results
 
         if (tract.origin?.smt.locus.startsWith('stream:')) {
           tract.origin.options["reader"] = req;
         }
 
         // check terminal
-        if (!tract.terminal.options) tract.terminal.options = {};
-        tract.terminal.smt = await Storage.resolve(tract.terminal.smt, tract.terminal.options);
+        if (!tract.terminal.options)
+          tract.terminal.options = {};
+        results = await Storage.resolve(tract.terminal.smt, tract.terminal.options);
+        tract.terminal.smt = results
 
         if (tract.terminal?.smt.locus.startsWith('stream:')) {
           tract.terminal.options[ "writer" ] = res;
+          tract.terminal.options[ "autoClose" ] = false;
           streaming = true;
           res.type('json');
         }
