@@ -198,3 +198,13 @@ Content-Type: application/json; charset=utf-8
 POST http://dev.dictadata.net:8089/node/etl/foo:foo_alias HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
+
+### foo:foo_with_params
+POST http://dev.dictadata.net:8089/node/etl/foo:foo_with_params?Foo=none HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+### foo:foo_with_params
+POST http://dev.dictadata.net:8089/node/etl/foo:foo_with_params?Foo=first HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8

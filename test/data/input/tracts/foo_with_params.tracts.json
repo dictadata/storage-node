@@ -1,0 +1,31 @@
+{
+  "domain": "foo",
+  "name": "foo_with_params",
+  "type": "tract",
+  "title": "transfer foo_schema with params",
+  "description": "test a tract with params",
+  "notes": "",
+  "tags": [
+    "dictadata.net",
+    "foo"
+  ],
+  "tracts": [
+    {
+      "name": "foo-params",
+      "action": "transfer",
+      "description": "transfer foo with params",
+      "origin": {
+        "smt": ":es_foo_schema",
+        "options": {},
+        "pattern": {
+          "match": {
+            "Foo": "${Foo}"
+          }
+        }
+      },
+      "terminal": {
+        "smt": "json|stream:*|*|*"
+      }
+    }
+  ]
+}

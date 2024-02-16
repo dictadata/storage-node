@@ -24,7 +24,7 @@
             "smt": "json|./data/input/|foofile_two.json|*"
           },
           "terminal": {
-            "smt": "json|./data/output/|transfer_foofile_two.json|*"
+            "smt": "json|./data/output/tracts/|transfer_foofile_two.json|*"
           }
         }
       ]

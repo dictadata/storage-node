@@ -10,6 +10,18 @@ Authorization: Basic user user
 GET http://dev.dictadata.net:8089/node/tracts/foo:foo_transfer
 Authorization: Basic user user
 
+### OK
+GET http://dev.dictadata.net:8089/node/tracts/foo:foo_alias
+Authorization: Basic user user
+
+### OK
+GET http://dev.dictadata.net:8089/node/tracts/foo:foo_alias?resolve=true
+Authorization: Basic user user
+
+### OK
+GET http://dev.dictadata.net:8089/node/tracts/foo:foo_with_params
+Authorization: Basic user user
+
 ###
 POST http://dev.dictadata.net:8089/node/tracts
 Authorization: Basic user user
