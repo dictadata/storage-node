@@ -17,7 +17,7 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": {
-          "foo_tract": {
+          "foo_action": {
             "action": "transfer",
             "origin": {
               "smt": ":mysql_foo_schema"
