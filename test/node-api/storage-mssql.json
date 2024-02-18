@@ -24,7 +24,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/encodings/foo_schema.encoding.json"
+        "data": "./test/data/input/engrams/foo_schema.engram.json"
       },
       "expected": {
         "statusCode": [
@@ -34,7 +34,7 @@
       }
     },
     {
-      "name": "getEncoding",
+      "name": "getEngram",
       "request": {
         "method": "GET",
         "url": "encoding/:mssql_foo_schema_x"

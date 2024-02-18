@@ -30,7 +30,7 @@ exports.startup = async (config) => {
     // add any app/api roles
     Object.assign(Roles, config.roles);
 
-    accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts.encoding.json')));
+    accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts.engram.json')));
 
     junction = await Storage.activate(config.$_accounts, { encoding: accountsEncoding });
     // attempt to create accounts schema

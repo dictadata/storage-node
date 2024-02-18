@@ -9,7 +9,7 @@
     "dictadata.net",
     "foo"
   ],
-  "tracts": [
+  "actions": [
     {
       "name": "foo-params",
       "action": "transfer",

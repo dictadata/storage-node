@@ -15,7 +15,7 @@
         "foo",
         "json"
       ],
-      "tracts": [
+      "actions": [
         {
           "name": "json-json",
           "action": "transfer",

@@ -27,13 +27,13 @@ router.put('/schema', authorize([ Roles.Coder ]), createSchema);
 router.delete('/schema/:smt', authorize([ Roles.Coder ]), dullSchema);
 router.delete('/schema', authorize([ Roles.Coder ]), dullSchema);
 
-router.get('/schema/:smt', authorize([ Roles.Public ]), getEncoding);
-router.post('/schema/:smt', authorize([ Roles.Public ]), getEncoding);
-router.post('/schema', authorize([ Roles.Public ]), getEncoding);
+router.get('/schema/:smt', authorize([ Roles.Public ]), getEngram);
+router.post('/schema/:smt', authorize([ Roles.Public ]), getEngram);
+router.post('/schema', authorize([ Roles.Public ]), getEngram);
 
-router.get('/encoding/:smt', authorize([ Roles.Public ]), getEncoding);
-router.post('/encoding/:smt', authorize([ Roles.Public ]), getEncoding);
-router.post('/encoding', authorize([ Roles.Public ]), getEncoding);
+router.get('/encoding/:smt', authorize([ Roles.Public ]), getEngram);
+router.post('/encoding/:smt', authorize([ Roles.Public ]), getEngram);
+router.post('/encoding', authorize([ Roles.Public ]), getEngram);
 
 router.put('/store/:smt', authorize([ Roles.User ]), store);
 router.put('/store', authorize([ Roles.User ]), store);
@@ -156,12 +156,12 @@ async function dullSchema(req, res) {
 }
 
 /**
- * getEncoding
+ * getEngram
  * @param {*} req
  * @param {*} res
  */
-async function getEncoding(req, res) {
-  logger.verbose('/storage/getEncoding');
+async function getEngram(req, res) {
+  logger.verbose('/storage/getEngram');
 
   var junction;
   try {
@@ -173,7 +173,7 @@ async function getEncoding(req, res) {
     if (!junction.capabilities.encoding)
       throw new StorageError(405);
 
-    let results = await junction.getEncoding();
+    let results = await junction.getEngram();
     logger.debug(JSON.stringify(results));
 
     res.status(results.status || 200).set("Cache-Control", "public, max-age=60, s-maxage=60");
@@ -212,7 +212,7 @@ async function store(req, res) {
       throw new StorageError(405);
 
     if (junction.capabilities.encoding && !junction.engram.isDefined)
-      await junction.getEncoding();
+      await junction.getEngram();
 
     var results = new StorageResults(0);
 

@@ -34,85 +34,85 @@ async function etl(req, res) {
 
   try {
     let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || "";
-    let tractname = req.query[ 'tract' ] || "";
+    let actionName = req.query[ 'action' ] || "";
     let params = objCopy({}, req.query);
-    let tracts;
+    let tract;
     let streaming = false;
     let resultCode = 0;
 
-    // if URN then recall from tracts
+    // if URN then recall from Tracts storage
     if (urn) {
-      // check for tract name in urn; domain:name#tract
+      // check for action name in urn; domain:tract#tract
       let u = urn.split('#');
       urn = u[ 0 ];
-      if (u.length > 1 && !tractname)
-        tractname = u[ 1 ];
+      if (u.length > 1 && !actionName)
+        actionName = u[ 1 ];
 
       let results = await Storage.tracts.recall(urn, true);
-      tracts = results.data[ urn ];
+      tract = results.data[ urn ];
 
       // TBD: use query string parameters and replace variables in tract
     }
     else {
-      tracts = req.body.tracts || req.body;
+      tract = req.body.tract || req.body;
     }
 
-    if (typeOf(tracts) === "object" && typeOf(tracts?.tracts) !== "array") {
-      // reformat tract properties into an array; for backwards compatibility
+    if (typeOf(tract) === "object" && typeOf(tract?.actions) !== "array") {
+      // reformat tract properties into actions array; for backwards compatibility
       let tt = {
-        "name": tractname,
+        "name": actionName,
         "type": "tract",
-        "tracts": []
+        "actions": []
       };
-      for (let [ name, tract ] of Object.entries(tracts)) {
-        if (typeof tract === "object") {
-          tract.name = name
-          tt.tracts.push(objCopy({}, tract));
+      for (let [ name, action ] of Object.entries(tract)) {
+        if (typeof action === "object") {
+          action.name = name
+          tt.actions.push(objCopy({}, action));
         }
       }
-      tracts = tt;
+      tract = tt;
     }
 
-    if (!tractname)
-      tractname = tracts.tracts[0].name // default to 1st tract
+    if (!actionName)
+      actionName = tract.actions[0].name // default to 1st tract
 
     // perform tract actions
-    for (const tract of tracts.tracts) {
-      if (tract.name[ 0 ] === "_")
+    for (const action of tract.actions) {
+      if (action.name[ 0 ] === "_")
         continue;
 
-      if (tract.name === tractname || tractname === "all" || tractname === "*") {
+      if (action.name === actionName || actionName === "all" || actionName === "*") {
 
-        if (!tract.action)
-          tract.action = "transfer";
+        if (!action.action)
+          action.action = "transfer";
 
-        ///////// check tracts for stream: in smt.locus (e.g. node server REST API)
+        ///////// check actions for stream: in smt.locus (e.g. node server REST API)
         // check origin
-        if (!tract.origin.options)
-          tract.origin.options = {};
-        let results = await Storage.resolve(tract.origin.smt, tract.origin.options);
-        tract.origin.smt = results
+        if (!action.origin.options)
+          action.origin.options = {};
+        let results = await Storage.resolve(action.origin.smt, action.origin.options);
+        action.origin.smt = results
 
-        if (tract.origin?.smt.locus.startsWith('stream:')) {
-          tract.origin.options["reader"] = req;
+        if (action.origin?.smt.locus.startsWith('stream:')) {
+          action.origin.options["reader"] = req;
         }
 
         // check terminal
-        if (!tract.terminal.options)
-          tract.terminal.options = {};
-        results = await Storage.resolve(tract.terminal.smt, tract.terminal.options);
-        tract.terminal.smt = results
+        if (!action.terminal.options)
+          action.terminal.options = {};
+        results = await Storage.resolve(action.terminal.smt, action.terminal.options);
+        action.terminal.smt = results
 
-        if (tract.terminal?.smt.locus.startsWith('stream:')) {
-          tract.terminal.options[ "writer" ] = res;
-          tract.terminal.options[ "autoClose" ] = false;
+        if (action.terminal?.smt.locus.startsWith('stream:')) {
+          action.terminal.options[ "writer" ] = res;
+          action.terminal.options[ "autoClose" ] = false;
           streaming = true;
           res.type('json');
         }
 
-        // perform the tract
+        // perform the action
         res.set("Cache-Control", "public, max-age=60, s-maxage=60");
-        resultCode = await Actions.perform(tract, params);
+        resultCode = await Actions.perform(action, params);
 
         if (resultCode) {
           break;
