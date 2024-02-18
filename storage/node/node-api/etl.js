@@ -76,7 +76,11 @@ async function etl(req, res) {
     if (!actionName)
       actionName = tract.actions[0].name // default to 1st tract
 
+    let base = tract.actions.find((action) => action.name === "_base");
+
     // perform tract actions
+    res.set("Cache-Control", "public, max-age=60, s-maxage=60");
+
     for (const action of tract.actions) {
       if (action.name[ 0 ] === "_")
         continue;
@@ -111,7 +115,8 @@ async function etl(req, res) {
         }
 
         // perform the action
-        res.set("Cache-Control", "public, max-age=60, s-maxage=60");
+        if (base)
+          action = objCopy({}, base, action);
         resultCode = await Actions.perform(action, params);
 
         if (resultCode) {
