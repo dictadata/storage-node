@@ -17,16 +17,22 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
+        "params": {
+          "action": "foo_action"
+        },
         "data": {
-          "foo_action": {
-            "action": "transfer",
-            "origin": {
-              "smt": ":mssql_foo_transfer"
-            },
-            "terminal": {
-              "smt": ":es_foo_transfer"
+          "actions": [
+            {
+              "name": "foo_action",
+              "action": "transfer",
+              "origin": {
+                "smt": ":mssql_foo_transfer"
+              },
+              "terminal": {
+                "smt": ":es_foo_transfer"
+              }
             }
-          }
+          ]
         }
       }
     },
@@ -36,16 +42,22 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
+        "params": {
+          "action": "foo_action"
+        },
         "data": {
-          "foo_action": {
-            "action": "transfer",
-            "origin": {
-              "smt": ":json_foofile"
-            },
-            "terminal": {
-              "smt": "json|stream:*|*|*"
+          "actions": [
+            {
+              "name": "foo_action",
+              "action": "transfer",
+              "origin": {
+                "smt": ":json_foofile"
+              },
+              "terminal": {
+                "smt": "json|stream:*|*|*"
+              }
             }
-          }
+          ]
         }
       }
     },

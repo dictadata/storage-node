@@ -16,40 +16,46 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
+        "params": {
+          "action": "foo_action"
+        },
         "data": {
-          "foo_action": {
-            "action": "transfer",
-            "origin": {
-              "smt": ":mysql_foo_schema"
-            },
-            "terminal": {
-              "smt": ":es_foo_transform"
-            },
-            "transforms": [
-              {
-                "transform": "filter",
-                "match": {
-                  "Bar": "row"
+          "actions": [
+            {
+              "name": "foo_action",
+              "action": "transfer",
+              "origin": {
+                "smt": ":mysql_foo_schema"
+              },
+              "terminal": {
+                "smt": ":es_foo_transform"
+              },
+              "transforms": [
+                {
+                  "transform": "filter",
+                  "match": {
+                    "Bar": "row"
+                  },
+                  "drop": {
+                    "Baz": {
+                      "eq": 456
+                    }
+                  }
                 },
-                "drop": {
-                  "Baz": {
-                    "eq": 456
+                {
+                  "transform": "mutate",
+                  "default": {
+                    "Fie": "where's es fum?"
+                  },
+                  "map": {
+                    "Foo": "Foo",
+                    "Bar": "Bar",
+                    "Baz": "Bazzy"
                   }
                 }
-              },
-              {
-                "transform": "mutate",
-                "default": {
-                  "Fie": "where's es fum?"
-                },
-                "map": {
-                  "Foo": "Foo",
-                  "Bar": "Bar",
-                  "Baz": "Bazzy"
-                }
-              }
-            ]
-          }
+              ]
+            }
+          ]
         }
       }
     }

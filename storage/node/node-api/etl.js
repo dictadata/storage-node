@@ -57,24 +57,8 @@ async function etl(req, res) {
       tract = req.body.tract || req.body;
     }
 
-    if (typeOf(tract) === "object" && typeOf(tract?.actions) !== "array") {
-      // reformat tract properties into actions array; for backwards compatibility
-      let tt = {
-        "name": actionName,
-        "type": "tract",
-        "actions": []
-      };
-      for (let [ name, action ] of Object.entries(tract)) {
-        if (typeof action === "object") {
-          action.name = name
-          tt.actions.push(objCopy({}, action));
-        }
-      }
-      tract = tt;
-    }
-
     if (!actionName)
-      actionName = tract.actions[0].name // default to 1st tract
+      actionName = tract.actions[ 0 ].name; // default to 1st tract
 
     let base = tract.actions.find((action) => action.name === "_base");
 
@@ -134,7 +118,7 @@ async function etl(req, res) {
     }
   }
   catch (err) {
-    logger.error(err.message);
+    logger.error(err);
     let response = new StorageError(err.status, err.message);
     res.status(err.status || 500).jsonp(response);
   }
