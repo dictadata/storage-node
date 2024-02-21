@@ -1,9 +1,9 @@
 {
   "status": 0,
   "message": "OK",
-  "type": "map",
-  "data": {
-    "foo:foo_schema_XYZ": {
+  "type": "list",
+  "data": [
+    {
       "name": "foo_schema_XYZ",
       "type": "engram",
       "domain": "foo",
@@ -71,5 +71,5 @@
         }
       ]
     }
-  }
+  ]
 }

@@ -49,7 +49,7 @@ async function etl(req, res) {
         actionName = u[ 1 ];
 
       let results = await Storage.tracts.recall(urn, true);
-      tract = results.data[ urn ];
+      tract = results.data[ 0 ];
 
       // TBD: use query string parameters and replace variables in tract
     }

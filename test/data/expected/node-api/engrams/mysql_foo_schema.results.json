@@ -1,9 +1,9 @@
 {
   "status": 0,
   "message": "OK",
-  "type": "map",
-  "data": {
-    ":mysql_foo_schema": {
+  "type": "list",
+  "data": [
+    {
       "type": "engram",
       "name": "mysql_foo_schema",
       "smt": {
@@ -14,5 +14,5 @@
       },
       "fields": []
     }
-  }
+  ]
 }

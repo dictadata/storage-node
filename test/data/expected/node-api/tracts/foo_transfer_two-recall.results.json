@@ -1,9 +1,9 @@
 {
   "status": 0,
   "message": "OK",
-  "type": "map",
-  "data": {
-    "foo:foo_transfer_two": {
+  "type": "list",
+  "data": [
+    {
       "domain": "foo",
       "name": "foo_transfer_two",
       "type": "tract",
@@ -29,5 +29,5 @@
         }
       ]
     }
-  }
+  ]
 }

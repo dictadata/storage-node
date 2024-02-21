@@ -1,9 +1,9 @@
 {
   "status": 0,
   "message": "OK",
-  "type": "map",
-  "data": {
-    ":foo_schema_short": {
+  "type": "list",
+  "data": [
+    {
       "name": "foo_schema_short",
       "type": "engram",
       "smt": {
@@ -45,7 +45,7 @@
         "foo"
       ]
     },
-    "foo:foo_schema": {
+    {
       "name": "foo_schema",
       "type": "engram",
       "domain": "foo",
@@ -113,7 +113,7 @@
         }
       ]
     },
-    ":foo_schema_typesonly": {
+    {
       "name": "foo_schema_typesonly",
       "type": "engram",
       "smt": {
@@ -153,5 +153,5 @@
         "foo"
       ]
     }
-  }
+  ]
 }
