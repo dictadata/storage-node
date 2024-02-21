@@ -51,7 +51,7 @@ async function addEngrams(engrams_cache) {
       }
       else {
         // assume entry is an engram object
-        let engram = new Engram(entry.smt);
+        let engram = new Engram(entry);
         engram.name = entry.name || name;
 
         if (entry.options) {
