@@ -37,6 +37,18 @@
       }
     },
     {
+      "name": "foo_transfer tract",
+      "request": {
+        "url": "foo:foo_transfer"
+      }
+    },
+    {
+      "name": "foo_transfer alias",
+      "request": {
+        "url": "foo:foo_alias"
+      }
+    },
+    {
       "name": "foo-stream",
       "request": {
         "headers": {
@@ -62,15 +74,16 @@
       }
     },
     {
-      "name": "foo_transfer tract",
+      "name": "bar-iterate",
       "request": {
-        "url": "foo:foo_transfer"
-      }
-    },
-    {
-      "name": "foo_transfer alias",
-      "request": {
-        "url": "foo:foo_alias"
+        "url": "foo:bar-iterate",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "params": {
+          "tag": "bar",
+          "Foo": "third"
+        }
       }
     }
   ]

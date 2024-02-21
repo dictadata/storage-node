@@ -187,6 +187,24 @@
           }
         }
       }
+    },
+    {
+      "name": "bar-iterate-store",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": "./test/data/input/tracts/bar_iterate.tract.json"
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ],
+        "status": 0,
+        "compareValues": 1
+      }
     }
   ]
 }

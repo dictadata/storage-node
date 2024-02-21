@@ -1,0 +1,46 @@
+{
+  "domain": "foo",
+  "name": "bar-iterate",
+  "type": "tract",
+  "actions": [
+    {
+      "name": "engram-iterate",
+      "action": "iterate",
+      "origin": {
+        "smt": "$:engrams",
+        "pattern": {
+          "match": {
+            "tags": "${tag}"
+          },
+          "fields": [ "smt", "fields" ]
+        }
+      },
+      "terminal": {
+        "smt": "json|stream:*|*|*",
+        "options": {
+          "results_separator": ","
+        }
+      },
+      "actions": [
+        {
+          "name": "each_entry",
+          "action": "transfer",
+          "origin": {
+            "smt": "=${smt}",
+            "options": {
+              "encoding": { "fields": "=${fields}"}
+            },
+            "pattern": {
+              "match": {
+                "Foo": "${Foo}"
+              }
+            }
+          },
+          "terminal": {
+            "smt": "$:smt"
+          }
+        }
+      ]
+    }
+  ]
+}
