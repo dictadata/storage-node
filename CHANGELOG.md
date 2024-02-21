@@ -1,5 +1,12 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.77
+  - refactor: return Engrams and Tracts results as array instead of object
+  - refactor: new tract.actions array format
+  - refactor: implement _base action for transfers
+  - refactor: engrams and tracts, tract, actions
+  - updated: @dictadata/storage-junctions@0.9.102
+  - updated: @dictadata/storage-tracts@0.9.75
 - version 0.9.76
   - feature: ETL parameterized tracts
   - refactor: HTTP res stream autoClose=false
