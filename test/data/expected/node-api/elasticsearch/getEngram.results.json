@@ -1,7 +1,7 @@
 {
   "status": 0,
   "message": "OK",
-  "type": "encoding",
+  "type": "engram",
   "data": {
     "type": "engram",
     "name": "foo_schema_x",

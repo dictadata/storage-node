@@ -37,7 +37,7 @@
       "name": "getEngram",
       "request": {
         "method": "GET",
-        "url": "encoding/:mysql_foo_schema_x"
+        "url": "schema/:mysql_foo_schema_x"
       }
     },
     {

@@ -30,11 +30,11 @@ router.delete('/schema', authorize([ Roles.Coder ]), dullSchema);
 router.get('/schema/:smt', authorize([ Roles.Public ]), getEngram);
 router.post('/schema/:smt', authorize([ Roles.Public ]), getEngram);
 router.post('/schema', authorize([ Roles.Public ]), getEngram);
-
-router.get('/encoding/:smt', authorize([ Roles.Public ]), getEngram);
-router.post('/encoding/:smt', authorize([ Roles.Public ]), getEngram);
-router.post('/encoding', authorize([ Roles.Public ]), getEngram);
-
+/*
+router.get('/engram/:smt', authorize([ Roles.Public ]), getEngram);
+router.post('/engram/:smt', authorize([ Roles.Public ]), getEngram);
+router.post('/engram', authorize([ Roles.Public ]), getEngram);
+*/
 router.put('/store/:smt', authorize([ Roles.User ]), store);
 router.put('/store', authorize([ Roles.User ]), store);
 

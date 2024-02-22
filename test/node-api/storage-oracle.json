@@ -37,7 +37,7 @@
       "name": "getEngram",
       "request": {
         "method": "GET",
-        "url": "encoding/:oracle_foo_schema_x"
+        "url": "schema/:oracle_foo_schema_x"
       }
     },
     {

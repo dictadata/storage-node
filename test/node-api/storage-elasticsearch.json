@@ -44,7 +44,7 @@
       "name": "getEngram",
       "request": {
         "method": "GET",
-        "url": "encoding/:es_foo_schema_x"
+        "url": "schema/:es_foo_schema_x"
       }
     },
     {
