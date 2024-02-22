@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.78
+  - refactor: etl req parameters
+  - updated: @dictadata/storage-tracts@0.9.76
 - version 0.9.77
   - refactor: return Engrams and Tracts results as array instead of object
   - refactor: new tract.actions array format
