@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.80
+  - updated: @dictadata/storage-tracts@0.9.78
 - version 0.9.79
   - updated: @dictadata/storage-junctions@0.9.103
   - updated: @dictadata/storage-tracts@0.9.77
