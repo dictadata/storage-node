@@ -15,7 +15,7 @@ const logger = require("../utils/logger");
 const fs = require("fs/promises");
 const path = require("path");
 
-var accountsEncoding;
+var accountsEngram;
 
 /**
  * wait until server config is updated before initializing
@@ -30,9 +30,9 @@ exports.startup = async (config) => {
     // add any app/api roles
     Object.assign(Roles, config.roles);
 
-    accountsEncoding = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts.engram.json')));
+    accountsEngram = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts.engram.json')));
 
-    junction = await Storage.activate(config.$_accounts, { encoding: accountsEncoding });
+    junction = await Storage.activate(config.$_accounts, { encoding: accountsEngram });
     // attempt to create accounts schema
     let results = await junction.createSchema();
     if (results.status === 0) {
@@ -73,7 +73,7 @@ var store = exports.store = async function (account) {
 
   let smt = config.$_accounts;
   let junction = await Storage.activate(smt);
-  junction.encoding = accountsEncoding;  // overlay encoding overlay
+  junction.encoding = accountsEngram;  // overlay encoding overlay
 
   account.dateUpdated = new Date().toISOString();
   if (!account.dateCreated)
@@ -102,7 +102,7 @@ exports.dull = async function (userid) {
 
   let smt = config.$_accounts;
   let junction = await Storage.activate(smt);
-  junction.encoding = accountsEncoding;  // overlay encoding overlay
+  junction.encoding = accountsEngram;  // overlay encoding overlay
 
   let pattern = {};
   if (junction.engram.keyof === 'key')
@@ -124,7 +124,7 @@ exports.recall = async function (userid) {
 
   let smt = config.$_accounts;
   let junction = await Storage.activate(smt);
-  junction.encoding = accountsEncoding;  // overlay encoding overlay
+  junction.encoding = accountsEngram;  // overlay encoding overlay
 
   let pattern = {};
   if (junction.engram.keyof === 'key')
@@ -158,7 +158,7 @@ exports.retrieve = async function (pattern) {
   let smt = config.$_accounts;
 
   let junction = await Storage.activate(smt);
-  junction.encoding = accountsEncoding;  // overlay encoding
+  junction.encoding = accountsEngram;  // overlay encoding
 
   let results = await junction.retrieve(pattern);
   /*
