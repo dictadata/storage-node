@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.79
+  - updated: @dictadata/storage-junctions@0.9.103
+  - updated: @dictadata/storage-tracts@0.9.77
 - version 0.9.78
   - refactor: etl req parameters
   - updated: @dictadata/storage-tracts@0.9.76
