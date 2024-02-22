@@ -24,30 +24,23 @@ router.post('/etl', authorize([ Roles.User ]), etl);
 router.post('/etl/:urn', authorize([ Roles.User ]), etl);
 module.exports = router;
 
-
 /**
  *  etl handler
  */
 async function etl(req, res) {
   logger.verbose('/etl');
-  logger.verbose(JSON.stringify(req.body));
+  //logger.verbose(JSON.stringify(req.body));
 
   try {
-    let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || "";
-    let actionName = req.query[ 'action' ] || "";
-    let params = objCopy({}, req.query);
+    let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || req.body.urn || "";
+    let actionName = req.query[ 'action' ] || req.body.action || "";
+    let params = Object.assign({}, req.query, req.body.params);
     let tract;
     let streaming = false;
     let resultCode = 0;
 
     // if URN then recall from Tracts storage
     if (urn) {
-      // check for action name in urn; domain:tract#tract
-      let u = urn.split('#');
-      urn = u[ 0 ];
-      if (u.length > 1 && !actionName)
-        actionName = u[ 1 ];
-
       let results = await Storage.tracts.recall(urn, true);
       tract = results.data[ 0 ];
 
