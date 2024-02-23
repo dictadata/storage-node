@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.81
+  - bug fix: etl processing _base tract action
 - version 0.9.80
   - updated: @dictadata/storage-tracts@0.9.78
 - version 0.9.79

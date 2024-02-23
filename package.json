@@ -1,6 +1,6 @@
 {
   "name": "@dictadata/storage-node",
-  "version": "0.9.80",
+  "version": "0.9.81",
   "description": "REST API services built on Node.js, Express.js and @dictadata storage-junctions and storage-tracts.",
   "author": "Drew O. Letcher",
   "license": "MIT",
