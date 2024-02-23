@@ -53,19 +53,18 @@ async function etl(req, res) {
     if (!actionName)
       actionName = tract.actions[ 0 ].name; // default to 1st tract
 
-    let base = tract.actions.find((action) => action.name === "_base");
+    let base = tract.actions.find((action) => action.name === "_base") || {};
 
     // perform tract actions
     res.set("Cache-Control", "public, max-age=60, s-maxage=60");
 
-    for (const action of tract.actions) {
+    for (let action of tract.actions) {
       if (action.name[ 0 ] === "_")
         continue;
 
       if (action.name === actionName || actionName === "all" || actionName === "*") {
 
-        if (!action.action)
-          action.action = "transfer";
+        action = objCopy({ action: "transfer" }, base, action);
 
         ///////// check actions for stream: in smt.locus (e.g. node server REST API)
         // check origin
@@ -92,8 +91,6 @@ async function etl(req, res) {
         }
 
         // perform the action
-        if (base)
-          action = objCopy({}, base, action);
         resultCode = await Actions.perform(action, params);
 
         if (resultCode) {
