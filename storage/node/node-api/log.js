@@ -14,7 +14,7 @@ const logger = require("../../utils/logger");
  */
 var router = module.exports = exports = express.Router();
 
-router.post("/log", authorize([ Roles.User ]), logEvent);
+router.post("/log", authorize([ Roles.Admin ]), logEvent);
 
 /**
  * Log a user event.

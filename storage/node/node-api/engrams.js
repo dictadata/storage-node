@@ -17,11 +17,11 @@ const { StorageError } = require('@dictadata/storage-junctions/types');
 var router = express.Router();
 
 // Public role
-router.get('/engrams', authorize([ Roles.Public, Roles.Coder ]), recall);
-router.get('/engrams/:urn', authorize([ Roles.Public, Roles.Coder ]), recall);
+router.get('/engrams', authorize([ Roles.Public ]), recall);
+router.get('/engrams/:urn', authorize([ Roles.Public ]), recall);
 
 // User role
-router.post('/engrams', authorize([ Roles.User, Roles.Coder ]), retrieve);
+router.post('/engrams', authorize([ Roles.User ]), retrieve);
 
 // Coder role
 router.put('/engrams', authorize([ Roles.Coder ]), store);
