@@ -4,32 +4,54 @@
   "description": "REST API services built on Node.js, Express.js and @dictadata storage-junctions and storage-tracts.",
   "author": "Drew O. Letcher",
   "license": "MIT",
-  "main": "./storage/index.js",
+  "keywords": [
+    "dictadata",
+    "storage",
+    "junctions",
+    "node",
+    "API"
+  ],
   "type": "commonjs",
-  "repository": "gitlab:dictadata/js/storage-node",
-  "bugs": {
-    "url": "https://gitlab.com/dictadata/js/storage-node/issues"
+  "engines": {
+    "node": ">=18.0.0"
   },
-  "homepage": "https://gitlab.com/dictadata/js/storage-node#readme",
+  "main": "index.js",
   "scripts": {
     "debug": "node --inspect --preserve-symlinks test/storage-node.js",
-    "nodemon": "nodemon --inspect --preserve-symlinks test/storage-node.js",
+    "start": "node test/storage-node.js",
     "lint": "eslint storage/*.js",
     "lint-fix": "eslint --fix storage/*.js",
-    "test": "testrunner"
+    "test": "testrunner.bat"
   },
-  "engines": {
-    "node": ">=17.0.0"
+  "directories": {
+    "doc": "docs",
+    "lib": "storage",
+    "test": "test",
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dictadata/storage-node.git"
+  },
+  "homepage": "https://github.com/dictadata/storage-node#readme",
+  "bugs": {
+    "url": "https://github.com/dictadata/storage-node/issues"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^0.9.103",
-    "@dictadata/storage-tracts": "^0.9.78",
+    "@dictadata/storage-junctions": "file:../storage-junctions",
+    "@dictadata/storage-tracts": "file:../storage-tracts",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "express": "^4.18.3",
     "express-session": "^1.18.0",
     "formidable": "^3.5.1",
     "memorystore": "^1.6.6",
@@ -40,12 +62,6 @@
     "rotating-file-stream": "^3.2.1",
     "serve-favicon": "^2.5.0",
     "winston": "^3.11.0",
-    "winston-daily-rotate-file": "^4.7.1"
-  },
-  "devDependencies": {
-    "colors": "^1.4.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1"
+    "winston-daily-rotate-file": "^5.0.0"
   }
 }
