@@ -7,21 +7,22 @@
       "realm": "foo",
       "name": "foo_transfer",
       "type": "tract",
-      "title": "JSON to JSON",
-      "description": "JSON to JSON transfer tract.",
-      "notes": "tract definitions: 1",
+      "title": "foo MySQL to res stream",
+      "description": "transfer foo from MySQL to res stream.",
+      "notes": "tract definitions foo_transfer",
       "tags": [
         "dictadata.net",
-        "foo",
-        "json"
+        "etl",
+        "transfer",
+        "foo"
       ],
       "actions": [
         {
-          "name": "json-json",
+          "name": "mysql-json",
           "action": "transfer",
-          "description": "transfer foo from json to json",
+          "description": "transfer foo from mysql to res stream",
           "origin": {
-            "smt": "json|./data/input/|foofile.json|*"
+            "smt": ":mysql_foo_schema"
           },
           "terminal": {
             "smt": "json|stream:*|*|*"
