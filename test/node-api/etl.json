@@ -28,7 +28,7 @@
               "name": "foo_action",
               "action": "transfer",
               "origin": {
-                "smt": ":mssql_foo_schema"
+                "smt": ":mysql_foo_schema"
               },
               "terminal": {
                 "smt": "foo:es_foo_transfer"
