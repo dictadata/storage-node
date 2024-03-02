@@ -6,7 +6,10 @@
     "auth": "user:user"
   },
   "expected": {
-    "statusCode": 200,
+    "statusCode": [
+      200,
+      201
+    ],
     "status": 0
   },
   "queries": [
@@ -20,11 +23,6 @@
         "data": "./test/data/input/engrams/foo_schema.engram.json"
       },
       "expected": {
-        "statusCode": [
-          200,
-          201
-        ],
-        "status": 0,
         "compareValues": 1
       }
     },
@@ -66,11 +64,6 @@
         "data": "./test/data/input/engrams/foo_schema_XYZ.engram.json"
       },
       "expected": {
-        "statusCode": [
-          200,
-          201
-        ],
-        "status": 0,
         "compareValues": 1
       }
     },
@@ -126,7 +119,9 @@
         }
       },
       "expected": {
-        "statusCode": 404,
+        "statusCode": [
+          404
+        ],
         "compareValues": 0
       }
     },

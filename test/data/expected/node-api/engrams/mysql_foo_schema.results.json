@@ -4,15 +4,16 @@
   "type": "list",
   "data": [
     {
-      "type": "engram",
       "name": "mysql_foo_schema",
+      "type": "engram",
       "smt": {
         "model": "mysql",
         "locus": "host=dev.dictadata.net;database=storage_node",
         "schema": "foo_schema",
         "key": "=Foo"
       },
-      "fields": []
+      "fields": [],
+      "domain": ""
     }
   ]
 }

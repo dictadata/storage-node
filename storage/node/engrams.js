@@ -8,6 +8,7 @@
 
 const { Storage } = require("@dictadata/storage-tracts");
 const { Engram } = require("@dictadata/storage-tracts/types");
+const { objCopy } = require("@dictadata/storage-junctions/utils");
 const logger = require("../utils/logger");
 const fs = require("fs");
 
@@ -42,30 +43,27 @@ exports.startup = async (config) => {
 // add engrams entries from config.engrams (local cache only)
 async function addEngrams(engrams_cache) {
   if (engrams_cache) {
-    for (let [ name, entry ] of Object.entries(engrams_cache)) {
+    for (let [ urn, entry ] of Object.entries(engrams_cache)) {
       if (typeof entry === "string") {
         // assume entry is an SMT string
         let engram = new Engram(entry);
-        engram.name = name;
+        engram.urn = urn;
         await Storage.engrams.store(engram);
       }
       else {
-        // assume entry is an engram object
+        // assume entry is an object
+        if (entry.engram) {
+          let encoding = JSON.parse(fs.readFileSync(entry.engram, 'utf-8'));
+          delete entry.engram;
+          entry = objCopy(encoding, entry);
+        }
+        else
+          entry.urn = urn;
+
         let engram = new Engram(entry);
-        engram.name = entry.name || name;
 
-        if (entry.options) {
-          engram.options = entry.options;
-        }
-        if (entry.encoding) {
-          if (typeof entry.encoding === "string")
-            // read encoding from file
-            engram.encoding = JSON.parse(fs.readFileSync(entry.encoding, 'utf-8'));
-          else
-            engram.encoding = entry.encoding;
-        }
-
-        await Storage.engrams.store(engram);
+        let results = await Storage.engrams.store(engram);
+        logger.verbose(results.data[engram.urn]);
       }
     }
   }

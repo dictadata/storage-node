@@ -49,38 +49,25 @@ Content-Type: application/json; charset=utf-8
     "options": {}
   },
   "terminal": {
-    "smt": ":es_foo_transfer",
+    "smt": "foo:es_foo_transfer",
     "options": {}
   }
 }
 
-### es_foo_schema_pk => mysql_foo_transfer
+### es_foo_transfer => mysql_foo_transfer
 POST http://dev.dictadata.net:8089/node/etl HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
   "origin": {
-    "smt": ":es_foo_schema_pk",
+    "smt": "foo:es_foo_transfer",
     "options": {}
   },
   "terminal": {
-    "smt": ":mysql_foo_transfer",
+    "smt": "foo:mysql_foo_transfer",
     "options": {}
-  },
-  "transforms": [
-    {
-      "transform": "mutate",
-      "map": {
-        "Foo": "Foo",
-        "Bar": "Bar",
-        "Baz": "Baz",
-        "Fobe": "Fobe",
-        "Dt Test": "Dt Test",
-        "enabled": "enabled"
-      }
-    }
-  ]
+  }
 }
 
 ### rest_weather_forecast => es_weather_forecast
@@ -209,5 +196,10 @@ Content-Type: application/json; charset=utf-8
 
 ### foo:foo_with_params
 POST http://dev.dictadata.net:8089/node/etl/foo:foo_with_params?Foo=first HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
+### foo:bar-iterate
+POST http://dev.dictadata.net:8089/node/etl/foo:bar-iterate?tag=bar&Foo=third HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8

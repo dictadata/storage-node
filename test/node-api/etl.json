@@ -12,7 +12,7 @@
   },
   "queries": [
     {
-      "name": "mssql-elasticsearch",
+      "name": "mysql-elasticsearch",
       "request": {
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
@@ -21,15 +21,44 @@
           "action": "foo_action"
         },
         "data": {
+          "type": "tract",
+          "description": "transfer foo from mysql to elasticsearch",
           "actions": [
             {
               "name": "foo_action",
               "action": "transfer",
               "origin": {
-                "smt": ":mssql_foo_transfer"
+                "smt": ":mssql_foo_schema"
               },
               "terminal": {
-                "smt": ":es_foo_transfer"
+                "smt": "foo:es_foo_transfer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "elasticsearch-mysql",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "params": {
+          "action": "foo_action"
+        },
+        "data": {
+          "type": "tract",
+          "description": "transfer back from elasticsearch to mysql",
+          "actions": [
+            {
+              "name": "foo_action",
+              "action": "transfer",
+              "origin": {
+                "smt": "foo:es_foo_transfer"
+              },
+              "terminal": {
+                "smt": "foo:mysql_foo_transfer"
               }
             }
           ]
@@ -58,6 +87,8 @@
           "action": "foo_action"
         },
         "data": {
+          "type": "tract",
+          "description": "transfer foo from file to response stream",
           "actions": [
             {
               "name": "foo_action",
