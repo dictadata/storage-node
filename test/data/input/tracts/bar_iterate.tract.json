@@ -1,5 +1,5 @@
 {
-  "domain": "foo",
+  "realm": "foo",
   "name": "bar-iterate",
   "type": "tract",
   "actions": [

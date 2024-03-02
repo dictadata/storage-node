@@ -62,7 +62,7 @@ Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-  "domain": "foo",
+  "realm": "foo",
   "name": "foo_transfer_XYZ",
   "type": "engram",
   "title": "foo_transfer encoding",

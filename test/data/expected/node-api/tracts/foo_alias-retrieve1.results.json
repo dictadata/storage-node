@@ -4,7 +4,7 @@
   "type": "list",
   "data": [
     {
-      "domain": "foo",
+      "realm": "foo",
       "name": "foo_alias",
       "type": "alias",
       "source": "foo:foo_transfer"

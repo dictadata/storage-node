@@ -4,7 +4,7 @@
   "type": "list",
   "data": [
     {
-      "domain": "foo",
+      "realm": "foo",
       "name": "foo_schema_XYZ",
       "type": "engram",
       "source": "file:./test/data/input/engrams/foo_schema_XYZ.engram.json",

@@ -1,5 +1,5 @@
 {
-  "domain": "foo",
+  "realm": "foo",
   "name": "foo_schema_XYZ",
   "type": "engram",
   "title": "foo_schema encoding",

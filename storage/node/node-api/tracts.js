@@ -64,7 +64,7 @@ async function recall(req, res) {
   logger.verbose('/tracts/recall');
 
   var urn = req.params[ "urn" ] || req.query[ "urn" ];
-  var domain = req.query[ "domain" ];
+  var realm = req.query[ "realm" ];
   var name = req.query[ "name" ];
   var resolve = req.query[ "resolve" ] || false;
 
@@ -76,7 +76,7 @@ async function recall(req, res) {
     if (urn)
       results = await Storage.tracts.recall(urn, resolve);
     else
-      results = await Storage.tracts.recall({ domain: domain, name: name }, resolve);
+      results = await Storage.tracts.recall({ realm: realm, name: name }, resolve);
 
     res.status(results.status || 200)
       .set("Cache-Control", "public, max-age=60, s-maxage=60")
@@ -99,7 +99,7 @@ async function dull(req, res) {
   logger.verbose('/tracts/dull');
 
   var urn = req.params[ "urn" ] || req.query[ "urn" ] || req.body?.urn;
-  var domain = req.query[ "domain" ] || req.body?.domain;
+  var realm = req.query[ "realm" ] || req.body?.realm;
   var name = req.query[ "name" ] || req.body?.name;
 
   if ((!urn || urn[ 0 ] === "$") && !name)
@@ -110,7 +110,7 @@ async function dull(req, res) {
     if (urn)
       results = await Storage.tracts.dull(urn);
     else
-      results = await Storage.tracts.dull({ domain: domain, name: name });
+      results = await Storage.tracts.dull({ realm: realm, name: name });
 
     res.status(results.status || 200)
       .set("Cache-Control", "no-store")

@@ -50,7 +50,7 @@ Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-  "domain": "foo",
+  "realm": "foo",
   "name": "foo_schema_XYZ",
   "type": "engram",
   "title": "foo_schema encoding",
