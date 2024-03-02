@@ -10,7 +10,7 @@ const config = require("../config.js");
 const logger = require('../../utils/logger');
 const { Storage } = require('@dictadata/storage-tracts');
 const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
-const { typeOf } = require('@dictadata/storage-junctions/utils');
+const { objCopy } = require('@dictadata/storage-junctions/utils');
 
 /**
  * storage routes
@@ -270,7 +270,7 @@ async function recall(req, res) {
 
     junction = await Storage.activate(smtname, { dataPath: config.dataPath });
 
-    var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
+    var pattern = objCopy({}, req.query, (req.body.pattern || req.body));
 
     let results = await junction.recall(pattern);
     logger.debug(JSON.stringify(results));
@@ -303,7 +303,7 @@ async function retrieve(req, res) {
 
     junction = await Storage.activate(smtname, { dataPath: config.dataPath });
 
-    var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
+    var pattern = objCopy({}, req.query, (req.body.pattern || req.body));
 
     let results = await junction.retrieve(pattern);
     logger.debug(JSON.stringify(results));
@@ -337,7 +337,7 @@ async function dull(req, res) {
 
     junction = await Storage.activate(smtname, { dataPath: config.dataPath });
 
-    var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
+    var pattern = objCopy({}, req.query, (req.body.pattern || req.body));
 
     let results = await junction.dull(pattern);
     logger.debug(JSON.stringify(results));

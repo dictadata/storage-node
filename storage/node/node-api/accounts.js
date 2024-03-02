@@ -4,6 +4,7 @@
 "use strict";
 
 const { StorageResults, StorageError } = require("@dictadata/storage-junctions/types");
+const { objCopy } = require("@dictadata/storage-junctions/utils");
 const express = require("express");
 const accounts = require("../accounts");
 const Account = require('../account');
@@ -166,7 +167,7 @@ async function retrieve(req, res) {
     if (!admin)
       throw new StorageError(401, "invalid userid/password");
 
-    var pattern = Object.assign({}, req.query, (req.body.pattern || req.body));
+    var pattern = objCopy({}, req.query, (req.body.pattern || req.body));
     if (Object.keys(pattern).length === 0)
       throw new StorageError(400, "query pattern is invalid");
 
