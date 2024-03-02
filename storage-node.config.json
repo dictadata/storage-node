@@ -15,6 +15,6 @@
   "tracts": {
     "smt": "elasticsearch|http://dev.dictadata.net:9200|node_tracts|*",
     "options": {},
-    "tracts_cache": {}
+    "tracts_cache": []
   }
 }

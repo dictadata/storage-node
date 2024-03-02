@@ -1,7 +1,6 @@
 /**
  * @dictadata/storage-node
  */
-"use strict";
 
 const server = require('./node/server');
 const app = require('./node/app');

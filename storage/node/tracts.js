@@ -37,24 +37,11 @@ exports.startup = async (config) => {
 // add tracts entries from config.tracts.tracts_cache (local cache only)
 async function addTracts(tracts_cache) {
   if (Array.isArray(tracts_cache)) {
-    for (let entry of tracts_cache) {
-
-      // if string then read tract from file
-      if (typeof entry === "string")
-        entry = JSON.parse(fs.readFileSync(entry, 'utf-8'));
-
-      await Storage.tracts.store(entry);
-    }
-  }
-  else if (typeof tracts_cache === "object") {
-    for (let [ name, entry ] of Object.entries(tracts_cache)) {
-      entry.name = name;  // overwrites the name
-
-      // if string then read tract from file
-      if (typeof tract === "string")
-        entry = JSON.parse(fs.readFileSync(entry, 'utf-8'));
-
-      await Storage.tracts.store(entry);
+    for (let filename of tracts_cache) {
+      if (typeof filename === "string") {
+        let entry = JSON.parse(fs.readFileSync(filename, 'utf-8'));
+        await Storage.tracts.store(entry);
+      }
     }
   }
 }
