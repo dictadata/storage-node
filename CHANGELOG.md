@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.82
+  - refactor: change domain to realm
+  - refactor: make tracts_cache an array of tract filenames
 - version 0.9.81
   - bug fix: etl processing _base tract action
 - version 0.9.80
@@ -122,7 +125,7 @@
   - feature: smt_id used as key for engrams directory
   - update to @dictadata/storage-junctions 2.4.0
 - version 2.3.5
-  - refactor: add domain and roles to engrams entry
+  - refactor: add realm and roles to engrams entry
   - update to @dictadata/storage-junctions 2.3.4
 - version 2.3.4
   - update: Engrams.store() validate entry's name and type
