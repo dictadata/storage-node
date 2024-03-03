@@ -1,8 +1,12 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.83
+  - feature: add Engrams and Tracts footnote field
+  - updated: @dictadata/storage-tracts@0.9.82
 - version 0.9.82
   - refactor: change domain to realm
   - refactor: make tracts_cache an array of tract filenames
+  - updated: @dictadata/storage-junctions@0.9.108
 - version 0.9.81
   - bug fix: etl processing _base tract action
 - version 0.9.80
