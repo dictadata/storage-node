@@ -7,9 +7,8 @@
       "realm": "foo",
       "name": "foo_transfer",
       "type": "tract",
-      "title": "foo MySQL to res stream",
       "description": "transfer foo from MySQL to res stream.",
-      "notes": "tract definitions foo_transfer",
+      "footnote": "tract definitions foo_transfer",
       "tags": [
         "dictadata.net",
         "etl",

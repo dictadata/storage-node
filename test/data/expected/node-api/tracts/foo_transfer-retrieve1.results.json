@@ -7,9 +7,8 @@
       "realm": "foo",
       "name": "foo_transfer_two",
       "type": "tract",
-      "title": "JSON to JSON",
       "description": "JSON to JSON transfer tract.",
-      "notes": "tract definitions: 1",
+      "footnote": "tract definitions: 1",
       "tags": [
         "dictadata.net",
         "foo",

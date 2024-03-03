@@ -8,7 +8,6 @@
       "type": "engram",
       "realm": "foo",
       "source": "file:./test/data/input/engrams/foo_schema_XYZ.engram.json",
-      "title": "foo_schema encoding",
       "description": "test input for foo_schema_XYZ encoding",
       "tags": [
         "foo"

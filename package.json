@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@dictadata/storage-junctions": "^0.9.108",
-    "@dictadata/storage-tracts": "^0.9.81",
+    "@dictadata/storage-tracts": "^0.9.82",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
