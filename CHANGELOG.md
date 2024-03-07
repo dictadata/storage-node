@@ -1,5 +1,8 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.84
+  - updated: @dictadata/storage-junctions@0.9.109
+  - updated: @dictadata/storage-tracts@0.9.83
 - version 0.9.83
   - feature: add Engrams and Tracts footnote field
   - updated: @dictadata/storage-tracts@0.9.82
