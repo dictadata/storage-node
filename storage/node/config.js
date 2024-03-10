@@ -38,7 +38,6 @@ var _config = {
 
   // storage-node API authentication
   $_accounts: "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
-  //$_accounts: "mssql|server=dev.dictadata.net;database=storage_node|node_accounts|=userid",
   //$_accounts: "mysql|host=dev.dictadata.net;database=storage_node|node_accounts|=userid",
 
   // default Passport.js authentication strategy

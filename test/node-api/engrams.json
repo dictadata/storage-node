@@ -41,13 +41,6 @@
       }
     },
     {
-      "name": "mssql_foo_schema",
-      "request": {
-        "method": "GET",
-        "url": ":mssql_foo_schema"
-      }
-    },
-    {
       "name": "mysql_foo_schema",
       "request": {
         "method": "GET",

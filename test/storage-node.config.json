@@ -50,17 +50,6 @@
         }
       },
       ":es_foo_transform": "elasticsearch|http://dev.dictadata.net:9200|foo_transform|=Foo",
-      ":mssql_foo_schema": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
-      ":mssql_foo_schema_x": "mssql|server=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
-      "foo:mssql_foo_transfer": {
-        "engram": "./data/input/engrams/foo_schema.engram.json",
-        "name": "mssql_foo_transfer",
-        "tags": [
-          "bar"
-        ],
-        "smt": "mssql|server=dev.dictadata.net;database=storage_node|foo_transfer|=Foo"
-      },
-      ":mssql_foo_transform": "mssql|server=dev.dictadata.net;database=storage_node|foo_transform|=Foo",
       ":mysql_foo_schema": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
       ":mysql_foo_schema_x": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
       "foo:mysql_foo_transfer": {
@@ -74,7 +63,6 @@
       ":mysql_foo_transform": "mysql|host=dev.dictadata.net;database=storage_node|foo_transform|=Foo",
       ":rest_weather_forecast": "rest|https://api.weather.gov/gridpoints/DVN/34;71/|forecast|*",
       ":es_weather_forecast": "elasticsearch|http://dev.dictadata.net:9200|weather_forecast|*",
-      ":mssql_weather_forecast": "mssql|server=dev.dictadata.net;database=storage_node|weather_forecast|*",
       ":mysql_weather_forecast": "mysql|host=dev.dictadata.net;database=storage_node|weather_forecast|*"
     }
   },

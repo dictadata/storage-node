@@ -140,20 +140,6 @@
       "outputCapture": "std"
     },
     {
-      "name": "node-api mssql",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
-      "args": [
-        "${workspaceFolder}/test/node-api/storage-mssql.json"
-      ],
-      "envFile": "${workspaceFolder}/.env.development",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "outputCapture": "std"
-    },
-    {
       "name": "node-api mysql",
       "type": "node",
       "request": "launch",

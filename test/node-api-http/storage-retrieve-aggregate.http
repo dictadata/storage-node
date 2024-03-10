@@ -17,25 +17,6 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### mssql_foo_schema
-POST http://dev.dictadata.net:8089/node/retrieve/:mssql_foo_schema HTTP/1.1
-Authorization: Basic user user
-Content-Type: application/json; charset=utf-8
-
-{
-  "pattern": {
-    "match": {
-      "Bar": "row",
-      "Baz": { "gte": 100, "lte": 500 }
-    },
-    "aggregate": {
-      "baz_sum": { "sum": "Baz" },
-      "dt_min": { "min": "Dt Test" },
-      "dt_max": { "max": "Dt Test" }
-    }
-  }
-}
-
 ### mysql_foo_schema
 POST http://dev.dictadata.net:8089/node/retrieve/:mysql_foo_schema HTTP/1.1
 Authorization: Basic user user

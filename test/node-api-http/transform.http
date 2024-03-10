@@ -36,44 +36,6 @@ Content-Type: application/json; charset=utf-8
   ]
 }
 
-### es_foo_schema_pk => mssql_foo_transform
-POST http://dev.dictadata.net:8089/node/etl HTTP/1.1
-Authorization: Basic user user
-Content-Type: application/json; charset=utf-8
-
-{
-  "origin": {
-    "smt": ":es_foo_schema_pk",
-    "options": {}
-  },
-  "terminal": {
-    "smt": ":mssql_foo_transform",
-    "options": {}
-  },
-  "transforms": [
-    {
-      "transform": "filter",
-      "match": {
-        "Bar": "row"
-      },
-      "drop": {
-        "Baz": { "eq": 456 }
-      }
-    },
-    {
-      "transform": "mutate",
-      "default": {
-        "Fie": "where's my fum?"
-      },
-      "map": {
-        "Foo": "Foo",
-        "Bar": "Bar",
-        "Bazzy": "Bazzy"
-      }
-    }
-  ]
-}
-
 ### es_foo_schema_pk => mysql_foo_transform
 POST http://dev.dictadata.net:8089/node/etl HTTP/1.1
 Authorization: Basic user user

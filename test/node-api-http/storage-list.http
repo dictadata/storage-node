@@ -30,25 +30,6 @@ Content-Type: application/json; charset=utf-8
 }
 
 
-### mssql_foo_schema
-POST http://dev.dictadata.net:8089/node/list/:mssql_foo_schema HTTP/1.1
-Authorization: Basic admin admin
-
-### mssql_foo_schema *
-POST http://dev.dictadata.net:8089/node/list/:mssql_foo_schema?schema=* HTTP/1.1
-Authorization: Basic admin admin
-
-### mssql_foo_schema foo*
-POST http://dev.dictadata.net:8089/node/list HTTP/1.1
-Authorization: Basic admin admin
-Content-Type: application/json; charset=utf-8
-
-{
-  "smt": ":mssql_foo_schema",
-  "schema": "foo*"
-}
-
-
 ### mysql_foo_schema
 POST http://dev.dictadata.net:8089/node/list/:mysql_foo_schema HTTP/1.1
 Authorization: Basic admin admin

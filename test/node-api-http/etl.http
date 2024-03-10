@@ -97,33 +97,6 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
-### rest_weather_forecast => mssql_weather_forecast
-POST http://dev.dictadata.net:8089/node/etl HTTP/1.1
-Authorization: Basic user user
-Content-Type: application/json; charset=utf-8
-
-{
-  "origin": {
-    "smt": ":rest_weather_forecast",
-    "options": {
-        "headers": {
-          "Accept": "application/ld+json",
-          "User-Agent": "@dictadata.net/storage-node contact:info@dictadata.net"
-        },
-        "reader": {
-          "pick": {
-            "encoding": "",
-            "data": "periods"
-          }
-        }
-    }
-  },
-  "terminal": {
-    "smt": ":mssql_weather_forecast",
-    "options": {}
-  }
-}
-
 ### rest_weather_forecast => mysql_weather_forecast
 POST http://dev.dictadata.net:8089/node/etl HTTP/1.1
 Authorization: Basic user user
