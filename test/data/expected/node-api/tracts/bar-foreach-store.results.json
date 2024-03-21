@@ -3,6 +3,6 @@
   "message": "OK",
   "type": "message",
   "data": {
-    "foo:bar-iterate": "created"
+    "foo:bar-foreach": "created"
   }
 }

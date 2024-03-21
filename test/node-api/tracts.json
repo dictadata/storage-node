@@ -189,13 +189,13 @@
       }
     },
     {
-      "name": "bar-iterate-store",
+      "name": "bar-foreach-store",
       "request": {
         "method": "PUT",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/bar_iterate.tract.json"
+        "data": "./test/data/input/tracts/bar_foreach.tract.json"
       },
       "expected": {
         "statusCode": [

@@ -105,9 +105,9 @@
       }
     },
     {
-      "name": "bar-iterate",
+      "name": "bar-foreach",
       "request": {
-        "url": "foo:bar-iterate",
+        "url": "foo:bar-foreach",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

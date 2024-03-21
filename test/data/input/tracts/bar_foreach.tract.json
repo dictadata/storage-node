@@ -1,11 +1,11 @@
 {
   "realm": "foo",
-  "name": "bar-iterate",
+  "name": "bar-foreach",
   "type": "tract",
   "actions": [
     {
-      "name": "engram-iterate",
-      "action": "iterate",
+      "name": "engram-foreach",
+      "action": "foreach",
       "origin": {
         "smt": "$:engrams",
         "pattern": {
