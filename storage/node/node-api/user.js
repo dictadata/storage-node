@@ -3,13 +3,13 @@
  */
 "use strict";
 
-const { StorageResults, StorageError } = require("@dictadata/storage-junctions/types");
 const express = require("express");
 const accounts = require("../accounts");
 const Account = require('../account');
 const authorize = require("../authorize");
 const Roles = require("../roles");
 const logger = require("../../utils/logger");
+const { StorageResults, StorageError } = require("@dictadata/storage-junctions/types");
 
 /**
  * account routes

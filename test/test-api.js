@@ -3,7 +3,7 @@
  */
 "use strict";
 
-const express = require('express');
+const express = require("express");
 const url = require('url');
 const logger = require('../storage/utils/logger');
 const authorize = require('../storage/node/authorize');

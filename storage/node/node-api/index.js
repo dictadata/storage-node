@@ -3,8 +3,7 @@
  */
 "use strict";
 
-const config = require('../config');
-const express = require('express');
+const express = require("express");
 
 const status = require('./status');
 const accounts = require('./accounts');

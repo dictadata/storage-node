@@ -3,7 +3,7 @@
 */
 "use strict";
 
-const express = require('express');
+const express = require("express");
 const authorize = require("../authorize");
 const Roles = require("../roles");
 const logger = require('../../utils/logger');

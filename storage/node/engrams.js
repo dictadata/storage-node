@@ -10,7 +10,7 @@ const { Storage } = require("@dictadata/storage-tracts");
 const { Engram } = require("@dictadata/storage-tracts/types");
 const { objCopy } = require("@dictadata/storage-junctions/utils");
 const logger = require("../utils/logger");
-const fs = require("fs");
+const fs = require('node:fs');
 
 /**
  * wait until server config is updated before initializing

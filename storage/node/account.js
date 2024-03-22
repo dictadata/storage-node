@@ -4,7 +4,7 @@
 "use strict";
 
 const Roles = require('./roles');
-const crypto = require("crypto");
+const crypto = require('node:crypto');
 
 module.exports = class Account {
 

@@ -12,8 +12,8 @@
 
 const { httpRequest } = require("@dictadata/storage-junctions/utils");
 const _compare = require("@dictadata/storage-junctions/test/lib/_compare");
-const fs = require("fs");
-const path = require("path");
+const fs = require('node:fs');
+const path = require('node:path');
 require('colors');
 
 let testFile = process.argv.length > 2 ? process.argv[ 2 ] : "";

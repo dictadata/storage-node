@@ -3,10 +3,12 @@
  */
 "use strict";
 
-const fs = require('fs');
-const path = require('path');
 const Package = require('../../package.json');
 const { typeOf } = require("@dictadata/storage-junctions/utils");
+
+const fs = require('node:fs');
+const path = require('node:path');
+
 const homedir = process.env[ "HOMEPATH" ] || require('os').homedir();
 
 var _config = {

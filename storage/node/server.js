@@ -11,9 +11,9 @@ const engrams = require('./engrams');
 const accounts = require('./accounts');
 const datapath = require('./datapath');
 const tracts = require('./tracts');
-
-const http = require('http');
 const { StorageError } = require("@dictadata/storage-junctions/types");
+
+const http = require('node:http');
 
 var httpPort = 0;
 var httpServer = null;

@@ -8,7 +8,7 @@
 
 const { Storage } = require("@dictadata/storage-tracts");
 const logger = require("../utils/logger");
-const fs = require("fs");
+const fs = require('node:fs');
 
 /**
  * wait until server config is updated before initializing

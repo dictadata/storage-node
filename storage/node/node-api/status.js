@@ -3,13 +3,13 @@
  * storage/node/node-api/status
  */
 
-const express = require('express');
+const express = require("express");
 const authorize = require('../authorize');
 const Roles = require('../roles');
 const config = require('../config');
+const logger = require('../../utils/logger');
 const { Storage } = require('@dictadata/storage-tracts');
 const { StorageResults, StorageError } = require("@dictadata/storage-junctions/types");
-const logger = require('../../utils/logger');
 
 /**
  * status routes
