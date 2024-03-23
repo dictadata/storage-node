@@ -70,21 +70,29 @@ async function etl(req, res) {
         let results = await Storage.resolve(action.origin.smt, action.origin.options);
         action.origin.smt = results
 
-        if (action.origin?.smt.locus.startsWith('stream:')) {
+        if (action.origin.smt.locus.startsWith('stream:')) {
           action.origin.options["reader"] = req;
         }
 
-        // check terminal
-        if (!action.terminal.options)
-          action.terminal.options = {};
-        results = await Storage.resolve(action.terminal.smt, action.terminal.options);
-        action.terminal.smt = results
+        if (action.terminal) {
+          if (!action.terminal.options)
+            action.terminal.options = {};
 
-        if (action.terminal?.smt.locus.startsWith('stream:')) {
-          action.terminal.options[ "writer" ] = res;
-          action.terminal.options[ "autoClose" ] = false;
-          streaming = true;
-          res.type('json');
+          results = await Storage.resolve(action.terminal.smt, action.terminal.options);
+          action.terminal.smt = results;
+
+          if (action.terminal.smt.locus.startsWith('stream:')) {
+            action.terminal.options[ "writer" ] = res;
+            action.terminal.options[ "autoClose" ] = false;
+            streaming = true;
+            res.type('json');
+          }
+
+          if (action.terminal.output?.startsWith('stream:')) {
+            action.terminal.output = res;
+            streaming = true;
+            res.type('json');
+          }
         }
 
         // perform the action
