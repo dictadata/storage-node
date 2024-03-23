@@ -1,6 +1,6 @@
 {
   "realm": "foo",
-  "name": "bar-foreach",
+  "name": "bar_foreach",
   "type": "tract",
   "actions": [
     {
@@ -23,7 +23,7 @@
       },
       "actions": [
         {
-          "name": "each_entry",
+          "name": "each-entry",
           "action": "transfer",
           "origin": {
             "smt": "=${smt}",

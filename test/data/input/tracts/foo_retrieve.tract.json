@@ -1,0 +1,49 @@
+{
+  "realm": "foo",
+  "name": "foo_retrieve",
+  "type": "tract",
+  "description": "retrieve data from a cacheable origin/source",
+  "actions": [
+    {
+      "name": "create",
+      "action": "create",
+      "origin": {
+        "smt": "foo:foo_cache"
+      },
+      "terminal": {
+        "output": "stream:*"
+      }
+    },
+    {
+      "name": "dull",
+      "action": "dull",
+      "origin": {
+        "smt": "foo:foo_cache",
+        "options": {
+          "refresh": true
+        }
+      },
+      "terminal": {
+        "output": "stream:*"
+      }
+    },
+    {
+      "name": "retrieve",
+      "action": "retrieve",
+      "origin": {
+        "cacheable": true,
+        "smt": "foo:foo_cache",
+        "pattern": {
+          "match": {
+            "Baz": {
+              "gt": "0"
+            }
+          }
+        }
+      },
+      "terminal": {
+        "smt": "json|stream:*|*|*"
+      }
+    }
+  ]
+}

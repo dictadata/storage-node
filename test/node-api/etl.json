@@ -12,6 +12,50 @@
   },
   "queries": [
     {
+      "name": "foo_cache_create",
+      "request": {
+        "url": "foo:foo_retrieve",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "params": {
+          "action": "create"
+        }
+      },
+      "expected": {
+        "statusCode": 200,
+        "compareValues": 1
+      }
+    },
+    {
+      "name": "foo_cache_dull",
+      "request": {
+        "url": "foo:foo_retrieve",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "params": {
+          "action": "dull"
+        }
+      },
+      "expected": {
+        "statusCode": 200,
+        "compareValues": 1
+      }
+    },
+    {
+      "name": "foo_cache_retrieve",
+      "request": {
+        "url": "foo:foo_retrieve",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "params": {
+          "action": "retrieve"
+        }
+      }
+    },
+    {
       "name": "mysql-elasticsearch",
       "request": {
         "headers": {
@@ -105,9 +149,9 @@
       }
     },
     {
-      "name": "bar-foreach",
+      "name": "bar_foreach",
       "request": {
-        "url": "foo:bar-foreach",
+        "url": "foo:bar_foreach",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

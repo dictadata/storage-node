@@ -189,13 +189,31 @@
       }
     },
     {
-      "name": "bar-foreach-store",
+      "name": "bar_foreach-store",
       "request": {
         "method": "PUT",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "data": "./test/data/input/tracts/bar_foreach.tract.json"
+      },
+      "expected": {
+        "statusCode": [
+          200,
+          201
+        ],
+        "status": 0,
+        "compareValues": 1
+      }
+    },
+    {
+      "name": "foo_retrieve-store",
+      "request": {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "data": "./test/data/input/tracts/foo_retrieve.tract.json"
       },
       "expected": {
         "statusCode": [
