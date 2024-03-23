@@ -132,7 +132,7 @@ async function submitQuery(request, expected, outputFile) {
       // compare output files to expected
       let expected_output = outputFile.replace("output", "expected");
       let compareValues = Object.hasOwn(expected, "compareValues") ? expected.compareValues : 2;
-      retCode = _compare(expected_output, outputFile, compareValues);
+      retCode = _compare(outputFile, expected_output, compareValues);
     }
 
     return retCode;
