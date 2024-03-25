@@ -29,4 +29,4 @@ router.use('/', tracts);
 router.use('/', log);
 router.use('/', webdata);
 
-module.exports = router;
+module.exports = exports = router;

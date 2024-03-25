@@ -14,12 +14,14 @@ const { StorageResults, StorageError } = require("@dictadata/storage-junctions/t
 /**
  * account routes
  */
-var router = module.exports = exports = express.Router();
+var router = express.Router();
 
 router.post("/login", authorize([ Roles.Public ]), login);
 router.post("/logout", authorize([ Roles.Guest, Roles.User ]), logout);
 router.post("/register", authorize([Roles.Public]), register);
 router.put("/user", authorize([ Roles.User ]), update);
+
+module.exports = exports = router;
 
 /**
  * Retrieve account record from data store.

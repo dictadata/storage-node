@@ -17,7 +17,7 @@ const { StorageResults, StorageError } = require("@dictadata/storage-junctions/t
 var router = express.Router();
 router.get('/status', authorize([ Roles.Public, Roles.Monitor ]), status);
 router.get('/status/:smt', authorize([ Roles.User, Roles.Monitor ]), smt_status);
-module.exports = router;
+module.exports = exports = router;
 
 /**
  *

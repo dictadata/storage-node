@@ -33,7 +33,7 @@ var router = express.Router();
 router.get('/export/:filename', authorize([ Roles.ETL ]), exportData);
 router.put('/import/:filename', authorize([ Roles.ETL ]), importData);
 router.post('/upload', authorize([ Roles.ETL ]), uploadFiles);
-module.exports = router;
+module.exports = exports = router;
 
 /**
  *

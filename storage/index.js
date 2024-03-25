@@ -14,7 +14,7 @@ const Account = require('./node/account');
 const startup = require('./node/startup');
 const logger = require('./utils/logger');
 
-exports = module.exports = server;
+module.exports = exports = server;
 exports.app = app;
 exports.config = config;
 

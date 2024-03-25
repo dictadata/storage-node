@@ -1,1 +1,5 @@
-module.exports = require("./storage");
+/**
+ * storage-node
+ */
+
+module.exports = exports = require("./storage");

@@ -33,4 +33,4 @@ const Roles = {
   Super: 'Super',     // god mode, authorized for all routes
 };
 
-module.exports = Roles;
+module.exports = exports = Roles;

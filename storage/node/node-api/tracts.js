@@ -29,7 +29,7 @@ router.delete('/tracts', authorize([ Roles.Coder ]), dull);
 router.delete('/tracts/:urn', authorize([ Roles.Coder ]), dull);
 
 
-module.exports = router;
+module.exports = exports = router;
 
 /**
  * store

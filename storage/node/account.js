@@ -6,7 +6,7 @@
 const Roles = require('./roles');
 const crypto = require('node:crypto');
 
-module.exports = class Account {
+module.exports = exports = class Account {
 
   /**
    * account constructor

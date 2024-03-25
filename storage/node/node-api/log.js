@@ -12,9 +12,11 @@ const { StorageResults, StorageError } = require("@dictadata/storage-junctions/t
 /**
  * account routes
  */
-var router = module.exports = exports = express.Router();
+var router = express.Router();
 
 router.post("/log", authorize([ Roles.Admin ]), logEvent);
+
+module.exports = exports = router;
 
 /**
  * Log a user event.

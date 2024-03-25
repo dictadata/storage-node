@@ -6,7 +6,7 @@
 const Roles = require('./roles');
 const logger = require('../utils/logger');
 
-module.exports = authorize;
+module.exports = exports = authorize;
 
 /**
  * authorize request by matching request and user roles

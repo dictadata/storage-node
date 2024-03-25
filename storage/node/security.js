@@ -10,7 +10,7 @@
  * @param      {Function}          next    next callback function
  * @return     {any}               void
  */
-module.exports = function (req, res, next) {
+module.exports = exports = function (req, res, next) {
   // -> Disable X-Powered-By
   app.disable('x-powered-by');
 

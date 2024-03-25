@@ -50,7 +50,7 @@ router.get('/retrieve/:smt', authorize([ Roles.Public ]), retrieve);
 router.post('/retrieve/:smt', authorize([ Roles.Public ]), retrieve);
 router.post('/retrieve', authorize([ Roles.Public ]), retrieve);
 
-module.exports = router;
+module.exports = exports = router;
 
 /**
  * list

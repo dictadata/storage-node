@@ -11,19 +11,19 @@
   - refactor: make tracts_cache an array of tract filenames
   - updated: @dictadata/storage-junctions@0.9.108
 - version 0.9.81
-  - bug fix: etl processing _base tract fiber
+  - bug fix: ETL processing base fiber
 - version 0.9.80
   - updated: @dictadata/storage-tracts@0.9.78
 - version 0.9.79
   - updated: @dictadata/storage-junctions@0.9.103
   - updated: @dictadata/storage-tracts@0.9.77
 - version 0.9.78
-  - refactor: etl req parameters
+  - refactor: ETL req parameters
   - updated: @dictadata/storage-tracts@0.9.76
 - version 0.9.77
   - refactor: return Engrams and Tracts results as array instead of object
   - refactor: new tract.fibers array format
-  - refactor: implement _base fiber for transfers
+  - refactor: implement base fiber for ETL
   - refactor: engrams and tracts, tract, fibers
   - updated: @dictadata/storage-junctions@0.9.102
   - updated: @dictadata/storage-tracts@0.9.75

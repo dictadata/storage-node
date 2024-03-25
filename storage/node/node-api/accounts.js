@@ -15,7 +15,7 @@ const { objCopy } = require("@dictadata/storage-junctions/utils");
 /**
  * accounts routes
  */
-var router = module.exports = exports = express.Router();
+var router = express.Router();
 
 // account requests
 router.get("/accounts", authorize([Roles.User]), recall);
@@ -28,6 +28,8 @@ router.delete("/accounts", authorize([Roles.User]), dull);
 router.delete("/accounts/:userid", authorize([Roles.Admin]), dull);
 
 router.post("/accounts", authorize([ Roles.Admin ]), retrieve);
+
+module.exports = exports = router;
 
 /**
  * Update account record in data store. Inserts if it doesn't exist.

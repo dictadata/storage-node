@@ -30,7 +30,7 @@ router.delete('/engrams', authorize([ Roles.Coder ]), dull);
 router.delete('/engrams/:urn', authorize([ Roles.Coder ]), dull);
 
 
-module.exports = router;
+module.exports = exports = router;
 
 /**
  * store

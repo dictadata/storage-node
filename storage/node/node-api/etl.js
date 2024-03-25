@@ -19,7 +19,7 @@ const { objCopy } = require('@dictadata/storage-junctions/utils.js');
 var router = express.Router();
 router.post('/etl', authorize([ Roles.User ]), etl);
 router.post('/etl/:urn', authorize([ Roles.User ]), etl);
-module.exports = router;
+module.exports = exports = router;
 
 /**
  *  etl handler
@@ -37,8 +37,6 @@ async function etl(req, res) {
   let resultCode = 0;
 
   let performAction = async (fiber) => {
-
-    fiber = objCopy({ action: "transfer" }, base, fiber);
 
     ///////// check fibers for stream: in smt.locus (e.g. node server REST API)
     // check origin
@@ -96,8 +94,6 @@ async function etl(req, res) {
     if (!fiberName)
       fiberName = tract.fibers[ 0 ].name; // default to 1st tract
 
-    base = tract.fibers.find((fiber) => fiber.name === "_base") || {};
-
     // perform tract actions
     res.set("Cache-Control", "public, max-age=60, s-maxage=60");
 
@@ -106,6 +102,11 @@ async function etl(req, res) {
       for (let fiber of tract.fibers) {
         if (fiber.name[ 0 ] === "_")
           continue;
+
+        if (fiber.base) {
+          let base = tract.fibers.find((f) => f.name === fiber.base);
+          fiber = objCopy({}, base, fiber);
+        }
 
         resultCode = await performAction(fiber, req, res);
         if (resultCode) {
@@ -121,7 +122,11 @@ async function etl(req, res) {
           throw { status: 400, message: "fiber name not found: " + fiberName };
         }
 
-        if (base) fiber = objCopy({}, base, fiber);
+        if (fiber.base) {
+          let base = tract.fibers.find((f) => f.name === fiber.base);
+          fiber = objCopy({}, base, fiber);
+        }
+
         resultCode = await performAction(fiber, req, res);
         fiberName = (typeof resultCode === "string") ? resultCode : "";
       }
@@ -142,3 +147,5 @@ async function etl(req, res) {
   }
 
 }
+
+exports.etl = etl;

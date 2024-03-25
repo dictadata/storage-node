@@ -115,7 +115,7 @@ var _config = {
 
 };
 
-module.exports = _config;
+module.exports = exports = _config;
 
 _config.init = (options) => {
   try {
