@@ -2,7 +2,7 @@
   "realm": "foo",
   "name": "bar_foreach",
   "type": "tract",
-  "actions": [
+  "fibers": [
     {
       "name": "engram-foreach",
       "action": "foreach",
@@ -21,7 +21,7 @@
           "results_separator": ","
         }
       },
-      "actions": [
+      "fibers": [
         {
           "name": "each-entry",
           "action": "transfer",

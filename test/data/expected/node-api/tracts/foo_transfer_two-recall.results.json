@@ -14,7 +14,7 @@
         "foo",
         "json"
       ],
-      "actions": [
+      "fibers": [
         {
           "name": "json-json",
           "action": "transfer",

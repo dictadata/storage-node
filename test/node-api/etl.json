@@ -19,7 +19,7 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "params": {
-          "action": "create"
+          "fiber": "create"
         }
       },
       "expected": {
@@ -35,7 +35,7 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "params": {
-          "action": "dull"
+          "fiber": "dull"
         }
       },
       "expected": {
@@ -44,14 +44,38 @@
       }
     },
     {
-      "name": "foo_cache_retrieve",
+      "name": "foo_retrieve_cache",
       "request": {
         "url": "foo:foo_retrieve",
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
         "params": {
-          "action": "retrieve"
+          "fiber": "retrieve_cache"
+        }
+      }
+    },
+    {
+      "name": "foo_retrieve_data",
+      "request": {
+        "url": "foo:foo_retrieve",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "params": {
+          "fiber": "retrieve_data"
+        }
+      }
+    },
+    {
+      "name": "foo_retrieve_cache_cached",
+      "request": {
+        "url": "foo:foo_retrieve_cache",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "params": {
+          "fiber": "cached"
         }
       }
     },
@@ -62,12 +86,12 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "params": {
-          "action": "foo_action"
+          "fiber": "foo_action"
         },
         "data": {
           "type": "tract",
           "description": "transfer foo from mysql to elasticsearch",
-          "actions": [
+          "fibers": [
             {
               "name": "foo_action",
               "action": "transfer",
@@ -89,12 +113,12 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "params": {
-          "action": "foo_action"
+          "fiber": "foo_action"
         },
         "data": {
           "type": "tract",
           "description": "transfer back from elasticsearch to mysql",
-          "actions": [
+          "fibers": [
             {
               "name": "foo_action",
               "action": "transfer",
@@ -128,12 +152,12 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "params": {
-          "action": "foo_action"
+          "fiber": "foo_action"
         },
         "data": {
           "type": "tract",
           "description": "transfer foo from file to response stream",
-          "actions": [
+          "fibers": [
             {
               "name": "foo_action",
               "action": "transfer",

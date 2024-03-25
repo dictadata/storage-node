@@ -15,7 +15,7 @@
         "transfer",
         "foo"
       ],
-      "actions": [
+      "fibers": [
         {
           "name": "mysql-json",
           "action": "transfer",

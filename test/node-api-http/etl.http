@@ -1,10 +1,10 @@
 ### json_foofile > es_foo_schema_pk
-POST http://dev.dictadata.net:8089/node/etl?action=foo_action HTTP/1.1
+POST http://dev.dictadata.net:8089/node/etl?fiber=foo_action HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 {
-  "actions": [
+  "fibers": [
     {
       "name": "foo_action",
       "action": "transfer",
@@ -179,16 +179,16 @@ Content-Type: application/json; charset=utf-8
 
 
 ### foo_cache_create
-POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?action=create HTTP/1.1
+POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?fiber=create HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 ### foo_cache_dull
-POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?action=dull HTTP/1.1
+POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?fiber=dull HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 
 ### foo_cache_retrieve
-POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?action=retrieve HTTP/1.1
+POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?fiber=retrieve HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8

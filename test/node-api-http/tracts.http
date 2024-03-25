@@ -70,5 +70,5 @@ Content-Type: application/json; charset=utf-8
   "tags": [
     "foo"
   ],
-  "actions": []
+  "fibers": []
 }

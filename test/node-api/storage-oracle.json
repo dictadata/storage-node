@@ -161,10 +161,10 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "params": {
-          "action": "foo_action"
+          "fiber": "foo_action"
         },
         "data": {
-          "actions": [
+          "fibers": [
             {
               "name": "foo_action",
               "action": "transfer",
