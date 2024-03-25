@@ -3,7 +3,6 @@
   "name": "foo_cache",
   "type": "engram",
   "description": "test input for foo_schema encoding",
-  "source": ":mysql_foo_schema",
   "tags": [
     "cacheable"
   ],

@@ -1,35 +1,13 @@
 {
   "realm": "foo",
-  "name": "foo_retrieve",
+  "name": "foo_retrieve_cache",
   "type": "tract",
   "description": "retrieve data from a cacheable origin/source",
   "fibers": [
     {
-      "name": "create",
-      "action": "create",
-      "origin": {
-        "smt": "foo:foo_cache"
-      },
-      "terminal": {
-        "output": "stream:*"
-      }
-    },
-    {
-      "name": "dull",
-      "action": "dull",
-      "origin": {
-        "smt": "foo:foo_cache",
-        "options": {
-          "refresh": true
-        }
-      },
-      "terminal": {
-        "output": "stream:*"
-      }
-    },
-    {
-      "name": "retrieve_cache",
+      "name": "cached",
       "action": "retrieve",
+      "source_fiber": "foo_source",
       "origin": {
         "smt": "foo:foo_cache",
         "pattern": {
@@ -45,8 +23,8 @@
       }
     },
     {
-      "name": "retrieve_data",
-      "action": "retrieve",
+      "name": "foo_source",
+      "action": "tee",
       "origin": {
         "smt": ":es_foo_schema",
         "pattern": {
@@ -57,9 +35,14 @@
           }
         }
       },
-      "terminal": {
-        "smt": "json|stream:*|*|*"
-      }
+      "terminals": [
+        {
+          "smt": "foo:foo_cache"
+        },
+        {
+          "smt": "json|stream:*|*|*"
+        }
+      ]
     }
   ]
 }

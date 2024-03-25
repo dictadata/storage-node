@@ -28,14 +28,60 @@ async function etl(req, res) {
   logger.verbose('/etl');
   //logger.verbose(JSON.stringify(req.body));
 
-  try {
-    let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || req.body.urn || "";
-    let actionName = req.query[ 'action' ] || req.body.action || "";
-    let params = Object.assign({}, req.query, req.body.params);
-    let tract;
-    let streaming = false;
-    let resultCode = 0;
+  let urn = req.params[ 'urn' ] || req.query[ 'urn' ] || req.body.urn || "";
+  let fiberName = req.query[ 'fiber' ] || req.body.fiber || "";
+  let params = Object.assign({}, req.query, req.body.params);
+  let tract;
+  let base;
+  let streaming = false;
+  let resultCode = 0;
 
+  let performAction = async (fiber) => {
+
+    fiber = objCopy({ action: "transfer" }, base, fiber);
+
+    ///////// check fibers for stream: in smt.locus (e.g. node server REST API)
+    // check origin
+    if (!fiber.origin.options)
+      fiber.origin.options = {};
+    let results = await Storage.resolve(fiber.origin.smt, fiber.origin.options);
+    fiber.origin.smt = results
+
+    if (fiber.origin.smt.locus.startsWith('stream:')) {
+      fiber.origin.options[ "reader" ] = req;
+    }
+
+    let terminals = fiber.terminals || [ fiber.terminal ];
+    for (let terminal of terminals) {
+      if (terminal) {
+        if (!terminal.options)
+          terminal.options = {};
+
+        results = await Storage.resolve(terminal.smt, terminal.options);
+        terminal.smt = results;
+
+        if (terminal.smt.locus.startsWith('stream:')) {
+          terminal.options[ "writer" ] = res;
+          terminal.options[ "autoClose" ] = false;
+          streaming = true;
+          res.type('json');
+        }
+
+        if (terminal.output?.startsWith('stream:')) {
+          terminal.output = res;
+          streaming = true;
+          res.type('json');
+        }
+      }
+    }
+
+    // perform the action
+    resultCode = await Actions.perform(fiber, params);
+
+    return resultCode;
+  }
+
+  try {
     // if URN then recall from Tracts storage
     if (urn) {
       let results = await Storage.tracts.recall(urn, true);
@@ -47,60 +93,37 @@ async function etl(req, res) {
       tract = req.body.tract || req.body;
     }
 
-    if (!actionName)
-      actionName = tract.actions[ 0 ].name; // default to 1st tract
+    if (!fiberName)
+      fiberName = tract.fibers[ 0 ].name; // default to 1st tract
 
-    let base = tract.actions.find((action) => action.name === "_base") || {};
+    base = tract.fibers.find((fiber) => fiber.name === "_base") || {};
 
     // perform tract actions
     res.set("Cache-Control", "public, max-age=60, s-maxage=60");
 
-    for (let action of tract.actions) {
-      if (action.name[ 0 ] === "_")
-        continue;
+    if (fiberName === "all" || fiberName === "*") {
 
-      if (action.name === actionName || actionName === "all" || actionName === "*") {
+      for (let fiber of tract.fibers) {
+        if (fiber.name[ 0 ] === "_")
+          continue;
 
-        action = objCopy({ action: "transfer" }, base, action);
-
-        ///////// check actions for stream: in smt.locus (e.g. node server REST API)
-        // check origin
-        if (!action.origin.options)
-          action.origin.options = {};
-        let results = await Storage.resolve(action.origin.smt, action.origin.options);
-        action.origin.smt = results
-
-        if (action.origin.smt.locus.startsWith('stream:')) {
-          action.origin.options["reader"] = req;
-        }
-
-        if (action.terminal) {
-          if (!action.terminal.options)
-            action.terminal.options = {};
-
-          results = await Storage.resolve(action.terminal.smt, action.terminal.options);
-          action.terminal.smt = results;
-
-          if (action.terminal.smt.locus.startsWith('stream:')) {
-            action.terminal.options[ "writer" ] = res;
-            action.terminal.options[ "autoClose" ] = false;
-            streaming = true;
-            res.type('json');
-          }
-
-          if (action.terminal.output?.startsWith('stream:')) {
-            action.terminal.output = res;
-            streaming = true;
-            res.type('json');
-          }
-        }
-
-        // perform the action
-        resultCode = await Actions.perform(action, params);
-
+        resultCode = await performAction(fiber, req, res);
         if (resultCode) {
           break;
         }
+      }
+    }
+    else {
+      // fibers can be chained through the resultCode
+      while (fiberName) {
+        let fiber = tract.fibers.find((fiber) => fiber.name === fiberName);
+        if (!fiber) {
+          throw { status: 400, message: "fiber name not found: " + fiberName };
+        }
+
+        if (base) fiber = objCopy({}, base, fiber);
+        resultCode = await performAction(fiber, req, res);
+        fiberName = (typeof resultCode === "string") ? resultCode : "";
       }
     }
 
