@@ -1,5 +1,13 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.85
+  - feature: retrieve action uses fiber.source_fiber for chaining fibers on 404 errors
+  - feature: implement terminal.output "stream:*"
+  - refactor: rename tract.actions to tract.fibers
+  - refactor: rename iterate to foreach
+  - refactor: moved to mssql-junction plugin project
+  - updated: @dictadata/storage-junctions@0.9.110
+  - updated: @dictadata/storage-tracts@0.9.84
 - version 0.9.84
   - updated: @dictadata/storage-junctions@0.9.109
   - updated: @dictadata/storage-tracts@0.9.83
