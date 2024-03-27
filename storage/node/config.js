@@ -6,7 +6,7 @@
 const Package = require('../../package.json');
 const { typeOf } = require("@dictadata/storage-junctions/utils");
 
-const fs = require('node:fs');
+const { readFile } = require('node:fs/promises');
 const path = require('node:path');
 
 const homedir = process.env[ "HOMEPATH" ] || require('os').homedir();
@@ -117,19 +117,19 @@ var _config = {
 
 module.exports = exports = _config;
 
-_config.init = (options) => {
+_config.init = async (options) => {
   try {
     // read config file from working directory
     let config_file = "storage-node.config.json";
     console.log("reading " + config_file);
-    let config_obj = JSON.parse(fs.readFileSync(config_file, 'utf-8'));
+    let config_obj = JSON.parse(await readFile(config_file, 'utf-8'));
     _merge(_config, config_obj);
 
     // read config file from user directory
     try {
       let user_file = homedir + "/.dictadata/storage-node.config.json";
       console.log("reading " + user_file);
-      let user_config = JSON.parse(fs.readFileSync(user_file, 'utf-8'));
+      let user_config = JSON.parse(await readFile(user_file, 'utf-8'));
       _merge(_config, user_config);
     }
     catch (error) {

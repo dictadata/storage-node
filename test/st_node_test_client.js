@@ -12,6 +12,7 @@
 
 const { httpRequest } = require("@dictadata/storage-junctions/utils");
 const _compare = require("@dictadata/storage-junctions/test/lib/_compare");
+const { readFile, writeFile } = require('node:fs/promises');
 const fs = require('node:fs');
 const path = require('node:path');
 require('colors');
@@ -32,7 +33,7 @@ var request_defaults = {
 (async () => {
   console.log((testFile + "  " + testName).blue);
 
-  let tf = fs.readFileSync(testFile, "utf-8");
+  let tf = await readFile(testFile, "utf-8");
   let testQueries = JSON.parse(tf);
 
   let outputDir = path.dirname(testFile).replace("/test/", "/test/data/output/") + testName + "/" + testQueries.name + "/";
@@ -47,7 +48,7 @@ var request_defaults = {
       let outputFile = outputDir + query.name + ".results";
 
       if (typeof request.data === "string")
-        request.data = JSON.parse(fs.readFileSync(request.data, "utf-8"));
+        request.data = JSON.parse(await readFile(request.data, "utf-8"));
 
       exitCode = await submitQuery(request, expected, outputFile);
       if (exitCode !== 0)
@@ -115,16 +116,16 @@ async function submitQuery(request, expected, outputFile) {
 
     console.log("output: ", outputFile);
     if ([200, 201, 409].includes(response.statusCode)) {
-      fs.writeFileSync(outputFile, isJSON ? JSON.stringify(results, null, 2) : results, "utf8");
+      await writeFile(outputFile, isJSON ? JSON.stringify(results, null, 2) : results, "utf8");
     }
     else {
       let fd = fs.openSync(outputFile, 'w');
-      fs.writeSync(fd, "HTTP/" + response.httpVersion + " " + response.statusCode + " " + response.statusMessage + "\n");
+      await fs.writeSync(fd, "HTTP/" + response.httpVersion + " " + response.statusCode + " " + response.statusMessage + "\n");
       for (let [ name, value ] of Object.entries(response.headers))
-        fs.writeSync(fd, name + ": " + value + "\n");
+        await fs.writeSync(fd, name + ": " + value + "\n");
       if (response.data) {
-        fs.writeSync(fd, "\n" + response.data);
-        fs.closeSync(fd);
+        await fs.writeSync(fd, "\n" + response.data);
+        await fs.closeSync(fd);
       }
     }
 

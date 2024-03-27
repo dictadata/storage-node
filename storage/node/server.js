@@ -31,7 +31,7 @@ startup.add(app.startup);
  * @param {*} options
  */
 exports.start = async function (options) {
-  config.init(options);
+  await config.init(options);
 
   logger.configNodeLogger(config);
   logger.info("storage-node startup ...");

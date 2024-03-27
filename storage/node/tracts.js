@@ -8,7 +8,7 @@
 
 const { Storage } = require("@dictadata/storage-tracts");
 const logger = require("../utils/logger");
-const fs = require('node:fs');
+const { readFile } = require('node:fs/promises');
 
 /**
  * wait until server config is updated before initializing
@@ -39,7 +39,7 @@ async function addTracts(tracts_cache) {
   if (Array.isArray(tracts_cache)) {
     for (let filename of tracts_cache) {
       if (typeof filename === "string") {
-        let entry = JSON.parse(fs.readFileSync(filename, 'utf-8'));
+        let entry = JSON.parse(await readFile(filename, 'utf-8'));
         await Storage.tracts.store(entry);
       }
     }

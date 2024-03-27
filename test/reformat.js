@@ -5,7 +5,7 @@
  */
 "use strict";
 
-const fs = require('node:fs');
+const { readFile, writeFile } = require('node:fs/promises');
 const path = require('node:path');
 const { typeOf } = require('@dictadata/storage-junctions/utils');
 
@@ -15,7 +15,7 @@ const { typeOf } = require('@dictadata/storage-junctions/utils');
   let resultsFile = process.argv[ 2 ];
   console.log(resultsFile);
 
-  let resultsText = fs.readFileSync(resultsFile, 'utf-8');
+  let resultsText = await readFile(resultsFile, 'utf-8');
   let results = JSON.parse(resultsText);
 
   if (typeOf(results) === "array") {
@@ -39,7 +39,7 @@ const { typeOf } = require('@dictadata/storage-junctions/utils');
   console.log(fn);
 */
 
-  fs.writeFileSync(resultsFile, JSON.stringify(results, null, 2), { encoding: 'utf-8', flag: 'w' });
+  await writeFile(resultsFile, JSON.stringify(results, null, 2), { encoding: 'utf-8', flag: 'w' });
 
   return retCode;
 })();

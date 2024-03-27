@@ -10,7 +10,7 @@ const { Storage } = require("@dictadata/storage-tracts");
 const { Engram } = require("@dictadata/storage-tracts/types");
 const { objCopy } = require("@dictadata/storage-junctions/utils");
 const logger = require("../utils/logger");
-const fs = require('node:fs');
+const { readFile } = require('node:fs/promises');
 
 /**
  * wait until server config is updated before initializing
@@ -53,7 +53,7 @@ async function addEngrams(engrams_cache) {
       else {
         // assume entry is an object
         if (entry.engram) {
-          let encoding = JSON.parse(fs.readFileSync(entry.engram, 'utf-8'));
+          let encoding = JSON.parse(await readFile(entry.engram, 'utf-8'));
           delete entry.engram;
           entry = objCopy(encoding, entry);
         }

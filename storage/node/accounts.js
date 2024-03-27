@@ -13,7 +13,7 @@ const logger = require("../utils/logger");
 const { Storage } = require('@dictadata/storage-tracts');
 const { StorageError } = require('@dictadata/storage-junctions/types');
 
-const fs = require('node:fs/promises');
+const { readFile } = require('node:fs/promises');
 const path = require('node:path');
 
 var accountsEngram;
@@ -31,7 +31,7 @@ exports.startup = async (config) => {
     // add any app/api roles
     Object.assign(Roles, config.roles);
 
-    accountsEngram = JSON.parse(await fs.readFile(path.join(__dirname, 'accounts.engram.json')));
+    accountsEngram = JSON.parse(await readFile(path.join(__dirname, 'accounts.engram.json')));
 
     junction = await Storage.activate(config.$_accounts, { encoding: accountsEngram });
     // attempt to create accounts schema
