@@ -44,14 +44,14 @@
     "eslint-plugin-promise": "^6.1.1"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "file:../storage-junctions",
-    "@dictadata/storage-tracts": "file:../storage-tracts",
+    "@dictadata/storage-junctions": "^0.9.110",
+    "@dictadata/storage-tracts": "^0.9.84",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "express": "^4.18.3",
+    "express": "^4.19.2",
     "express-session": "^1.18.0",
     "formidable": "^3.5.1",
     "memorystore": "^1.6.6",
