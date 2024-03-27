@@ -32,7 +32,6 @@ async function etl(req, res) {
   let fiberName = req.query[ 'fiber' ] || req.body.fiber || "";
   let params = Object.assign({}, req.query, req.body.params);
   let tract;
-  let base;
   let streaming = false;
   let resultCode = 0;
 
@@ -105,7 +104,8 @@ async function etl(req, res) {
 
         if (fiber.base) {
           let base = tract.fibers.find((f) => f.name === fiber.base);
-          fiber = objCopy({}, base, fiber);
+          if (base)
+            fiber = objCopy({}, base, fiber);
         }
 
         resultCode = await performAction(fiber, req, res);
@@ -124,7 +124,8 @@ async function etl(req, res) {
 
         if (fiber.base) {
           let base = tract.fibers.find((f) => f.name === fiber.base);
-          fiber = objCopy({}, base, fiber);
+          if (base)
+            fiber = objCopy({}, base, fiber);
         }
 
         resultCode = await performAction(fiber, req, res);
