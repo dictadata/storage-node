@@ -1,6 +1,6 @@
 # CHANGELOG for @dictadata/storage-node
 
-- version 0.9.86
+- version 0.9.87
   - refactor: StorageError constructor() and toJSON()
   - updated: @dictadata/storage-junctions@0.9.111
   - updated: @dictadata/storage-tracts@0.9.85
