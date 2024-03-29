@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.86
+  - refactor: StorageError constructor() and toJSON()
+  - updated: @dictadata/storage-junctions@0.9.111
+  - updated: @dictadata/storage-tracts@0.9.85
 - version 0.9.85
   - feature: retrieve action uses fiber.source_fiber for chaining fibers on 404 errors
   - feature: implement terminal.output "stream:*"

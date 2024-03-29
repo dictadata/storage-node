@@ -142,8 +142,8 @@ async function etl(req, res) {
     }
   }
   catch (err) {
-    logger.error(err);
     let response = new StorageError(err.status, err.message);
+    logger.error(response);
     res.status(err.status || 500).jsonp(response);
   }
 
