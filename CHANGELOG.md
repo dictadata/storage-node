@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.88
+  - updated: update tests for ETL schema action
+  - updated: @dictadata/storage-junctions@0.9.112
+  - updated: @dictadata/storage-tracts@0.9.86
 - version 0.9.87
   - refactor: StorageError constructor() and toJSON()
   - updated: @dictadata/storage-junctions@0.9.111
