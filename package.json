@@ -39,13 +39,11 @@
   },
   "devDependencies": {
     "colors": "^1.4.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1"
+    "eslint": "^9.1.0"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^0.9.111",
-    "@dictadata/storage-tracts": "^0.9.85",
+    "@dictadata/storage-junctions": "file:../storage-junctions",
+    "@dictadata/storage-tracts": "file:../storage-tracts",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
