@@ -6,7 +6,8 @@
   "fibers": [
     {
       "name": "create",
-      "action": "create",
+      "action": "schema",
+      "method": "create",
       "origin": {
         "smt": "foo:foo_cache"
       },
