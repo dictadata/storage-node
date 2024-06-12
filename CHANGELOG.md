@@ -1,5 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.89
+  - refactor: use utils from @dictadata/lib
+  - updated: @dictadata/storage-junctions@0.9.114
+  - updated: @dictadata/storage-tracts@0.9.88
 - version 0.9.88
   - updated: update tests for ETL schema action
   - updated: @dictadata/storage-junctions@0.9.112
