@@ -15,7 +15,7 @@ const formidable = require("formidable");
 const authorize = require("../authorize");
 const Roles = require("../roles");
 const config = require('../config');
-const logger = require('../../utils/logger');
+const { logger } = require('@dictadata/lib')
 
 const fs = require('node:fs');
 const stream = require('node:stream/promises');

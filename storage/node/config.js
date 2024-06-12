@@ -4,7 +4,7 @@
 "use strict";
 
 const Package = require('../../package.json');
-const { typeOf } = require("@dictadata/storage-junctions/utils");
+const { typeOf } = require("@dictadata/lib");
 
 const { readFile } = require('node:fs/promises');
 const path = require('node:path');
@@ -24,6 +24,7 @@ var _config = {
   logPath: path.join('./log/storage-node'),
   logPrefix: 'node-api',
   logLevel: process.env.LOG_LEVEL || 'info',
+  logNoConsole: true,
 
   // path to web root with index.html, robots.txt, ...
   publicPath: path.join(__dirname, '../../public'),

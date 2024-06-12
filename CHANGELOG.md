@@ -177,7 +177,7 @@
   - testing: minor updates
 - version 2.2.4
   - update to @dictadata/storage-junctions 2.2.3
-  - testing: update st_node_test_client to compare query results to expected values
+  - testing: update tr_http_queries to compare query results to expected values
 - version 2.2.3
   - add User role to engrams.retrieve API
   - export config module from library
@@ -238,7 +238,7 @@
   - improvements to REST junction and httpRequest for querystring and web form parameters
   - implement junction capabilities
 - version 1.7.3
-  - testing with st_launcher and st_node_test_client
+  - testing with tr_launcher and tr_http_queries
   - update dependencies npm
 - version 1.7.2
   - republish npm package

@@ -7,7 +7,7 @@
 
 const { readFile, writeFile } = require('node:fs/promises');
 const path = require('node:path');
-const { typeOf } = require('@dictadata/storage-junctions/utils');
+const { typeOf } = require('@dictadata/lib');
 
 (async () => {
   let retCode = 0;

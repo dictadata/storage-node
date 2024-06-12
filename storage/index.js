@@ -12,7 +12,6 @@ const Roles = require('./node/roles');
 const Account = require('./node/account');
 
 const startup = require('./node/startup');
-const logger = require('./utils/logger');
 
 module.exports = exports = server;
 exports.app = app;
@@ -24,4 +23,3 @@ exports.Roles = Roles;
 exports.Account = Account;
 
 exports.startup = startup;
-exports.logger = logger;  // same Winston instance as storage-junctions' logger

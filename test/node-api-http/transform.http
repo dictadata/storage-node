@@ -62,13 +62,13 @@ Content-Type: application/json; charset=utf-8
     },
     {
       "transform": "mutate",
-      "override": {
-        "Fie": "where's my fum?"
-      },
       "map": {
         "Foo": "Foo",
         "Bar": "Bar",
         "Bazzy": "Bazzy"
+      },
+      "assign": {
+        "Fie": "where's my fum?"
       }
     }
   ]
@@ -100,13 +100,13 @@ Content-Type: application/json; charset=utf-8
     },
     {
       "transform": "mutate",
-      "override": {
-        "Fie": "where's my fum?"
-      },
       "map": {
         "Foo": "Foo",
         "Bar": "Bar",
         "Bazzy": "Bazzy"
+      },
+      "assign": {
+        "Fie": "where's my fum?"
       }
     }
   ]

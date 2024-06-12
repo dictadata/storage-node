@@ -53,7 +53,7 @@
       "name": "node-api public",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/public.json"
       ],
@@ -67,7 +67,7 @@
       "name": "node-api status",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/status.json"
       ],
@@ -81,7 +81,7 @@
       "name": "node-api engrams",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/engrams.json"
       ],
@@ -95,7 +95,7 @@
       "name": "node-api accounts",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/accounts.json"
       ],
@@ -112,7 +112,7 @@
       "name": "node-api user",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/user.json"
       ],
@@ -129,7 +129,7 @@
       "name": "node-api elasticsearch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/storage-elasticsearch.json"
       ],
@@ -143,7 +143,7 @@
       "name": "node-api mysql",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/storage-mysql.json"
       ],
@@ -157,7 +157,7 @@
       "name": "node-api tracts",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/tracts.json"
       ],
@@ -171,7 +171,7 @@
       "name": "node-api etl",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/etl.json"
       ],
@@ -185,7 +185,7 @@
       "name": "node-api transform",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/test/st_node_test_client.js",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
       "args": [
         "${workspaceFolder}/test/node-api/transform.json"
       ],

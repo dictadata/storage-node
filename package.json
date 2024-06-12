@@ -42,8 +42,9 @@
     "eslint": "^9.1.0"
   },
   "dependencies": {
-    "@dictadata/storage-junctions": "^0.9.112",
-    "@dictadata/storage-tracts": "^0.9.86",
+    "@dictadata/lib": "github:dictadata/lib#semver:1.0",
+    "@dictadata/storage-junctions": "^0.9.114",
+    "@dictadata/storage-tracts": "^0.9.88",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
@@ -58,8 +59,6 @@
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "rotating-file-stream": "^3.2.1",
-    "serve-favicon": "^2.5.0",
-    "winston": "^3.11.0",
-    "winston-daily-rotate-file": "^5.0.0"
+    "serve-favicon": "^2.5.0"
   }
 }

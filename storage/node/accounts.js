@@ -9,7 +9,7 @@
 const Account = require('./account');
 const Roles = require('./roles');
 const config = require('./config');
-const logger = require("../utils/logger");
+const { logger } = require('@dictadata/lib')
 const { Storage } = require('@dictadata/storage-tracts');
 const { StorageError } = require('@dictadata/storage-junctions/types');
 

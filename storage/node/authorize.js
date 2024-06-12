@@ -4,7 +4,7 @@
 'use strict';
 
 const Roles = require('./roles');
-const logger = require('../utils/logger');
+const { logger } = require('@dictadata/lib')
 
 module.exports = exports = authorize;
 

@@ -152,6 +152,11 @@ Content-Type: application/json; charset=utf-8
   }
 }
 
+### foo_cache_create
+POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?fiber=create HTTP/1.1
+Authorization: Basic user user
+Content-Type: application/json; charset=utf-8
+
 ### foo:foo_transfer
 POST http://dev.dictadata.net:8089/node/etl/foo:foo_transfer HTTP/1.1
 Authorization: Basic user user
@@ -174,12 +179,6 @@ Content-Type: application/json; charset=utf-8
 
 ### foo:bar_foreach
 POST http://dev.dictadata.net:8089/node/etl/foo:bar_foreach?tag=bar&Foo=third HTTP/1.1
-Authorization: Basic user user
-Content-Type: application/json; charset=utf-8
-
-
-### foo_cache_create
-POST http://dev.dictadata.net:8089/node/etl/foo:foo_retrieve?fiber=create HTTP/1.1
 Authorization: Basic user user
 Content-Type: application/json; charset=utf-8
 

@@ -7,7 +7,7 @@
 "use strict";
 
 const { Storage } = require("@dictadata/storage-tracts");
-const logger = require("../utils/logger");
+const { logger } = require('@dictadata/lib')
 const { readFile } = require('node:fs/promises');
 
 /**

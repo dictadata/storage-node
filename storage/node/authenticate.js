@@ -8,7 +8,7 @@
 
 const accounts = require('./accounts');
 const Account = require('./account');
-const logger = require("../utils/logger");
+const { logger } = require('@dictadata/lib')
 
 /**
  * Passport callback for handling LocalStrategy requests

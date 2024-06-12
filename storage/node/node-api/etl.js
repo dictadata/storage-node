@@ -8,10 +8,10 @@
 const express = require("express");
 const authorize = require("../authorize.js");
 const Roles = require("../roles.js");
-const logger = require('../../utils/logger.js');
+const { logger } = require('@dictadata/lib')
 const { Storage, Actions } = require('@dictadata/storage-tracts');
 const { StorageResults, StorageError } = require('@dictadata/storage-junctions/types');
-const { objCopy } = require('@dictadata/storage-junctions/utils.js');
+const { objCopy } = require('@dictadata/lib');
 
 /**
  * etl routes

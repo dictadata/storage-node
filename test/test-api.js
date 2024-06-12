@@ -5,7 +5,7 @@
 
 const express = require("express");
 const url = require('url');
-const logger = require('../storage/utils/logger');
+const { logger } = require('@dictadata/lib')
 const authorize = require('../storage/node/authorize');
 const Roles = require('../storage/node/roles');
 

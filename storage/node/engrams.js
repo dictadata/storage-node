@@ -8,8 +8,8 @@
 
 const { Storage } = require("@dictadata/storage-tracts");
 const { Engram } = require("@dictadata/storage-tracts/types");
-const { objCopy } = require("@dictadata/storage-junctions/utils");
-const logger = require("../utils/logger");
+const { objCopy } = require("@dictadata/lib");
+const { logger } = require('@dictadata/lib')
 const { readFile } = require('node:fs/promises');
 
 /**

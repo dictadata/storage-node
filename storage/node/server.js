@@ -3,9 +3,9 @@
  */
 "use strict";
 
+const { logger } = require('@dictadata/lib');
 const app = require('./app');
 const config = require('./config');
-const logger = require('../utils/logger');
 const startup = require('./startup');
 const engrams = require('./engrams');
 const accounts = require('./accounts');
@@ -33,7 +33,7 @@ startup.add(app.startup);
 exports.start = async function (options) {
   await config.init(options);
 
-  logger.configNodeLogger(config);
+  logger.configDaily(config);
   logger.info("storage-node startup ...");
   logger.info("realm: " + config.realm);
   logger.verbose("logPath: " + config.logPath);
