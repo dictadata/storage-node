@@ -17,7 +17,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/foo_transfer.tract.json"
+        "data": "./test/_data/input/tracts/foo_transfer.tract.json"
       },
       "expected": {
         "statusCode": [
@@ -46,7 +46,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/foo_transfer_two.tract.json"
+        "data": "./test/_data/input/tracts/foo_transfer_two.tract.json"
       },
       "expected": {
         "statusCode": [
@@ -64,7 +64,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/foo_with_params.tract.json"
+        "data": "./test/_data/input/tracts/foo_with_params.tract.json"
       },
       "expected": {
         "statusCode": [
@@ -195,7 +195,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/bar_foreach.tract.json"
+        "data": "./test/_data/input/tracts/bar_foreach.tract.json"
       },
       "expected": {
         "statusCode": [
@@ -213,7 +213,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/foo_retrieve.tract.json"
+        "data": "./test/_data/input/tracts/foo_retrieve.tract.json"
       },
       "expected": {
         "statusCode": [
@@ -231,7 +231,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/tracts/foo_retrieve_cache.tract.json"
+        "data": "./test/_data/input/tracts/foo_retrieve_cache.tract.json"
       },
       "expected": {
         "statusCode": [

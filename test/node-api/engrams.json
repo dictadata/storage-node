@@ -20,7 +20,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/engrams/foo_schema.engram.json"
+        "data": "./test/_data/input/engrams/foo_schema.engram.json"
       },
       "expected": {
         "compareValues": 1
@@ -54,7 +54,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/engrams/foo_schema_XYZ.engram.json"
+        "data": "./test/_data/input/engrams/foo_schema_XYZ.engram.json"
       },
       "expected": {
         "compareValues": 1
@@ -182,7 +182,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/engrams/foo_cache.engram.json"
+        "data": "./test/_data/input/engrams/foo_cache.engram.json"
       },
       "expected": {
         "statusCode": [

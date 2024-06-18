@@ -24,7 +24,7 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "data": "./test/data/input/engrams/foo_schema.engram.json"
+        "data": "./test/_data/input/engrams/foo_schema.engram.json"
       },
       "expected": {
         "statusCode": [

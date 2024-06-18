@@ -1,0 +1,62 @@
+{
+  "model": "*",
+  "locus": "*",
+  "schema": "foo_schema_t",
+  "key": "*",
+  "fields": [
+    {
+      "name": "fie",
+      "type": "text",
+      "size": 64,
+      "default": null,
+      "nullable": false,
+      "isKey": false,
+      "label": "Fie"
+    },
+    {
+      "name": "foo",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "nullable": false,
+      "isKey": true,
+      "label": "Foo"
+    },
+    {
+      "name": "bar",
+      "type": "text",
+      "size": 256,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "Bar"
+    },
+    {
+      "name": "baz",
+      "type": "integer",
+      "size": 0,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "Baz"
+    },
+    {
+      "name": "dt_test",
+      "type": "date",
+      "size": 0,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "Dt Test"
+    },
+    {
+      "name": "state",
+      "type": "keyword",
+      "size": 64,
+      "default": null,
+      "nullable": true,
+      "isKey": false,
+      "label": "State"
+    }
+  ]
+}

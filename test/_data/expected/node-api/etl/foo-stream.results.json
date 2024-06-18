@@ -3,8 +3,8 @@
     "Foo": "first",
     "Bar": "row",
     "Baz": 123,
-    "Fobe": 1.0,
-    "Dt Test": "2018-10-07",
+    "Fobe": 1,
+    "Dt Test": "2018-10-07T00:00:00.000Z",
     "enabled": true
   },
   {
@@ -12,7 +12,7 @@
     "Bar": "row",
     "Baz": 456,
     "Fobe": 2.1,
-    "Dt Test": "10/07/2018",
+    "Dt Test": "2018-10-07T05:00:00.000Z",
     "enabled": false
   },
   {
@@ -20,7 +20,7 @@
     "Bar": "row your boat",
     "Baz": 789,
     "Fobe": 3,
-    "Dt Test": "10-18-18",
+    "Dt Test": "2018-10-18T05:00:00.000Z",
     "enabled": true
   },
   {
@@ -36,7 +36,7 @@
     "Bar": "downstream",
     "Baz": -12,
     "Fobe": 19,
-    "Dt Test": "10/18/18",
+    "Dt Test": "2018-10-18T05:00:00.000Z",
     "enabled": true
   },
   {
@@ -50,9 +50,9 @@
   {
     "Foo": "seventh",
     "Bar": "big data*",
-    "Baz": "1,000,000",
-    "Fobe": "4,000.3",
-    "Dt Test": "2018-10-10T14:13:30.000-05:00",
+    "Baz": 1000000,
+    "Fobe": 4000.3,
+    "Dt Test": "2018-10-10T19:13:30.000Z",
     "enabled": false
   },
   {
@@ -60,7 +60,7 @@
     "Bar": "(bigger data)",
     "Baz": 12,
     "Fobe": 3.44,
-    "Dt Test": "10-OCT-18",
+    "Dt Test": "2018-10-10T05:00:00.000Z",
     "enabled": false
   }
 ]

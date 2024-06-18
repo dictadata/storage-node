@@ -17,8 +17,8 @@
     },
     "engrams_cache": {
       ":accounts": "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
-      ":csv_foofile": "csv|./data/input/|foofile.csv|*",
-      ":json_foofile": "json|./data/input/|foofile.json|*",
+      ":csv_foofile": "csv|./_data/input/|foofile.csv|*",
+      ":json_foofile": "json|./_data/input/|foofile.json|*",
       ":es_foo_schema": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|!Foo",
       ":es_foo_schema_id": {
         "smt": "elasticsearch|http://dev.dictadata.net:9200|foo_schema|ten",
@@ -39,7 +39,7 @@
         }
       },
       "foo:es_foo_transfer": {
-        "engram": "./data/input/engrams/foo_schema.engram.json",
+        "engram": "./_data/input/engrams/foo_schema.engram.json",
         "name": "es_foo_transfer",
         "tags": [
           "bar"
@@ -53,7 +53,7 @@
       ":mysql_foo_schema": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema|=Foo",
       ":mysql_foo_schema_x": "mysql|host=dev.dictadata.net;database=storage_node|foo_schema_x|=Foo",
       "foo:mysql_foo_transfer": {
-        "engram": "./data/input/engrams/foo_schema.engram.json",
+        "engram": "./_data/input/engrams/foo_schema.engram.json",
         "name": "mysql_foo_transfer",
         "tags": [
           "bar"
