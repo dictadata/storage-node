@@ -27,7 +27,7 @@
     },
     {
       "name": "foo_source",
-      "action": "tee",
+      "action": "transfer",
       "origin": {
         "smt": ":es_foo_schema",
         "pattern": {
@@ -41,7 +41,7 @@
           }
         }
       },
-      "terminals": [
+      "terminal": [
         {
           "smt": "foo:foo_cache"
         },

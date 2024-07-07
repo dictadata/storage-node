@@ -98,9 +98,8 @@
   {
     "Foo": "twenty",
     "Bar": "Jackson",
-    "Baz": 30,
+    "Baz": 20,
     "Fobe": 20.2,
     "Dt Test": "2020-10-07T08:00:00.000Z",
-    "enabled": 0
-  }
+    "enabled": 1  }
 ]
