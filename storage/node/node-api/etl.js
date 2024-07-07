@@ -48,7 +48,7 @@ async function etl(req, res) {
       fiber.origin.options[ "reader" ] = req;
     }
 
-    let terminals = fiber.terminals || [ fiber.terminal ];
+    let terminals = Array.isArray(fiber.terminal) ? fiber.terminal : [ fiber.terminal ];
     for (let terminal of terminals) {
       if (terminal) {
         if (!terminal.options)
