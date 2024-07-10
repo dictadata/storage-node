@@ -12,7 +12,6 @@ const MemoryStore = require('memorystore')(session);
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
-const flash = require('connect-flash');
 const morgan = require('morgan');
 const path = require('node:path');
 const rfs = require('rotating-file-stream');
@@ -92,11 +91,24 @@ app.startup = function (config) {
     interval: '1d',
     size: '100M'
   });
-  app.use(morgan('combined', { stream: allstream }));
+
+  morgan.token('request', (req, res) => {
+    let contentType = req.headers[ 'content-type' ] || "";
+    let contentLength = req.headers[ 'content-length' ] || 0;
+
+    if (contentType.startsWith("application/json") && contentLength < 256 && typeof req.body === "object")
+      return JSON.stringify(req.body)
+    else
+      return ""
+  })
+
+  app.use(morgan(':date[iso] :remote-addr :remote-user :method :url HTTP/:http-version :status :response-time :total-time :res[content-length] ":referrer" ":user-agent" ":request"',
+    { stream: allstream }));
 
   if (process.env.NODE_ENV === 'development') {
     // log all requests to console
-    app.use(morgan('short', { stream: process.stdout }));
+    app.use(morgan(':date[iso] :remote-user :method :url :status :response-time :total-time :res[content-length] :request',
+      { stream: process.stdout }));
   }
 
   // route middleware
@@ -112,7 +124,6 @@ app.startup = function (config) {
 
   if (config.useSessions) {
     app.use(passport.session());
-    app.use(flash());
   }
 
   // static file handler, place before authentication

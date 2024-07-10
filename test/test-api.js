@@ -17,7 +17,6 @@ router.get('/echo', authorize([Roles.Public]), echo);
 router.get('/echo/:param', authorize([Roles.User]), echo);
 router.post('/echo', authorize([Roles.Public]), echo);
 router.post('/echo/:param', authorize([Roles.User]), echo);
-router.get('/flasher', authorize([Roles.Public]), flasher);
 module.exports = exports = router;
 
 
@@ -69,18 +68,4 @@ function echo(req, res) {
   }
 
   res.end();
-}
-
-/**
- * /flasher
- */
-function flasher(req, res) {
-  logger.verbose('/flash');
-
-  if (config.useSessions) {
-    req.flash('info', 'Flash is back!');
-    res.redirect('/status');
-  } else {
-    res.send('Sessions and Flash are not enabled.');
-  }
 }
