@@ -1,7 +1,9 @@
 # CHANGELOG for @dictadata/storage-node
 
 - version 0.9.91
-  -
+  - refactor: morgan web server log format use UTC time include POST query bodies
+  - updated: @dictadata/storage-junctions@0.9.119
+  - updated: @dictadata/storage-tracts@0.9.92
 - version 0.9.90
   - updated: /store pass querystring as options to junction.activate()
   - updated: @dictadata/storage-junctions@0.9.114
