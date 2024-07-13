@@ -94,10 +94,10 @@ app.startup = function (config) {
 
   morgan.token('request', (req, res) => {
     let contentType = req.headers[ 'content-type' ] || "";
-    let contentLength = req.headers[ 'content-length' ] || 0;
+    let contentLength = req.headers[ 'content-length' ];
 
-    if (contentType.startsWith("application/json") && contentLength < 256 && typeof req.body === "object")
-      return JSON.stringify(req.body)
+    if (contentType.startsWith("application/json") && contentLength && contentLength < 256 && typeof req.body === "object")
+      return JSON.stringify(req?.body)
     else
       return ""
   })
