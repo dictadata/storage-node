@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- verison 0.9.92
+  - app override of config package name, version
 - version 0.9.91
   - refactor: morgan web server log format use UTC time include POST query bodies
   - updated: @dictadata/storage-junctions@0.9.119
