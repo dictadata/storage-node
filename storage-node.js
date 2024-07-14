@@ -5,17 +5,21 @@
 "use strict";
 
 const server = require('@dictadata/storage-node');
-const storage_node = require('./storage/node');
+const myNode = require('./storage/node');
+const Package = require('../../package.json');
 
 // init module startup, if needed
-server.startup.add(storage_node.module1.startup);
-server.startup.add(storage_node.module2.startup);
+server.startup.add(myNode.module1.startup);
+server.startup.add(myNode.module2.startup);
 
 // override config
 // add api routes
 let config = {
+  name: Package.name,
+  version: Package.version,
+
   routes: {
-    '/myapi': storage_node.myApi
+    '/myapi': myNode.myApi
   }
 };
 

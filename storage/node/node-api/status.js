@@ -27,13 +27,17 @@ module.exports = exports = router;
 function status(req, res) {
   logger.debug('/node-api/status');
 
-  var results = new StorageResults("construct");
-  results.add({
-    "name": config.name,
-    "version": config.version,
+  let response = {
     "time": new Date().toISOString()
-  });
-  //info.userid = ' + request.user.userid + '/' + request.user.password;
+  }
+
+  if (req.user.roles.includes(Roles.User)) {
+    response.name = config.name;
+    response.version = config.version
+  }
+
+  var results = new StorageResults("construct");
+  results.add(response);
 
   res.status(200).jsonp(results);
 }
