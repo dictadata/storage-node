@@ -6,7 +6,7 @@
 
 const server = require('@dictadata/storage-node');
 const myNode = require('./storage/node');
-const Package = require('../../package.json');
+const Package = require('./package.json');
 
 // init module startup, if needed
 server.startup.add(myNode.module1.startup);

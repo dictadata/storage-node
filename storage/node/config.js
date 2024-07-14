@@ -137,8 +137,14 @@ _config.init = async (options) => {
       console.error(error.message);
     }
 
-    if (options)
+    if (options) {
       objCopy(_config, options);
+
+      if (Object.hasOwn(options, 'routes')) {
+        for (let [ route, router ] of Object.entries(options.routes))
+          _config.routes[ route ] = router;
+      }
+    }
   }
   catch (err) {
     console.error(err.message);
