@@ -74,9 +74,7 @@ function importData(req, res) {
 
   fm.parse(req, function (err, fields, files) {
     res.status(200).set('content-type', 'text/plain');
-    res.send('received upload:\n\n');
-    res.send(util.inspect({ fields: fields, files: files }, { depth: 3 }));
-    res.end();
+    res.send('received upload:\n\n' + ' ' + util.inspect({ fields: fields, files: files }, { depth: 3 }));
   });
 }
 

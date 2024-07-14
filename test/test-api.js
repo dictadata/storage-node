@@ -27,45 +27,47 @@ function echo(req, res) {
   logger.verbose('/echo');
 
   res.status(200).set('content-type', 'text/plain');
-  res.send(req.method + ' ' + req.url + ' HTTP/' + req.httpVersion + '\r\n');
+  let body =  "";
+
+  body +=  req.method + ' ' + req.url + ' HTTP/' + req.httpVersion + '\r\n';
   for (let header in req.headers) {
-    res.send(header + ': ' + req.headers[header] + '\r\n');
+    body +=  header + ': ' + req.headers[header] + '\r\n';
   }
 
-  res.send('\r\n----- url -----\r\n');
+  body +=  '\r\n----- url -----\r\n';
   var port = req.app.settings.port || 80;
-  var requestUrl = req.protocol + '://' + req.hostname + (port == 80 || port == 443 ? '' : ':' + port) + req.originalUrl;
+  var requestUrl = req.protocol + '://' + req.hostname + (port == 80 || port == 443 ? '' : ':' + port) + req.originalUrl  + '\r\n';
 
   let Url = new url.URL(requestUrl);
   for (let u in Url) {
     if (typeof (Url[u]) !== 'function' && typeof (Url[u]) !== 'object') {
-      res.send(u + ': ' + Url[u] + '\r\n');
+      body +=  u + ': ' + Url[u] + '\r\n';
     }
   }
 
-  res.send('\r\n----- querystring -----\r\n');
-  for (let p in url.query) { res.send(p + ': ' + url.query[p] + '\r\n'); }
+  body +=  '\r\n----- querystring -----\r\n';
+  for (let p in url.query) { body +=  p + ': ' + url.query[p] + '\r\n'; }
 
-  res.send('\r\n----- req -----\r\n');
+  body +=  '\r\n----- req -----\r\n';
   for (let r in req) {
     if (typeof (req[r]) === 'function') {
       //
     } else if (typeof (req[r]) === 'object') {
-      res.send(r + ':\r\n');
+      body +=  r + ':\r\n';
       let obj = req[r];
       for (let o in obj) {
         switch (typeof obj[o]) {
         case 'string':
         case 'number':
         case 'boolean':
-          res.send('   ' + o + ': ' + obj[o] + '\r\n');
+          body +=  '   ' + o + ': ' + obj[o] + '\r\n';
           break;
         default:
-          res.send('   ' + o + ': ' + typeof obj[o] + '\r\n');
+          body +=  '   ' + o + ': ' + typeof obj[o] + '\r\n';
         }
       }
-    } else { res.send(r + ': ' + req[r] + '\r\n'); }
+    } else { body +=  r + ': ' + req[r] + '\r\n'; }
   }
 
-  res.end();
+  res.send(body);
 }
