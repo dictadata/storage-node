@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "colors": "^1.4.0",
-    "eslint": "^9.7.0"
+    "eslint": "^9.9.0"
   },
   "dependencies": {
     "@dictadata/lib": "github:dictadata/lib#semver:1.0",
