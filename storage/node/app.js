@@ -51,8 +51,7 @@ app.startup = function (config) {
     app.set('trust proxy', 'loopback');
   }
 
-  // HTTP message processing
-  app.options('*', cors());  // enable pre-flight across-the-board
+  // Express middleware
   app.use(cors(config?.cors));
 
   app.use(compression({ threshold: 2048 }));
@@ -69,6 +68,9 @@ app.startup = function (config) {
 
     app.use(cookieParser(session_options.secret));
     app.use(session(session_options));
+  }
+  else {
+    app.use(cookieParser());
   }
 
   // log all requests to log file
@@ -111,10 +113,13 @@ app.startup = function (config) {
       { stream: process.stdout }));
   }
 
+  // -> Disable X-Powered-By
+  app.disable('x-powered-by');
+
   // route middleware
   //app.all('/data/*', filter.jsoncheck);
-  app.all(security);
-  app.all(seo);
+  app.all(/(.*)/, security);
+  //app.all(/(.*)/, seo);
 
   // passport authentication
   app.use(passport.initialize());
@@ -134,7 +139,7 @@ app.startup = function (config) {
 
   // all other requests go through authentication
   if (config.auth_strategy)
-    app.use('/*', passport.authenticate(config.auth_strategy, { session: config.useSessions }));
+    app.use(/(.*)/, passport.authenticate(config.auth_strategy, { session: config.useSessions }));
 
   // default node route handlers
   app.use('/node', routes);
