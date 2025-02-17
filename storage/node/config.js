@@ -74,10 +74,11 @@ var _config = {
 
   // CORS options for Express plugin
   cors: {
-    allowedHeaders: [ 'Origin', 'X-Requested-With', 'Content-Type', 'Accept' ]
+    origin: "*",
+    methods: 'GET,PUT,POST,DELETE',
+    allowedHeaders: [ 'Authorization', 'Content-Type' ],
+    credentials: true
   },
-
-
   engrams: {
     smt: "memory|dictadata|engrams|*",
     options: {},

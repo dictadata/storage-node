@@ -4,6 +4,9 @@
   "logPath": "/var/log/node",
   "logPrefix": "storage-node",
   "logLevel": "info",
+  "cors": {
+    "origin": "*"
+  },
   "auth": {
     "auth_file": "storage-node.auth.json"
   },
