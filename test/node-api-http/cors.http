@@ -1,4 +1,4 @@
-###
+### login
 OPTIONS http://dev.dictadata.net:8089/node/login HTTP/1.1
 Host: dev.dictadata.net
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0
@@ -15,7 +15,24 @@ Priority: u=4
 Pragma: no-cache
 Cache-Control: no-cache
 
-###
+### bad origin
+OPTIONS http://dev.dictadata.net:8089/node/login HTTP/1.1
+Host: dev.dictadata.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization
+Referer: http://blahblah.com/
+Origin: http://blahblah.com
+DNT: 1
+Connection: keep-alive
+Priority: u=4
+Pragma: no-cache
+Cache-Control: no-cache
+
+### voter_registration
 OPTIONS http://dev.dictadata.net:8089/node/etl/dicta:voter_registration HTTP/1.1
 Host: dev.dictadata.net
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0

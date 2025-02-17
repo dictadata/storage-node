@@ -78,6 +78,20 @@
       "outputCapture": "std"
     },
     {
+      "name": "node-api CORS",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/test/tr_http_queries.js",
+      "args": [
+        "${workspaceFolder}/test/node-api/cors.json"
+      ],
+      "envFile": "${workspaceFolder}/.env.development",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "outputCapture": "std"
+    },
+    {
       "name": "node-api engrams",
       "type": "node",
       "request": "launch",

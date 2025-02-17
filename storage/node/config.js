@@ -138,12 +138,21 @@ _config.init = async (options) => {
       console.error(error.message);
     }
 
+    // add options to config
     if (options) {
       objCopy(_config, options);
 
+      // routes as objects
       if (Object.hasOwn(options, 'routes')) {
         for (let [ route, router ] of Object.entries(options.routes))
           _config.routes[ route ] = router;
+      }
+
+      // cors origin array as regexp
+      if (Array.isArray(_config.cors?.origin)) {
+        for (let i = 0; i < _config.cors.origin.length; i++) {
+          _config.cors.origin[ i ] = new RegExp(_config.cors.origin[ i ]);
+        }
       }
     }
   }

@@ -1,0 +1,54 @@
+{
+  "name": "cors",
+  "request": {
+    "method": "OPTIONS",
+    "base": "http://dev.dictadata.net:8089/node/login"
+  },
+  "expected": {
+    "statusCode": 204
+  },
+  "queries": [
+    {
+      "name": "localhost",
+      "request": {
+        "headers": {
+          "Host": "dev.dictadata.net",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0",
+          "Accept": "*/*",
+          "Accept-Language": "en-US,en;q=0.5",
+          "Accept-Encoding": "gzip, deflate",
+          "Access-Control-Request-Method": "POST",
+          "Access-Control-Request-Headers": "authorization",
+          "Referer": "http://localhost:3000/",
+          "Origin": "http://localhost:3000",
+          "DNT": "1",
+          "Connection": "keep-alive",
+          "Priority": "u=4",
+          "Pragma": "no-cache",
+          "Cache-Control": "no-cache"
+        }
+      }
+    },
+    {
+      "name": "badorigin",
+      "request": {
+        "headers": {
+          "Host": "dev.dictadata.net",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0",
+          "Accept": "*/*",
+          "Accept-Language": "en-US,en;q=0.5",
+          "Accept-Encoding": "gzip, deflate",
+          "Access-Control-Request-Method": "POST",
+          "Access-Control-Request-Headers": "authorization",
+          "Referer": "http://blahblah.com/",
+          "Origin": "http://blahblah.com",
+          "DNT": "1",
+          "Connection": "keep-alive",
+          "Priority": "u=4",
+          "Pragma": "no-cache",
+          "Cache-Control": "no-cache"
+        }
+      }
+    }
+  ]
+}

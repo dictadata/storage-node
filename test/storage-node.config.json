@@ -9,7 +9,7 @@
   },
   "$_accounts": "elasticsearch|http://dev.dictadata.net:9200|node_accounts|!userid",
   "cors": {
-    "origin": "localhost"
+    "origin": [ "localhost" ]
   },
   "auth": {
     "auth_file": "storage-node.auth.json"
