@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.95
+  - updated: CORS regexp in config; testing
 - version 0.9.94
   - updated: CORS configuration
 - version 0.9.93
