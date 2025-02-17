@@ -1,5 +1,7 @@
 # CHANGELOG for @dictadata/storage-node
 
+- version 0.9.94
+  - updated: CORS configuration
 - version 0.9.93
   - updated: Express 5.0.1
   - updated: @dictadata/storage-junctions@0.9.121
